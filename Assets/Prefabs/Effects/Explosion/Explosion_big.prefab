@@ -9,33 +9,33 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1914619935101884}
+  m_RootGameObject: {fileID: 1237063411365404}
   m_IsPrefabParent: 1
---- !u!1 &1914619935101884
+--- !u!1 &1237063411365404
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4737375703593166}
-  - component: {fileID: 198779280472760414}
-  - component: {fileID: 199525696075015500}
-  - component: {fileID: 58198856968469654}
-  - component: {fileID: 114488983179640264}
+  - component: {fileID: 4969571704885414}
+  - component: {fileID: 198444633171652868}
+  - component: {fileID: 199272296217590218}
+  - component: {fileID: 58465346877660470}
+  - component: {fileID: 114690176184762422}
   m_Layer: 9
-  m_Name: Explosion_small
+  m_Name: Explosion_big
   m_TagString: Explosion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4737375703593166
+--- !u!4 &4969571704885414
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1914619935101884}
+  m_GameObject: {fileID: 1237063411365404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -43,12 +43,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &58198856968469654
+--- !u!58 &58465346877660470
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1914619935101884}
+  m_GameObject: {fileID: 1237063411365404}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -57,31 +57,31 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.7
---- !u!114 &114488983179640264
+  m_Radius: 2.8
+--- !u!114 &114690176184762422
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1914619935101884}
+  m_GameObject: {fileID: 1237063411365404}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6c627ba8c3e5ae4f812c0539972bdb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 0}
-  type: 11
+  bulletType: 0
   direction: {x: 0, y: 0, z: 0}
   HelixBulletChild_RotationSpeed: 10
   speed: 0
-  duration: 0.5
-  damage: 60
---- !u!198 &198779280472760414
+  duration: 1.25
+  damage: 120
+--- !u!198 &198444633171652868
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1914619935101884}
+  m_GameObject: {fileID: 1237063411365404}
   serializedVersion: 5
   lengthInSec: 0.25
   simulationSpeed: 1
@@ -136,14 +136,14 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1428172800
+  randomSeed: -1319463496
   InitialModule:
     serializedVersion: 3
     enabled: 1
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.25
+      scalar: 0.7
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -184,7 +184,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4
+      scalar: 5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -696,7 +696,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1000
+      scalar: 3000
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -1332,8 +1332,8 @@ ParticleSystem:
         - serializedVersion: 2
           time: 1
           value: 0
-          inSlope: 0
-          outSlope: 0
+          inSlope: -3.3120744
+          outSlope: -3.3120744
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -3437,13 +3437,13 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!199 &199525696075015500
+--- !u!199 &199272296217590218
 ParticleSystemRenderer:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1914619935101884}
+  m_GameObject: {fileID: 1237063411365404}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

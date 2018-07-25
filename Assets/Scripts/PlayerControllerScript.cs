@@ -8,6 +8,7 @@ public class PlayerControllerScript : MonoBehaviour {
     public Rigidbody2D rb;
     public GameObject LaserBullet;
     public GameObject TurretGameObject;
+    public GameObject EffectsHolderGameObject;
 
     public GameObject[] Bullets;
 
@@ -51,6 +52,7 @@ public class PlayerControllerScript : MonoBehaviour {
     private float loadTime = 0.2f;
     private float loadTimeStamp;
     bool isReady = false;
+    bool pressedButtonDown = false;
 
     private float chainGunOffset = 0;
     private bool chainGunOffsetUp = true;
@@ -323,7 +325,7 @@ public class PlayerControllerScript : MonoBehaviour {
         switch (currentWeapon) {
             case (Weapons.Standart_lvl_1):
                 if (Input.GetButton("Fire1")) {
-                    cooldown = 0.1f;
+                    cooldown = 0.3f;
                     if (cooldownTimeStamp <= Time.time) {
                         Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
@@ -332,7 +334,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 break;
             case (Weapons.Standart_lvl_2):
                 if (Input.GetButton("Fire1")) {
-                    cooldown = 0.1f;
+                    cooldown = 0.3f;
                     if (cooldownTimeStamp <= Time.time) {
                         Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.up * 0.1f), TurretGameObject.transform.rotation);
                         Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.up * -0.1f), TurretGameObject.transform.rotation);
@@ -342,7 +344,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 break;
             case (Weapons.Standart_lvl_3):
                 if (Input.GetButton("Fire1")) {
-                    cooldown = 0.2f;
+                    cooldown = 0.6f;
                     if (cooldownTimeStamp <= Time.time) {
                         Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.up * 0.2f), TurretGameObject.transform.rotation);
@@ -465,26 +467,45 @@ public class PlayerControllerScript : MonoBehaviour {
                 }
                 break;
             case (Weapons.LaserGun):
-                cooldown = 1f;
-                loadTime = 2f;
+                cooldown = 4f;
+                loadTime = 4f;
                 if (cooldownTimeStamp <= Time.time) {
                     if (Input.GetButtonDown("Fire1")) {
+                        pressedButtonDown = true;
                         loadTimeStamp = Time.time + loadTime;
+                        isReady = true;
                     }
                     if (loadTimeStamp >= Time.time) {
-                        Debug.Log("Loading");
-                    }
-                    if (Input.GetButtonUp("Fire1")) {
-                        if (loadTimeStamp <= Time.time) {
-                            Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.SimpleLaser)], ProjectileSpawnPoint, transform.rotation);
-                            cooldownTimeStamp = Time.time + cooldown; //Apply cooldown when firered
-                        }
-                        else {
-                            loadTimeStamp = Time.time + loadTime;
-                            Debug.Log("reset");
-                            cooldownTimeStamp = Time.time + cooldown; //Apply cooldown when Load Reset
+                        if (isReady == true) {
+                            Debug.Log("Loading");
                         }
                     }
+                    if (loadTimeStamp <= Time.time) {
+                        if (isReady == true) {
+                            Instantiate(EffectsHolderGameObject.GetComponent<EffectsHolder>().Effects[EffectsHolderGameObject.GetComponent<EffectsHolder>().GetEffectIndex(EffectsHolder.EffectNames.LaserLoaded)], transform.position, transform.rotation, transform);
+                            Debug.Log("Ready");
+                            isReady = false;
+                        }
+                    }
+                    if (pressedButtonDown == true) {
+                        if (Input.GetButtonUp("Fire1")) {
+                            if (loadTimeStamp <= Time.time) {
+                                Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.SimpleLaser)], transform.position, transform.rotation, this.transform);
+                                loadTimeStamp = Time.time + loadTime;
+                                cooldownTimeStamp = Time.time + cooldown; //Apply cooldown when firered
+                            }
+                            else {
+                                loadTimeStamp = Time.time + loadTime;
+                                //no cooldown wehen reset
+                                Debug.Log("reset");
+                            }
+                            isReady = false;
+                            pressedButtonDown = false;
+                        }
+                    }
+                }
+                if (cooldownTimeStamp >= Time.time) {
+                    Debug.Log("cooling down");
                 }
                 break;
             default:

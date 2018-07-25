@@ -290,14 +290,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CoinBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\EffectScripts\EffectBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\EffectScripts\EffectsHolder.cs" />
     <Compile Include="Assets\Scripts\EnemyBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\FollowPath.cs" />
-    <Compile Include="Assets\Scripts\LaserBulletData.cs" />
-    <Compile Include="Assets\Scripts\LaserBulletScript.cs" />
-    <Compile Include="Assets\Scripts\LaserScript.cs" />
     <Compile Include="Assets\Scripts\Node.cs" />
     <Compile Include="Assets\Scripts\PlayerControllerScript.cs" />
     <Compile Include="Assets\Scripts\PowerUpBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\Projectiles\LaserBulletData.cs" />
+    <Compile Include="Assets\Scripts\Projectiles\LaserBulletScript.cs" />
+    <Compile Include="Assets\Scripts\Projectiles\LaserScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
