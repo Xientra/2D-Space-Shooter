@@ -17,7 +17,6 @@ public class EffectBehaviourScript : MonoBehaviour {
 	void Update () {
         if (TimeStamp <= Time.time) {
             Destroy(this.gameObject);
-            //TimeStamp = Time.time + TimeToWait;
         }
     }
 }

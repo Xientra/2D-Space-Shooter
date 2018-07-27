@@ -18,6 +18,8 @@ public class LaserBulletData : MonoBehaviour {
 
     private LineRenderer lineRenderer;
 
+    
+
     private bool isLaser = false;
     [SerializeField]
     private float HelixBulletChild_RotationSpeed = 10f;
@@ -32,11 +34,18 @@ public class LaserBulletData : MonoBehaviour {
     //private enum SpecialEffects { none };
     //[SerializeField]
     //private SpecialEffects SpecialEffect = SpecialEffects.none;
+    
+    private float damageDelay = 0.05f; //this is kinda important for the Lasers-------------------------------------------------------------------
+    [SerializeField]
+    private float damageDelayTimeStamp;
+
+    //PowerUp Variables
+    public static float damageMultiplyer = 1f;
 
     void Start() {
-        
         if (bulletType == BulletTypes.SimpleLaser) {
             isLaser = true;
+            damageDelayTimeStamp = Time.time + damageDelay;
         }
     }
 
@@ -60,13 +69,25 @@ public class LaserBulletData : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.layer == 10) {
-            collision.gameObject.GetComponent<EnemyBehaviourScript>().Health -= damage;
-            if (isLaser == false) {
+        if (isLaser == false) {
+            if (collision.gameObject.layer == 10) {
+                collision.gameObject.GetComponent<EnemyBehaviourScript>().Health -= damage * damageMultiplyer;
                 InitiliseSelfDestruction();
             }
         }
     }
+
+    private void OnTriggerStay2D(Collider2D collision) { //dude this is not framerate indipendend or is it?
+        if (isLaser == true) {
+            if (collision.gameObject.layer == 10) {
+                if (damageDelayTimeStamp <= Time.time) {
+                    collision.gameObject.GetComponent<EnemyBehaviourScript>().Health -= damage * damageMultiplyer;
+                    damageDelayTimeStamp = Time.time + damageDelay;
+                }
+            }
+        }
+    }
+
 
     private void OnDestroy() {
         if (bulletType == BulletTypes.Rocket) {

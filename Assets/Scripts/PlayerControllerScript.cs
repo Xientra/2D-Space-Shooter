@@ -59,7 +59,14 @@ public class PlayerControllerScript : MonoBehaviour {
 
     //Stuff for PickUps
     private bool[] PowerUpActive = new bool[PowerUpBehaviourScript.PowerUpTypes.GetNames(typeof(PowerUpBehaviourScript.PowerUpTypes)).Length];
+    //private PowerUpBehaviourScript.PowerUpTypes currendActivePowerUp;
+    private static float fireRateMultiplyer = 1;
+    public static bool regenerates = false;
+    [SerializeField]
+    private float regenerationSpeed = 5;
 
+
+    /*---------------------------------------------End-Of-Variables---------------------------------------------------------------------------*/
     void Start() {
         rb = transform.GetComponent<Rigidbody2D>();
         switchShip();
@@ -83,6 +90,11 @@ public class PlayerControllerScript : MonoBehaviour {
             }
         }
 
+        if (regenerates == true) {
+            if (currendHealth < MaxHealth) {
+                currendHealth += regenerationSpeed;
+            }
+        }
 
         ProjectileSpawnPoint = TurretGameObject.transform.position;
         ProjectileSpawnPoint = TurretGameObject.transform.position + (TurretGameObject.transform.right * (transform.localScale.y / 5f));
@@ -122,21 +134,9 @@ public class PlayerControllerScript : MonoBehaviour {
             Destroy(collision.gameObject);
         }
         if (collision.CompareTag("PickUp")) {
-            switch (collision.gameObject.GetComponent<PowerUpBehaviourScript>().currendPowerUpType) {
-                case (PowerUpBehaviourScript.PowerUpTypes.Invincibility):
-                    Debug.LogWarning(collision.gameObject.GetComponent<PowerUpBehaviourScript>().currendPowerUpType.ToString() + " is not yet Implemented");
-                    StartCoroutine(ActivatePowerUpforTime((int)PowerUpBehaviourScript.PowerUpTypes.Invincibility, 5f));
-
-                    break;
-                case (PowerUpBehaviourScript.PowerUpTypes.DamageUp):
-                    Debug.LogWarning(collision.gameObject.GetComponent<PowerUpBehaviourScript>().currendPowerUpType.ToString() + " is not yet Implemented");
-                    StartCoroutine(ActivatePowerUpforTime((int)PowerUpBehaviourScript.PowerUpTypes.DamageUp, 5f));
-
-                    break;
-                default:
-                    Debug.LogError("The PickUp -" + collision.gameObject.GetComponent<PowerUpBehaviourScript>().currendPowerUpType.ToString() + "- has no values (like duration) assinged!");
-                    break;
-            }
+            if (collision.GetComponent<PowerUpBehaviourScript>().currendPowerUpType == PowerUpBehaviourScript.PowerUpTypes.HealthUp) {
+                currendHealth += MaxHealth * 0.2f;
+            } else StartCoroutine(ActivatePowerUpforTime((int)collision.gameObject.GetComponent<PowerUpBehaviourScript>().currendPowerUpType, 5f));
             Destroy(collision.gameObject);
         }
     }
@@ -145,7 +145,43 @@ public class PlayerControllerScript : MonoBehaviour {
         PowerUpActive[PowerUpNr] = true;
         Debug.Log((PowerUpBehaviourScript.PowerUpTypes)PowerUpNr + " started."); //Update some UI or stuff pls
 
+        switch ((PowerUpBehaviourScript.PowerUpTypes)PowerUpNr) {
+            case (PowerUpBehaviourScript.PowerUpTypes.FireRateUp):
+                fireRateMultiplyer = 0.6f;
+                break;
+            case (PowerUpBehaviourScript.PowerUpTypes.DamageUp):
+                LaserBulletData.damageMultiplyer = 1.2f;
+                break;
+            case (PowerUpBehaviourScript.PowerUpTypes.Invincibility):
+                EnemyBehaviourScript.noCollisionDamage = true;
+                break;
+            case (PowerUpBehaviourScript.PowerUpTypes.SloMo):
+                Time.timeScale = 0.8f;
+                break;
+            default:
+                Debug.LogError("The PickUp -" + (PowerUpBehaviourScript.PowerUpTypes)PowerUpNr + "- has no effect assinged!");
+                break;
+        }
+
         yield return new WaitForSeconds(TimeToWait);
+
+        switch ((PowerUpBehaviourScript.PowerUpTypes)PowerUpNr) {
+            case (PowerUpBehaviourScript.PowerUpTypes.FireRateUp):
+                fireRateMultiplyer = 1f;
+                break;
+            case (PowerUpBehaviourScript.PowerUpTypes.DamageUp):
+                LaserBulletData.damageMultiplyer = 1f;
+                break;
+            case (PowerUpBehaviourScript.PowerUpTypes.Invincibility):
+                EnemyBehaviourScript.noCollisionDamage = false;
+                break;
+            case (PowerUpBehaviourScript.PowerUpTypes.SloMo):
+                Time.timeScale = 1f;
+                break;
+            default:
+                Debug.LogError("The PickUp -" + (PowerUpBehaviourScript.PowerUpTypes)PowerUpNr + "- has no effect assinged!");
+                break;
+        }
 
         PowerUpActive[PowerUpNr] = false;
         Debug.Log((PowerUpBehaviourScript.PowerUpTypes)PowerUpNr + " stoped"); //Update some UI or stuff pls
@@ -325,7 +361,7 @@ public class PlayerControllerScript : MonoBehaviour {
         switch (currentWeapon) {
             case (Weapons.Standart_lvl_1):
                 if (Input.GetButton("Fire1")) {
-                    cooldown = 0.3f;
+                    cooldown = 0.3f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
                         Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
@@ -334,7 +370,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 break;
             case (Weapons.Standart_lvl_2):
                 if (Input.GetButton("Fire1")) {
-                    cooldown = 0.3f;
+                    cooldown = 0.3f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
                         Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.up * 0.1f), TurretGameObject.transform.rotation);
                         Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.up * -0.1f), TurretGameObject.transform.rotation);
@@ -344,7 +380,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 break;
             case (Weapons.Standart_lvl_3):
                 if (Input.GetButton("Fire1")) {
-                    cooldown = 0.6f;
+                    cooldown = 0.6f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
                         Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.up * 0.2f), TurretGameObject.transform.rotation);
@@ -355,7 +391,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 break;
             case (Weapons.Helix_lvl_1):
                 if (Input.GetButton("Fire1")) {
-                    cooldown = 0.35f;
+                    cooldown = 0.35f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
                         Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.HelixBullet_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
@@ -364,7 +400,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 break;
             case (Weapons.Helix_lvl_2):
                 if (Input.GetButton("Fire1")) {
-                    cooldown = 0.3f;
+                    cooldown = 0.3f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
                         Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.HelixBullet_lvl_2)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
@@ -373,7 +409,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 break;
             case (Weapons.Helix_lvl_3):
                 if (Input.GetButton("Fire1")) {
-                    cooldown = 0.3f;
+                    cooldown = 0.3f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
                         Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.HelixBullet_lvl_3)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
@@ -382,8 +418,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 break;
             case (Weapons.Spread):
                 if (Input.GetButton("Fire1")) {
-                    cooldown = 0.2f;
-
+                    cooldown = 0.2f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
                         LaserBullet.GetComponent<LaserBulletScript>().type = LaserBulletScript.BulletTypes.Standart;
                         Instantiate(LaserBullet, ProjectileSpawnPoint, TurretGameObject.transform.rotation);
@@ -395,7 +430,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 break;
             case (Weapons.Sniper):
                 if (Input.GetButton("Fire1")) {
-                    cooldown = 1f;
+                    cooldown = 1f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
                         LaserBullet.GetComponent<LaserBulletScript>().type = LaserBulletScript.BulletTypes.SniperBullet;
                         Instantiate(LaserBullet, ProjectileSpawnPoint, TurretGameObject.transform.rotation);
@@ -405,7 +440,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 break;
             case (Weapons.WaveEmitter_lvl_1):
                 if (Input.GetButton("Fire1")) {
-                    cooldown = 0.3f;
+                    cooldown = 0.3f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
                         Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.Wave)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
@@ -414,7 +449,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 break;
             case (Weapons.RocketLauncher_lvl_1):
                 if (Input.GetButton("Fire1")) {
-                    cooldown = 0.8f;
+                    cooldown = 0.8f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
                         Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.Rocket)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
@@ -423,7 +458,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 break;
             case (Weapons.GrenadeLauncher_lvl_1):
                 if (Input.GetButton("Fire1")) {
-                    cooldown = 0.8f;
+                    cooldown = 0.8f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
                         Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.Grenade)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
@@ -432,7 +467,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 break;
             case (Weapons.ShrapnelLauncher_lvl_1):
                 if (Input.GetButton("Fire1")) {
-                    cooldown = 0.8f;
+                    cooldown = 0.8f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
                         Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.Shrapnel)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
@@ -441,7 +476,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 break;
             case (Weapons.ChainGun_lvl_1):
                 if (Input.GetButton("Fire1")) {
-                    cooldown = 0.01f;
+                    cooldown = 0.01f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
                         fireChainGun(0.04f, 0.1f, 6f);
                         cooldownTimeStamp = Time.time + cooldown;
@@ -450,7 +485,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 break;
             case (Weapons.ChainGun_lvl_2):
                 if (Input.GetButton("Fire1")) {
-                    cooldown = 0.01f;
+                    cooldown = 0.01f * fireRateMultiplyer * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
                         fireChainGun(0.04f, 0.1f, 3f);
                         cooldownTimeStamp = Time.time + cooldown;
@@ -459,7 +494,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 break;
             case (Weapons.ChainGun_lvl_3):
                 if (Input.GetButton("Fire1")) {
-                    cooldown = 0.005f;
+                    cooldown = 0.005f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
                         fireChainGun(0.04f, 0.1f, 1f);
                         cooldownTimeStamp = Time.time + cooldown;
@@ -467,8 +502,8 @@ public class PlayerControllerScript : MonoBehaviour {
                 }
                 break;
             case (Weapons.LaserGun):
-                cooldown = 4f;
-                loadTime = 4f;
+                cooldown = 2f * fireRateMultiplyer;
+                loadTime = 1f;
                 if (cooldownTimeStamp <= Time.time) {
                     if (Input.GetButtonDown("Fire1")) {
                         pressedButtonDown = true;

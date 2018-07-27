@@ -17,7 +17,11 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
     private float movementspeed = 0.1f;
 
-	void Start () {
+    //PowerUp Variables
+    public static bool noCollisionDamage = false;
+    
+
+    void Start () {
     }
 
     void Update() {
@@ -34,8 +38,13 @@ public class EnemyBehaviourScript : MonoBehaviour {
         if (collision.gameObject.CompareTag("Enemy Limiter")) {
             Destroy(this.gameObject);
         }
-        if (collision.gameObject.CompareTag("Player")) {
-            collision.gameObject.GetComponent<PlayerControllerScript>().currendHealth -= CollisionDamage;
+        if (noCollisionDamage == false) {
+            if (collision.gameObject.CompareTag("Player")) {
+                if (PlayerControllerScript.regenerates == true) {
+                    PlayerControllerScript.regenerates = false;
+                }
+                collision.gameObject.GetComponent<PlayerControllerScript>().currendHealth -= CollisionDamage;
+            }
         }
         if (collision.gameObject.CompareTag("Explosion")) {
             Health -= collision.gameObject.GetComponent<LaserBulletData>().damage;

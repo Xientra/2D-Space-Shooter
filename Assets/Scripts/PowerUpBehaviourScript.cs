@@ -6,7 +6,7 @@ public class PowerUpBehaviourScript : MonoBehaviour {
 
     public Vector3 startDirection = new Vector2(1, 0);
 
-    public enum PowerUpTypes { Invincibility, DamageUp }
+    public enum PowerUpTypes { HealthUp, Regeneration, FireRateUp, DamageUp, Invincibility, SloMo }
     public PowerUpTypes currendPowerUpType;
 
     [SerializeField]
@@ -24,7 +24,8 @@ public class PowerUpBehaviourScript : MonoBehaviour {
     private float accaccToPlayer = 0.1f;
     [SerializeField]
     private float deaccToPlayer = 0.05f;
-    
+
+    float timeActive = 10f;
 
     private Vector3 movehere;
 
@@ -34,17 +35,6 @@ public class PowerUpBehaviourScript : MonoBehaviour {
         startDirection = transform.rotation * startDirection;
         transform.rotation = Quaternion.identity;
 
-        switch (currendPowerUpType) {
-            case (PowerUpTypes.Invincibility):
-                //change apperance
-                break;
-            case (PowerUpTypes.DamageUp):
-                //change apperance
-                break;
-            default:
-                Debug.LogError("The PickUp -" + currendPowerUpType.ToString() + "- has no apperance assinged!");
-                break;
-        }
     }
 
     void Update() {
