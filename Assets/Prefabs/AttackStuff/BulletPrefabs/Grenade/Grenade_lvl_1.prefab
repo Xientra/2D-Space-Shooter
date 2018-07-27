@@ -184,12 +184,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 1237063411365404, guid: ff9c8fe9c41f08e40842ef634a7f15c6, type: 2}
-  type: 8
+  bulletType: 8
   direction: {x: 1, y: 0, z: 0}
   HelixBulletChild_RotationSpeed: 10
   speed: 0.1
   duration: 1
   damage: 15
+  damageDelayTimeStamp: 0
 --- !u!212 &212202992350233550
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -13,12 +13,14 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectGenerator>VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.3.1f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -295,8 +297,10 @@
     <Compile Include="Assets\Scripts\EnemyBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\FollowPath.cs" />
     <Compile Include="Assets\Scripts\Node.cs" />
+    <Compile Include="Assets\Scripts\ObjectHolder.cs" />
     <Compile Include="Assets\Scripts\PlayerControllerScript.cs" />
     <Compile Include="Assets\Scripts\PowerUpBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\Projectiles\GameControllerScript.cs" />
     <Compile Include="Assets\Scripts\Projectiles\LaserBulletData.cs" />
     <Compile Include="Assets\Scripts\Projectiles\LaserBulletScript.cs" />
     <Compile Include="Assets\Scripts\Projectiles\LaserScript.cs" />

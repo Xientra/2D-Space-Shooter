@@ -882,12 +882,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 0}
-  type: 4
+  bulletType: 4
   direction: {x: 1, y: 0, z: 0}
   HelixBulletChild_RotationSpeed: 10
   speed: 0
   duration: 1
   damage: 20
+  damageDelayTimeStamp: 0
 --- !u!114 &114223068483341508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -900,12 +901,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 0}
-  type: 4
+  bulletType: 4
   direction: {x: 1, y: 0, z: 0}
   HelixBulletChild_RotationSpeed: 10
   speed: 0
   duration: 1
   damage: 20
+  damageDelayTimeStamp: 0
 --- !u!114 &114329325342613564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -918,12 +920,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 0}
-  type: 4
+  bulletType: 4
   direction: {x: 1, y: 0, z: 0}
   HelixBulletChild_RotationSpeed: 10
   speed: 0
   duration: 1
   damage: 20
+  damageDelayTimeStamp: 0
 --- !u!114 &114349582237851362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -936,12 +939,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 0}
-  type: 2
+  bulletType: 2
   direction: {x: 1, y: 0, z: 0}
   HelixBulletChild_RotationSpeed: 10
   speed: 0.3
   duration: 2
   damage: 30
+  damageDelayTimeStamp: 0
 --- !u!114 &114415040542387400
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -954,12 +958,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 0}
-  type: 4
+  bulletType: 4
   direction: {x: 1, y: 0, z: 0}
   HelixBulletChild_RotationSpeed: 10
   speed: 0
   duration: 1
   damage: 20
+  damageDelayTimeStamp: 0
 --- !u!212 &212118299109834306
 SpriteRenderer:
   m_ObjectHideFlags: 1

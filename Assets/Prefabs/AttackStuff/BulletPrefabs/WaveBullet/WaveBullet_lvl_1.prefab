@@ -194,12 +194,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 0}
-  type: 5
+  bulletType: 5
   direction: {x: 1, y: 0, z: 0}
   HelixBulletChild_RotationSpeed: 60
   speed: 0.2
   duration: 0.3
   damage: 50
+  damageDelayTimeStamp: 0
 --- !u!212 &212676240974190910
 SpriteRenderer:
   m_ObjectHideFlags: 1

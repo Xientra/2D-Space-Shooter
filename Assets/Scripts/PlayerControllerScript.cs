@@ -1,16 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerControllerScript : MonoBehaviour {
 
     public Rigidbody2D rb;
-    public GameObject LaserBullet;
     public GameObject TurretGameObject;
     public GameObject EffectsHolderGameObject;
+    public GameObject ObjectHolderGo;
 
     public GameObject[] Bullets;
+    
+
+    //Static Vars
 
     //[SerializeField]
     //private float speedlimit = 10f;
@@ -21,7 +23,6 @@ public class PlayerControllerScript : MonoBehaviour {
     [SerializeField]
     private float yspeed = 0;
     public float currendHealth = 100f;
-    public float currendCredits = 0f;
 
 
     private Vector3 ProjectileSpawnPoint;
@@ -41,7 +42,7 @@ public class PlayerControllerScript : MonoBehaviour {
     //scale y
 
 
-    //Weapon Stats
+    /*----------Weapon Stats----------*/
     public enum Weapons {
         Standart_lvl_1, Standart_lvl_2, Standart_lvl_3, Helix_lvl_1, Helix_lvl_2, Helix_lvl_3, WaveEmitter_lvl_1, RocketLauncher_lvl_1, GrenadeLauncher_lvl_1, ShrapnelLauncher_lvl_1, ChainGun_lvl_1, ChainGun_lvl_2, ChainGun_lvl_3, Spread, Sniper,
         LaserGun
@@ -49,27 +50,28 @@ public class PlayerControllerScript : MonoBehaviour {
     public Weapons currentWeapon = Weapons.Sniper;
     private float cooldown = 0.2f;
     private float cooldownTimeStamp;
+    //laser firering vars
     private float loadTime = 0.2f;
     private float loadTimeStamp;
-    bool isReady = false;
-    bool pressedButtonDown = false;
+    private bool isReady = false;
+    private bool pressedButtonDown = false;
 
     private float chainGunOffset = 0;
     private bool chainGunOffsetUp = true;
 
-    //Stuff for PickUps
+    /*----------Stuff for PickUps----------*/
     private bool[] PowerUpActive = new bool[PowerUpBehaviourScript.PowerUpTypes.GetNames(typeof(PowerUpBehaviourScript.PowerUpTypes)).Length];
-    //private PowerUpBehaviourScript.PowerUpTypes currendActivePowerUp;
     private static float fireRateMultiplyer = 1;
     public static bool regenerates = false;
-    [SerializeField]
-    private float regenerationSpeed = 5;
+    private static float regenerationSpeed = 0.1f; //Not framerate indipendent
 
 
     /*---------------------------------------------End-Of-Variables---------------------------------------------------------------------------*/
     void Start() {
         rb = transform.GetComponent<Rigidbody2D>();
-        switchShip();
+        Bullets = ObjectHolderGo.GetComponent<ObjectHolder>().Bullets;
+
+        //switchShip();
 
         //set complete isPowerUpActive to false
         for (int i = 0; i < PowerUpActive.Length; i++) {
@@ -94,25 +96,14 @@ public class PlayerControllerScript : MonoBehaviour {
             if (currendHealth < MaxHealth) {
                 currendHealth += regenerationSpeed;
             }
+            else regenerates = false;
         }
 
         ProjectileSpawnPoint = TurretGameObject.transform.position;
         ProjectileSpawnPoint = TurretGameObject.transform.position + (TurretGameObject.transform.right * (transform.localScale.y / 5f));
 
-        //Update UI
-        if (onlyOnGOwithTag("Health Bar UI")) {
-            GameObject.FindGameObjectsWithTag("Health Bar UI")[0].GetComponent<Slider>().maxValue = MaxHealth;
-            GameObject.FindGameObjectsWithTag("Health Bar UI")[0].GetComponent<Slider>().value = currendHealth;
-        }
-        if (onlyOnGOwithTag("Currend Weapon UI")) {
-            GameObject.FindGameObjectsWithTag("Currend Weapon UI")[0].GetComponent<Text>().text = "Weapon:" + System.Environment.NewLine + currentWeapon.ToString();
-        }
-        if (onlyOnGOwithTag("Currend Credits UI")) {
-            GameObject.FindGameObjectsWithTag("Currend Credits UI")[0].GetComponent<Text>().text = "Credits:" + System.Environment.NewLine + currendCredits.ToString();
-        }
-
-        if (currendHealth <= 0) { Destroy(this.gameObject); }
-        if (currendHealth > MaxHealth) { currendHealth = MaxHealth; }
+        if (currendHealth <= 0) Destroy(this.gameObject);
+        if (currendHealth > MaxHealth) currendHealth = MaxHealth;
     }
 
     void FixedUpdate() {
@@ -130,13 +121,17 @@ public class PlayerControllerScript : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collision) { 
         if (collision.CompareTag("Credit")) {
-            currendCredits += 1;
+            GameControllerScript.currendCredits += 1;
             Destroy(collision.gameObject);
         }
         if (collision.CompareTag("PickUp")) {
             if (collision.GetComponent<PowerUpBehaviourScript>().currendPowerUpType == PowerUpBehaviourScript.PowerUpTypes.HealthUp) {
                 currendHealth += MaxHealth * 0.2f;
-            } else StartCoroutine(ActivatePowerUpforTime((int)collision.gameObject.GetComponent<PowerUpBehaviourScript>().currendPowerUpType, 5f));
+            } else if (collision.GetComponent<PowerUpBehaviourScript>().currendPowerUpType == PowerUpBehaviourScript.PowerUpTypes.Regeneration) {
+                regenerates = true;
+            }
+            else
+                StartCoroutine(ActivatePowerUpforTime((int)collision.gameObject.GetComponent<PowerUpBehaviourScript>().currendPowerUpType, 5f));
             Destroy(collision.gameObject);
         }
     }
@@ -336,21 +331,7 @@ public class PlayerControllerScript : MonoBehaviour {
     }
     *///coin and old movement
 
-    bool onlyOnGOwithTag(string _tag) {
-        bool r = false;
-        if (GameObject.FindGameObjectsWithTag(_tag).Length != 0) {
-            if (GameObject.FindGameObjectsWithTag(_tag).Length > 1) {
-                Debug.LogError("There are more than one " + _tag + " objects in the scene.");
-            } 
-            else {
-                r = true;
-            }
-        }
-        else {
-            Debug.LogError("There is no " + _tag + " in the scene.");
-        }
-        return r;
-    }
+    
 
     void adjustScale(float xscale, float yscale) {
         transform.localScale = new Vector3(xscale, yscale, transform.localScale.z);
@@ -363,7 +344,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 if (Input.GetButton("Fire1")) {
                     cooldown = 0.3f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
-                        Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
                     }
                 }
@@ -372,19 +353,19 @@ public class PlayerControllerScript : MonoBehaviour {
                 if (Input.GetButton("Fire1")) {
                     cooldown = 0.3f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
-                        Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.up * 0.1f), TurretGameObject.transform.rotation);
-                        Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.up * -0.1f), TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.up * 0.1f), TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.up * -0.1f), TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
                     }
                 }
                 break;
             case (Weapons.Standart_lvl_3):
                 if (Input.GetButton("Fire1")) {
-                    cooldown = 0.6f * fireRateMultiplyer;
+                    cooldown = 0.4f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
-                        Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
-                        Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.up * 0.2f), TurretGameObject.transform.rotation);
-                        Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.up * -0.2f), TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.up * 0.2f), TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.up * -0.2f), TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
                     }
                 }
@@ -393,7 +374,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 if (Input.GetButton("Fire1")) {
                     cooldown = 0.35f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
-                        Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.HelixBullet_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.HelixBullet_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
                     }
                 }
@@ -402,7 +383,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 if (Input.GetButton("Fire1")) {
                     cooldown = 0.3f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
-                        Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.HelixBullet_lvl_2)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.HelixBullet_lvl_2)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
                     }
                 }
@@ -411,19 +392,18 @@ public class PlayerControllerScript : MonoBehaviour {
                 if (Input.GetButton("Fire1")) {
                     cooldown = 0.3f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
-                        Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.HelixBullet_lvl_3)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.HelixBullet_lvl_3)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
                     }
                 }
                 break;
             case (Weapons.Spread):
                 if (Input.GetButton("Fire1")) {
-                    cooldown = 0.2f * fireRateMultiplyer;
+                    cooldown = 0.4f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
-                        LaserBullet.GetComponent<LaserBulletScript>().type = LaserBulletScript.BulletTypes.Standart;
-                        Instantiate(LaserBullet, ProjectileSpawnPoint, TurretGameObject.transform.rotation);
-                        Instantiate(LaserBullet, ProjectileSpawnPoint, TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, -10));
-                        Instantiate(LaserBullet, ProjectileSpawnPoint, TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, 10));
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, -10));
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, 10));
                         cooldownTimeStamp = Time.time + cooldown;
                     }
                 }
@@ -432,8 +412,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 if (Input.GetButton("Fire1")) {
                     cooldown = 1f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
-                        LaserBullet.GetComponent<LaserBulletScript>().type = LaserBulletScript.BulletTypes.SniperBullet;
-                        Instantiate(LaserBullet, ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.SniperBullet)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
                     }
                 }
@@ -442,7 +421,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 if (Input.GetButton("Fire1")) {
                     cooldown = 0.3f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
-                        Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.Wave)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Wave)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
                     }
                 }
@@ -451,7 +430,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 if (Input.GetButton("Fire1")) {
                     cooldown = 0.8f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
-                        Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.Rocket)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Rocket)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
                     }
                 }
@@ -460,7 +439,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 if (Input.GetButton("Fire1")) {
                     cooldown = 0.8f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
-                        Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.Grenade)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Grenade)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
                     }
                 }
@@ -469,7 +448,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 if (Input.GetButton("Fire1")) {
                     cooldown = 0.8f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
-                        Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.Shrapnel)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Shrapnel)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
                     }
                 }
@@ -518,14 +497,13 @@ public class PlayerControllerScript : MonoBehaviour {
                     if (loadTimeStamp <= Time.time) {
                         if (isReady == true) {
                             Instantiate(EffectsHolderGameObject.GetComponent<EffectsHolder>().Effects[EffectsHolderGameObject.GetComponent<EffectsHolder>().GetEffectIndex(EffectsHolder.EffectNames.LaserLoaded)], transform.position, transform.rotation, transform);
-                            Debug.Log("Ready");
                             isReady = false;
                         }
                     }
                     if (pressedButtonDown == true) {
                         if (Input.GetButtonUp("Fire1")) {
                             if (loadTimeStamp <= Time.time) {
-                                Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.SimpleLaser)], transform.position, transform.rotation, this.transform);
+                                Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.SimpleLaser)], transform.position, transform.rotation, this.transform);
                                 loadTimeStamp = Time.time + loadTime;
                                 cooldownTimeStamp = Time.time + cooldown; //Apply cooldown when firered
                             }
@@ -539,9 +517,6 @@ public class PlayerControllerScript : MonoBehaviour {
                         }
                     }
                 }
-                if (cooldownTimeStamp >= Time.time) {
-                    Debug.Log("cooling down");
-                }
                 break;
             default:
                 Debug.LogError("The Weapon Type -" + currentWeapon.ToString() + "- has no values assinged!");
@@ -550,13 +525,14 @@ public class PlayerControllerScript : MonoBehaviour {
     }
 
     private void fireChainGun(float offsetSpeed, float maxOffset, float BulletRng) {
-        Instantiate(Bullets[GetBulletIndex(LaserBulletData.BulletTypes.ChainGunBullet)], ProjectileSpawnPoint + (TurretGameObject.transform.up * chainGunOffset), TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, Random.Range(BulletRng, -BulletRng)));
+        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.ChainGunBullet)], ProjectileSpawnPoint + (TurretGameObject.transform.up * chainGunOffset), TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, Random.Range(BulletRng, -BulletRng)));
         if (chainGunOffsetUp) chainGunOffset += offsetSpeed;
         else chainGunOffset -= offsetSpeed;
         if (chainGunOffset >= maxOffset) chainGunOffsetUp = false;
         if (chainGunOffset <= -maxOffset) chainGunOffsetUp = true;
-    }
 
+    }
+    /*
     public int GetBulletIndex(LaserBulletData.BulletTypes _bulletType) {
         int i = 0;
         foreach (GameObject go in Bullets) {
@@ -570,6 +546,7 @@ public class PlayerControllerScript : MonoBehaviour {
         Debug.LogError("Could not find: " + _bulletType);
         return -1;
     }
+    */
 
     //Mathf.Pow(0.95f, acceleration)
     void switchShip() { 
