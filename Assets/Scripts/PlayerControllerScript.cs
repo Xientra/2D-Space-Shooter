@@ -10,9 +10,6 @@ public class PlayerControllerScript : MonoBehaviour {
     public GameObject ObjectHolderGo;
 
     public GameObject[] Bullets;
-    
-
-    //Static Vars
 
     //[SerializeField]
     //private float speedlimit = 10f;
@@ -45,7 +42,7 @@ public class PlayerControllerScript : MonoBehaviour {
     /*----------Weapon Stats----------*/
     public enum Weapons {
         Standart_lvl_1, Standart_lvl_2, Standart_lvl_3, Helix_lvl_1, Helix_lvl_2, Helix_lvl_3, WaveEmitter_lvl_1, RocketLauncher_lvl_1, GrenadeLauncher_lvl_1, ShrapnelLauncher_lvl_1, ChainGun_lvl_1, ChainGun_lvl_2, ChainGun_lvl_3, Spread, Sniper,
-        LaserGun
+        LaserGun, SplitLaserGun
     }
     public Weapons currentWeapon = Weapons.Sniper;
     private float cooldown = 0.2f;
@@ -518,6 +515,11 @@ public class PlayerControllerScript : MonoBehaviour {
                     }
                 }
                 break;
+            case (Weapons.SplitLaserGun):
+                cooldown = 2f * fireRateMultiplyer;
+                loadTime = 1f;
+                fireAnyLaserGun(LaserBulletData.BulletTypes.SplitLaser);
+                break;
             default:
                 Debug.LogError("The Weapon Type -" + currentWeapon.ToString() + "- has no values assinged!");
                 break;
@@ -531,6 +533,43 @@ public class PlayerControllerScript : MonoBehaviour {
         if (chainGunOffset >= maxOffset) chainGunOffsetUp = false;
         if (chainGunOffset <= -maxOffset) chainGunOffsetUp = true;
 
+    }
+
+    private void fireAnyLaserGun(LaserBulletData.BulletTypes LaserToFire) {
+        if (cooldownTimeStamp <= Time.time) {
+            if (Input.GetButtonDown("Fire1")) {
+                pressedButtonDown = true;
+                loadTimeStamp = Time.time + loadTime;
+                isReady = true;
+            }
+            if (loadTimeStamp >= Time.time) {
+                if (isReady == true) {
+                    Debug.Log("Loading");
+                }
+            }
+            if (loadTimeStamp <= Time.time) {
+                if (isReady == true) {
+                    Instantiate(EffectsHolderGameObject.GetComponent<EffectsHolder>().Effects[EffectsHolderGameObject.GetComponent<EffectsHolder>().GetEffectIndex(EffectsHolder.EffectNames.LaserLoaded)], transform.position, transform.rotation, transform);
+                    isReady = false;
+                }
+            }
+            if (pressedButtonDown == true) {
+                if (Input.GetButtonUp("Fire1")) {
+                    if (loadTimeStamp <= Time.time) {
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserToFire)], transform.position, transform.rotation, this.transform);
+                        loadTimeStamp = Time.time + loadTime;
+                        cooldownTimeStamp = Time.time + cooldown; //Apply cooldown when firered
+                    }
+                    else {
+                        loadTimeStamp = Time.time + loadTime;
+                        //no cooldown wehen reset
+                        Debug.Log("reset");
+                    }
+                    isReady = false;
+                    pressedButtonDown = false;
+                }
+            }
+        }
     }
     /*
     public int GetBulletIndex(LaserBulletData.BulletTypes _bulletType) {

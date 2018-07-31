@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,15 +8,13 @@ public class LaserBulletData : MonoBehaviour {
 
     public enum BulletTypes {
         Standart, HelixBullet_lvl_1, HelixBullet_lvl_2, HelixBullet_lvl_3, HelixBulletChild, Wave, SniperBullet, Rocket, Grenade, Shrapnel, ChainGunBullet, ExplosionSmall,
-        SimpleLaser
+        SimpleLaser, SplitLaser, SplitLaserChild
     }
     public BulletTypes bulletType = BulletTypes.Standart;
 
     public Vector3 direction = new Vector3(1, 0);
 
     private LineRenderer lineRenderer;
-
-    
 
     private bool isLaser = false;
     [SerializeField]
@@ -35,17 +31,25 @@ public class LaserBulletData : MonoBehaviour {
     //[SerializeField]
     //private SpecialEffects SpecialEffect = SpecialEffects.none;
     
-    private float damageDelay = 0.05f; //this is kinda important for the Lasers-------------------------------------------------------------------
-    [SerializeField]
+    private float damageDelay = 0.1f; //this is kinda important for the Lasers-------------------------------------------------------------------
     private float damageDelayTimeStamp;
+    
+    
+    //for Split Laser
+    private static int timesToSplit = 1;
+    private float SplitAngle = 25f;
 
     //PowerUp Variables
     public static float damageMultiplyer = 1f;
 
     void Start() {
-        if (bulletType == BulletTypes.SimpleLaser) {
+        if (bulletType == BulletTypes.SimpleLaser || bulletType == BulletTypes.SplitLaser) {
             isLaser = true;
             damageDelayTimeStamp = Time.time + damageDelay;
+        }
+
+        if (bulletType == BulletTypes.SplitLaserChild) {
+            transform.rotation *= Quaternion.Euler(0, 0, Random.Range(SplitAngle, -SplitAngle));
         }
     }
 
@@ -103,5 +107,16 @@ public class LaserBulletData : MonoBehaviour {
 
     void InitiliseSelfDestruction() {
         Destroy(this.gameObject);
+    }
+
+    void startSplitLaser(float lengthOfParent) {
+        if (timesToSplit > 0) {
+            GameObject goParent = new GameObject("SplitLaserHolder_" + timesToSplit.ToString());
+            goParent.transform.localScale /= 2;
+            Instantiate(goParent, transform.position + Vector3.Cross(transform.right, new Vector3(lengthOfParent, 0, 0)), transform.rotation * Quaternion.Euler(0, 0, Random.Range(SplitAngle, -SplitAngle)), this.transform.gameObject.transform);
+
+            //Instantiate(this.transform.gameObject, transform.position + Vector3.Cross(transform.right, new Vector3(0.75f, 0, 0)), goParent.transform.rotation, goParent.transform);
+            timesToSplit--;
+        }
     }
 }

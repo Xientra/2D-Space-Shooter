@@ -6,11 +6,16 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
     public GameObject CoinDrop;
     public GameObject PowerUpDrop;
+    public GameObject EnemyHealthBarRed;
+    public GameObject EnemyHealthBarGreen;
 
     public enum EnemyTypes { Standart }
     public EnemyTypes currendEnemyType = EnemyTypes.Standart;
 
-    public float Health = 50f;
+    public bool hasHealthBar = false;
+
+    public float MaxHealth = 100f;
+    public float Health = 100f;
     public float CollisionDamage = 50f;
 
     public Vector3 direction = new Vector3(1, 0);
@@ -19,14 +24,22 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
     //PowerUp Variables
     public static bool noCollisionDamage = false;
-    
 
-    void Start () {
+
+    void Start() {
+
+        if (hasHealthBar) {
+            EnemyHealthBarRed = GetComponentsInChildren<Transform>()[1].gameObject;
+            EnemyHealthBarGreen = EnemyHealthBarRed.GetComponentsInChildren<Transform>()[1].gameObject;
+        }
     }
 
     void Update() {
         if (Health <= 0) {
             StartSelfDestruction(this.gameObject);
+        }
+        if (hasHealthBar) {
+            EnemyHealthBarGreen.transform.localScale = new Vector3(((100 / MaxHealth) * Health) * 0.01f, EnemyHealthBarGreen.transform.localScale.y, EnemyHealthBarGreen.transform.localScale.z);
         }
     }
 
