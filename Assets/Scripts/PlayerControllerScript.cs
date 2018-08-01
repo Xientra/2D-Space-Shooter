@@ -9,7 +9,7 @@ public class PlayerControllerScript : MonoBehaviour {
     public GameObject EffectsHolderGameObject;
     public GameObject ObjectHolderGo;
 
-    public GameObject[] Bullets;
+    private GameObject[] Bullets;
 
     //[SerializeField]
     //private float speedlimit = 10f;

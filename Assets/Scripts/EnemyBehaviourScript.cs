@@ -5,17 +5,20 @@ using UnityEngine;
 public class EnemyBehaviourScript : MonoBehaviour {
 
     public GameObject EnemyTurretGameObject;
+    public GameObject ObjectHolderGo;
     public GameObject CoinDrop;
     public GameObject PowerUpDrop;
     private GameObject EnemyHealthBarRed;
     private GameObject EnemyHealthBarGreen;
+
+    private GameObject[] EnemyBullets;
 
     private Animator animator;
 
     public enum EnemyTypes { Standart, StandartShoot }
     public EnemyTypes currendEnemyType = EnemyTypes.Standart;
 
-    public enum AnimationTypes { DoNotMove, StraightDown, ComeInFromRight, ComeInFromLeft, ComeDownMiddleGoUpRight, ComeDownMiddleGoUpLeft }
+    public enum AnimationTypes { DoNotMove, StraightDown, ComeInFromRight, ComeInFromLeft, ComeDownMiddleGoUpRight, ComeDownMiddleGoUpLeft, StraightDownBoolShoot3 }
     public AnimationTypes currendAnimation;
     public float AnimationStartDelay = 0f;
     //private float AnimationStartDelayTimeStamp;
@@ -42,6 +45,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
     /*---------------------------------------------End-Of-Variables---------------------------------------------------------------------------*/
     void Start() {
         //AnimationStartDelayTimeStamp = Time.time + AnimationStartDelay;
+        EnemyBullets = ObjectHolderGo.GetComponent<ObjectHolder>().EnemyBullets;
 
         StartCoroutine(StartAfterTime());
         if (hasHealthBar) {
@@ -73,16 +77,14 @@ public class EnemyBehaviourScript : MonoBehaviour {
     }
 
     void Update() {
-
         EnemyTurretGameObject.transform.right = GameObject.FindGameObjectsWithTag("Player")[0].transform.position - transform.position;
 
-        /*
-        if (checkForAnimationDelay) {
-            if (AnimationStartDelayTimeStamp < Time.time) {
-                startAnimation();
-            }
+        if (canShoot == true) {
+            Debug.Log("pew");
+            Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_SimpleBullet)], EnemyTurretGameObject.transform.position, EnemyTurretGameObject.transform.rotation * Quaternion.Euler(0, 0, 90));
+            canShoot = false;
         }
-        */
+
         if (Health <= 0) {
             StartSelfDestruction(this.gameObject);
         }
@@ -136,6 +138,9 @@ public class EnemyBehaviourScript : MonoBehaviour {
                 break;
             case (AnimationTypes.ComeDownMiddleGoUpLeft):
                 animator.SetBool("ComeDownMiddleGoUpLeftBool", true);
+                break;
+            case (AnimationTypes.StraightDownBoolShoot3):
+                animator.SetBool("StraightDownBoolShoot3Bool", true);
                 break;
         }
     }

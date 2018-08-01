@@ -8,7 +8,8 @@ public class LaserBulletData : MonoBehaviour {
 
     public enum BulletTypes {
         Standart, HelixBullet_lvl_1, HelixBullet_lvl_2, HelixBullet_lvl_3, HelixBulletChild, Wave, SniperBullet, Rocket, Grenade, Shrapnel, ChainGunBullet, ExplosionSmall,
-        SimpleLaser, SplitLaser, SplitLaserChild
+        SimpleLaser, SplitLaser, SplitLaserChild, 
+        Enemy_SimpleBullet
     }
     public BulletTypes bulletType = BulletTypes.Standart;
 
@@ -17,8 +18,12 @@ public class LaserBulletData : MonoBehaviour {
     private LineRenderer lineRenderer;
 
     private bool isLaser = false;
+    private bool isEnemyBullet = false;
+
     [SerializeField]
     private float HelixBulletChild_RotationSpeed = 10f;
+
+    /*--------------------Stats--------------------*/
     [SerializeField]
     private float speed = 1f;
     [SerializeField]
@@ -26,12 +31,11 @@ public class LaserBulletData : MonoBehaviour {
     //private float cooldown = 0.5f;
     [SerializeField]
     public float damage = 10f;
-    //[SerializeField]
     //private enum SpecialEffects { none };
     //[SerializeField]
     //private SpecialEffects SpecialEffect = SpecialEffects.none;
     
-    private float damageDelay = 0.1f; //this is kinda important for the Lasers-------------------------------------------------------------------
+    private float damageDelay = 0.1f; //this is kinda important for the damage of Lasers-------------------------------------------------------------------
     private float damageDelayTimeStamp;
     
     
@@ -46,6 +50,10 @@ public class LaserBulletData : MonoBehaviour {
         if (bulletType == BulletTypes.SimpleLaser || bulletType == BulletTypes.SplitLaser) {
             isLaser = true;
             damageDelayTimeStamp = Time.time + damageDelay;
+        }
+
+        if (bulletType == BulletTypes.Enemy_SimpleBullet) {
+            isEnemyBullet = true;
         }
 
         if (bulletType == BulletTypes.SplitLaserChild) {
@@ -73,23 +81,36 @@ public class LaserBulletData : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (isLaser == false) {
-            if (collision.gameObject.layer == 10) {
-                collision.gameObject.GetComponent<EnemyBehaviourScript>().Health -= damage * damageMultiplyer;
-                InitiliseSelfDestruction();
+        if (isEnemyBullet != true) {
+            if (isLaser == false) {
+                if (collision.gameObject.layer == 10) {
+                    collision.gameObject.GetComponent<EnemyBehaviourScript>().Health -= damage * damageMultiplyer;
+                    InitiliseSelfDestruction();
+                }
+            }
+        }
+        else {
+            if (isLaser == false) {
+                if (collision.gameObject.CompareTag("Player")) {
+                    collision.gameObject.GetComponent<PlayerControllerScript>().currendHealth -= damage;
+                    InitiliseSelfDestruction();
+                }
             }
         }
     }
 
     private void OnTriggerStay2D(Collider2D collision) { //dude this is not framerate indipendend or is it?
-        if (isLaser == true) {
-            if (collision.gameObject.layer == 10) {
-                if (damageDelayTimeStamp <= Time.time) {
-                    collision.gameObject.GetComponent<EnemyBehaviourScript>().Health -= damage * damageMultiplyer;
-                    damageDelayTimeStamp = Time.time + damageDelay;
+        if (isEnemyBullet != true) {
+            if (isLaser == true) {
+                if (collision.gameObject.layer == 10) {
+                    if (damageDelayTimeStamp <= Time.time) {
+                        collision.gameObject.GetComponent<EnemyBehaviourScript>().Health -= damage * damageMultiplyer;
+                        damageDelayTimeStamp = Time.time + damageDelay;
+                    }
                 }
             }
         }
+        else { }
     }
 
 
