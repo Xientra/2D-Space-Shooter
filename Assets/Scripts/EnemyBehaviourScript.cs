@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyBehaviourScript : MonoBehaviour {
 
+    public GameObject EnemyTurretGameObject;
     public GameObject CoinDrop;
     public GameObject PowerUpDrop;
     private GameObject EnemyHealthBarRed;
@@ -11,18 +12,21 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
     private Animator animator;
 
-    public enum EnemyTypes { Standart }
+    public enum EnemyTypes { Standart, StandartShoot }
     public EnemyTypes currendEnemyType = EnemyTypes.Standart;
 
-    public enum AnimationTypes { StraightDown, ComeInFromRight, ComeInFromLeft }
+    public enum AnimationTypes { DoNotMove, StraightDown, ComeInFromRight, ComeInFromLeft, ComeDownMiddleGoUpRight, ComeDownMiddleGoUpLeft }
     public AnimationTypes currendAnimation;
     public float AnimationStartDelay = 0f;
-    private float AnimationStartDelayTimeStamp;
+    //private float AnimationStartDelayTimeStamp;
     private bool checkForAnimationDelay = true;
 
     //only Temp
     public bool hasHealthBar = false;
     public bool hasAnimation = false;
+    public bool hasTurret = false;
+
+    public bool canShoot = false;
 
     /*--------------------Stats--------------------*/
     public float MaxHealth = 100f;
@@ -35,26 +39,50 @@ public class EnemyBehaviourScript : MonoBehaviour {
     //PowerUp Variables
     public static bool noCollisionDamage = false;
 
+    /*---------------------------------------------End-Of-Variables---------------------------------------------------------------------------*/
     void Start() {
-        AnimationStartDelayTimeStamp = Time.time + AnimationStartDelay;
+        //AnimationStartDelayTimeStamp = Time.time + AnimationStartDelay;
 
+        StartCoroutine(StartAfterTime());
         if (hasHealthBar) {
-            EnemyHealthBarRed = GetComponentsInChildren<Transform>()[1].gameObject;
-            EnemyHealthBarGreen = EnemyHealthBarRed.GetComponentsInChildren<Transform>()[1].gameObject;
-        }
+            if (GetComponentsInChildren<Transform>()[1].gameObject.CompareTag("HealthBar")) {
+                EnemyHealthBarRed = GetComponentsInChildren<Transform>()[1].gameObject;
 
+                EnemyHealthBarGreen = EnemyHealthBarRed.GetComponentsInChildren<Transform>()[1].gameObject;
+            }
+        }
+        /*
+        if (hasHealthBar) {
+            for (int i = 0; i < GetComponentsInChildren<Transform>().Length; i++) {
+                if (GetComponentsInChildren<Transform>()[i].gameObject.CompareTag("HealthBar")) {
+                    EnemyHealthBarRed = GetComponentsInChildren<Transform>()[i].gameObject;
+
+                    EnemyHealthBarGreen = EnemyHealthBarRed.GetComponentsInChildren<Transform>()[1].gameObject;
+                }
+            }
+        }
+        */
         if (hasAnimation) {
             animator = GetComponent<Animator>();
         }
     }
 
+    IEnumerator StartAfterTime() {
+        yield return new WaitForSeconds(AnimationStartDelay);
+        startAnimation();
+    }
+
     void Update() {
+
+        EnemyTurretGameObject.transform.right = GameObject.FindGameObjectsWithTag("Player")[0].transform.position - transform.position;
+
+        /*
         if (checkForAnimationDelay) {
             if (AnimationStartDelayTimeStamp < Time.time) {
                 startAnimation();
             }
         }
-
+        */
         if (Health <= 0) {
             StartSelfDestruction(this.gameObject);
         }
@@ -103,7 +131,25 @@ public class EnemyBehaviourScript : MonoBehaviour {
             case (AnimationTypes.ComeInFromLeft):
                 animator.SetBool("ComeInFromLeftBool", true);
                 break;
+            case (AnimationTypes.ComeDownMiddleGoUpRight):
+                animator.SetBool("ComeDownMiddleGoUpRightBool", true);
+                break;
+            case (AnimationTypes.ComeDownMiddleGoUpLeft):
+                animator.SetBool("ComeDownMiddleGoUpLeftBool", true);
+                break;
         }
-        
+    }
+
+    void ChangeState(bool ChangeTo) {
+        GetComponent<SpriteRenderer>().enabled = ChangeTo;
+        if (GetComponent<CircleCollider2D>() != null) {
+            GetComponent<CircleCollider2D>().enabled = ChangeTo;
+        }
+        if (GetComponent<BoxCollider2D>() != null) {
+            GetComponent<BoxCollider2D>().enabled = ChangeTo;
+        }
+        if (GetComponent<CapsuleCollider2D>() != null) {
+            GetComponent<CapsuleCollider2D>().enabled = ChangeTo;
+        }
     }
 }
