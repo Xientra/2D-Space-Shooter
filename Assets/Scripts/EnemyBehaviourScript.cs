@@ -18,7 +18,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
     public enum EnemyTypes { Standart, StandartShoot }
     public EnemyTypes currendEnemyType = EnemyTypes.Standart;
 
-    public enum AnimationTypes { DoNotMove, StraightDown, ComeInFromRight, ComeInFromLeft, ComeDownMiddleGoUpRight, ComeDownMiddleGoUpLeft, StraightDownBoolShoot3 }
+    public enum AnimationTypes { DoNotMove, StraightDown, ComeInFromRight, ComeInFromLeft, ComeDownMiddleGoUpRight, ComeDownMiddleGoUpLeft, StraightDownBoolShoot3, DownWaitUp }
     public AnimationTypes currendAnimation;
     public float AnimationStartDelay = 0f;
     //private float AnimationStartDelayTimeStamp;
@@ -141,6 +141,9 @@ public class EnemyBehaviourScript : MonoBehaviour {
                 break;
             case (AnimationTypes.StraightDownBoolShoot3):
                 animator.SetBool("StraightDownBoolShoot3Bool", true);
+                break;
+            case (AnimationTypes.DownWaitUp):
+                animator.SetBool("DownWaitUpBool", true);
                 break;
         }
     }
