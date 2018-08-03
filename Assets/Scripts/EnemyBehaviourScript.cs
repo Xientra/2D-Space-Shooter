@@ -15,10 +15,10 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
     private Animator animator;
 
-    public enum EnemyTypes { Standart, StandartShoot }
-    public EnemyTypes currendEnemyType = EnemyTypes.Standart;
+    public enum EnemyTypes { AlienStandart, AlienTurret, AlienHeavy }
+    public EnemyTypes currendEnemyType = EnemyTypes.AlienStandart;
 
-    public enum AnimationTypes { DoNotMove, StraightDown, ComeInFromRight, ComeInFromLeft, ComeDownMiddleGoUpRight, ComeDownMiddleGoUpLeft, StraightDownBoolShoot3, DownWaitUp }
+    public enum AnimationTypes { DoNotMove, StraightDown, ComeInFromRight, ComeInFromLeft, ComeDownMiddleGoUpRight, ComeDownMiddleGoUpLeft, StraightDownBoolShoot3, DownWaitUp, DownShoot2Up }
     public AnimationTypes currendAnimation;
     public float AnimationStartDelay = 0f;
     //private float AnimationStartDelayTimeStamp;
@@ -77,11 +77,13 @@ public class EnemyBehaviourScript : MonoBehaviour {
     }
 
     void Update() {
-        EnemyTurretGameObject.transform.right = GameObject.FindGameObjectsWithTag("Player")[0].transform.position - transform.position;
+        
+        if (hasTurret) {
+            EnemyTurretGameObject.transform.right = GameObject.FindGameObjectsWithTag("Player")[0].transform.position - transform.position;
+        }
 
         if (canShoot == true) {
-            Debug.Log("pew");
-            Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_SimpleBullet)], EnemyTurretGameObject.transform.position, EnemyTurretGameObject.transform.rotation * Quaternion.Euler(0, 0, 90));
+            Fire();
             canShoot = false;
         }
 
@@ -144,6 +146,25 @@ public class EnemyBehaviourScript : MonoBehaviour {
                 break;
             case (AnimationTypes.DownWaitUp):
                 animator.SetBool("DownWaitUpBool", true);
+                break;
+            case (AnimationTypes.DownShoot2Up):
+                animator.SetBool("DownShoot2UpBool", true);
+                break;
+        }
+    }
+
+    void Fire() {
+        switch (currendEnemyType) {
+            case (EnemyTypes.AlienTurret): //Must have a Turret
+                Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_SimpleBullet)], EnemyTurretGameObject.transform.position, EnemyTurretGameObject.transform.rotation * Quaternion.Euler(0, 0, 90));
+                break;
+            case (EnemyTypes.AlienHeavy):
+                float tempAngle = 7.5f;
+                Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_SlowAlienBullet)], transform.position, transform.rotation * Quaternion.Euler(0, 0, 0));
+                Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_SlowAlienBullet)], transform.position, transform.rotation * Quaternion.Euler(0, 0, tempAngle));
+                Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_SlowAlienBullet)], transform.position, transform.rotation * Quaternion.Euler(0, 0, -tempAngle));
+                Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_SlowAlienBullet)], transform.position, transform.rotation * Quaternion.Euler(0, 0, tempAngle * 2));
+                Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_SlowAlienBullet)], transform.position, transform.rotation * Quaternion.Euler(0, 0, -tempAngle * 2));
                 break;
         }
     }

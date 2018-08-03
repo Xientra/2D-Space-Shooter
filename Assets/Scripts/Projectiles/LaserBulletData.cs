@@ -9,7 +9,7 @@ public class LaserBulletData : MonoBehaviour {
     public enum BulletTypes {
         Standart, HelixBullet_lvl_1, HelixBullet_lvl_2, HelixBullet_lvl_3, HelixBulletChild, Wave, SniperBullet, Rocket, Grenade, Shrapnel, ChainGunBullet, ExplosionSmall,
         SimpleLaser, SplitLaser, SplitLaserChild, 
-        Enemy_SimpleBullet
+        Enemy_SimpleBullet, Enemy_SlowAlienBullet
     }
     public BulletTypes bulletType = BulletTypes.Standart;
 
@@ -18,6 +18,7 @@ public class LaserBulletData : MonoBehaviour {
     private LineRenderer lineRenderer;
 
     private bool isLaser = false;
+    [SerializeField]
     private bool isEnemyBullet = false;
 
     [SerializeField]
@@ -52,7 +53,7 @@ public class LaserBulletData : MonoBehaviour {
             damageDelayTimeStamp = Time.time + damageDelay;
         }
 
-        if (bulletType == BulletTypes.Enemy_SimpleBullet) {
+        if (bulletType == BulletTypes.Enemy_SimpleBullet || bulletType == BulletTypes.Enemy_SlowAlienBullet) {
             isEnemyBullet = true;
         }
 
@@ -76,7 +77,7 @@ public class LaserBulletData : MonoBehaviour {
 
     void FixedUpdate() {
         if (isLaser == false) {
-            transform.Translate(direction * speed); //Moving
+            transform.Translate(direction * speed * Time.deltaTime); //Moving
         }
     }
 

@@ -6,6 +6,8 @@ public class CoinBehaviourScript : MonoBehaviour {
 
     public Vector3 startDirection = new Vector2(1, 0);
 
+    public float value = 1f; 
+
     [SerializeField]
     private float TimeBeforeDestroy = 10f;
     [SerializeField]
@@ -65,5 +67,12 @@ public class CoinBehaviourScript : MonoBehaviour {
     IEnumerator destroyAfterTime() {
         yield return new WaitForSeconds(TimeBeforeDestroy);
         Destroy(this.gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.CompareTag("Player")) {
+            GameControllerScript.currendCredits += value;
+            Destroy(this.gameObject);
+        }
     }
 }

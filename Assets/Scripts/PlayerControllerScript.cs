@@ -117,10 +117,6 @@ public class PlayerControllerScript : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D collision) { 
-        if (collision.CompareTag("Credit")) {
-            GameControllerScript.currendCredits += 1;
-            Destroy(collision.gameObject);
-        }
         if (collision.CompareTag("PickUp")) {
             if (collision.GetComponent<PowerUpBehaviourScript>().currendPowerUpType == PowerUpBehaviourScript.PowerUpTypes.HealthUp) {
                 currendHealth += MaxHealth * 0.2f;

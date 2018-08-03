@@ -99,7 +99,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4384758070095540}
   - component: {fileID: 212667178946602068}
-  - component: {fileID: 58638012060560094}
+  - component: {fileID: 70626468543310872}
   - component: {fileID: 50908423216282734}
   - component: {fileID: 95621579937027258}
   - component: {fileID: 114465719868598114}
@@ -173,7 +173,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1243831665734506}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4384758070095540}
@@ -213,8 +213,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &58638012060560094
-CircleCollider2D:
+--- !u!70 &70626468543310872
+CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -225,9 +225,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.28
+  m_Offset: {x: 0, y: 0.025}
+  m_Size: {x: 1.14, y: 0.84}
+  m_Direction: 1
 --- !u!95 &95621579937027258
 Animator:
   serializedVersion: 3
@@ -464,8 +464,8 @@ MonoBehaviour:
     type: 2}
   CoinDrop: {fileID: 1454711976500500, guid: d5cdd9d27af82cd428072a6e554b6d51, type: 2}
   PowerUpDrop: {fileID: 0}
-  currendEnemyType: 1
-  currendAnimation: 0
+  currendEnemyType: 2
+  currendAnimation: 8
   AnimationStartDelay: 0
   hasHealthBar: 1
   hasAnimation: 1
