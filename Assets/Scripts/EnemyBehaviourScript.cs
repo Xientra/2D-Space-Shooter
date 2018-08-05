@@ -18,8 +18,9 @@ public class EnemyBehaviourScript : MonoBehaviour {
     public enum EnemyTypes { AlienStandart, AlienTurret, AlienHeavy }
     public EnemyTypes currendEnemyType = EnemyTypes.AlienStandart;
 
-    public enum AnimationTypes { DoNotMove, StraightDown, ComeInFromRight, ComeInFromLeft, ComeDownMiddleGoUpRight, ComeDownMiddleGoUpLeft, StraightDownBoolShoot3, DownWaitUp, DownShoot2Up,
-        HalfCircleRightLeftShoot2, RightToLeftShoot5, RightGoMiddleUpShoot3, MovingLeftTurn180Shoot4
+    public enum AnimationTypes {
+        DoNotMove, StraightDown, ComeInFromRight, ComeInFromLeft, ComeDownMiddleGoUpRight, ComeDownMiddleGoUpLeft, StraightDownBoolShoot3, DownWaitUp, DownShoot2Up, HalfCircleRightLeftShoot2,
+        RightToLeftShoot5, RightGoMiddleUpShoot3, MovingLeftTurn180Shoot4, DownDeaccAcc, DownDeaccShoot1Acc, DownStrave_RightFirst_, DownStraveSmall_RightFirst_, GoToBottomShoot6
     }
     public AnimationTypes currendAnimation;
     public float AnimationStartDelay = 0f;
@@ -163,6 +164,21 @@ public class EnemyBehaviourScript : MonoBehaviour {
                 break;
             case (AnimationTypes.MovingLeftTurn180Shoot4):
                 animator.SetBool("MovingLeftTurn180Shoot4Bool", true);
+                break;
+            case (AnimationTypes.DownDeaccAcc):
+                animator.SetBool("DownDeaccAccBool", true);
+                break;
+            case (AnimationTypes.DownDeaccShoot1Acc):
+                animator.SetBool("DownDeaccShoot1AccBool", true);
+                break;
+            case (AnimationTypes.DownStrave_RightFirst_):
+                animator.SetBool("DownStrave_RightFirst_Bool", true);
+                break;
+            case (AnimationTypes.DownStraveSmall_RightFirst_):
+                animator.SetBool("DownStraveSmall_RightFirst_Bool", true);
+                break;
+            case (AnimationTypes.GoToBottomShoot6):
+                animator.SetBool("GoToBottomShoot6Bool", true);
                 break;
                 //
         }
