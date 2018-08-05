@@ -18,7 +18,9 @@ public class EnemyBehaviourScript : MonoBehaviour {
     public enum EnemyTypes { AlienStandart, AlienTurret, AlienHeavy }
     public EnemyTypes currendEnemyType = EnemyTypes.AlienStandart;
 
-    public enum AnimationTypes { DoNotMove, StraightDown, ComeInFromRight, ComeInFromLeft, ComeDownMiddleGoUpRight, ComeDownMiddleGoUpLeft, StraightDownBoolShoot3, DownWaitUp, DownShoot2Up }
+    public enum AnimationTypes { DoNotMove, StraightDown, ComeInFromRight, ComeInFromLeft, ComeDownMiddleGoUpRight, ComeDownMiddleGoUpLeft, StraightDownBoolShoot3, DownWaitUp, DownShoot2Up,
+        HalfCircleRightLeftShoot2, RightToLeftShoot5, RightGoMiddleUpShoot3, MovingLeftTurn180Shoot4
+    }
     public AnimationTypes currendAnimation;
     public float AnimationStartDelay = 0f;
     //private float AnimationStartDelayTimeStamp;
@@ -150,6 +152,19 @@ public class EnemyBehaviourScript : MonoBehaviour {
             case (AnimationTypes.DownShoot2Up):
                 animator.SetBool("DownShoot2UpBool", true);
                 break;
+            case (AnimationTypes.HalfCircleRightLeftShoot2):
+                animator.SetBool("HalfCircleRightLeftShoot2Bool", true);
+                break;
+            case (AnimationTypes.RightToLeftShoot5):
+                animator.SetBool("RightToLeftShoot5Bool", true); 
+                break;
+            case (AnimationTypes.RightGoMiddleUpShoot3):
+                animator.SetBool("RightGoMiddleUpShoot3Bool", true);
+                break;
+            case (AnimationTypes.MovingLeftTurn180Shoot4):
+                animator.SetBool("MovingLeftTurn180Shoot4Bool", true);
+                break;
+                //
         }
     }
 

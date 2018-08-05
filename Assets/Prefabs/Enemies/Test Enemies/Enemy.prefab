@@ -201,6 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e92fe24fbb18264b87e32ddacde9f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyTurretGameObject: {fileID: 0}
+  ObjectHolderGo: {fileID: 0}
   CoinDrop: {fileID: 1454711976500500, guid: d5cdd9d27af82cd428072a6e554b6d51, type: 2}
   PowerUpDrop: {fileID: 0}
   currendEnemyType: 0
@@ -208,6 +210,8 @@ MonoBehaviour:
   AnimationStartDelay: 0
   hasHealthBar: 0
   hasAnimation: 0
+  hasTurret: 0
+  canShoot: 0
   MaxHealth: 100
   Health: 200
   CollisionDamage: 50
