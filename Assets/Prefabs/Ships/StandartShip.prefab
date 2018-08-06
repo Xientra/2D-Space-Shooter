@@ -70,7 +70,7 @@ Transform:
   m_GameObject: {fileID: 1517047546398530}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -0, y: -5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 4264792720648600}
   m_Father: {fileID: 0}
@@ -82,8 +82,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1596211785451302}
-  m_LocalRotation: {x: -0, y: -0, z: 0.0000011920928, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -0.0905, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4412899151758498}
@@ -96,13 +96,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1212921545871874}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1199999, y: -0, z: 0}
-  m_LocalScale: {x: 0.7500005, y: 0.25000012, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.1567, y: 0.0025, z: 0}
+  m_LocalScale: {x: 1.500005, y: 1.500005, z: 1}
   m_Children: []
   m_Father: {fileID: 4264792720648600}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!50 &50847543821558204
 Rigidbody2D:
   serializedVersion: 4
@@ -139,14 +139,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.5, y: 0.53}
   m_EdgeRadius: 0
 --- !u!96 &96174229014734952
 TrailRenderer:
@@ -266,7 +266,6 @@ MonoBehaviour:
     type: 2}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
-  Bullets: []
   stopspeed: 0.95
   xspeed: 0
   yspeed: 0
@@ -275,7 +274,7 @@ MonoBehaviour:
   currendShip: 0
   MaxHealth: 100
   acceleration: 1
-  currentWeapon: 15
+  currentWeapon: 14
 --- !u!212 &212129796705502586
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -311,8 +310,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 95ac61ea026181e49b48c51f7cd68593, type: 3}
-  m_Color: {r: 0, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 81a654a84c6cb6648807aa6b5c116cca, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -357,7 +356,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: 95ac61ea026181e49b48c51f7cd68593, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 517e275701f918845af0eb0d3ec9bd6e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
