@@ -11,10 +11,17 @@ public class PlayerControllerScript : MonoBehaviour {
 
     private GameObject[] Bullets;
 
-    //[SerializeField]
-    //private float speedlimit = 10f;
+    private Vector3 ProjectileSpawnPoint;
+
+    /*---------------------------------------------------------------------------------------------------------------------------------------*/
     [SerializeField]
-    private float stopspeed = 0.9f;
+    private float stopspeed2 = 1f;
+    /*---------------------------------------------------------------------------------------------------------------------------------------*/
+
+    [SerializeField]
+    private float speedlimit = 10f;
+    [SerializeField]
+    private float stopspeed = 0.9f;    
     [SerializeField]
     private float xspeed = 0;
     [SerializeField]
@@ -22,12 +29,11 @@ public class PlayerControllerScript : MonoBehaviour {
     public float currendHealth = 100f;
 
 
-    private Vector3 ProjectileSpawnPoint;
-
-
     //betterMovement vars
     [SerializeField]
     private float maxSpeed = 10f;
+
+
 
     //Ship Stats
     public enum Ships { Standart, Heavy, Fast }
@@ -105,6 +111,7 @@ public class PlayerControllerScript : MonoBehaviour {
 
     void FixedUpdate() {
         coolMovement();
+        //coolMovement2();
         //exactMovement();
         //coinMovement();
         //OldMovement();
@@ -177,10 +184,10 @@ public class PlayerControllerScript : MonoBehaviour {
 
     void coolMovement() {
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) {
-            float xacc = Input.GetAxis("Vertical") * acceleration;
-            float yacc = -Input.GetAxis("Horizontal") * acceleration;
-            xspeed = xspeed + xacc;
-            yspeed = yspeed + yacc;
+            float xacc = Input.GetAxis("Horizontal") * acceleration;
+            float yacc = Input.GetAxis("Vertical") * acceleration;
+            xspeed += xacc;
+            yspeed += yacc;
 
             /* DS2...
             if (xspeed > speedlimit) { xspeed = speedlimit; }
@@ -196,9 +203,58 @@ public class PlayerControllerScript : MonoBehaviour {
         transform.Translate(xspeed * Time.deltaTime, yspeed * Time.deltaTime, 0);
     }
 
+    [SerializeField]
+    private float deaccOfacc = 0.1f;
+    Vector2 directionNormalized;
+
+    void coolMovement2() {
+
+        float xacc = Input.GetAxis("Horizontal");
+        float yacc = Input.GetAxis("Vertical");
+
+        Vector2 direction = new Vector2(xacc, yacc);
+
+        directionNormalized = new Vector2(xacc, yacc);
+        directionNormalized.Normalize();
+
+        direction.x = Mathf.Clamp(direction.x, -directionNormalized.x, directionNormalized.x);
+        direction.y = Mathf.Clamp(direction.y, -directionNormalized.y, directionNormalized.y);
+        
+        /*
+        if (direction.x > directionNormalized.x) direction.x = directionNormalized.x;
+        else if (direction.x < -directionNormalized.x) direction.x = -directionNormalized.x;
+        if (direction.y > directionNormalized.y) direction.y = directionNormalized.y;
+        else if (direction.y < -directionNormalized.y) direction.y = -directionNormalized.y;
+        */
+        Debug.Log(direction);
+        
+        /*
+        Debug.Log("Deaccing");
+        if (directionClamped.x < 0) {
+            directionClamped.x += deaccOfacc;
+            if (directionClamped.x > deaccOfacc) directionClamped.x = 0;
+        }
+        else if (directionClamped.x > 0) {
+            directionClamped.x -= deaccOfacc;
+            if (directionClamped.x < deaccOfacc) directionClamped.x = 0;
+        }
+        if (directionClamped.y < 0) {
+
+            directionClamped.y += deaccOfacc;
+            if (directionClamped.y > deaccOfacc) directionClamped.y = 0;
+        }
+        else if (directionClamped.y > 0) {
+            directionClamped.y -= deaccOfacc;
+            if (directionClamped.y < deaccOfacc) directionClamped.y = 0;
+        }
+        */
+
+        transform.Translate(direction * maxSpeed * Time.deltaTime);
+    }
+
     void exactMovement() {
-            float xspeed = Input.GetAxis("Vertical") * maxSpeed;
-            float yspeed = -Input.GetAxis("Horizontal") * maxSpeed;
+            float xspeed = Input.GetAxis("Horizontal") * maxSpeed;
+            float yspeed = Input.GetAxis("Vertical") * maxSpeed;
 
         
         transform.Translate(xspeed * Time.deltaTime, yspeed * Time.deltaTime, 0);
