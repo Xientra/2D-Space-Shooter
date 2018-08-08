@@ -274,6 +274,11 @@ Prefab:
       propertyPath: stopspeed2
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114465581236528938, guid: 5be38424497c8bd4d87557da3b3aeb10,
+        type: 2}
+      propertyPath: currentWeapon
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5be38424497c8bd4d87557da3b3aeb10, type: 2}
   m_IsPrefabAsset: 0

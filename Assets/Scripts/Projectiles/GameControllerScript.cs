@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameControllerScript : MonoBehaviour {
 
     public static float currendCredits = 0f;
+    public static bool UsingGamepad = true;
 
     void Start () {
 		

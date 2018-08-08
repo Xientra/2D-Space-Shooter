@@ -13,11 +13,6 @@ public class PlayerControllerScript : MonoBehaviour {
 
     private Vector3 ProjectileSpawnPoint;
 
-    /*---------------------------------------------------------------------------------------------------------------------------------------*/
-    [SerializeField]
-    private float stopspeed2 = 1f;
-    /*---------------------------------------------------------------------------------------------------------------------------------------*/
-
     [SerializeField]
     private float speedlimit = 10f;
     [SerializeField]
@@ -83,7 +78,15 @@ public class PlayerControllerScript : MonoBehaviour {
     }
 
     void Update() {
-        TurretGameObject.transform.right = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0) - transform.position;
+
+        if (GameControllerScript.UsingGamepad == false) {
+            TurretGameObject.transform.right = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0) - transform.position;
+        }
+        else {
+            Vector2 ShootDirection = new Vector2(Input.GetAxis("HorizontalRight"), Input.GetAxis("VerticalRight"));
+            if (Input.GetAxis("HorizontalRight") != 0 || Input.GetAxis("VerticalRight") != 0)
+                TurretGameObject.transform.right = ShootDirection.normalized;
+        }
         FireWeapon();
 
         if (Input.GetButtonDown("Switch Weapon")) {
@@ -111,7 +114,8 @@ public class PlayerControllerScript : MonoBehaviour {
 
     void FixedUpdate() {
         coolMovement();
-        //coolMovement2();
+        //Movement();
+        //exactMovement2();
         //exactMovement();
         //coinMovement();
         //OldMovement();
@@ -197,70 +201,52 @@ public class PlayerControllerScript : MonoBehaviour {
             */
         }
         else { }
+
         //Stopping
         xspeed *= stopspeed;
         yspeed *= stopspeed;
-        transform.Translate(xspeed * Time.deltaTime, yspeed * Time.deltaTime, 0);
-    }
+        if (xspeed < 0.001f && xspeed > 0 || xspeed > -0.001f && xspeed < 0) xspeed = 0;
+        if (yspeed < 0.001f && yspeed > 0 || yspeed > -0.001f && yspeed < 0) yspeed = 0;
 
-    [SerializeField]
-    private float deaccOfacc = 0.1f;
-    Vector2 directionNormalized;
-
-    void coolMovement2() {
-
-        float xacc = Input.GetAxis("Horizontal");
-        float yacc = Input.GetAxis("Vertical");
-
-        Vector2 direction = new Vector2(xacc, yacc);
-
-        directionNormalized = new Vector2(xacc, yacc);
-        directionNormalized.Normalize();
-
-        direction.x = Mathf.Clamp(direction.x, -directionNormalized.x, directionNormalized.x);
-        direction.y = Mathf.Clamp(direction.y, -directionNormalized.y, directionNormalized.y);
-        
-        /*
-        if (direction.x > directionNormalized.x) direction.x = directionNormalized.x;
-        else if (direction.x < -directionNormalized.x) direction.x = -directionNormalized.x;
-        if (direction.y > directionNormalized.y) direction.y = directionNormalized.y;
-        else if (direction.y < -directionNormalized.y) direction.y = -directionNormalized.y;
-        */
-        Debug.Log(direction);
-        
-        /*
-        Debug.Log("Deaccing");
-        if (directionClamped.x < 0) {
-            directionClamped.x += deaccOfacc;
-            if (directionClamped.x > deaccOfacc) directionClamped.x = 0;
-        }
-        else if (directionClamped.x > 0) {
-            directionClamped.x -= deaccOfacc;
-            if (directionClamped.x < deaccOfacc) directionClamped.x = 0;
-        }
-        if (directionClamped.y < 0) {
-
-            directionClamped.y += deaccOfacc;
-            if (directionClamped.y > deaccOfacc) directionClamped.y = 0;
-        }
-        else if (directionClamped.y > 0) {
-            directionClamped.y -= deaccOfacc;
-            if (directionClamped.y < deaccOfacc) directionClamped.y = 0;
-        }
-        */
-
-        transform.Translate(direction * maxSpeed * Time.deltaTime);
-    }
-
-    void exactMovement() {
-            float xspeed = Input.GetAxis("Horizontal") * maxSpeed;
-            float yspeed = Input.GetAxis("Vertical") * maxSpeed;
-
-        
+        //Actual Moving
         transform.Translate(xspeed * Time.deltaTime, yspeed * Time.deltaTime, 0);
     }
 
     /*
+    private float speed = 0;
+
+    void exactMovement2() {
+
+        
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) {
+
+            float xacc = Input.GetAxis("Horizontal");
+            float yacc = Input.GetAxis("Vertical");
+
+            speed = Mathf.Abs(xacc) + Mathf.Abs(yacc);
+
+            speed = Mathf.Clamp(speed, 0, 1);
+
+            Vector2 direction = new Vector2(xacc, yacc);
+
+            directionNormalized = new Vector2(xacc, yacc);
+            directionNormalized.Normalize();
+
+            
+        }
+        Debug.Log(speed);
+        transform.Translate(directionNormalized * speed * maxSpeed * Time.deltaTime);
+    }
+
+    void exactMovement() {
+        float xspeed = Input.GetAxis("Horizontal") * maxSpeed;
+        float yspeed = Input.GetAxis("Vertical") * maxSpeed;
+
+
+        transform.Translate(xspeed * Time.deltaTime, yspeed * Time.deltaTime, 0);
+    }
+
+    
     [SerializeField]
     private float xacc = 0f;
     [SerializeField]
@@ -378,9 +364,9 @@ public class PlayerControllerScript : MonoBehaviour {
 
         transform.Translate(xspeed * Time.deltaTime, yspeed * Time.deltaTime, 0);
     }
-    *///coin and old movement
+    *///coin, old movement and exactMovement2
 
-    
+
 
     void adjustScale(float xscale, float yscale) {
         transform.localScale = new Vector3(xscale, yscale, transform.localScale.z);
