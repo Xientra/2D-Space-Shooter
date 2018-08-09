@@ -23,12 +23,9 @@ public class PlayerControllerScript : MonoBehaviour {
     private float yspeed = 0;
     public float currendHealth = 100f;
 
-
     //betterMovement vars
     [SerializeField]
     private float maxSpeed = 10f;
-
-
 
     //Ship Stats
     public enum Ships { Standart, Heavy, Fast }
