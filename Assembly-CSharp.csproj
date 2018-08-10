@@ -62,6 +62,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CoinBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\ControllerScripts\GameControllerScript.cs" />
+    <Compile Include="Assets\Scripts\ControllerScripts\MainMenuControllerScript.cs" />
     <Compile Include="Assets\Scripts\EffectScripts\EffectBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\EffectScripts\EffectsHolder.cs" />
     <Compile Include="Assets\Scripts\EnemyBehaviourScript.cs" />
@@ -70,7 +72,6 @@
     <Compile Include="Assets\Scripts\ObjectHolder.cs" />
     <Compile Include="Assets\Scripts\PlayerControllerScript.cs" />
     <Compile Include="Assets\Scripts\PowerUpBehaviourScript.cs" />
-    <Compile Include="Assets\Scripts\Projectiles\GameControllerScript.cs" />
     <Compile Include="Assets\Scripts\Projectiles\LaserBulletData.cs" />
     <Compile Include="Assets\Scripts\Projectiles\LaserBulletScript.cs" />
     <Compile Include="Assets\Scripts\Projectiles\LaserScript.cs" />

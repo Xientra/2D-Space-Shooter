@@ -7,7 +7,7 @@ public class PlayerControllerScript : MonoBehaviour {
     public Rigidbody2D rb;
     public GameObject TurretGameObject;
     public GameObject GameControllerGo;
-    public GameObject EffectsHolderGameObject;
+    //public GameObject EffectsHolderGameObject;
     public GameObject ObjectHolderGo;
 
     private GameObject[] Bullets;
@@ -93,7 +93,7 @@ public class PlayerControllerScript : MonoBehaviour {
             }
             else {
                 currentWeapon = (Weapons)(int)currentWeapon + 1;
-            }
+            }           
         }
 
         if (regenerates == true) {
@@ -529,7 +529,7 @@ public class PlayerControllerScript : MonoBehaviour {
                     }
                     if (loadTimeStamp <= Time.time) {
                         if (isReady == true) {
-                            Instantiate(EffectsHolderGameObject.GetComponent<EffectsHolder>().Effects[EffectsHolderGameObject.GetComponent<EffectsHolder>().GetEffectIndex(EffectsHolder.EffectNames.LaserLoaded)], transform.position, transform.rotation, transform);
+                            Instantiate(ObjectHolderGo.GetComponent<ObjectHolder>().Effects[ObjectHolderGo.GetComponent<ObjectHolder>().GetEffectIndex(ObjectHolder.EffectNames.LaserLoaded)], transform.position, transform.rotation, transform);
                             isReady = false;
                         }
                     }
@@ -585,7 +585,7 @@ public class PlayerControllerScript : MonoBehaviour {
             }
             if (loadTimeStamp <= Time.time) {
                 if (isReady == true) {
-                    Instantiate(EffectsHolderGameObject.GetComponent<EffectsHolder>().Effects[EffectsHolderGameObject.GetComponent<EffectsHolder>().GetEffectIndex(EffectsHolder.EffectNames.LaserLoaded)], transform.position, transform.rotation, transform);
+                    Instantiate(ObjectHolderGo.GetComponent<ObjectHolder>().Effects[ObjectHolderGo.GetComponent<ObjectHolder>().GetEffectIndex(ObjectHolder.EffectNames.LaserLoaded)], transform.position, transform.rotation, transform);
                     isReady = false;
                 }
             }

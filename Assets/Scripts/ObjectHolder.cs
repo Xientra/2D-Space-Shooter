@@ -10,6 +10,10 @@ public class ObjectHolder : MonoBehaviour {
     public GameObject[] EnemyBullets;
     static GameObject[] _EnemyBullets;
 
+    public GameObject[] Effects;
+    //static GameObject[] _Effects;
+    public enum EffectNames { LaserLoaded }
+    public EffectNames effectName;
 
     void Start() {
         _Bullets = new GameObject[Bullets.Length];
@@ -17,6 +21,9 @@ public class ObjectHolder : MonoBehaviour {
 
         _EnemyBullets = new GameObject[EnemyBullets.Length];
         _EnemyBullets = EnemyBullets;
+
+        //_Effects = new GameObject[Effects.Length];
+        //_Effects = Effects;
     }
     /*
     void Update() {
@@ -48,6 +55,20 @@ public class ObjectHolder : MonoBehaviour {
             i++;
         }
         Debug.LogError("Could not find: " + _EnemyBulletType);
+        return -1;
+    }
+
+    public int GetEffectIndex(EffectNames _effectType) {
+        int i = 0;
+        foreach (GameObject go in Effects) {
+            if (go != null) {
+                if (effectName == _effectType) {
+                    return i;
+                }
+            }
+            i++;
+        }
+        Debug.LogError("Could not find: " + _effectType);
         return -1;
     }
 }
