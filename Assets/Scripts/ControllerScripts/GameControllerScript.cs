@@ -13,7 +13,7 @@ public class GameControllerScript : MonoBehaviour {
 
     public static float currendCredits = 0f;
     public static bool UsingGamepad = false;
-    public static bool UsingUnityUI = false;
+    public static bool UsingUnityUI = true;
 
     void Start() {
         if (mainCamera == null) mainCamera = Camera.main;

@@ -10,6 +10,9 @@ public class ObjectHolder : MonoBehaviour {
     public GameObject[] EnemyBullets;
     static GameObject[] _EnemyBullets;
 
+    public GameObject[] PowerUps;
+    static GameObject[] _PowerUps;
+
     public GameObject[] Effects;
     //static GameObject[] _Effects;
     public enum EffectNames { LaserLoaded }
@@ -21,6 +24,9 @@ public class ObjectHolder : MonoBehaviour {
 
         _EnemyBullets = new GameObject[EnemyBullets.Length];
         _EnemyBullets = EnemyBullets;
+
+        _PowerUps = new GameObject[PowerUps.Length];
+        _PowerUps = PowerUps;
 
         //_Effects = new GameObject[Effects.Length];
         //_Effects = Effects;
@@ -55,6 +61,20 @@ public class ObjectHolder : MonoBehaviour {
             i++;
         }
         Debug.LogError("Could not find: " + _EnemyBulletType);
+        return -1;
+    }
+
+    public static int GetPowerUpIndex(PowerUpBehaviourScript.PowerUpTypes _PowerUpType) {
+        int i = 0;
+        foreach (GameObject go in _PowerUps) {
+            if (go != null) {
+                if (go.GetComponentInChildren<PowerUpBehaviourScript>().currendPowerUpType == _PowerUpType) {
+                    return i;
+                }
+            }
+            i++;
+        }
+        Debug.LogError("Could not find: " + _PowerUpType);
         return -1;
     }
 

@@ -53,27 +53,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1649795132223480}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10, y: -0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4985223312462270}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!4 &4985223312462270
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1419139674372434}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4614397892787502}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50625976926666370
 Rigidbody2D:
   serializedVersion: 4
@@ -151,6 +151,7 @@ MonoBehaviour:
   explosion: {fileID: 0}
   bulletType: 12
   direction: {x: 1, y: 0, z: 0}
+  isEnemyBullet: 0
   HelixBulletChild_RotationSpeed: 10
   speed: 0
   duration: 1
@@ -169,6 +170,7 @@ MonoBehaviour:
   explosion: {fileID: 0}
   bulletType: 12
   direction: {x: 1, y: 0, z: 0}
+  isEnemyBullet: 0
   HelixBulletChild_RotationSpeed: 10
   speed: 0
   duration: 1
