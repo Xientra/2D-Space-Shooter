@@ -6,6 +6,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
     public GameObject EnemyTurretGameObject;
     public GameObject ObjectHolderGo;
+    //public GameObject GameControllerGo;
     public GameObject CoinDrop;
     public GameObject PowerUpDrop;
     private GameObject EnemyHealthBarRed;
@@ -27,8 +28,8 @@ public class EnemyBehaviourScript : MonoBehaviour {
     }
     public AnimationTypes currendAnimation;
     public float AnimationStartDelay = 0f;
-    //private float AnimationStartDelayTimeStamp;
-    private bool checkForAnimationDelay = true;
+    private float AnimationStartDelayTimeStamp;
+    //private bool checkForAnimationDelay = true;
 
     //only Temp
     public bool hasHealthBar = false;
@@ -54,6 +55,8 @@ public class EnemyBehaviourScript : MonoBehaviour {
         EnemyBullets = ObjectHolderGo.GetComponent<ObjectHolder>().EnemyBullets;
 
         StartCoroutine(StartAfterTime());
+        //AnimationStartDelayTimeStamp = Time.time + AnimationStartDelay;
+
         if (hasHealthBar) {
             if (GetComponentsInChildren<Transform>()[1].gameObject.CompareTag("HealthBar")) {
                 EnemyHealthBarRed = GetComponentsInChildren<Transform>()[1].gameObject;
@@ -83,7 +86,15 @@ public class EnemyBehaviourScript : MonoBehaviour {
     }
 
     void Update() {
-        
+
+
+        /* Different Wait Type
+        if (AnimationStartDelayTimeStamp <= Time.time) {
+            startAnimation();
+        }
+        */
+
+
         if (hasTurret) {
             EnemyTurretGameObject.transform.right = GameObject.FindGameObjectsWithTag("Player")[0].transform.position - transform.position;
         }
@@ -115,6 +126,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
                     PlayerControllerScript.regenerates = false;
                 }
                 collision.gameObject.GetComponent<PlayerControllerScript>().currendHealth -= CollisionDamage;
+                StartCoroutine(GameControllerScript.ShakeMainCamera(0.2f, 0.05f));
             }
         }
         if (collision.gameObject.CompareTag("Explosion")) {
@@ -193,7 +205,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
                 Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_SimpleBullet)], EnemyTurretGameObject.transform.position, EnemyTurretGameObject.transform.rotation * Quaternion.Euler(0, 0, 90));
                 break;
             case (EnemyWeapons.FiveSpreadSlow):
-                float tempAngle = 7.5f;
+                float tempAngle = 10f;
                 Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_SlowAlienBullet)], transform.position, transform.rotation * Quaternion.Euler(0, 0, 0));
                 Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_SlowAlienBullet)], transform.position, transform.rotation * Quaternion.Euler(0, 0, tempAngle));
                 Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_SlowAlienBullet)], transform.position, transform.rotation * Quaternion.Euler(0, 0, -tempAngle));

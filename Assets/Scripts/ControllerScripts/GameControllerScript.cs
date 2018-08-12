@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class GameControllerScript : MonoBehaviour {
 
-    public Camera mainCamera;
+    static Camera mainCamera;
+    public Camera assingedCamera;
     private Vector3 originalPos;
 
     private float shakeTimer;
@@ -22,10 +23,6 @@ public class GameControllerScript : MonoBehaviour {
     }
 
     void Update() {
-        float _MaxHealth = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerControllerScript>().MaxHealth;
-        float _currendHealth = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerControllerScript>().currendHealth;
-        PlayerControllerScript.Weapons _currentWeapon = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerControllerScript>().currentWeapon;
-
         /*
         if (Input.GetButtonDown("Switch Weapon")) {
             StartCoroutine(ShakeCamera(0.2f, 0.05f));
@@ -47,31 +44,36 @@ public class GameControllerScript : MonoBehaviour {
         }
 
         //Update UI
-        if (UsingUnityUI) {
-            if (onlyOnGOwithTag("Health Bar UI")) {
-                GameObject.FindGameObjectsWithTag("Health Bar UI")[0].GetComponent<Slider>().maxValue = _MaxHealth;
-                GameObject.FindGameObjectsWithTag("Health Bar UI")[0].GetComponent<Slider>().value = _currendHealth;
+        if (GameObject.FindGameObjectWithTag("Player") != null) {
+            float _MaxHealth = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerControllerScript>().MaxHealth;
+            float _currendHealth = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerControllerScript>().currendHealth;
+            PlayerControllerScript.Weapons _currentWeapon = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerControllerScript>().currentWeapon;
+            if (UsingUnityUI) {
+                if (onlyOnGOwithTag("Health Bar UI")) {
+                    GameObject.FindGameObjectsWithTag("Health Bar UI")[0].GetComponent<Slider>().maxValue = _MaxHealth;
+                    GameObject.FindGameObjectsWithTag("Health Bar UI")[0].GetComponent<Slider>().value = _currendHealth;
+                }
+                if (onlyOnGOwithTag("Currend Weapon UI")) {
+                    GameObject.FindGameObjectsWithTag("Currend Weapon UI")[0].GetComponent<Text>().text = "Weapon:" + System.Environment.NewLine + _currentWeapon.ToString();
+                }
+                if (onlyOnGOwithTag("Currend Credits UI")) {
+                    GameObject.FindGameObjectsWithTag("Currend Credits UI")[0].GetComponent<Text>().text = "Credits:" + System.Environment.NewLine + currendCredits.ToString();
+                }
             }
-            if (onlyOnGOwithTag("Currend Weapon UI")) {
-                GameObject.FindGameObjectsWithTag("Currend Weapon UI")[0].GetComponent<Text>().text = "Weapon:" + System.Environment.NewLine + _currentWeapon.ToString();
+            else {
+                if (onlyOnGOwithTag("Health Bar UI")) {
+                    GameObject HealthBarUIGO = GameObject.FindGameObjectsWithTag("Health Bar UI")[0];
+                    HealthBarUIGO.transform.localScale = new Vector3(_currendHealth / _MaxHealth, HealthBarUIGO.transform.localScale.y, HealthBarUIGO.transform.localScale.z);
+                }
+                /*
+                if (onlyOnGOwithTag("Currend Weapon UI")) {
+                    GameObject.FindGameObjectsWithTag("Currend Weapon UI")[0].transform = "Weapon:" + System.Environment.NewLine + _currentWeapon.ToString();
+                }
+                if (onlyOnGOwithTag("Currend Credits UI")) {
+                    GameObject.FindGameObjectsWithTag("Currend Credits UI")[0].transform = "Credits:" + System.Environment.NewLine + currendCredits.ToString();
+                }
+                */
             }
-            if (onlyOnGOwithTag("Currend Credits UI")) {
-                GameObject.FindGameObjectsWithTag("Currend Credits UI")[0].GetComponent<Text>().text = "Credits:" + System.Environment.NewLine + currendCredits.ToString();
-            }
-        }
-        else {
-            if (onlyOnGOwithTag("Health Bar UI")) {
-                GameObject HealthBarUIGO = GameObject.FindGameObjectsWithTag("Health Bar UI")[0];
-                HealthBarUIGO.transform.localScale = new Vector3(_currendHealth / _MaxHealth, HealthBarUIGO.transform.localScale.y, HealthBarUIGO.transform.localScale.z);
-            }
-            /*
-            if (onlyOnGOwithTag("Currend Weapon UI")) {
-                GameObject.FindGameObjectsWithTag("Currend Weapon UI")[0].transform = "Weapon:" + System.Environment.NewLine + _currentWeapon.ToString();
-            }
-            if (onlyOnGOwithTag("Currend Credits UI")) {
-                GameObject.FindGameObjectsWithTag("Currend Credits UI")[0].transform = "Credits:" + System.Environment.NewLine + currendCredits.ToString();
-            }
-            */
         }
     }
 
@@ -91,7 +93,7 @@ public class GameControllerScript : MonoBehaviour {
         return r;
     }
 
-    public void ScreenShake(float shakeStrength, float shakeDuration) {
+    public void ScreenShake_old(float shakeStrength, float shakeDuration) {
 
         originalPos = mainCamera.transform.position;
 
@@ -99,7 +101,25 @@ public class GameControllerScript : MonoBehaviour {
         shakeTimer = shakeDuration;
     }
 
-    public IEnumerator ShakeCamera(float duration, float magnitude) {
+    public IEnumerator ShakeAssingedCamera(float duration, float magnitude) {
+        Vector3 originalPosition = assingedCamera.transform.position;
+
+        float timeElepsed = 0;
+
+        while (timeElepsed < duration) {
+            float x = Random.Range(-1f, 1f) * magnitude;
+            float y = Random.Range(-1f, 1f) * magnitude;
+
+            assingedCamera.transform.position = new Vector3(assingedCamera.transform.position.x + x, assingedCamera.transform.position.y + y, assingedCamera.transform.position.z);
+
+            timeElepsed += Time.deltaTime;
+
+            yield return null;
+        }
+        mainCamera.transform.position = originalPosition;
+    }
+
+    public static IEnumerator ShakeMainCamera(float duration, float magnitude) {
         Vector3 originalPosition = mainCamera.transform.position;
 
         float timeElepsed = 0;

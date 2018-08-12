@@ -7,7 +7,6 @@ public class PlayerControllerScript : MonoBehaviour {
     public Rigidbody2D rb;
     public GameObject TurretGameObject;
     public GameObject GameControllerGo;
-    //public GameObject EffectsHolderGameObject;
     public GameObject ObjectHolderGo;
 
     private GameObject[] Bullets;

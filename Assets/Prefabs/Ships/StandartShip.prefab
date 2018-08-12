@@ -422,8 +422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 50847543821558204}
   TurretGameObject: {fileID: 1596211785451302}
-  EffectsHolderGameObject: {fileID: 1638694670041140, guid: c1a17226a03283d499473a57173eec08,
-    type: 2}
+  GameControllerGo: {fileID: 0}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
   speedlimit: 10
@@ -435,7 +434,7 @@ MonoBehaviour:
   currendShip: 0
   MaxHealth: 100
   acceleration: 1
-  currentWeapon: 10
+  currentWeapon: 0
 --- !u!212 &212129796705502586
 SpriteRenderer:
   m_ObjectHideFlags: 1

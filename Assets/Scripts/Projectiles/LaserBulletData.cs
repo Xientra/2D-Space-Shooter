@@ -94,6 +94,7 @@ public class LaserBulletData : MonoBehaviour {
             if (isLaser == false) {
                 if (collision.gameObject.CompareTag("Player")) {
                     collision.gameObject.GetComponent<PlayerControllerScript>().currendHealth -= damage;
+                    StartCoroutine(GameControllerScript.ShakeMainCamera(0.2f, 0.05f));
                     InitiliseSelfDestruction();
                 }
             }

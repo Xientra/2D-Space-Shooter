@@ -13,12 +13,16 @@ public class ObjectHolder : MonoBehaviour {
     public GameObject[] PowerUps;
     static GameObject[] _PowerUps;
 
+    public GameObject[] PlayerShips;
+    public static GameObject[] _PlayerShips;
+
     public GameObject[] Effects;
     //static GameObject[] _Effects;
     public enum EffectNames { LaserLoaded }
     public EffectNames effectName;
 
     void Start() {
+        Debug.Log("Assinged all Static Object Arrays");
         _Bullets = new GameObject[Bullets.Length];
         _Bullets = Bullets;
 
@@ -27,6 +31,9 @@ public class ObjectHolder : MonoBehaviour {
 
         _PowerUps = new GameObject[PowerUps.Length];
         _PowerUps = PowerUps;
+
+        _PlayerShips = new GameObject[PlayerShips.Length];
+        _PlayerShips = PlayerShips;
 
         //_Effects = new GameObject[Effects.Length];
         //_Effects = Effects;
@@ -75,6 +82,20 @@ public class ObjectHolder : MonoBehaviour {
             i++;
         }
         Debug.LogError("Could not find: " + _PowerUpType);
+        return -1;
+    }
+
+    public static int GetPlayerShipIndex(PlayerControllerScript.Ships _PlayerShip) {
+        int i = 0;
+        foreach (GameObject go in _PlayerShips) {
+            if (go != null) {
+                if (go.GetComponentInChildren<PlayerControllerScript>().currendShip == _PlayerShip) {
+                    return i;
+                }
+            }
+            i++;
+        }
+        Debug.LogError("Could not find: " + _PlayerShip);
         return -1;
     }
 

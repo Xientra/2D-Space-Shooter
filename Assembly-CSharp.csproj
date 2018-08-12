@@ -61,19 +61,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\CoinBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\Behaviour Scripts\CoinBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\Behaviour Scripts\EnemyBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\Behaviour Scripts\PlayerControllerScript.cs" />
+    <Compile Include="Assets\Scripts\Behaviour Scripts\PowerUpBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\ControllerScripts\EndlessLevelControllerScript.cs" />
     <Compile Include="Assets\Scripts\ControllerScripts\GameControllerScript.cs" />
     <Compile Include="Assets\Scripts\ControllerScripts\MainMenuControllerScript.cs" />
     <Compile Include="Assets\Scripts\EffectScripts\EffectBehaviourScript.cs" />
-    <Compile Include="Assets\Scripts\EnemyBehaviourScript.cs" />
-    <Compile Include="Assets\Scripts\FollowPath.cs" />
-    <Compile Include="Assets\Scripts\Node.cs" />
-    <Compile Include="Assets\Scripts\ObjectHolder.cs" />
-    <Compile Include="Assets\Scripts\PlayerControllerScript.cs" />
-    <Compile Include="Assets\Scripts\PowerUpBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Projectiles\LaserBulletData.cs" />
     <Compile Include="Assets\Scripts\Projectiles\LaserBulletScript.cs" />
     <Compile Include="Assets\Scripts\Projectiles\LaserScript.cs" />
+    <Compile Include="Assets\Scripts\Z_OtherScripts\EndlessLevelWaveScript.cs" />
+    <Compile Include="Assets\Scripts\Z_OtherScripts\FollowPath.cs" />
+    <Compile Include="Assets\Scripts\Z_OtherScripts\Node.cs" />
+    <Compile Include="Assets\Scripts\Z_OtherScripts\ObjectHolder.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/_Documents/_Computerstuff/Projects - Unity/2D Space Shooter/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
