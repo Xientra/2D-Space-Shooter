@@ -21,8 +21,8 @@ public class EndlessLevelWaveScript : MonoBehaviour {
     IEnumerator destroyAfterDuration() {
         yield return new WaitForSeconds(durationUntilDestroy);
         isActive = false;
-        Debug.Log("Wave Ended");
-        EndlessLevelControllerGo.GetComponent<EndlessLevelControllerScript>().WaveActive = false;
+        //EndlessLevelControllerGo.GetComponent<EndlessLevelControllerScript>().WaveActive = false;
+        this.transform.parent.transform.gameObject.GetComponent<EndlessLevelControllerScript>().WaveActive = false;
         Destroy(this.gameObject);
     }
 }

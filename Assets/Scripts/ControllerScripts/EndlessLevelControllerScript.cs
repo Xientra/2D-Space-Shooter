@@ -34,7 +34,7 @@ public class EndlessLevelControllerScript : MonoBehaviour {
 
     void Update() {
         if (WaveActive == false) {
-            Instantiate(Waves[UnityEngine.Random.Range(0, Waves.Length)]);
+            Instantiate(Waves[UnityEngine.Random.Range(0, Waves.Length)], this.transform);
             WaveActive = true;
         }
     }
