@@ -136,4 +136,11 @@ public class GameControllerScript : MonoBehaviour {
         }
         mainCamera.transform.position = originalPosition;
     }
+
+    /*
+    public static void ShakeMainCameraStart(float _duration, float _magnitude) {
+
+            //StartCoroutine(ShakeMainCamera(_duration, _magnitude));
+    }
+    */
 }

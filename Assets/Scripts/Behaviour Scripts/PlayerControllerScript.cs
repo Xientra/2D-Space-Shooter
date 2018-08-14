@@ -13,6 +13,11 @@ public class PlayerControllerScript : MonoBehaviour {
 
     private Vector3 ProjectileSpawnPoint;
 
+    public Weapons currentWeapon = Weapons.Sniper;
+    public static Weapons primaryWeapon = Weapons.Standart_lvl_1;
+    public static Weapons secondaryWeapon = Weapons.LaserGun;
+
+    /*Movement Vars*/
     [SerializeField]
     private float speedlimit = 10f;
     [SerializeField]
@@ -42,7 +47,7 @@ public class PlayerControllerScript : MonoBehaviour {
         Standart_lvl_1, Standart_lvl_2, Standart_lvl_3, Helix_lvl_1, Helix_lvl_2, Helix_lvl_3, WaveEmitter_lvl_1, RocketLauncher_lvl_1, GrenadeLauncher_lvl_1, ShrapnelLauncher_lvl_1, ChainGun_lvl_1, ChainGun_lvl_2, ChainGun_lvl_3, Spread, Sniper,
         LaserGun, SplitLaserGun
     }
-    public Weapons currentWeapon = Weapons.Sniper;
+
     private float cooldown = 0.2f;
     private float cooldownTimeStamp;
     //laser firering vars
