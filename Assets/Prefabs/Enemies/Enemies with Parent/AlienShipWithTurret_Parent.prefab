@@ -34,7 +34,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4371195399579212}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: EnemyTurretRotation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 212130691848024456}
   m_Layer: 0
   m_Name: HealthBarGreen
-  m_TagString: HealthBar
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,7 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4484036038642736}
   - component: {fileID: 212614713211023886}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: EnemyTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,7 +232,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1067258380504112}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 20, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4487886012568752}
@@ -296,7 +296,7 @@ Animator:
   m_GameObject: {fileID: 1446540340885602}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d8cc558371a9b8244b9f0315b8a4dcc5, type: 2}
+  m_Controller: {fileID: 9100000, guid: 27ae95bdcb21805468f2b7c9155f4e9d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -525,10 +525,9 @@ MonoBehaviour:
   PowerUpDrop: {fileID: 0}
   currendEnemyType: 1
   EnemyWeapon: 1
-  currendAnimation: 0
-  AnimationStartDelay: 1
-  hasHealthBar: 1
-  hasAnimation: 1
+  currendAnimation: 17
+  AnimationStartDelay: 0
+  LimiterDestructionDelayAfterStart: 1
   hasTurret: 1
   canShoot: 0
   MaxHealth: 100

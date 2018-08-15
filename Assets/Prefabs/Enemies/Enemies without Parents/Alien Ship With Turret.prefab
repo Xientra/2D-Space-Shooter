@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 212572850277651546}
   m_Layer: 0
   m_Name: HealthBarGreen
-  m_TagString: HealthBar
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,7 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4770561521857918}
   - component: {fileID: 212182607002276940}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: EnemyTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4861393142343418}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: EnemyTurretRotation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,8 +498,8 @@ MonoBehaviour:
   EnemyWeapon: 1
   currendAnimation: 0
   AnimationStartDelay: 1
+  LimiterDestructionDelayAfterStart: 1
   hasHealthBar: 1
-  hasAnimation: 1
   hasTurret: 1
   canShoot: 0
   MaxHealth: 100

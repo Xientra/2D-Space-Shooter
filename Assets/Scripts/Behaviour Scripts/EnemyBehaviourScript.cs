@@ -11,10 +11,9 @@ public class EnemyBehaviourScript : MonoBehaviour {
     public GameObject PowerUpDrop;
     private GameObject EnemyHealthBarRed;
     private GameObject EnemyHealthBarGreen;
+    private Animator animator;
 
     private GameObject[] EnemyBullets;
-
-    private Animator animator;
 
     public enum EnemyTypes { AlienStandart, AlienTurret, AlienHeavy }
     public EnemyTypes currendEnemyType = EnemyTypes.AlienStandart;
@@ -27,16 +26,19 @@ public class EnemyBehaviourScript : MonoBehaviour {
         RightToLeftShoot5, RightGoMiddleUpShoot3, MovingLeftTurn180Shoot4, DownDeaccAcc, DownDeaccShoot1Acc, DownStrave_RightFirst_, DownStraveSmall_RightFirst_, GoToBottomShoot6
     }
     public AnimationTypes currendAnimation;
-    public float AnimationStartDelay = 0f;
-    private float AnimationStartDelayTimeStamp;
+    [SerializeField]
+    private  float AnimationStartDelay = 0f;
+    //private float AnimationStartDelayTimeStamp;
     //private bool checkForAnimationDelay = true;
 
+    [SerializeField]
+    private float LimiterDestructionDelayAfterStart = 1f;
+    private bool LimiterDestruction = false;
+
     //only Temp
-    public bool hasHealthBar = false;
-    public bool hasAnimation = false;
     public bool hasTurret = false;
 
-    public bool canShoot = false;
+    public bool canShoot = false; //Has to be Serializable to be able to be changed by an animation
 
     /*--------------------Stats--------------------*/
     public float MaxHealth = 100f;
@@ -51,49 +53,44 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
     /*---------------------------------------------End-Of-Variables---------------------------------------------------------------------------*/
     void Start() {
-        //AnimationStartDelayTimeStamp = Time.time + AnimationStartDelay;
         EnemyBullets = ObjectHolderGo.GetComponent<ObjectHolder>().EnemyBullets;
 
         StartCoroutine(StartAfterTime());
+        StartCoroutine(LimiterDestructionAfterTime());
         //AnimationStartDelayTimeStamp = Time.time + AnimationStartDelay;
 
-        if (hasHealthBar) {
-            if (GetComponentsInChildren<Transform>()[1].gameObject.CompareTag("HealthBar")) {
-                EnemyHealthBarRed = GetComponentsInChildren<Transform>()[1].gameObject;
+        foreach (Transform t in GetComponentsInChildren<Transform>()) {
+            if (t.gameObject.CompareTag("HealthBar")) {
+                EnemyHealthBarRed = t.gameObject;
 
                 EnemyHealthBarGreen = EnemyHealthBarRed.GetComponentsInChildren<Transform>()[1].gameObject;
             }
         }
-        /*
-        if (hasHealthBar) {
-            for (int i = 0; i < GetComponentsInChildren<Transform>().Length; i++) {
-                if (GetComponentsInChildren<Transform>()[i].gameObject.CompareTag("HealthBar")) {
-                    EnemyHealthBarRed = GetComponentsInChildren<Transform>()[i].gameObject;
-
-                    EnemyHealthBarGreen = EnemyHealthBarRed.GetComponentsInChildren<Transform>()[1].gameObject;
-                }
-            }
-        }
-        */
-        if (hasAnimation) {
+        if (GetComponent<Animator>() != null) {
             animator = GetComponent<Animator>();
         }
+
+        ChangeState(false);
     }
 
     IEnumerator StartAfterTime() {
         yield return new WaitForSeconds(AnimationStartDelay);
+        ChangeState(true);
         startAnimation();
     }
 
+    IEnumerator LimiterDestructionAfterTime() {
+        yield return new WaitForSeconds(LimiterDestructionDelayAfterStart + AnimationStartDelay);
+        LimiterDestruction = true;
+        
+    }
+
     void Update() {
-
-
         /* Different Wait Type
         if (AnimationStartDelayTimeStamp <= Time.time) {
             startAnimation();
         }
         */
-
 
         if (hasTurret) {
             EnemyTurretGameObject.transform.right = GameObject.FindGameObjectsWithTag("Player")[0].transform.position - transform.position;
@@ -107,18 +104,20 @@ public class EnemyBehaviourScript : MonoBehaviour {
         if (Health <= 0) {
             StartSelfDestruction(this.gameObject);
         }
-        if (hasHealthBar) {
+        if (EnemyHealthBarRed != null) {
             EnemyHealthBarGreen.transform.localScale = new Vector3(((100 / MaxHealth) * Health) * 0.01f, EnemyHealthBarGreen.transform.localScale.y, EnemyHealthBarGreen.transform.localScale.z);
         }
     }
-
+    /*
     void FixedUpdate() {
         //transform.Translate(direction * movementspeed * Time.deltaTime);
     }
-
+    */
     void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.CompareTag("Enemy Limiter")) {
-            Destroy(this.gameObject);
+        if (LimiterDestruction) {
+            if (collision.gameObject.CompareTag("Enemy Limiter")) {
+                Destroy(this.gameObject);
+            }
         }
         if (noCollisionDamage == false) {
             if (collision.gameObject.CompareTag("Player")) {
@@ -216,7 +215,10 @@ public class EnemyBehaviourScript : MonoBehaviour {
     }
 
     void ChangeState(bool ChangeTo) {
-        GetComponent<SpriteRenderer>().enabled = ChangeTo;
+        foreach (SpriteRenderer Sp in GetComponentsInChildren<SpriteRenderer>()) {
+            Sp.enabled = ChangeTo;
+        }
+
         if (GetComponent<CircleCollider2D>() != null) {
             GetComponent<CircleCollider2D>().enabled = ChangeTo;
         }
