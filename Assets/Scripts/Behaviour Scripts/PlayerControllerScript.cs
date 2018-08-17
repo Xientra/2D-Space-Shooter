@@ -92,12 +92,8 @@ public class PlayerControllerScript : MonoBehaviour {
         FireWeapon();
 
         if (Input.GetButtonDown("Switch Weapon")) {
-            if ((int)currentWeapon == Weapons.GetNames(typeof(Weapons)).Length - 1) {
-                currentWeapon = (Weapons)0;
-            }
-            else {
-                currentWeapon = (Weapons)(int)currentWeapon + 1;
-            }           
+            //SwitchWeapon();
+            SwitchAllWeapons();         
         }
 
         if (regenerates == true) {
@@ -367,7 +363,6 @@ public class PlayerControllerScript : MonoBehaviour {
         transform.Translate(xspeed * Time.deltaTime, yspeed * Time.deltaTime, 0);
     }
     *///coin, old movement and exactMovement2
-
 
 
     void adjustScale(float xscale, float yscale) {
@@ -653,5 +648,25 @@ public class PlayerControllerScript : MonoBehaviour {
                 break;
         }
         currendHealth = MaxHealth;
+    }
+
+    void SwitchWeapon() {
+        if (currentWeapon == primaryWeapon)
+            currentWeapon = secondaryWeapon;
+        else {
+            if (currentWeapon == secondaryWeapon)
+                currentWeapon = primaryWeapon;
+            else
+                Debug.LogError("There is a weapon equipt which should not.");
+        }
+    }
+
+    void SwitchAllWeapons() {
+        if ((int)currentWeapon == Weapons.GetNames(typeof(Weapons)).Length - 1) {
+            currentWeapon = (Weapons)0;
+        }
+        else {
+            currentWeapon = (Weapons)(int)currentWeapon + 1;
+        }
     }
 }

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212177696168825156}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -425,6 +425,7 @@ MonoBehaviour:
   GameControllerGo: {fileID: 0}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
+  currentWeapon: 0
   speedlimit: 10
   stopspeed: 0.95
   xspeed: 0
@@ -434,7 +435,6 @@ MonoBehaviour:
   currendShip: 0
   MaxHealth: 100
   acceleration: 1
-  currentWeapon: 0
 --- !u!212 &212129796705502586
 SpriteRenderer:
   m_ObjectHideFlags: 1

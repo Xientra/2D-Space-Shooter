@@ -16,6 +16,10 @@ public class ObjectHolder : MonoBehaviour {
     public GameObject[] PlayerShips;
     public static GameObject[] _PlayerShips;
 
+    public Sprite[] TurretSprites;
+    public static Sprite[] _TurretSprites;
+
+
     public GameObject[] Effects;
     //static GameObject[] _Effects;
     public enum EffectNames { LaserLoaded }
@@ -34,6 +38,10 @@ public class ObjectHolder : MonoBehaviour {
 
         _PlayerShips = new GameObject[PlayerShips.Length];
         _PlayerShips = PlayerShips;
+
+        _TurretSprites = new Sprite[TurretSprites.Length];
+        _TurretSprites = TurretSprites;
+
 
         //_Effects = new GameObject[Effects.Length];
         //_Effects = Effects;
