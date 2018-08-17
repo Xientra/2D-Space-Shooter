@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 212770502548200994}
   - component: {fileID: 61783161787897390}
   - component: {fileID: 50598491607329758}
-  - component: {fileID: 114584931888788372}
   - component: {fileID: 95458449099229700}
+  - component: {fileID: 114003478591370746}
   m_Layer: 0
   m_Name: SloMoPickUp
   m_TagString: PickUp
@@ -107,7 +107,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114584931888788372
+--- !u!114 &114003478591370746
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,18 +115,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1023024304691606}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b7ef640feca01847a91b44a9d96ecec, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c8ac7ba737d6d84093531aba10d591f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startDirection: {x: 1, y: 0, z: 0}
-  currendPowerUpType: 5
-  TimeBeforeDestroy: 15
-  MinDistaceToPlayer: 10
-  MaxSpeedToPlayer: 1.5
-  turnspeed: 10
-  accToPlayer: 1
-  accaccToPlayer: 0.1
-  deaccToPlayer: 0.05
+  CreditValue: 1
+  thisPickUpType: 6
+  speed: {x: 0, y: 0, z: 0}
+  startspeed: 5
+  speedToPlayer: 0.6
+  maxSpeedToPlayer: 7.5
+  TimeBeforeDestroy: 100
+  MinDistaceToPlayer: 5
 --- !u!212 &212770502548200994
 SpriteRenderer:
   m_ObjectHideFlags: 1

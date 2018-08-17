@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 108071654115681976}
   - component: {fileID: 198384173168013808}
   - component: {fileID: 199663839064311924}
-  - component: {fileID: 114073886334116400}
+  - component: {fileID: 114515023744305942}
   m_Layer: 0
   m_Name: Credit_1000
   m_TagString: PickUp
@@ -128,7 +128,7 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114073886334116400
+--- !u!114 &114515023744305942
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,18 +136,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1150594941634016}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74b002c3143e76d46aaae48b8066d34d, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c8ac7ba737d6d84093531aba10d591f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startDirection: {x: 1, y: 0, z: 0}
-  value: 1000
-  TimeBeforeDestroy: 10
+  CreditValue: 1
+  thisPickUpType: 0
+  speed: {x: 0, y: 0, z: 0}
+  startspeed: 5
+  speedToPlayer: 0.6
+  maxSpeedToPlayer: 7.5
+  TimeBeforeDestroy: 20
   MinDistaceToPlayer: 5
-  MaxSpeedToPlayer: 3
-  turnspeed: 10
-  accToPlayer: 1
-  accaccToPlayer: 0.05
-  deaccToPlayer: 0.01
 --- !u!198 &198384173168013808
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -79,11 +79,11 @@ public class ObjectHolder : MonoBehaviour {
         return -1;
     }
 
-    public static int GetPowerUpIndex(PowerUpBehaviourScript.PowerUpTypes _PowerUpType) {
+    public static int GetPowerUpIndex(PickUpBehaviourScript.PickUpTypes _PowerUpType) {
         int i = 0;
         foreach (GameObject go in _PowerUps) {
             if (go != null) {
-                if (go.GetComponentInChildren<PowerUpBehaviourScript>().currendPowerUpType == _PowerUpType) {
+                if (go.GetComponentInChildren<PickUpBehaviourScript>().thisPickUpType == _PowerUpType) {
                     return i;
                 }
             }

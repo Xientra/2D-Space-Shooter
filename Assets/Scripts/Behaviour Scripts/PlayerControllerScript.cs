@@ -60,7 +60,6 @@ public class PlayerControllerScript : MonoBehaviour {
     private bool chainGunOffsetUp = true;
 
     /*----------Stuff for PickUps----------*/
-    private bool[] PowerUpActive = new bool[PowerUpBehaviourScript.PowerUpTypes.GetNames(typeof(PowerUpBehaviourScript.PowerUpTypes)).Length];
     private static float fireRateMultiplyer = 1;
     public static bool regenerates = false;
     private static float regenerationSpeed = 0.1f; //Not framerate indipendent
@@ -73,10 +72,6 @@ public class PlayerControllerScript : MonoBehaviour {
 
         //switchShip();
 
-        //set complete isPowerUpActive to false
-        for (int i = 0; i < PowerUpActive.Length; i++) {
-            PowerUpActive[i] = false;
-        }
     }
 
     void Update() {
@@ -127,19 +122,10 @@ public class PlayerControllerScript : MonoBehaviour {
     
     void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("PickUp")) {
-            if (collision.GetComponent<PowerUpBehaviourScript>().currendPowerUpType == PowerUpBehaviourScript.PowerUpTypes.HealthUp) {
-                currendHealth += MaxHealth * 0.2f;
+            if (collision.GetComponent<PickUpBehaviourScript>().thisPickUpType == PickUpBehaviourScript.PickUpTypes.Credit) {
+                
             }
-            else if (collision.GetComponent<PowerUpBehaviourScript>().currendPowerUpType == PowerUpBehaviourScript.PowerUpTypes.Regeneration) {
-                regenerates = true;
-            }
-            else
-                StartCoroutine(ActivatePowerUpforTime((int)collision.gameObject.GetComponent<PowerUpBehaviourScript>().currendPowerUpType, 5f));
-            Destroy(collision.gameObject);
-        }
-
-        if (collision.CompareTag("PickUp")) {
-            if (collision.GetComponent<PickUpBehaviourScript>().thisPickUpType == PickUpBehaviourScript.PickUpTypes.HealthUp) {
+            else if(collision.GetComponent<PickUpBehaviourScript>().thisPickUpType == PickUpBehaviourScript.PickUpTypes.HealthUp) {
                 currendHealth += MaxHealth * 0.2f;
             }
             else if (collision.GetComponent<PickUpBehaviourScript>().thisPickUpType == PickUpBehaviourScript.PickUpTypes.Regeneration) {
@@ -152,49 +138,47 @@ public class PlayerControllerScript : MonoBehaviour {
     }
 
     IEnumerator ActivatePowerUpforTime(int PowerUpNr ,float TimeToWait) {
-        PowerUpActive[PowerUpNr] = true;
-        Debug.Log((PowerUpBehaviourScript.PowerUpTypes)PowerUpNr + " started."); //Update some UI or stuff pls
+        Debug.Log((PickUpBehaviourScript.PickUpTypes)PowerUpNr + " started."); //Update some UI or stuff pls
 
-        switch ((PowerUpBehaviourScript.PowerUpTypes)PowerUpNr) {
-            case (PowerUpBehaviourScript.PowerUpTypes.FireRateUp):
+        switch ((PickUpBehaviourScript.PickUpTypes)PowerUpNr) {
+            case (PickUpBehaviourScript.PickUpTypes.FireRateUp):
                 fireRateMultiplyer = 0.6f;
                 break;
-            case (PowerUpBehaviourScript.PowerUpTypes.DamageUp):
+            case (PickUpBehaviourScript.PickUpTypes.DamageUp):
                 LaserBulletData.damageMultiplyer = 1.2f;
                 break;
-            case (PowerUpBehaviourScript.PowerUpTypes.Invincibility):
+            case (PickUpBehaviourScript.PickUpTypes.Invincibility):
                 EnemyBehaviourScript.noCollisionDamage = true;
                 break;
-            case (PowerUpBehaviourScript.PowerUpTypes.SloMo):
+            case (PickUpBehaviourScript.PickUpTypes.SloMo):
                 Time.timeScale = 0.8f;
                 break;
             default:
-                Debug.LogError("The PickUp -" + (PowerUpBehaviourScript.PowerUpTypes)PowerUpNr + "- has no effect assinged!");
+                Debug.LogError("The PickUp -" + (PickUpBehaviourScript.PickUpTypes)PowerUpNr + "- has no effect assinged!");
                 break;
         }
 
         yield return new WaitForSeconds(TimeToWait);
 
-        switch ((PowerUpBehaviourScript.PowerUpTypes)PowerUpNr) {
-            case (PowerUpBehaviourScript.PowerUpTypes.FireRateUp):
+        switch ((PickUpBehaviourScript.PickUpTypes)PowerUpNr) {
+            case (PickUpBehaviourScript.PickUpTypes.FireRateUp):
                 fireRateMultiplyer = 1f;
                 break;
-            case (PowerUpBehaviourScript.PowerUpTypes.DamageUp):
+            case (PickUpBehaviourScript.PickUpTypes.DamageUp):
                 LaserBulletData.damageMultiplyer = 1f;
                 break;
-            case (PowerUpBehaviourScript.PowerUpTypes.Invincibility):
+            case (PickUpBehaviourScript.PickUpTypes.Invincibility):
                 EnemyBehaviourScript.noCollisionDamage = false;
                 break;
-            case (PowerUpBehaviourScript.PowerUpTypes.SloMo):
+            case (PickUpBehaviourScript.PickUpTypes.SloMo):
                 Time.timeScale = 1f;
                 break;
             default:
-                Debug.LogError("The PickUp -" + (PowerUpBehaviourScript.PowerUpTypes)PowerUpNr + "- has no effect assinged!");
+                Debug.LogError("The PickUp -" + (PickUpBehaviourScript.PickUpTypes)PowerUpNr + "- has no effect assinged!");
                 break;
         }
 
-        PowerUpActive[PowerUpNr] = false;
-        Debug.Log((PowerUpBehaviourScript.PowerUpTypes)PowerUpNr + " stoped"); //Update some UI or stuff pls
+        Debug.Log((PickUpBehaviourScript.PickUpTypes)PowerUpNr + " stoped"); //Update some UI or stuff pls
     }
 
     void coolMovement() {

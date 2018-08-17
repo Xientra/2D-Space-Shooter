@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 212824884057598198}
   - component: {fileID: 61943182125700690}
   - component: {fileID: 50316418938848102}
-  - component: {fileID: 114529351491306326}
   - component: {fileID: 95394508513617786}
+  - component: {fileID: 114019433124633022}
   m_Layer: 0
   m_Name: DamageUpPickUp
   m_TagString: PickUp
@@ -107,7 +107,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114529351491306326
+--- !u!114 &114019433124633022
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,18 +115,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1638366046285052}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b7ef640feca01847a91b44a9d96ecec, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c8ac7ba737d6d84093531aba10d591f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startDirection: {x: 1, y: 0, z: 0}
-  currendPowerUpType: 3
-  TimeBeforeDestroy: 15
-  MinDistaceToPlayer: 10
-  MaxSpeedToPlayer: 1.5
-  turnspeed: 10
-  accToPlayer: 1
-  accaccToPlayer: 0.1
-  deaccToPlayer: 0.05
+  CreditValue: 1
+  thisPickUpType: 4
+  speed: {x: 0, y: 0, z: 0}
+  startspeed: 5
+  speedToPlayer: 0.6
+  maxSpeedToPlayer: 7.5
+  TimeBeforeDestroy: 100
+  MinDistaceToPlayer: 5
 --- !u!212 &212824884057598198
 SpriteRenderer:
   m_ObjectHideFlags: 1
