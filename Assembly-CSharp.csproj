@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Behaviour Scripts\CoinBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Behaviour Scripts\EnemyBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\Behaviour Scripts\PickUpBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Behaviour Scripts\PlayerControllerScript.cs" />
     <Compile Include="Assets\Scripts\Behaviour Scripts\PowerUpBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\ControllerScripts\EndlessLevelControllerScript.cs" />

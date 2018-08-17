@@ -44,6 +44,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
     public float MaxHealth = 100f;
     public float Health = 100f;
     public float CollisionDamage = 50f;
+    public bool CanDropPowerUp;
 
     //public Vector3 direction = new Vector3(1, 0);
     //private float movementspeed = 0.1f;
@@ -135,9 +136,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
     void StartSelfDestruction(GameObject toDestroy) {
 
-        Instantiate(CoinDrop, transform.position, Quaternion.Euler(0, 0, Random.Range(1, 360)));
-        Instantiate(CoinDrop, transform.position, Quaternion.Euler(0, 0, Random.Range(1, 360)));
-        Instantiate(CoinDrop, transform.position, Quaternion.Euler(0, 0, Random.Range(1, 360)));
+        DropStuff();
         Destroy(toDestroy);
     }
 
@@ -227,6 +226,17 @@ public class EnemyBehaviourScript : MonoBehaviour {
         }
         if (GetComponent<CapsuleCollider2D>() != null) {
             GetComponent<CapsuleCollider2D>().enabled = ChangeTo;
+        }
+    }
+
+    void DropStuff() {
+
+
+        if (CanDropPowerUp) {
+
+            Instantiate(CoinDrop, transform.position, Quaternion.Euler(0, 0, Random.Range(1, 360)));
+            Instantiate(CoinDrop, transform.position, Quaternion.Euler(0, 0, Random.Range(1, 360)));
+            Instantiate(CoinDrop, transform.position, Quaternion.Euler(0, 0, Random.Range(1, 360)));
         }
     }
 }

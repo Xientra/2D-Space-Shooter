@@ -16,7 +16,7 @@ public class PowerUpBehaviourScript : MonoBehaviour {
     [SerializeField]
     private float MaxSpeedToPlayer = 1.5f;
     [SerializeField]
-    float turnspeed = 10f;
+    private float turnspeed = 10f;
 
     [SerializeField]
     private float accToPlayer = 1f;

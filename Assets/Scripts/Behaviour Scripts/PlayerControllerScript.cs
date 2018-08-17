@@ -124,16 +124,29 @@ public class PlayerControllerScript : MonoBehaviour {
             xspeed = 0;
         }
     }
-
-    void OnTriggerEnter2D(Collider2D collision) { 
+    
+    void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("PickUp")) {
             if (collision.GetComponent<PowerUpBehaviourScript>().currendPowerUpType == PowerUpBehaviourScript.PowerUpTypes.HealthUp) {
                 currendHealth += MaxHealth * 0.2f;
-            } else if (collision.GetComponent<PowerUpBehaviourScript>().currendPowerUpType == PowerUpBehaviourScript.PowerUpTypes.Regeneration) {
+            }
+            else if (collision.GetComponent<PowerUpBehaviourScript>().currendPowerUpType == PowerUpBehaviourScript.PowerUpTypes.Regeneration) {
                 regenerates = true;
             }
             else
                 StartCoroutine(ActivatePowerUpforTime((int)collision.gameObject.GetComponent<PowerUpBehaviourScript>().currendPowerUpType, 5f));
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.CompareTag("PickUp")) {
+            if (collision.GetComponent<PickUpBehaviourScript>().thisPickUpType == PickUpBehaviourScript.PickUpTypes.HealthUp) {
+                currendHealth += MaxHealth * 0.2f;
+            }
+            else if (collision.GetComponent<PickUpBehaviourScript>().thisPickUpType == PickUpBehaviourScript.PickUpTypes.Regeneration) {
+                regenerates = true;
+            }
+            else
+                StartCoroutine(ActivatePowerUpforTime((int)collision.gameObject.GetComponent<PickUpBehaviourScript>().thisPickUpType, 5f));
             Destroy(collision.gameObject);
         }
     }
