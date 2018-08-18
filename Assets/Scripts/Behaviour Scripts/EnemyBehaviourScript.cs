@@ -7,8 +7,6 @@ public class EnemyBehaviourScript : MonoBehaviour {
     public GameObject EnemyTurretGameObject;
     public GameObject ObjectHolderGo;
     //public GameObject GameControllerGo;
-    public GameObject CoinDrop;
-    public GameObject PowerUpDrop;
     private GameObject EnemyHealthBarRed;
     private GameObject EnemyHealthBarGreen;
     private Animator animator;
@@ -26,6 +24,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
         RightToLeftShoot5, RightGoMiddleUpShoot3, MovingLeftTurn180Shoot4, DownDeaccAcc, DownDeaccShoot1Acc, DownStrave_RightFirst_, DownStraveSmall_RightFirst_, GoToBottomShoot6
     }
     public AnimationTypes currendAnimation;
+
     [SerializeField]
     private  float AnimationStartDelay = 0f;
     //private float AnimationStartDelayTimeStamp;
@@ -44,10 +43,11 @@ public class EnemyBehaviourScript : MonoBehaviour {
     public float MaxHealth = 100f;
     public float Health = 100f;
     public float CollisionDamage = 50f;
-    public bool CanDropPowerUp;
 
-    //public Vector3 direction = new Vector3(1, 0);
-    //private float movementspeed = 0.1f;
+    /*--------------------DropStuff--------------------*/
+    public float ValueOfCreditDrop = 1f;
+    public bool CanDropPowerUp;
+    public float PowerUpDropChangse = 0.2f;
 
     //PowerUp Variables
     public static bool noCollisionDamage = false;
@@ -230,13 +230,20 @@ public class EnemyBehaviourScript : MonoBehaviour {
     }
 
     void DropStuff() {
+        //Drop Credits
+        Instantiate(ObjectHolder._Credits[ObjectHolder.GetCreditValueIndex(ValueOfCreditDrop)], transform.position, Quaternion.Euler(0, 0, Random.Range(1, 360)));
+        Instantiate(ObjectHolder._Credits[ObjectHolder.GetCreditValueIndex(ValueOfCreditDrop)], transform.position, Quaternion.Euler(0, 0, Random.Range(1, 360)));
+        Instantiate(ObjectHolder._Credits[ObjectHolder.GetCreditValueIndex(ValueOfCreditDrop)], transform.position, Quaternion.Euler(0, 0, Random.Range(1, 360)));
 
+        //Drop PowerUp
+        if (CanDropPowerUp == true) {
+            if (Random.Range(0f, 1f) <= PowerUpDropChangse) {
 
-        if (CanDropPowerUp) {
+                Debug.Log("Drop PowerUp");
 
-            Instantiate(CoinDrop, transform.position, Quaternion.Euler(0, 0, Random.Range(1, 360)));
-            Instantiate(CoinDrop, transform.position, Quaternion.Euler(0, 0, Random.Range(1, 360)));
-            Instantiate(CoinDrop, transform.position, Quaternion.Euler(0, 0, Random.Range(1, 360)));
+                PickUpBehaviourScript.PickUpTypes RandomPickUp = (PickUpBehaviourScript.PickUpTypes)Random.Range(0, ObjectHolder._PowerUps.Length);
+                Instantiate(ObjectHolder._PowerUps[ObjectHolder.GetPowerUpIndex(RandomPickUp)], transform.position, Quaternion.identity);
+            }
         }
     }
 }

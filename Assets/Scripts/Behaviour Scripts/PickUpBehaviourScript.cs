@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PickUpBehaviourScript : MonoBehaviour {
 
-    public int CreditValue = 1;
+    public float CreditValue = 1;
 
     /*--Use this if you want to get specific values from other Scripts--*/
     //public int IndexOfCreditValue = 1;
@@ -51,11 +51,15 @@ public class PickUpBehaviourScript : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
+        //Please put this stuff in the player script since it already handles the PowerUp Controll
         if (collision.CompareTag("Player")) {
             if (thisPickUpType == PickUpTypes.Credit) {
                 GameControllerScript.currendCredits += CreditValue;//CreditValues[IndexOfCreditValue];
                 //Destroy(this.gameObject);
             }
+        }
+        if (collision.gameObject.CompareTag("Enemy Limiter")) {
+            Destroy(this.gameObject);
         }
     }
 

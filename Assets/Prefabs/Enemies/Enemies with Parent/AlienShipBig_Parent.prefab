@@ -474,7 +474,7 @@ MonoBehaviour:
   MaxHealth: 300
   Health: 300
   CollisionDamage: 75
-  CanDropPowerUp: 0
+  CanDropPowerUp: 1
 --- !u!212 &212350949378886100
 SpriteRenderer:
   m_ObjectHideFlags: 1

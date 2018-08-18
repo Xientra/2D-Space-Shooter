@@ -29,7 +29,7 @@ GameObject:
   m_Layer: 0
   m_Name: Credit_1000
   m_TagString: PickUp
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c8ac7ba737d6d84093531aba10d591f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CreditValue: 1
+  CreditValue: 1000
   thisPickUpType: 0
   speed: {x: 0, y: 0, z: 0}
   startspeed: 5

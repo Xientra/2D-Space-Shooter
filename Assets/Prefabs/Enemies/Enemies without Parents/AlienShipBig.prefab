@@ -440,12 +440,12 @@ MonoBehaviour:
   currendAnimation: 8
   AnimationStartDelay: 1
   LimiterDestructionDelayAfterStart: 1
-  hasHealthBar: 1
   hasTurret: 0
   canShoot: 0
   MaxHealth: 300
   Health: 300
   CollisionDamage: 75
+  CanDropPowerUp: 1
 --- !u!212 &212543458080797296
 SpriteRenderer:
   m_ObjectHideFlags: 1

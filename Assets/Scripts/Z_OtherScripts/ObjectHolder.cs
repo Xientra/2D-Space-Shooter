@@ -5,13 +5,17 @@ using UnityEngine;
 public class ObjectHolder : MonoBehaviour {
 
     public GameObject[] Bullets;
-    static GameObject[] _Bullets;
+    public static GameObject[] _Bullets;
 
     public GameObject[] EnemyBullets;
-    static GameObject[] _EnemyBullets;
+    public static GameObject[] _EnemyBullets;
 
     public GameObject[] PowerUps;
-    static GameObject[] _PowerUps;
+    public static GameObject[] _PowerUps;
+
+    public GameObject[] Credits;
+    public static GameObject[] _Credits;
+
 
     public GameObject[] PlayerShips;
     public static GameObject[] _PlayerShips;
@@ -26,7 +30,7 @@ public class ObjectHolder : MonoBehaviour {
     public EffectNames effectName;
 
     void Start() {
-        Debug.Log("Assinged all Static Object Arrays");
+        
         _Bullets = new GameObject[Bullets.Length];
         _Bullets = Bullets;
 
@@ -35,6 +39,9 @@ public class ObjectHolder : MonoBehaviour {
 
         _PowerUps = new GameObject[PowerUps.Length];
         _PowerUps = PowerUps;
+
+        _Credits = new GameObject[Credits.Length];
+        _Credits = Credits;
 
         _PlayerShips = new GameObject[PlayerShips.Length];
         _PlayerShips = PlayerShips;
@@ -45,6 +52,7 @@ public class ObjectHolder : MonoBehaviour {
 
         //_Effects = new GameObject[Effects.Length];
         //_Effects = Effects;
+        Debug.Log("Assinged all Static Object Arrays");
     }
     /*
     void Update() {
@@ -90,6 +98,20 @@ public class ObjectHolder : MonoBehaviour {
             i++;
         }
         Debug.LogError("Could not find: " + _PowerUpType);
+        return -1;
+    }
+
+    public static int GetCreditValueIndex(float _CreditValue) {
+        int i = 0;
+        foreach (GameObject go in _Credits) {
+            if (go != null) {
+                if (go.GetComponentInChildren<PickUpBehaviourScript>().CreditValue == _CreditValue) {
+                    return i;
+                }
+            }
+            i++;
+        }
+        Debug.LogError("Could not a Credit with the Value " + _CreditValue.ToString());
         return -1;
     }
 
