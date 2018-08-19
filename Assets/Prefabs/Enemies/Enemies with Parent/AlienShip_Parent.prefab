@@ -127,7 +127,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1555032546699202}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4494787094793480}
@@ -302,19 +302,19 @@ MonoBehaviour:
   EnemyTurretGameObject: {fileID: 0}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
-  CoinDrop: {fileID: 1039937174086562, guid: 30cde78446690204d886c9c31a77d9e5, type: 2}
-  PowerUpDrop: {fileID: 0}
   currendEnemyType: 0
   EnemyWeapon: 0
   currendAnimation: 1
   AnimationStartDelay: 1
-  hasHealthBar: 1
-  hasAnimation: 1
+  LimiterDestructionDelayAfterStart: 1
   hasTurret: 0
   canShoot: 0
   MaxHealth: 100
   Health: 100
   CollisionDamage: 50
+  ValueOfCreditDrop: 1
+  CanDropPowerUp: 0
+  PowerUpDropChangse: 0.2
 --- !u!212 &212498115965587726
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -32,11 +32,14 @@ public class LaserBulletData : MonoBehaviour {
     [SerializeField]
     private float duration = 1f;
     //[SerializeField]
-    private float DelayDestructionTime = 0.25f; //this should be at least as long as the camera is shaken on hit (0.2f)
+    private float DelayDestructionTime = 0.5f; //this should be at least as long as the camera is shaken on hit (0.2f)
     //private float cooldown = 0.5f;
     //private enum SpecialEffects { none };
     //[SerializeField]
     //private SpecialEffects SpecialEffect = SpecialEffects.none;
+
+    private bool SelfDestructionActive = false;
+
 
     private float damageDelay = 0.1f; //this is kinda important for the damage of Lasers-------------------------------------------------------------------
     private float damageDelayTimeStamp;
@@ -74,7 +77,9 @@ public class LaserBulletData : MonoBehaviour {
 
     IEnumerator destroyAfterTime() {
         yield return new WaitForSeconds(duration);
-        Destroy(this.gameObject);
+        if (SelfDestructionActive != true) {
+            Destroy(this.gameObject);
+        }
         //InitiliseSelfDestruction();
     }
 
@@ -125,6 +130,7 @@ public class LaserBulletData : MonoBehaviour {
     }
 
     void InitiliseSelfDestruction() {
+        SelfDestructionActive = true;
         //Instantiate explosion is needed
         if (bulletType == BulletTypes.Rocket) {
             Instantiate(explosion, transform.position, transform.rotation);
@@ -172,9 +178,11 @@ public class LaserBulletData : MonoBehaviour {
         foreach (SpriteRenderer SR in GetComponentsInChildren<SpriteRenderer>()) {
             SR.enabled = false;
         }
-        
+
+        //Unparent to TrailRendererGo
         foreach (TrailRenderer TR in GetComponentsInChildren<TrailRenderer>()) {
-            TR.enabled = false;
+            TR.time = TR.time / 2;
+            TR.transform.SetParent(null, true);
         }
         
     }

@@ -22,11 +22,27 @@ GameObject:
   - component: {fileID: 212025850869710310}
   - component: {fileID: 61098150501483476}
   - component: {fileID: 50856965564143690}
-  - component: {fileID: 96592946866409526}
   - component: {fileID: 114807470388895322}
   m_Layer: 9
   m_Name: StandartBullet_lvl_1
   m_TagString: Projectile
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1756278340983872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4892798112063094}
+  - component: {fileID: 96911060025983384}
+  - component: {fileID: 114405681913781650}
+  m_Layer: 9
+  m_Name: TrailRendererGo
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,10 +56,24 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.30000025, y: 0.30000025, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4892798112063094}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!4 &4892798112063094
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1756278340983872}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4855422587783030}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50856965564143690
 Rigidbody2D:
   serializedVersion: 4
@@ -89,13 +119,13 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
---- !u!96 &96592946866409526
+--- !u!96 &96911060025983384
 TrailRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1378388662431746}
+  m_GameObject: {fileID: 1756278340983872}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -124,8 +154,8 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Time: 0.5
+  m_SortingOrder: -1
+  m_Time: 0.25
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.1
@@ -190,6 +220,18 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &114405681913781650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1756278340983872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0824cf87ac336e542adc5fb69e56be00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 2.5
 --- !u!114 &114807470388895322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -204,10 +246,11 @@ MonoBehaviour:
   explosion: {fileID: 0}
   bulletType: 0
   direction: {x: 1, y: 0, z: 0}
+  isEnemyBullet: 0
   HelixBulletChild_RotationSpeed: 10
   speed: 50
-  duration: 1
   damage: 20
+  duration: 1
 --- !u!212 &212025850869710310
 SpriteRenderer:
   m_ObjectHideFlags: 1
