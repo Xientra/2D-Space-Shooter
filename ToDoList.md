@@ -2,7 +2,6 @@
 
 # ToDoList:
 
--ShakeCamera does not work on Bullets cus the bullets die while shaking the camera
+-The Trail Renderer Should not just disappear. Internet Solution: https://answers.unity.com/questions/501753/trail-renderer-stop-rendering-new-trail.html
 -regeneration is not framerate indipendent
 -make the PowerUps feel/look heavier
--put the adding of credits out of the PickUpScript in the Playerscript

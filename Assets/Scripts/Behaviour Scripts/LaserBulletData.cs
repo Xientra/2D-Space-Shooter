@@ -13,7 +13,7 @@ public class LaserBulletData : MonoBehaviour {
     }
     public BulletTypes bulletType = BulletTypes.Standart;
 
-    public Vector3 direction = new Vector3(1, 0);
+    public Vector3 direction = new Vector3(1, 0, 0);
 
     private LineRenderer lineRenderer;
 
@@ -28,14 +28,16 @@ public class LaserBulletData : MonoBehaviour {
     [SerializeField]
     private float speed = 1f;
     [SerializeField]
-    private float duration = 1f;
-    //private float cooldown = 0.5f;
-    [SerializeField]
     public float damage = 10f;
+    [SerializeField]
+    private float duration = 1f;
+    //[SerializeField]
+    private float DelayDestructionTime = 0.25f; //this should be at least as long as the camera is shaken on hit (0.2f)
+    //private float cooldown = 0.5f;
     //private enum SpecialEffects { none };
     //[SerializeField]
     //private SpecialEffects SpecialEffect = SpecialEffects.none;
-    
+
     private float damageDelay = 0.1f; //this is kinda important for the damage of Lasers-------------------------------------------------------------------
     private float damageDelayTimeStamp;
     
@@ -72,7 +74,8 @@ public class LaserBulletData : MonoBehaviour {
 
     IEnumerator destroyAfterTime() {
         yield return new WaitForSeconds(duration);
-        InitiliseSelfDestruction();
+        Destroy(this.gameObject);
+        //InitiliseSelfDestruction();
     }
 
     void FixedUpdate() {
@@ -99,9 +102,12 @@ public class LaserBulletData : MonoBehaviour {
                 }
             }
         }
+        if (collision.gameObject.layer == 8/*Static*/) {
+            InitiliseSelfDestruction();
+        }
     }
 
-    private void OnTriggerStay2D(Collider2D collision) { //dude this is not framerate indipendend or is it?
+    private void OnTriggerStay2D(Collider2D collision) { //this is should be framerate indipendend
         if (isEnemyBullet != true) {
             if (isLaser == true) {
                 if (collision.gameObject.layer == 10) {
@@ -115,21 +121,62 @@ public class LaserBulletData : MonoBehaviour {
         else { }
     }
 
-
     private void OnDestroy() {
-        if (bulletType == BulletTypes.Rocket) {
-            Instantiate(explosion, transform.position, transform.rotation);
-        }
-        if (bulletType == BulletTypes.Grenade) {
-            Instantiate(explosion, transform.position, transform.rotation);
-        }
-        if (bulletType == BulletTypes.Shrapnel) {
-            Instantiate(explosion, transform.position, transform.rotation);
-        }
     }
 
     void InitiliseSelfDestruction() {
+        //Instantiate explosion is needed
+        if (bulletType == BulletTypes.Rocket) {
+            Instantiate(explosion, transform.position, transform.rotation);
+            Destroy(this.gameObject);
+        }
+        else
+        if (bulletType == BulletTypes.Grenade) {
+            Instantiate(explosion, transform.position, transform.rotation);
+            Destroy(this.gameObject);
+        }
+        else
+        if (bulletType == BulletTypes.Shrapnel) {
+            Instantiate(explosion, transform.position, transform.rotation);
+            Destroy(this.gameObject);
+        }
+        else {
+            //deactivate Collider
+            if (GetComponent<CircleCollider2D>() != null) {
+                GetComponent<CircleCollider2D>().enabled = false;
+            }
+            if (GetComponent<BoxCollider2D>() != null) {
+                GetComponent<BoxCollider2D>().enabled = false;
+            }
+            if (GetComponent<CapsuleCollider2D>() != null) {
+                GetComponent<CapsuleCollider2D>().enabled = false;
+            }
+
+            StartCoroutine(DoStuffAfterOneFrame());
+
+            speed = speed / 10f;
+            Instantiate(ObjectHolder._Effects[ObjectHolder.GetEffectIndex(EffectBehaviourScript.EffectTypes.BulletDestruction)], transform);
+
+            StartCoroutine(DelayDestruction());
+        }
+    }
+
+    IEnumerator DelayDestruction() {
+        yield return new WaitForSeconds(DelayDestructionTime);
         Destroy(this.gameObject);
+    }
+
+    IEnumerator DoStuffAfterOneFrame() {
+        yield return 0;
+
+        foreach (SpriteRenderer SR in GetComponentsInChildren<SpriteRenderer>()) {
+            SR.enabled = false;
+        }
+        
+        foreach (TrailRenderer TR in GetComponentsInChildren<TrailRenderer>()) {
+            TR.enabled = false;
+        }
+        
     }
 
     void startSplitLaser(float lengthOfParent) {

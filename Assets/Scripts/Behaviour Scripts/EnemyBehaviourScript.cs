@@ -46,6 +46,8 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
     /*--------------------DropStuff--------------------*/
     public float ValueOfCreditDrop = 1f;
+    int maxCoinDrop = 3;
+    int minCoinDrop = 2;
     public bool CanDropPowerUp;
     public float PowerUpDropChangse = 0.2f;
 
@@ -231,9 +233,10 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
     void DropStuff() {
         //Drop Credits
-        Instantiate(ObjectHolder._Credits[ObjectHolder.GetCreditValueIndex(ValueOfCreditDrop)], transform.position, Quaternion.Euler(0, 0, Random.Range(1, 360)));
-        Instantiate(ObjectHolder._Credits[ObjectHolder.GetCreditValueIndex(ValueOfCreditDrop)], transform.position, Quaternion.Euler(0, 0, Random.Range(1, 360)));
-        Instantiate(ObjectHolder._Credits[ObjectHolder.GetCreditValueIndex(ValueOfCreditDrop)], transform.position, Quaternion.Euler(0, 0, Random.Range(1, 360)));
+        int CoinDropAmount = Random.Range(minCoinDrop, maxCoinDrop + 1);
+        for (int i = 1; i <= CoinDropAmount; i++) {
+            Instantiate(ObjectHolder._Credits[ObjectHolder.GetCreditValueIndex(ValueOfCreditDrop)], transform.position, Quaternion.Euler(0, 0, Random.Range(1, 360)));
+        }
 
         //Drop PowerUp
         if (CanDropPowerUp == true) {
@@ -241,7 +244,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
                 Debug.Log("Drop PowerUp");
 
-                PickUpBehaviourScript.PickUpTypes RandomPickUp = (PickUpBehaviourScript.PickUpTypes)Random.Range(0, ObjectHolder._PowerUps.Length);
+                PickUpBehaviourScript.PickUpTypes RandomPickUp = (PickUpBehaviourScript.PickUpTypes)Random.Range(1/*cus 0 is credit*/, ObjectHolder._PowerUps.Length);
                 Instantiate(ObjectHolder._PowerUps[ObjectHolder.GetPowerUpIndex(RandomPickUp)], transform.position, Quaternion.identity);
             }
         }

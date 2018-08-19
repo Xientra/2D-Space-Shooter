@@ -123,7 +123,8 @@ public class PlayerControllerScript : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("PickUp")) {
             if (collision.GetComponent<PickUpBehaviourScript>().thisPickUpType == PickUpBehaviourScript.PickUpTypes.Credit) {
-                
+                GameControllerScript.currendCredits += collision.GetComponent<PickUpBehaviourScript>().CreditValue;
+                Destroy(collision.gameObject);
             }
             else if(collision.GetComponent<PickUpBehaviourScript>().thisPickUpType == PickUpBehaviourScript.PickUpTypes.HealthUp) {
                 currendHealth += MaxHealth * 0.2f;
@@ -525,7 +526,7 @@ public class PlayerControllerScript : MonoBehaviour {
                     }
                     if (loadTimeStamp <= Time.time) {
                         if (isReady == true) {
-                            Instantiate(ObjectHolderGo.GetComponent<ObjectHolder>().Effects[ObjectHolderGo.GetComponent<ObjectHolder>().GetEffectIndex(ObjectHolder.EffectNames.LaserLoaded)], transform.position, transform.rotation, transform);
+                            Instantiate(ObjectHolder._Effects[ObjectHolder.GetEffectIndex(EffectBehaviourScript.EffectTypes.LaserLoaded)], transform.position, transform.rotation, transform);
                             isReady = false;
                         }
                     }
@@ -581,7 +582,7 @@ public class PlayerControllerScript : MonoBehaviour {
             }
             if (loadTimeStamp <= Time.time) {
                 if (isReady == true) {
-                    Instantiate(ObjectHolderGo.GetComponent<ObjectHolder>().Effects[ObjectHolderGo.GetComponent<ObjectHolder>().GetEffectIndex(ObjectHolder.EffectNames.LaserLoaded)], transform.position, transform.rotation, transform);
+                    Instantiate(ObjectHolder._Effects[ObjectHolder.GetEffectIndex(EffectBehaviourScript.EffectTypes.LaserLoaded)], transform.position, transform.rotation, transform);
                     isReady = false;
                 }
             }

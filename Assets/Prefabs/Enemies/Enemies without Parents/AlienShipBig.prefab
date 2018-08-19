@@ -433,8 +433,6 @@ MonoBehaviour:
   EnemyTurretGameObject: {fileID: 0}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
-  CoinDrop: {fileID: 1284273132605000, guid: e58ef481bc06b9842a4898ec7d6013be, type: 2}
-  PowerUpDrop: {fileID: 0}
   currendEnemyType: 2
   EnemyWeapon: 2
   currendAnimation: 8
@@ -445,7 +443,9 @@ MonoBehaviour:
   MaxHealth: 300
   Health: 300
   CollisionDamage: 75
+  ValueOfCreditDrop: 10
   CanDropPowerUp: 1
+  PowerUpDropChangse: 0.2
 --- !u!212 &212543458080797296
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EffectBehaviourScript : MonoBehaviour {
 
-    public enum EffectType { LaserLoaded }
-    public EffectType effectType;
+    public enum EffectTypes { LaserLoaded, BulletDestruction }
+    public EffectTypes effectType;
 
     private float TimeStamp;
     public float TimeToWait = 0.1f;

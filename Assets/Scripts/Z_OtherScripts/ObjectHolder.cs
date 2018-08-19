@@ -25,9 +25,7 @@ public class ObjectHolder : MonoBehaviour {
 
 
     public GameObject[] Effects;
-    //static GameObject[] _Effects;
-    public enum EffectNames { LaserLoaded }
-    public EffectNames effectName;
+    public static GameObject[] _Effects;
 
     void Start() {
         
@@ -50,8 +48,8 @@ public class ObjectHolder : MonoBehaviour {
         _TurretSprites = TurretSprites;
 
 
-        //_Effects = new GameObject[Effects.Length];
-        //_Effects = Effects;
+        _Effects = new GameObject[Effects.Length];
+        _Effects = Effects;
         Debug.Log("Assinged all Static Object Arrays");
     }
     /*
@@ -129,11 +127,11 @@ public class ObjectHolder : MonoBehaviour {
         return -1;
     }
 
-    public int GetEffectIndex(EffectNames _effectType) {
+    public static int GetEffectIndex(EffectBehaviourScript.EffectTypes _effectType) {
         int i = 0;
-        foreach (GameObject go in Effects) {
+        foreach (GameObject go in _Effects) {
             if (go != null) {
-                if (effectName == _effectType) {
+                if (go.GetComponentInChildren<EffectBehaviourScript>().effectType == _effectType) {
                     return i;
                 }
             }

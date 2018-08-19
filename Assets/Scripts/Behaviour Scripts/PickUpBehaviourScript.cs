@@ -51,13 +51,14 @@ public class PickUpBehaviourScript : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        //Please put this stuff in the player script since it already handles the PowerUp Controll
+        /*
         if (collision.CompareTag("Player")) {
             if (thisPickUpType == PickUpTypes.Credit) {
                 GameControllerScript.currendCredits += CreditValue;//CreditValues[IndexOfCreditValue];
                 //Destroy(this.gameObject);
             }
         }
+        */
         if (collision.gameObject.CompareTag("Enemy Limiter")) {
             Destroy(this.gameObject);
         }
