@@ -78,7 +78,7 @@ public class LaserBulletData : MonoBehaviour {
     IEnumerator destroyAfterTime() {
         yield return new WaitForSeconds(duration);
         if (SelfDestructionActive != true) {
-            Destroy(this.gameObject);
+            InitiliseSelfDestruction();
         }
         //InitiliseSelfDestruction();
     }

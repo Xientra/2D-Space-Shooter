@@ -2,6 +2,6 @@
 
 # ToDoList:
 
--The Trail renderer on most of the bullets has to be fixed
 -regeneration is not framerate indipendent
 -make the PowerUps feel/look heavier
+-Stuff thats spawns on destruction has to be orgenized and generelized (maby make it serilizable)
