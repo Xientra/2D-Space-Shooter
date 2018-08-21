@@ -13,9 +13,10 @@ public class PlayerControllerScript : MonoBehaviour {
 
     private Vector3 ProjectileSpawnPoint;
 
-    public Weapons currentWeapon = Weapons.Sniper;
-    public static Weapons primaryWeapon = Weapons.Standart_lvl_1;
-    public static Weapons secondaryWeapon = Weapons.LaserGun;
+
+    public Weapons primaryWeapon = Weapons.Standart_lvl_1;
+    public Weapons secondaryWeapon = Weapons.LaserGun;
+    public Weapons currentWeapon = Weapons.Standart_lvl_1;
 
     /*Movement Vars*/
     [SerializeField]
@@ -44,8 +45,9 @@ public class PlayerControllerScript : MonoBehaviour {
 
     /*----------Weapon Stats----------*/
     public enum Weapons {
-        Standart_lvl_1, Standart_lvl_2, Standart_lvl_3, Helix_lvl_1, Helix_lvl_2, Helix_lvl_3, WaveEmitter_lvl_1, RocketLauncher_lvl_1, GrenadeLauncher_lvl_1, ShrapnelLauncher_lvl_1, ChainGun_lvl_1, ChainGun_lvl_2, ChainGun_lvl_3, Spread, Sniper,
-        LaserGun, SplitLaserGun
+        Standart_lvl_1, Standart_lvl_2, Standart_lvl_3, Helix_lvl_1, Helix_lvl_2, Helix_lvl_3, ChainGun_lvl_1, ChainGun_lvl_2, ChainGun_lvl_3, WaveEmitter_lvl_1,
+        RocketLauncher_lvl_1, GrenadeLauncher_lvl_1, ShrapnelLauncher_lvl_1, ShrapnelLauncher_lvl_2, ShrapnelLauncher_lvl_3, 
+        Spread, LaserGun, SplitLaserGun
     }
 
     private float cooldown = 0.2f;
@@ -438,15 +440,6 @@ public class PlayerControllerScript : MonoBehaviour {
                     }
                 }
                 break;
-            case (Weapons.Sniper):
-                if (Input.GetButton("Fire1")) {
-                    cooldown = 1f * fireRateMultiplyer;
-                    if (cooldownTimeStamp <= Time.time) {
-                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.SniperBullet)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
-                        cooldownTimeStamp = Time.time + cooldown;
-                    }
-                }
-                break;
             case (Weapons.WaveEmitter_lvl_1):
                 if (Input.GetButton("Fire1")) {
                     cooldown = 0.3f * fireRateMultiplyer;
@@ -478,7 +471,25 @@ public class PlayerControllerScript : MonoBehaviour {
                 if (Input.GetButton("Fire1")) {
                     cooldown = 0.8f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
-                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Shrapnel)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Shrapnel_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                        cooldownTimeStamp = Time.time + cooldown;
+                    }
+                }
+                break;
+            case (Weapons.ShrapnelLauncher_lvl_2):
+                if (Input.GetButton("Fire1")) {
+                    cooldown = 0.9f * fireRateMultiplyer;
+                    if (cooldownTimeStamp <= Time.time) {
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Shrapnel_lvl_2)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                        cooldownTimeStamp = Time.time + cooldown;
+                    }
+                }
+                break;
+            case (Weapons.ShrapnelLauncher_lvl_3):
+                if (Input.GetButton("Fire1")) {
+                    cooldown = 1f * fireRateMultiplyer;
+                    if (cooldownTimeStamp <= Time.time) {
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Shrapnel_lvl_3)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
                     }
                 }

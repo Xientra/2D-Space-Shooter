@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TrailRendererGoBehaviourScript : MonoBehaviour {
 
-    [SerializeField]
-    private float duration = 2.5f;
+    //[SerializeField]
+    private float duration = 1f;
 
 	void Start () {
 		

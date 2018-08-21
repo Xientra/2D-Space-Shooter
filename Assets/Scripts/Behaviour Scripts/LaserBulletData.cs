@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class LaserBulletData : MonoBehaviour {
 
-    public GameObject explosion;
+    public GameObject createOnDeath;
 
     public enum BulletTypes {
-        Standart, HelixBullet_lvl_1, HelixBullet_lvl_2, HelixBullet_lvl_3, HelixBulletChild, Wave, SniperBullet, Rocket, Grenade, Shrapnel, ChainGunBullet, ExplosionSmall,
+        Standart, HelixBullet_lvl_1, HelixBullet_lvl_2, HelixBullet_lvl_3, HelixBulletChild, Wave, ChainGunBullet,
+        Rocket, Grenade, Shrapnel_lvl_1, Shrapnel_lvl_2, Shrapnel_lvl_3, ShrapnelBullet, Explosion,
         SimpleLaser, SplitLaser, SplitLaserChild, 
         Enemy_SimpleBullet, Enemy_SlowAlienBullet
     }
@@ -31,7 +32,7 @@ public class LaserBulletData : MonoBehaviour {
     public float damage = 10f;
     [SerializeField]
     private float duration = 1f;
-    //[SerializeField]
+    [SerializeField]
     private float DelayDestructionTime = 0.5f; //this should be at least as long as the camera is shaken on hit (0.2f)
     //private float cooldown = 0.5f;
     //private enum SpecialEffects { none };
@@ -92,7 +93,7 @@ public class LaserBulletData : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision) {
         if (isEnemyBullet != true) {
             if (isLaser == false) {
-                if (collision.gameObject.layer == 10) {
+                if (collision.gameObject.layer == 10/*Enemy*/) {
                     collision.gameObject.GetComponent<EnemyBehaviourScript>().Health -= damage * damageMultiplyer;
                     InitiliseSelfDestruction();
                 }
@@ -131,19 +132,11 @@ public class LaserBulletData : MonoBehaviour {
 
     void InitiliseSelfDestruction() {
         SelfDestructionActive = true;
-        //Instantiate explosion is needed
-        if (bulletType == BulletTypes.Rocket) {
-            Instantiate(explosion, transform.position, transform.rotation);
-            Destroy(this.gameObject);
+        if (bulletType == BulletTypes.Explosion) {
+            StartCoroutine(DelayDestruction());
         }
-        else
-        if (bulletType == BulletTypes.Grenade) {
-            Instantiate(explosion, transform.position, transform.rotation);
-            Destroy(this.gameObject);
-        }
-        else
-        if (bulletType == BulletTypes.Shrapnel) {
-            Instantiate(explosion, transform.position, transform.rotation);
+        else if (bulletType == BulletTypes.Rocket || bulletType == BulletTypes.Grenade || bulletType == BulletTypes.Shrapnel_lvl_1 || bulletType == BulletTypes.Shrapnel_lvl_2 || bulletType == BulletTypes.Shrapnel_lvl_3) {
+            Instantiate(createOnDeath, transform.position, transform.rotation);
             Destroy(this.gameObject);
         }
         else {
