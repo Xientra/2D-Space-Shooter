@@ -244,12 +244,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createOnDeath: {fileID: 0}
   bulletType: 6
-  direction: {x: 1, y: 0, z: 0}
+  direction: {x: 0, y: 1, z: 0}
   isEnemyBullet: 0
   HelixBulletChild_RotationSpeed: 10
   speed: 45
   damage: 5
   duration: 0.75
+  DelayDestructionTime: 0.5
 --- !u!212 &212480431836990796
 SpriteRenderer:
   m_ObjectHideFlags: 1

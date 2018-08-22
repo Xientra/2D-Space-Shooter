@@ -79,7 +79,7 @@ public class PlayerControllerScript : MonoBehaviour {
     void Update() {
 
         if (GameControllerScript.UsingGamepad == false) {
-            TurretGameObject.transform.right = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0) - transform.position;
+            TurretGameObject.transform.up = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0) - transform.position;
         }
         else {
             Vector2 ShootDirection = new Vector2(Input.GetAxis("HorizontalRight"), Input.GetAxis("VerticalRight"));
@@ -101,7 +101,7 @@ public class PlayerControllerScript : MonoBehaviour {
         }
 
         ProjectileSpawnPoint = TurretGameObject.transform.position;
-        ProjectileSpawnPoint = TurretGameObject.transform.position + (TurretGameObject.transform.right * (transform.localScale.y / 5f));
+        ProjectileSpawnPoint = TurretGameObject.transform.position + (TurretGameObject.transform.up * (transform.localScale.y / 5f));
 
         if (currendHealth <= 0) Destroy(this.gameObject);
         if (currendHealth > MaxHealth) currendHealth = MaxHealth;

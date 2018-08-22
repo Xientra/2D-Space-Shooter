@@ -1071,7 +1071,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0824cf87ac336e542adc5fb69e56be00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2.5
 --- !u!114 &114349582237851362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1083,14 +1082,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c627ba8c3e5ae4f812c0539972bdb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 0}
+  createOnDeath: {fileID: 0}
   bulletType: 2
-  direction: {x: 1, y: 0, z: 0}
+  direction: {x: 0, y: 1, z: 0}
   isEnemyBullet: 0
   HelixBulletChild_RotationSpeed: 20
   speed: 15
   damage: 30
   duration: 2
+  DelayDestructionTime: 0.5
 --- !u!114 &114472308433170648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1102,7 +1102,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0824cf87ac336e542adc5fb69e56be00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2.5
 --- !u!114 &114482770165548216
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1114,7 +1113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c627ba8c3e5ae4f812c0539972bdb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 0}
+  createOnDeath: {fileID: 0}
   bulletType: 4
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
@@ -1122,6 +1121,7 @@ MonoBehaviour:
   speed: 0
   damage: 20
   duration: 2
+  DelayDestructionTime: 0.5
 --- !u!114 &114488493387899818
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1133,7 +1133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0824cf87ac336e542adc5fb69e56be00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2.5
 --- !u!114 &114492388229844172
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1145,7 +1144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0824cf87ac336e542adc5fb69e56be00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2.5
 --- !u!114 &114495078140917550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1157,7 +1155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c627ba8c3e5ae4f812c0539972bdb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 0}
+  createOnDeath: {fileID: 0}
   bulletType: 4
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
@@ -1165,6 +1163,7 @@ MonoBehaviour:
   speed: 0
   damage: 20
   duration: 2
+  DelayDestructionTime: 0.5
 --- !u!114 &114624013337109736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1176,7 +1175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0824cf87ac336e542adc5fb69e56be00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2.5
 --- !u!114 &114781428913218042
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1188,7 +1186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c627ba8c3e5ae4f812c0539972bdb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 0}
+  createOnDeath: {fileID: 0}
   bulletType: 4
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
@@ -1196,6 +1194,7 @@ MonoBehaviour:
   speed: 0
   damage: 20
   duration: 2
+  DelayDestructionTime: 0.5
 --- !u!114 &114869039825830534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1207,7 +1206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c627ba8c3e5ae4f812c0539972bdb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 0}
+  createOnDeath: {fileID: 0}
   bulletType: 4
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
@@ -1215,6 +1214,7 @@ MonoBehaviour:
   speed: 0
   damage: 20
   duration: 2
+  DelayDestructionTime: 0.5
 --- !u!212 &212063977343472832
 SpriteRenderer:
   m_ObjectHideFlags: 1

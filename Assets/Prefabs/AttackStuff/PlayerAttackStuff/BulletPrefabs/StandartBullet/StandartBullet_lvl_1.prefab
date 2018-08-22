@@ -231,7 +231,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0824cf87ac336e542adc5fb69e56be00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2.5
 --- !u!114 &114807470388895322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -243,14 +242,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c627ba8c3e5ae4f812c0539972bdb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 0}
+  createOnDeath: {fileID: 0}
   bulletType: 0
-  direction: {x: 1, y: 0, z: 0}
+  direction: {x: 0, y: 1, z: 0}
   isEnemyBullet: 0
   HelixBulletChild_RotationSpeed: 10
   speed: 50
   damage: 20
   duration: 1
+  DelayDestructionTime: 0.5
 --- !u!212 &212025850869710310
 SpriteRenderer:
   m_ObjectHideFlags: 1
