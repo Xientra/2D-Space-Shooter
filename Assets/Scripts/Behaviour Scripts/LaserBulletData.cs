@@ -34,6 +34,7 @@ public class LaserBulletData : MonoBehaviour {
     private float duration = 1f;
     [SerializeField]
     private float DelayDestructionTime = 0.5f; //this should be at least as long as the camera is shaken on hit (0.2f)
+    private bool DelayingDestruction = false;
     //private float cooldown = 0.5f;
     //private enum SpecialEffects { none };
     //[SerializeField]
@@ -91,6 +92,7 @@ public class LaserBulletData : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
+        
         if (isEnemyBullet != true) {
             if (isLaser == false) {
                 if (collision.gameObject.layer == 10/*Enemy*/) {
@@ -137,7 +139,6 @@ public class LaserBulletData : MonoBehaviour {
         }
         else if (bulletType == BulletTypes.Rocket || bulletType == BulletTypes.Grenade || bulletType == BulletTypes.Shrapnel_lvl_1 || bulletType == BulletTypes.Shrapnel_lvl_2 || bulletType == BulletTypes.Shrapnel_lvl_3) {
             Instantiate(createOnDeath, transform.position, transform.rotation);
-            Destroy(this.gameObject);
         }
         else {
             //deactivate Collider
@@ -151,31 +152,47 @@ public class LaserBulletData : MonoBehaviour {
                 GetComponent<CapsuleCollider2D>().enabled = false;
             }
 
-            StartCoroutine(DoStuffAfterOneFrame());
-
+            
+            StartCoroutine(DelayDestruction());
             speed = speed / 10f;
             Instantiate(ObjectHolder._Effects[ObjectHolder.GetEffectIndex(EffectBehaviourScript.EffectTypes.BulletDestruction)], transform);
 
-            StartCoroutine(DelayDestruction());
+            
         }
+        StartCoroutine(DoStuffAfterOneFrame());
     }
 
     IEnumerator DelayDestruction() {
+
+        DelayingDestruction = true;
         yield return new WaitForSeconds(DelayDestructionTime);
         Destroy(this.gameObject);
+        DelayingDestruction = false;
     }
 
     IEnumerator DoStuffAfterOneFrame() {
         yield return 0;
 
         foreach (SpriteRenderer SR in GetComponentsInChildren<SpriteRenderer>()) {
-            SR.enabled = false;
+            if (SR.gameObject.GetComponent<LaserBulletData>() != null) {
+                if (SR.gameObject.GetComponent<LaserBulletData>().bulletType != BulletTypes.ShrapnelBullet) { //I don't want it to disable all Shrapnel Child Bullets
+                    SR.enabled = false;
+                }
+            }
         }
 
-        //Unparent to TrailRendererGo
+        //Unparent the TrailRendererGo
         foreach (TrailRenderer TR in GetComponentsInChildren<TrailRenderer>()) {
-            TR.time = TR.time / 2;
-            TR.transform.SetParent(null, true);
+            if (TR.gameObject.GetComponent<LaserBulletData>() != null) {
+                if (TR.gameObject.GetComponent<LaserBulletData>().bulletType != BulletTypes.ShrapnelBullet) { //I don't want it to disable all Shrapnel Child Bullets
+                    TR.time = TR.time / 2;
+                    TR.transform.SetParent(null, true);
+                }
+            }
+        }
+
+        if (DelayingDestruction == false) { 
+            Destroy(this.gameObject);
         }
         
     }
