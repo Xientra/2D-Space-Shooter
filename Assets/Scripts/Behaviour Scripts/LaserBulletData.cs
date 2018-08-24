@@ -8,7 +8,8 @@ public class LaserBulletData : MonoBehaviour {
 
     public enum BulletTypes {
         Standart, HelixBullet_lvl_1, HelixBullet_lvl_2, HelixBullet_lvl_3, HelixBulletChild, Wave, ChainGunBullet,
-        Rocket, Grenade, Shrapnel_lvl_1, Shrapnel_lvl_2, Shrapnel_lvl_3, ShrapnelBullet, Explosion,
+        Rocket, Grenade, Shrapnel_lvl_1, Shrapnel_lvl_2, Shrapnel_lvl_3, ShrapnelBullet,
+        Explosion, ShrapnellExplosion,
         SimpleLaser, SplitLaser, SplitLaserChild, 
         Enemy_SimpleBullet, Enemy_SlowAlienBullet
     }
@@ -71,18 +72,18 @@ public class LaserBulletData : MonoBehaviour {
 
     void Update() {
         StartCoroutine(destroyAfterTime());
-
         if (bulletType == BulletTypes.HelixBulletChild) {
             this.transform.RotateAround(transform.parent.transform.position, Vector3.forward, HelixBulletChild_RotationSpeed);
         }
     }
 
     IEnumerator destroyAfterTime() {
+        
         yield return new WaitForSeconds(duration);
         if (SelfDestructionActive != true) {
+            Debug.Log("SelfDes1");
             InitiliseSelfDestruction();
         }
-        //InitiliseSelfDestruction();
     }
 
     void FixedUpdate() {
@@ -98,6 +99,7 @@ public class LaserBulletData : MonoBehaviour {
                 if (collision.gameObject.layer == 10/*Enemy*/) {
                     collision.gameObject.GetComponent<EnemyBehaviourScript>().Health -= damage * damageMultiplyer;
                     InitiliseSelfDestruction();
+                    //Debug.Log("SelfDes2");
                 }
             }
         }
@@ -107,15 +109,17 @@ public class LaserBulletData : MonoBehaviour {
                     collision.gameObject.GetComponent<PlayerControllerScript>().currendHealth -= damage;
                     StartCoroutine(GameControllerScript.ShakeMainCamera(0.2f, 0.05f));
                     InitiliseSelfDestruction();
+                    //Debug.Log("SelfDes3");
                 }
             }
         }
         if (collision.gameObject.layer == 8/*Static*/) {
             InitiliseSelfDestruction();
+            //Debug.Log("SelfDes4");
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision) { //this is should be framerate indipendend
+    private void OnTriggerStay2D(Collider2D collision) { //this should be framerate indipendend
         if (isEnemyBullet != true) {
             if (isLaser == true) {
                 if (collision.gameObject.layer == 10) {
@@ -154,18 +158,20 @@ public class LaserBulletData : MonoBehaviour {
 
             
             StartCoroutine(DelayDestruction());
+            
             speed = speed / 10f;
             Instantiate(ObjectHolder._Effects[ObjectHolder.GetEffectIndex(EffectBehaviourScript.EffectTypes.BulletDestruction)], transform);
 
             
         }
         StartCoroutine(DoStuffAfterOneFrame());
+        
     }
 
     IEnumerator DelayDestruction() {
-
         DelayingDestruction = true;
         yield return new WaitForSeconds(DelayDestructionTime);
+
         Destroy(this.gameObject);
         DelayingDestruction = false;
     }
@@ -182,11 +188,13 @@ public class LaserBulletData : MonoBehaviour {
         }
 
         //Unparent the TrailRendererGo
-        foreach (TrailRenderer TR in GetComponentsInChildren<TrailRenderer>()) {
-            if (TR.gameObject.GetComponent<LaserBulletData>() != null) {
-                if (TR.gameObject.GetComponent<LaserBulletData>().bulletType != BulletTypes.ShrapnelBullet) { //I don't want it to disable all Shrapnel Child Bullets
+        if (!(bulletType == BulletTypes.ShrapnellExplosion)) {
+            foreach (TrailRenderer TR in GetComponentsInChildren<TrailRenderer>()) {
+
+                if (TR.gameObject.GetComponent<LaserBulletData>() == null) {
                     TR.time = TR.time / 2;
                     TR.transform.SetParent(null, true);
+                    Debug.Log("TR disabled2");
                 }
             }
         }

@@ -1756,7 +1756,7 @@ MonoBehaviour:
   HelixBulletChild_RotationSpeed: 10
   speed: 10
   damage: 20
-  duration: 1
+  duration: 1.5
   DelayDestructionTime: 0.5
 --- !u!114 &114042339642864186
 MonoBehaviour:
@@ -1787,7 +1787,7 @@ MonoBehaviour:
   HelixBulletChild_RotationSpeed: 10
   speed: 10
   damage: 20
-  duration: 1
+  duration: 1.5
   DelayDestructionTime: 0.5
 --- !u!114 &114140426815925722
 MonoBehaviour:
@@ -1807,7 +1807,7 @@ MonoBehaviour:
   HelixBulletChild_RotationSpeed: 10
   speed: 10
   damage: 20
-  duration: 1
+  duration: 1.5
   DelayDestructionTime: 0.5
 --- !u!114 &114196945908895744
 MonoBehaviour:
@@ -1860,7 +1860,7 @@ MonoBehaviour:
   HelixBulletChild_RotationSpeed: 10
   speed: 10
   damage: 20
-  duration: 1
+  duration: 1.5
   DelayDestructionTime: 0.5
 --- !u!114 &114360311265849478
 MonoBehaviour:
@@ -1880,7 +1880,7 @@ MonoBehaviour:
   HelixBulletChild_RotationSpeed: 10
   speed: 10
   damage: 20
-  duration: 1
+  duration: 1.5
   DelayDestructionTime: 0.5
 --- !u!114 &114532263654804010
 MonoBehaviour:
@@ -1894,7 +1894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   createOnDeath: {fileID: 0}
-  bulletType: 13
+  bulletType: 14
   direction: {x: 0, y: 0, z: 0}
   isEnemyBullet: 0
   HelixBulletChild_RotationSpeed: 10
@@ -1931,7 +1931,7 @@ MonoBehaviour:
   HelixBulletChild_RotationSpeed: 10
   speed: 10
   damage: 20
-  duration: 1
+  duration: 1.5
   DelayDestructionTime: 0.5
 --- !u!114 &114711396816006816
 MonoBehaviour:
@@ -1951,7 +1951,7 @@ MonoBehaviour:
   HelixBulletChild_RotationSpeed: 10
   speed: 10
   damage: 20
-  duration: 1
+  duration: 1.5
   DelayDestructionTime: 0.5
 --- !u!114 &114841742182720674
 MonoBehaviour:
@@ -1993,7 +1993,7 @@ MonoBehaviour:
   HelixBulletChild_RotationSpeed: 10
   speed: 10
   damage: 20
-  duration: 1
+  duration: 1.5
   DelayDestructionTime: 0.5
 --- !u!114 &114961713417317408
 MonoBehaviour:
