@@ -23,8 +23,6 @@ public class LaserBulletData : MonoBehaviour {
     [SerializeField]
     private bool isEnemyBullet = false;
 
-    [SerializeField]
-    private float HelixBulletChild_RotationSpeed = 10f;
 
     /*--------------------Stats--------------------*/
     [SerializeField]
@@ -40,6 +38,15 @@ public class LaserBulletData : MonoBehaviour {
     //private enum SpecialEffects { none };
     //[SerializeField]
     //private SpecialEffects SpecialEffect = SpecialEffects.none;
+
+    [SerializeField]
+    private float HelixBulletChild_RotationSpeed = 10f;
+
+    [SerializeField]
+    private float homingStrength = 0f;
+    [SerializeField]
+    private float homingDistance = 10f;
+
 
     private bool SelfDestructionActive = false;
 
@@ -74,6 +81,17 @@ public class LaserBulletData : MonoBehaviour {
         StartCoroutine(destroyAfterTime());
         if (bulletType == BulletTypes.HelixBulletChild) {
             this.transform.RotateAround(transform.parent.transform.position, Vector3.forward, HelixBulletChild_RotationSpeed);
+        }
+
+        if (homingStrength != 0) {
+            if (GetNearestEnemy() != null) {
+                //Vector3 speed = new Vector3();
+                Vector3 PlayerDirection = Vector3.Normalize(GetNearestEnemy().transform.position - transform.position);
+
+                direction += PlayerDirection * homingStrength;
+
+                transform.position += direction * Time.deltaTime;
+            }
         }
     }
 
@@ -214,5 +232,30 @@ public class LaserBulletData : MonoBehaviour {
             //Instantiate(this.transform.gameObject, transform.position + Vector3.Cross(transform.right, new Vector3(0.75f, 0, 0)), goParent.transform.rotation, goParent.transform);
             timesToSplit--;
         }
+    }
+
+    GameObject GetNearestEnemy() { //Returns the nearest Enemy if it is in homing range
+        GameObject returnGo = null;
+        //float returnGODistance;
+
+        GameObject[] GOList = GameObject.FindObjectsOfType<GameObject>();
+        foreach (GameObject GO in GOList) {
+            if (GO.layer == 10 /*Enemy*/) {
+                if (returnGo == null) {
+                    if (Vector3.SqrMagnitude(GO.transform.position - this.transform.position) <= homingDistance) {
+                        returnGo = GO;
+                    }
+                }
+                else {
+                    if (Vector3.SqrMagnitude(GO.transform.position - this.transform.position) <= homingDistance) {
+                        if (Vector3.SqrMagnitude(GO.transform.position - this.transform.position) < Vector3.SqrMagnitude(returnGo.transform.position - this.transform.position)) {
+                            returnGo = GO;
+                        }
+                        
+                    }
+                }
+            }
+        }
+        return returnGo;
     }
 }
