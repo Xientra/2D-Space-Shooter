@@ -45,9 +45,9 @@ public class PlayerControllerScript : MonoBehaviour {
 
     /*----------Weapon Stats----------*/
     public enum Weapons {
-        Standart_lvl_1, Standart_lvl_2, Standart_lvl_3, Helix_lvl_1, Helix_lvl_2, Helix_lvl_3, ChainGun_lvl_1, ChainGun_lvl_2, ChainGun_lvl_3, WaveEmitter_lvl_1,
+        Standart_lvl_1, Standart_lvl_2, Standart_lvl_3, Spread, Homing_lvl_1, Homing_lvl_2, Homing_lvl_3, Helix_lvl_1, Helix_lvl_2, Helix_lvl_3, ChainGun_lvl_1, ChainGun_lvl_2, ChainGun_lvl_3, WaveEmitter_lvl_1,
         RocketLauncher_lvl_1, GrenadeLauncher_lvl_1, ShrapnelLauncher_lvl_1, ShrapnelLauncher_lvl_2, ShrapnelLauncher_lvl_3, 
-        Spread, LaserGun, SplitLaserGun
+        LaserGun, SplitLaserGun
     }
 
     private float cooldown = 0.2f;
@@ -436,6 +436,36 @@ public class PlayerControllerScript : MonoBehaviour {
                         Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, -10));
                         Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, 10));
+                        cooldownTimeStamp = Time.time + cooldown;
+                    }
+                }
+                break;
+            case (Weapons.Homing_lvl_1):
+                if (Input.GetButton("Fire1")) {
+                    cooldown = 0.3f * fireRateMultiplyer;
+                    if (cooldownTimeStamp <= Time.time) {
+                        float BulletRng = 1f;
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.HomingBullet_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, Random.Range(BulletRng, -BulletRng)));
+                        cooldownTimeStamp = Time.time + cooldown;
+                    }
+                }
+                break;
+            case (Weapons.Homing_lvl_2):
+                if (Input.GetButton("Fire1")) {
+                    cooldown = 0.2f * fireRateMultiplyer;
+                    if (cooldownTimeStamp <= Time.time) {
+                        float BulletRng = 6f;
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.HomingBullet_lvl_2)], ProjectileSpawnPoint, TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, Random.Range(BulletRng, -BulletRng)));
+                        cooldownTimeStamp = Time.time + cooldown;
+                    }
+                }
+                break;
+            case (Weapons.Homing_lvl_3):
+                if (Input.GetButton("Fire1")) {
+                    cooldown = 0.1f * fireRateMultiplyer;
+                    if (cooldownTimeStamp <= Time.time) {
+                        float BulletRng = 12f;
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.HomingBullet_lvl_3)], ProjectileSpawnPoint, TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, Random.Range(BulletRng, -BulletRng)));
                         cooldownTimeStamp = Time.time + cooldown;
                     }
                 }

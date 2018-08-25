@@ -8,7 +8,7 @@ public class LaserBulletData : MonoBehaviour {
 
     public enum BulletTypes {
         Standart, HelixBullet_lvl_1, HelixBullet_lvl_2, HelixBullet_lvl_3, HelixBulletChild, Wave, ChainGunBullet,
-        Rocket, Grenade, Shrapnel_lvl_1, Shrapnel_lvl_2, Shrapnel_lvl_3, ShrapnelBullet,
+        Rocket, Grenade, Shrapnel_lvl_1, Shrapnel_lvl_2, Shrapnel_lvl_3, ShrapnelBullet, HomingBullet_lvl_1, HomingBullet_lvl_2, HomingBullet_lvl_3,
         Explosion, ShrapnellExplosion,
         SimpleLaser, SplitLaser, SplitLaserChild, 
         Enemy_SimpleBullet, Enemy_SlowAlienBullet
@@ -68,6 +68,11 @@ public class LaserBulletData : MonoBehaviour {
             damageDelayTimeStamp = Time.time + damageDelay;
         }
 
+        if (bulletType == BulletTypes.HomingBullet_lvl_1 || bulletType == BulletTypes.HomingBullet_lvl_2 || bulletType == BulletTypes.HomingBullet_lvl_3) {
+            direction = transform.rotation * direction;
+            transform.rotation = Quaternion.identity;
+        }
+
         if (bulletType == BulletTypes.Enemy_SimpleBullet || bulletType == BulletTypes.Enemy_SlowAlienBullet) {
             isEnemyBullet = true;
         }
@@ -85,12 +90,14 @@ public class LaserBulletData : MonoBehaviour {
 
         if (homingStrength != 0) {
             if (GetNearestEnemy() != null) {
-                //Vector3 speed = new Vector3();
-                Vector3 PlayerDirection = Vector3.Normalize(GetNearestEnemy().transform.position - transform.position);
+                if (Vector3.SqrMagnitude(GetNearestEnemy().transform.position - this.transform.position) <= homingDistance) {
+                    //Vector3 speed = new Vector3();
+                    Vector3 PlayerDirection = Vector3.Normalize(GetNearestEnemy().transform.position - transform.position);
 
-                direction += PlayerDirection * homingStrength;
+                    direction += PlayerDirection * homingStrength;
 
-                transform.position += direction * Time.deltaTime;
+                    transform.position += direction * Time.deltaTime;
+                }
             }
         }
     }
@@ -234,7 +241,7 @@ public class LaserBulletData : MonoBehaviour {
         }
     }
 
-    GameObject GetNearestEnemy() { //Returns the nearest Enemy if it is in homing range
+    GameObject GetNearestEnemyWithinRange() { //Returns the nearest Enemy if it is in homing range
         GameObject returnGo = null;
         //float returnGODistance;
 
@@ -252,6 +259,24 @@ public class LaserBulletData : MonoBehaviour {
                             returnGo = GO;
                         }
                         
+                    }
+                }
+            }
+        }
+        return returnGo;
+    }
+
+    GameObject GetNearestEnemy() {
+        GameObject returnGo = null;
+        GameObject[] GOList = GameObject.FindObjectsOfType<GameObject>();
+        foreach (GameObject GO in GOList) {
+            if (GO.layer == 10 /*Enemy*/) {
+                if (returnGo == null) {
+                    returnGo = GO;
+                }
+                else {
+                    if (Vector3.SqrMagnitude(GO.transform.position - this.transform.position) < Vector3.SqrMagnitude(returnGo.transform.position - this.transform.position)) {
+                        returnGo = GO;
                     }
                 }
             }

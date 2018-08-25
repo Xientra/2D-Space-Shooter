@@ -149,14 +149,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   createOnDeath: {fileID: 0}
-  bulletType: 15
+  bulletType: 18
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 0
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114497521286257334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -172,11 +174,13 @@ MonoBehaviour:
   bulletType: 12
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 10
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!212 &212011270320736076
 SpriteRenderer:
   m_ObjectHideFlags: 1

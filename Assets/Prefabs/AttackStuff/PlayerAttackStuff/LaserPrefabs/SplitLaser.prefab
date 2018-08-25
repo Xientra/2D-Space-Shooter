@@ -2819,11 +2819,13 @@ MonoBehaviour:
   bulletType: 13
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 10
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114031196225161726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2839,11 +2841,13 @@ MonoBehaviour:
   bulletType: 17
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 10
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114032602832097860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2859,11 +2863,13 @@ MonoBehaviour:
   bulletType: 14
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 0
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114061025258913428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2879,11 +2885,13 @@ MonoBehaviour:
   bulletType: 14
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 0
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114069551206195654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2899,11 +2907,13 @@ MonoBehaviour:
   bulletType: 14
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 0
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114078742603152678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2919,11 +2929,13 @@ MonoBehaviour:
   bulletType: 14
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 0
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114137634883225600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2939,11 +2951,13 @@ MonoBehaviour:
   bulletType: 13
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 10
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114199619056733670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2959,11 +2973,13 @@ MonoBehaviour:
   bulletType: 14
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 0
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114228469900363736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2979,11 +2995,13 @@ MonoBehaviour:
   bulletType: 14
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 0
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114236653827021540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2999,11 +3017,13 @@ MonoBehaviour:
   bulletType: 14
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 0
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114262168116716030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3019,11 +3039,13 @@ MonoBehaviour:
   bulletType: 13
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 10
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114309746220586350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3039,11 +3061,13 @@ MonoBehaviour:
   bulletType: 13
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 10
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114342828658230156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3059,11 +3083,13 @@ MonoBehaviour:
   bulletType: 13
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 10
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114345905006193892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3079,11 +3105,13 @@ MonoBehaviour:
   bulletType: 14
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 0
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114392065576501106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3099,11 +3127,13 @@ MonoBehaviour:
   bulletType: 14
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 0
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114398399806883402
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3119,11 +3149,13 @@ MonoBehaviour:
   bulletType: 13
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 10
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114447424045218012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3139,11 +3171,13 @@ MonoBehaviour:
   bulletType: 14
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 0
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114453037849850474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3159,11 +3193,13 @@ MonoBehaviour:
   bulletType: 13
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 10
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114482367216844606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3179,11 +3215,13 @@ MonoBehaviour:
   bulletType: 14
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 0
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114482619863124920
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3199,11 +3237,13 @@ MonoBehaviour:
   bulletType: 13
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 10
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114484420602615244
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3219,11 +3259,13 @@ MonoBehaviour:
   bulletType: 13
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 10
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114489881557731184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3236,14 +3278,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   createOnDeath: {fileID: 0}
-  bulletType: 16
+  bulletType: 19
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 0
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114571760032664176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3259,11 +3303,13 @@ MonoBehaviour:
   bulletType: 13
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 10
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114578560345671056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3279,11 +3325,13 @@ MonoBehaviour:
   bulletType: 14
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 0
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114589670404372250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3299,11 +3347,13 @@ MonoBehaviour:
   bulletType: 13
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 10
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114601252986736930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3319,11 +3369,13 @@ MonoBehaviour:
   bulletType: 14
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 0
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114647978380517996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3339,11 +3391,13 @@ MonoBehaviour:
   bulletType: 14
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 0
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114698357932475450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3359,11 +3413,13 @@ MonoBehaviour:
   bulletType: 14
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 0
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114729330787981098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3379,11 +3435,13 @@ MonoBehaviour:
   bulletType: 13
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 10
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114764435317018944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3399,11 +3457,13 @@ MonoBehaviour:
   bulletType: 14
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 0
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114766190929613672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3419,11 +3479,13 @@ MonoBehaviour:
   bulletType: 14
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 0
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114773206015645416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3439,11 +3501,13 @@ MonoBehaviour:
   bulletType: 13
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 10
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114787783134237748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3459,11 +3523,13 @@ MonoBehaviour:
   bulletType: 14
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 0
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114814021997000162
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3479,11 +3545,13 @@ MonoBehaviour:
   bulletType: 13
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 10
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114823028296758906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3499,11 +3567,13 @@ MonoBehaviour:
   bulletType: 13
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 10
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114858111759572828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3519,11 +3589,13 @@ MonoBehaviour:
   bulletType: 14
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 0
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114866919626897954
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3539,11 +3611,13 @@ MonoBehaviour:
   bulletType: 14
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 0
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114918750454992324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3559,11 +3633,13 @@ MonoBehaviour:
   bulletType: 13
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 10
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114924120678851664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3579,11 +3655,13 @@ MonoBehaviour:
   bulletType: 13
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 10
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114936685439598302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3599,11 +3677,13 @@ MonoBehaviour:
   bulletType: 13
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 10
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114948378978916910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3619,11 +3699,13 @@ MonoBehaviour:
   bulletType: 14
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 0
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114960535841842134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3639,11 +3721,13 @@ MonoBehaviour:
   bulletType: 13
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 10
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114966910808715142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3659,11 +3743,13 @@ MonoBehaviour:
   bulletType: 13
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 10
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114993005325833446
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3679,11 +3765,13 @@ MonoBehaviour:
   bulletType: 13
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 10
   duration: 1
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!212 &212003023949273086
 SpriteRenderer:
   m_ObjectHideFlags: 1
