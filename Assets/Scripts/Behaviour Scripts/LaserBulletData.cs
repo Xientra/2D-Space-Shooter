@@ -8,7 +8,7 @@ public class LaserBulletData : MonoBehaviour {
 
     public enum BulletTypes {
         Standart, HelixBullet_lvl_1, HelixBullet_lvl_2, HelixBullet_lvl_3, HelixBulletChild, Wave, ChainGunBullet,
-        Rocket, Grenade, Shrapnel_lvl_1, Shrapnel_lvl_2, Shrapnel_lvl_3, ShrapnelBullet, HomingBullet_lvl_1, HomingBullet_lvl_2, HomingBullet_lvl_3,
+        Rocket, Grenade, Shrapnel_lvl_1, Shrapnel_lvl_2, Shrapnel_lvl_3, ShrapnelBullet, HomingBullet_lvl_1, HomingBullet_lvl_2, HomingBullet_lvl_3, LaserSword_lvl_1,
         Explosion, ShrapnellExplosion,
         SimpleLaser, SplitLaser, SplitLaserChild, 
         Enemy_SimpleBullet, Enemy_SlowAlienBullet

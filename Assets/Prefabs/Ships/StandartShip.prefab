@@ -117,7 +117,7 @@ Transform:
   m_GameObject: {fileID: 1596211785451302}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.09, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 4412899151758498}
   m_Father: {fileID: 4261497739985870}
@@ -143,8 +143,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1212921545871874}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: 0, y: 0.16, z: 0}
-  m_LocalScale: {x: 1.5000051, y: 1.5000051, z: 1}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4264792720648600}
   m_RootOrder: 0
@@ -425,9 +425,9 @@ MonoBehaviour:
   GameControllerGo: {fileID: 0}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
-  primaryWeapon: 10
-  secondaryWeapon: 16
-  currentWeapon: 0
+  primaryWeapon: 0
+  secondaryWeapon: 4
+  currentWeapon: 14
   speedlimit: 10
   stopspeed: 0.95
   xspeed: 0

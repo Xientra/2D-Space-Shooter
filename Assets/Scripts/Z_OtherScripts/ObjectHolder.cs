@@ -44,12 +44,13 @@ public class ObjectHolder : MonoBehaviour {
         _PlayerShips = new GameObject[PlayerShips.Length];
         _PlayerShips = PlayerShips;
 
-        _TurretSprites = new Sprite[TurretSprites.Length];
-        _TurretSprites = TurretSprites;
-
 
         _Effects = new GameObject[Effects.Length];
         _Effects = Effects;
+
+
+        _TurretSprites = new Sprite[TurretSprites.Length];
+        _TurretSprites = TurretSprites;
         Debug.Log("Assinged all Static Object Arrays");
     }
     /*
@@ -139,5 +140,34 @@ public class ObjectHolder : MonoBehaviour {
         }
         Debug.LogError("Could not find: " + _effectType);
         return -1;
+    }
+
+    public static int GetTurretSpriteIndex(PlayerControllerScript.Weapons _weapon) {
+        int i = 0;
+        string weaponName = null;
+        switch (_weapon) {
+            case (PlayerControllerScript.Weapons.Standart_lvl_1):
+                weaponName = "StandartTurret_lvl_1_spr";
+                break;
+            case (PlayerControllerScript.Weapons.Standart_lvl_2):
+                weaponName = "StandartTurret_lvl_2_spr";
+                break;
+            case (PlayerControllerScript.Weapons.Standart_lvl_3):
+                weaponName = "StandartTurret_lvl_3_spr";
+                break;
+        }
+        if (weaponName != null) {
+            foreach (Sprite Sp in _TurretSprites) {
+                if (Sp != null) {
+                    if (Sp.name == weaponName) {
+                        return i;
+                    }
+                    i++;
+                }
+            }
+            Debug.LogError("Could not find: " + _weapon);
+        }
+        else Debug.LogWarning("There is not Sprite to this Weaopn assinged");
+        return 0; //Just the default sprite
     }
 }

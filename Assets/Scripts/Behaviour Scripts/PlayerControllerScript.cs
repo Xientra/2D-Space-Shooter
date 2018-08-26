@@ -45,7 +45,8 @@ public class PlayerControllerScript : MonoBehaviour {
 
     /*----------Weapon Stats----------*/
     public enum Weapons {
-        Standart_lvl_1, Standart_lvl_2, Standart_lvl_3, Spread, Homing_lvl_1, Homing_lvl_2, Homing_lvl_3, Helix_lvl_1, Helix_lvl_2, Helix_lvl_3, ChainGun_lvl_1, ChainGun_lvl_2, ChainGun_lvl_3, WaveEmitter_lvl_1,
+        Standart_lvl_1, Standart_lvl_2, Standart_lvl_3, Spread, Homing_lvl_1, Homing_lvl_2, Homing_lvl_3, Helix_lvl_1, Helix_lvl_2, Helix_lvl_3, ChainGun_lvl_1, ChainGun_lvl_2, ChainGun_lvl_3,
+        WaveEmitter_lvl_1, LaserSword_lvl_1,
         RocketLauncher_lvl_1, GrenadeLauncher_lvl_1, ShrapnelLauncher_lvl_1, ShrapnelLauncher_lvl_2, ShrapnelLauncher_lvl_3, 
         LaserGun, SplitLaserGun
     }
@@ -364,7 +365,6 @@ public class PlayerControllerScript : MonoBehaviour {
     }
     *///coin, old movement and exactMovement2
 
-
     void adjustScale(float xscale, float yscale) {
         transform.localScale = new Vector3(xscale, yscale, transform.localScale.z);
         this.gameObject.GetComponent<TrailRenderer>().startWidth = yscale / 10;
@@ -466,6 +466,19 @@ public class PlayerControllerScript : MonoBehaviour {
                     if (cooldownTimeStamp <= Time.time) {
                         float BulletRng = 12f;
                         Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.HomingBullet_lvl_3)], ProjectileSpawnPoint, TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, Random.Range(BulletRng, -BulletRng)));
+                        cooldownTimeStamp = Time.time + cooldown;
+                    }
+                }
+                break;
+            case (Weapons.LaserSword_lvl_1):
+                if (Input.GetButton("Fire1")) {
+                    cooldown = 0.5f * fireRateMultiplyer;
+                    if (cooldownTimeStamp <= Time.time) {
+                        float fieldSize = 2.5f;
+                        Vector3 RndFieldPos = ProjectileSpawnPoint + new Vector3(Random.Range(-fieldSize, fieldSize), Random.Range(-fieldSize, 0), 0);
+                        Quaternion LookToMouse = Quaternion.LookRotation(Vector3.forward, (new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0) - RndFieldPos));
+
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.LaserSword_lvl_1)], RndFieldPos, LookToMouse);
                         cooldownTimeStamp = Time.time + cooldown;
                     }
                 }
@@ -606,7 +619,6 @@ public class PlayerControllerScript : MonoBehaviour {
         else chainGunOffset -= offsetSpeed;
         if (chainGunOffset >= maxOffset) chainGunOffsetUp = false;
         if (chainGunOffset <= -maxOffset) chainGunOffsetUp = true;
-
     }
 
     private void fireAnyLaserGun(LaserBulletData.BulletTypes LaserToFire) {
@@ -695,8 +707,7 @@ public class PlayerControllerScript : MonoBehaviour {
         else {
             if (currentWeapon == secondaryWeapon)
                 currentWeapon = primaryWeapon;
-            else
-                Debug.LogError("There is a weapon equipt which should not.");
+            else Debug.LogError("There is a weapon equipt which should not.");
         }
     }
 
@@ -706,6 +717,12 @@ public class PlayerControllerScript : MonoBehaviour {
         }
         else {
             currentWeapon = (Weapons)(int)currentWeapon + 1;
+            ChangeWeaponSprite(currentWeapon);
         }
+    }
+
+    void ChangeWeaponSprite(Weapons _weaponType) {
+
+        TurretGameObject.GetComponentInChildren<SpriteRenderer>().sprite = ObjectHolder._TurretSprites[ObjectHolder.GetTurretSpriteIndex(_weaponType)];
     }
 }

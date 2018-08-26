@@ -68,6 +68,7 @@ MonoBehaviour:
   - {fileID: 1378388662431746, guid: 49f1a86405da0264dbf6e178dbb0ad1a, type: 2}
   - {fileID: 1378388662431746, guid: e8ea6a9583cc7d048b481c0c31b62106, type: 2}
   - {fileID: 1378388662431746, guid: 3abe35271a42506419cd1a2aa749d3b2, type: 2}
+  - {fileID: 1299739547239832, guid: 94536331a315dd546b857eaf48c5bc97, type: 2}
   EnemyBullets:
   - {fileID: 1410566720341952, guid: 93fc5193f0e8d594db0dadeef4e89f7b, type: 2}
   - {fileID: 1410566720341952, guid: c384e8914a9c7b2488f110d4bfa52138, type: 2}
@@ -86,7 +87,10 @@ MonoBehaviour:
   PlayerShips:
   - {fileID: 1517047546398530, guid: 5be38424497c8bd4d87557da3b3aeb10, type: 2}
   - {fileID: 1654128778518318, guid: a78caceea55110c45843a6f33fcdc9a1, type: 2}
-  TurretSprites: []
+  TurretSprites:
+  - {fileID: 21300000, guid: 517e275701f918845af0eb0d3ec9bd6e, type: 3}
+  - {fileID: 21300000, guid: 7b31880de5a75c64d93e28e66a200d7e, type: 3}
+  - {fileID: 21300000, guid: c9989fd179d2c274fb3a2286ae153692, type: 3}
   Effects:
   - {fileID: 1811824061054810, guid: 214ccf47d0a9a4b4e8b9ffa62734150d, type: 2}
   - {fileID: 1914619935101884, guid: 0a8fa9c61f48176469f09d07f2516330, type: 2}
