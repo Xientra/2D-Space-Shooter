@@ -59,10 +59,16 @@ public class LaserBulletData : MonoBehaviour {
     private static int timesToSplit = 1;
     private float SplitAngle = 25f;
 
+    //Specific behaviour vars
+    private float TempSpeed;
+    //private float LaserSwordAcc;
+
     //PowerUp Variables
     public static float damageMultiplyer = 1f;
 
     void Start() {
+        StartCoroutine(destroyAfterTime());
+
         if (bulletType == BulletTypes.SimpleLaser || bulletType == BulletTypes.SplitLaser) {
             isLaser = true;
             damageDelayTimeStamp = Time.time + damageDelay;
@@ -80,12 +86,19 @@ public class LaserBulletData : MonoBehaviour {
         if (bulletType == BulletTypes.SplitLaserChild) {
             transform.rotation *= Quaternion.Euler(0, 0, Random.Range(SplitAngle, -SplitAngle));
         }
+        if (bulletType == BulletTypes.LaserSword_lvl_1) {
+            TempSpeed = speed;
+            speed = 0;
+        }
     }
 
     void Update() {
-        StartCoroutine(destroyAfterTime());
         if (bulletType == BulletTypes.HelixBulletChild) {
             this.transform.RotateAround(transform.parent.transform.position, Vector3.forward, HelixBulletChild_RotationSpeed);
+        }
+
+        if (bulletType == BulletTypes.LaserSword_lvl_1) {
+            if (speed <= TempSpeed) speed += TempSpeed / 100f;
         }
 
         if (homingStrength != 0) {

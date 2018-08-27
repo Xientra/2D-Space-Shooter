@@ -74,7 +74,13 @@ public class PlayerControllerScript : MonoBehaviour {
         Bullets = ObjectHolderGo.GetComponent<ObjectHolder>().Bullets;
 
         //switchShip();
+        StartCoroutine(DoStuffAfterOneFrame());
 
+    }
+
+    IEnumerator DoStuffAfterOneFrame() {
+        yield return 0;
+        ChangeWeaponTurret(currentWeapon);
     }
 
     void Update() {
@@ -475,9 +481,8 @@ public class PlayerControllerScript : MonoBehaviour {
                     cooldown = 0.5f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
                         float fieldSize = 2.5f;
-                        Vector3 RndFieldPos = ProjectileSpawnPoint + new Vector3(Random.Range(-fieldSize, fieldSize), Random.Range(-fieldSize, 0), 0);
+                        Vector3 RndFieldPos = ProjectileSpawnPoint + (TurretGameObject.transform.right * Random.Range(-fieldSize / 2, fieldSize / 2)) + (TurretGameObject.transform.up * Random.Range(-fieldSize, 0));//new Vector3(Random.Range(-fieldSize, fieldSize), ;
                         Quaternion LookToMouse = Quaternion.LookRotation(Vector3.forward, (new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0) - RndFieldPos));
-
                         Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.LaserSword_lvl_1)], RndFieldPos, LookToMouse);
                         cooldownTimeStamp = Time.time + cooldown;
                     }
@@ -717,12 +722,17 @@ public class PlayerControllerScript : MonoBehaviour {
         }
         else {
             currentWeapon = (Weapons)(int)currentWeapon + 1;
-            ChangeWeaponSprite(currentWeapon);
+            ChangeWeaponTurret(currentWeapon);
         }
     }
 
     void ChangeWeaponSprite(Weapons _weaponType) {
 
         TurretGameObject.GetComponentInChildren<SpriteRenderer>().sprite = ObjectHolder._TurretSprites[ObjectHolder.GetTurretSpriteIndex(_weaponType)];
+    }
+
+    void ChangeWeaponTurret(Weapons _weaponType) {
+        Destroy(TurretGameObject.GetComponentsInChildren<Transform>()[1].transform.gameObject);
+        Instantiate(ObjectHolder._Turrets[ObjectHolder.GetTurretSpriteIndex(_weaponType)], TurretGameObject.transform);
     }
 }

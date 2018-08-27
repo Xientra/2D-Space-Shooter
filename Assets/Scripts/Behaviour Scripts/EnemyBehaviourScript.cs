@@ -74,6 +74,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
         }
 
         ChangeState(false);
+
     }
 
     IEnumerator StartAfterTime() {

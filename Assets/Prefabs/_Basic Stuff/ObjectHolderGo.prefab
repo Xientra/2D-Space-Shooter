@@ -87,10 +87,16 @@ MonoBehaviour:
   PlayerShips:
   - {fileID: 1517047546398530, guid: 5be38424497c8bd4d87557da3b3aeb10, type: 2}
   - {fileID: 1654128778518318, guid: a78caceea55110c45843a6f33fcdc9a1, type: 2}
+  Turrets:
+  - {fileID: 1671927100220848, guid: 843ca0449b31e6a4dbc02fd312a26213, type: 2}
+  - {fileID: 1219582461764428, guid: 9bae1a4100fd7a9489717378195136e4, type: 2}
+  - {fileID: 1479878088957658, guid: f64a4812f3835314d851ee30a5b277f7, type: 2}
+  - {fileID: 1016674509688452, guid: 53fe485346fe9ed48bce065f5305cc83, type: 2}
   TurretSprites:
   - {fileID: 21300000, guid: 517e275701f918845af0eb0d3ec9bd6e, type: 3}
   - {fileID: 21300000, guid: 7b31880de5a75c64d93e28e66a200d7e, type: 3}
   - {fileID: 21300000, guid: c9989fd179d2c274fb3a2286ae153692, type: 3}
+  - {fileID: 21300000, guid: 8486ca6825971d040b7d131d1b3c2816, type: 3}
   Effects:
   - {fileID: 1811824061054810, guid: 214ccf47d0a9a4b4e8b9ffa62734150d, type: 2}
   - {fileID: 1914619935101884, guid: 0a8fa9c61f48176469f09d07f2516330, type: 2}
