@@ -480,8 +480,8 @@ public class PlayerControllerScript : MonoBehaviour {
                 if (Input.GetButton("Fire1")) {
                     cooldown = 0.5f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
-                        float fieldSize = 2.5f;
-                        Vector3 RndFieldPos = ProjectileSpawnPoint + (TurretGameObject.transform.right * Random.Range(-fieldSize / 2, fieldSize / 2)) + (TurretGameObject.transform.up * Random.Range(-fieldSize, 0));//new Vector3(Random.Range(-fieldSize, fieldSize), ;
+                        float fieldSize = 1.25f;
+                        Vector3 RndFieldPos = transform.position + (TurretGameObject.transform.right * Random.Range(-fieldSize, fieldSize)) + (TurretGameObject.transform.up * Random.Range(-fieldSize, -fieldSize / 2));//new Vector3(Random.Range(-fieldSize, fieldSize), ;
                         Quaternion LookToMouse = Quaternion.LookRotation(Vector3.forward, (new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0) - RndFieldPos));
                         Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.LaserSword_lvl_1)], RndFieldPos, LookToMouse);
                         cooldownTimeStamp = Time.time + cooldown;

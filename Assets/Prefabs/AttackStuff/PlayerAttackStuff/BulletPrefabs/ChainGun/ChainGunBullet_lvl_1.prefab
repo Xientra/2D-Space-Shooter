@@ -242,15 +242,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c627ba8c3e5ae4f812c0539972bdb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createOnDeath: {fileID: 0}
+  createOnDeath: {fileID: 1914619935101884, guid: 429d3a5a9a424114dba9bcc2a46bfec8,
+    type: 2}
   bulletType: 6
   direction: {x: 0, y: 1, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 45
   damage: 5
   duration: 0.75
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 10
+  homingStrength: 0
+  homingDistance: 10
 --- !u!212 &212480431836990796
 SpriteRenderer:
   m_ObjectHideFlags: 1

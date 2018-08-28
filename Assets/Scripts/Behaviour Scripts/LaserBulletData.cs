@@ -61,7 +61,7 @@ public class LaserBulletData : MonoBehaviour {
 
     //Specific behaviour vars
     private float TempSpeed;
-    //private float LaserSwordAcc;
+    private float LaserSwordAcc = 0;
 
     //PowerUp Variables
     public static float damageMultiplyer = 1f;
@@ -98,7 +98,10 @@ public class LaserBulletData : MonoBehaviour {
         }
 
         if (bulletType == BulletTypes.LaserSword_lvl_1) {
-            if (speed <= TempSpeed) speed += TempSpeed / 100f;
+            if (speed <= TempSpeed) {
+                LaserSwordAcc += TempSpeed * Time.deltaTime / 10f;
+                speed += LaserSwordAcc;
+            }
         }
 
         if (homingStrength != 0) {
@@ -176,6 +179,7 @@ public class LaserBulletData : MonoBehaviour {
 
     void InitiliseSelfDestruction() {
         SelfDestructionActive = true;
+
         if (bulletType == BulletTypes.Explosion) {
             StartCoroutine(DelayDestruction());
         }
@@ -194,13 +198,17 @@ public class LaserBulletData : MonoBehaviour {
                 GetComponent<CapsuleCollider2D>().enabled = false;
             }
 
-            
-            StartCoroutine(DelayDestruction());
-            
-            speed = speed / 10f;
-            Instantiate(ObjectHolder._Effects[ObjectHolder.GetEffectIndex(EffectBehaviourScript.EffectTypes.BulletDestruction)], transform);
 
-            
+            StartCoroutine(DelayDestruction());
+
+            speed = speed / 10f;
+
+            if (createOnDeath != null) {
+                if (createOnDeath.GetComponent<LaserBulletData>() == null) Instantiate(createOnDeath, transform);
+                else Debug.LogWarning("If you want to Intantiate an explosion please make this mor clear(?)");
+            }
+            //Instantiate(ObjectHolder._Effects[ObjectHolder.GetEffectIndex(EffectBehaviourScript.EffectTypes.BulletDestruction)], transform);
+
         }
         StartCoroutine(DoStuffAfterOneFrame());
         

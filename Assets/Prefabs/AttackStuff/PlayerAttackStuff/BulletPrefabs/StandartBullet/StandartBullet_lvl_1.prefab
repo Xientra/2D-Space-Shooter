@@ -242,7 +242,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c627ba8c3e5ae4f812c0539972bdb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createOnDeath: {fileID: 0}
+  createOnDeath: {fileID: 1914619935101884, guid: 0a8fa9c61f48176469f09d07f2516330,
+    type: 2}
   bulletType: 0
   direction: {x: 0, y: 1, z: 0}
   isEnemyBullet: 0

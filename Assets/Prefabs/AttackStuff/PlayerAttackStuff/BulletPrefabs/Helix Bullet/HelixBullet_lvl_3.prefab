@@ -444,7 +444,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1197015156029958}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0.4, y: 0.4, z: 0}
   m_LocalScale: {x: 0.7000002, y: 0.7000002, z: 1}
   m_Children:
   - {fileID: 4409791557621538}
@@ -471,7 +471,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1804139607908490}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -0.5, z: 0}
+  m_LocalPosition: {x: -0.4, y: -0.4, z: 0}
   m_LocalScale: {x: 0.7000002, y: 0.7000002, z: 1}
   m_Children:
   - {fileID: 4659088906458916}
@@ -485,8 +485,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1651071263761350}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -0.5, z: 0}
-  m_LocalScale: {x: 0.7000002, y: 0.7000002, z: 1}
+  m_LocalPosition: {x: 0.4, y: -0.4, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children:
   - {fileID: 4283981939675798}
   m_Father: {fileID: 4228795767811256}
@@ -579,7 +579,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1193176896996362}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0.5, z: 0}
+  m_LocalPosition: {x: -0.4, y: 0.4, z: 0}
   m_LocalScale: {x: 0.7000002, y: 0.7000002, z: 1}
   m_Children:
   - {fileID: 4685660729472486}
@@ -1057,8 +1057,8 @@ TrailRenderer:
       m_RotationOrder: 0
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.5010142, b: 0.11764705, a: 0.8392157}
-      key1: {r: 1, g: 0.9310343, b: 0, a: 0.5803922}
+      key0: {r: 0.495283, g: 0.9207843, b: 1, a: 0.8392157}
+      key1: {r: 1, g: 1, b: 1, a: 0.5803922}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1158,8 +1158,8 @@ TrailRenderer:
       m_RotationOrder: 0
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.5010142, b: 0.11764705, a: 0.8392157}
-      key1: {r: 1, g: 0.9310343, b: 0, a: 0.5803922}
+      key0: {r: 0.495283, g: 0.9207843, b: 1, a: 0.8392157}
+      key1: {r: 1, g: 1, b: 1, a: 0.5803922}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1259,8 +1259,8 @@ TrailRenderer:
       m_RotationOrder: 0
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.5010142, b: 0.11764705, a: 0.8392157}
-      key1: {r: 1, g: 0.9310343, b: 0, a: 0.5803922}
+      key0: {r: 0.495283, g: 0.9207843, b: 1, a: 0.8392157}
+      key1: {r: 1, g: 1, b: 1, a: 0.5803922}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1360,8 +1360,8 @@ TrailRenderer:
       m_RotationOrder: 0
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.5010142, b: 0.11764705, a: 0.8392157}
-      key1: {r: 1, g: 0.9310343, b: 0, a: 0.5803922}
+      key0: {r: 0.495283, g: 0.9207843, b: 1, a: 0.8392157}
+      key1: {r: 1, g: 1, b: 1, a: 0.5803922}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1461,8 +1461,8 @@ TrailRenderer:
       m_RotationOrder: 0
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.5010142, b: 0.11764705, a: 0.8392157}
-      key1: {r: 1, g: 0.9310343, b: 0, a: 0.5803922}
+      key0: {r: 0.495283, g: 0.9207843, b: 1, a: 0.8392157}
+      key1: {r: 1, g: 1, b: 1, a: 0.5803922}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1562,8 +1562,8 @@ TrailRenderer:
       m_RotationOrder: 0
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.5010142, b: 0.11764705, a: 0.8392157}
-      key1: {r: 1, g: 0.9310343, b: 0, a: 0.5803922}
+      key0: {r: 0.495283, g: 0.9207843, b: 1, a: 0.8392157}
+      key1: {r: 1, g: 1, b: 1, a: 0.5803922}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1663,16 +1663,16 @@ TrailRenderer:
       m_RotationOrder: 0
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.5010142, b: 0.11764705, a: 0.8392157}
-      key1: {r: 1, g: 0.9310343, b: 0, a: 0.5803922}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 0.11764706, g: 0.15686275, b: 1, a: 0.8392157}
+      key1: {r: 0.495283, g: 0.75628823, b: 1, a: 0.74509805}
+      key2: {r: 0, g: 0, b: 0, a: 0.5803922}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 65535
+      ctime1: 48766
       ctime2: 0
       ctime3: 0
       ctime4: 0
@@ -1680,8 +1680,8 @@ TrailRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 65535
-      atime2: 0
+      atime1: 37008
+      atime2: 65535
       atime3: 0
       atime4: 0
       atime5: 0
@@ -1689,7 +1689,7 @@ TrailRenderer:
       atime7: 0
       m_Mode: 0
       m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
+      m_NumAlphaKeys: 3
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
@@ -1764,8 +1764,8 @@ TrailRenderer:
       m_RotationOrder: 0
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.5010142, b: 0.11764705, a: 0.8392157}
-      key1: {r: 1, g: 0.9310343, b: 0, a: 0.5803922}
+      key0: {r: 0.495283, g: 0.9207843, b: 1, a: 0.8392157}
+      key1: {r: 1, g: 1, b: 1, a: 0.5803922}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1865,8 +1865,8 @@ TrailRenderer:
       m_RotationOrder: 0
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.5010142, b: 0.11764705, a: 0.8392157}
-      key1: {r: 1, g: 0.9310343, b: 0, a: 0.5803922}
+      key0: {r: 0.495283, g: 0.9207843, b: 1, a: 0.8392157}
+      key1: {r: 1, g: 1, b: 1, a: 0.5803922}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1944,15 +1944,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c627ba8c3e5ae4f812c0539972bdb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createOnDeath: {fileID: 0}
+  createOnDeath: {fileID: 1976775451198108, guid: 7a5adfd221ccbcc4381434fc7890482e,
+    type: 2}
   bulletType: 4
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 20
   duration: 2
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 6
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114393282183531796
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1964,15 +1967,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c627ba8c3e5ae4f812c0539972bdb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createOnDeath: {fileID: 0}
+  createOnDeath: {fileID: 1976775451198108, guid: 7a5adfd221ccbcc4381434fc7890482e,
+    type: 2}
   bulletType: 4
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 20
   duration: 2
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 6
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114403093444013878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1984,15 +1990,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c627ba8c3e5ae4f812c0539972bdb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createOnDeath: {fileID: 0}
+  createOnDeath: {fileID: 1976775451198108, guid: 7a5adfd221ccbcc4381434fc7890482e,
+    type: 2}
   bulletType: 4
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 20
   duration: 2
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 6
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114431301717103668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2004,15 +2013,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c627ba8c3e5ae4f812c0539972bdb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createOnDeath: {fileID: 0}
+  createOnDeath: {fileID: 1976775451198108, guid: 7a5adfd221ccbcc4381434fc7890482e,
+    type: 2}
   bulletType: 4
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 20
   duration: 2
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 6
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114493387221039252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2057,15 +2069,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c627ba8c3e5ae4f812c0539972bdb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createOnDeath: {fileID: 0}
+  createOnDeath: {fileID: 1976775451198108, guid: 7a5adfd221ccbcc4381434fc7890482e,
+    type: 2}
   bulletType: 4
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 20
   duration: 2
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 6
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114629918534839840
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2077,15 +2092,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c627ba8c3e5ae4f812c0539972bdb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createOnDeath: {fileID: 0}
+  createOnDeath: {fileID: 1976775451198108, guid: 7a5adfd221ccbcc4381434fc7890482e,
+    type: 2}
   bulletType: 4
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 20
   duration: 2
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 6
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114696891248291130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2119,15 +2137,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c627ba8c3e5ae4f812c0539972bdb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createOnDeath: {fileID: 0}
+  createOnDeath: {fileID: 1976775451198108, guid: 7a5adfd221ccbcc4381434fc7890482e,
+    type: 2}
   bulletType: 4
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 20
   duration: 2
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 6
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114850573446991592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2139,15 +2160,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c627ba8c3e5ae4f812c0539972bdb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createOnDeath: {fileID: 0}
+  createOnDeath: {fileID: 1914619935101884, guid: 817f2b92ab6ba1e4699c1705890d5d31,
+    type: 2}
   bulletType: 3
   direction: {x: 0, y: 1, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 40
   speed: 15
   damage: 30
   duration: 2
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 40
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114873162531070040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2159,15 +2183,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c627ba8c3e5ae4f812c0539972bdb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createOnDeath: {fileID: 0}
+  createOnDeath: {fileID: 1976775451198108, guid: 7a5adfd221ccbcc4381434fc7890482e,
+    type: 2}
   bulletType: 4
   direction: {x: 1, y: 0, z: 0}
   isEnemyBullet: 0
-  HelixBulletChild_RotationSpeed: 10
   speed: 0
   damage: 20
   duration: 2
   DelayDestructionTime: 0.5
+  HelixBulletChild_RotationSpeed: 6
+  homingStrength: 0
+  homingDistance: 10
 --- !u!114 &114965036244515940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2215,7 +2242,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 95ac61ea026181e49b48c51f7cd68593, type: 3}
-  m_Color: {r: 0.9338235, g: 0.5989351, b: 0, a: 1}
+  m_Color: {r: 0.39215687, g: 0.88235295, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2261,7 +2288,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 95ac61ea026181e49b48c51f7cd68593, type: 3}
-  m_Color: {r: 0.9338235, g: 0.5989351, b: 0, a: 1}
+  m_Color: {r: 0.39215687, g: 0.88235295, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2307,7 +2334,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 95ac61ea026181e49b48c51f7cd68593, type: 3}
-  m_Color: {r: 0.9338235, g: 0.5989351, b: 0, a: 1}
+  m_Color: {r: 0.39215687, g: 0.88235295, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2353,7 +2380,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 95ac61ea026181e49b48c51f7cd68593, type: 3}
-  m_Color: {r: 0.9338235, g: 0.5989351, b: 0, a: 1}
+  m_Color: {r: 0.39215687, g: 0.88235295, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2399,7 +2426,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 95ac61ea026181e49b48c51f7cd68593, type: 3}
-  m_Color: {r: 0.9338235, g: 0.5989351, b: 0, a: 1}
+  m_Color: {r: 0.39215687, g: 0.88235295, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2445,7 +2472,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 95ac61ea026181e49b48c51f7cd68593, type: 3}
-  m_Color: {r: 0.9338235, g: 0.5989351, b: 0, a: 1}
+  m_Color: {r: 0.39215687, g: 0.88235295, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2491,7 +2518,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 95ac61ea026181e49b48c51f7cd68593, type: 3}
-  m_Color: {r: 0.9338235, g: 0.5989351, b: 0, a: 1}
+  m_Color: {r: 0.39215687, g: 0.88235295, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2537,7 +2564,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 95ac61ea026181e49b48c51f7cd68593, type: 3}
-  m_Color: {r: 0.9338235, g: 0.5989351, b: 0, a: 1}
+  m_Color: {r: 0.39215687, g: 0.88235295, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2583,7 +2610,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 95ac61ea026181e49b48c51f7cd68593, type: 3}
-  m_Color: {r: 0.9338235, g: 0.5989351, b: 0, a: 1}
+  m_Color: {r: 0.11764706, g: 0.15686275, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
