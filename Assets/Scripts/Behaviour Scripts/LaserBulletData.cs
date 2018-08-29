@@ -98,10 +98,13 @@ public class LaserBulletData : MonoBehaviour {
         }
 
         if (bulletType == BulletTypes.LaserSword_lvl_1) {
-            if (speed <= TempSpeed) {
-                LaserSwordAcc += TempSpeed * Time.deltaTime / 10f;
-                speed += LaserSwordAcc;
+            if (SelfDestructionActive == false) {
+                if (speed <= TempSpeed) {
+                    LaserSwordAcc += TempSpeed * Time.deltaTime / 10f;
+                    speed += LaserSwordAcc;
+                }
             }
+
         }
 
         if (homingStrength != 0) {

@@ -165,6 +165,9 @@ public class ObjectHolder : MonoBehaviour {
             case (PlayerControllerScript.Weapons.LaserSword_lvl_1):
                 weaponName = "LaserSwordTurret_lvl_1";
                 break;
+            case (PlayerControllerScript.Weapons.GrenadeLauncher_lvl_1):
+                weaponName = "GrenadeLauncherTurret_lvl_1";
+                break;
         }
         if (weaponName != null) {
             foreach (GameObject Go in _Turrets) {

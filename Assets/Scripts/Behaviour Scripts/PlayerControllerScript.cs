@@ -733,6 +733,6 @@ public class PlayerControllerScript : MonoBehaviour {
 
     void ChangeWeaponTurret(Weapons _weaponType) {
         Destroy(TurretGameObject.GetComponentsInChildren<Transform>()[1].transform.gameObject);
-        Instantiate(ObjectHolder._Turrets[ObjectHolder.GetTurretSpriteIndex(_weaponType)], TurretGameObject.transform);
+        Instantiate(ObjectHolder._Turrets[ObjectHolder.GetTurretIndex(_weaponType)], TurretGameObject.transform);
     }
 }
