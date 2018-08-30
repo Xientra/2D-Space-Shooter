@@ -735,4 +735,20 @@ public class PlayerControllerScript : MonoBehaviour {
         Destroy(TurretGameObject.GetComponentsInChildren<Transform>()[1].transform.gameObject);
         Instantiate(ObjectHolder._Turrets[ObjectHolder.GetTurretIndex(_weaponType)], TurretGameObject.transform);
     }
+
+    public float GetPercentUnitCooldown() {
+        float PercentUnitlCooldown = -(((cooldownTimeStamp - Time.time) / cooldown) * 100) + 100;
+        PercentUnitlCooldown = Mathf.Clamp(PercentUnitlCooldown, 0, 100);
+
+        //Debug.Log(cooldown);
+        //Debug.Log(cooldownTimeStamp);
+        Debug.Log(PercentUnitlCooldown);
+        return PercentUnitlCooldown;
+        /*
+        cooldown = 0.005f * fireRateMultiplyer;
+        if (cooldownTimeStamp <= Time.time) {
+            cooldownTimeStamp = Time.time + cooldown;
+        }
+        */
+    }
 }

@@ -59,6 +59,10 @@ public class GameControllerScript : MonoBehaviour {
                 if (onlyOnGOwithTag("Currend Credits UI")) {
                     GameObject.FindGameObjectsWithTag("Currend Credits UI")[0].GetComponent<Text>().text = "Credits:" + System.Environment.NewLine + currendCredits.ToString();
                 }
+                if (onlyOnGOwithTag("Cooldown UI")) {
+                    
+                    GameObject.FindGameObjectsWithTag("Cooldown UI")[0].GetComponent<Slider>().value = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerControllerScript>().GetPercentUnitCooldown();
+                }
             }
             else {
                 if (onlyOnGOwithTag("Health Bar UI")) {

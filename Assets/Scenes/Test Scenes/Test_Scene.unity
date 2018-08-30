@@ -314,7 +314,7 @@ Prefab:
     - target: {fileID: 114465581236528938, guid: 5be38424497c8bd4d87557da3b3aeb10,
         type: 2}
       propertyPath: currentWeapon
-      value: 14
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5be38424497c8bd4d87557da3b3aeb10, type: 2}
@@ -689,25 +689,9 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224570317261489058, guid: 46c816bbdc987ad48b4e410195782c69,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 90.26
-      objectReference: {fileID: 0}
-    - target: {fileID: 224570317261489058, guid: 46c816bbdc987ad48b4e410195782c69,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 170.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 224320673508058074, guid: 46c816bbdc987ad48b4e410195782c69,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 90.257
-      objectReference: {fileID: 0}
-    - target: {fileID: 224320673508058074, guid: 46c816bbdc987ad48b4e410195782c69,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 170.21
+    - target: {fileID: 1291699821563352, guid: 46c816bbdc987ad48b4e410195782c69, type: 2}
+      propertyPath: m_TagString
+      value: Cooldown UI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46c816bbdc987ad48b4e410195782c69, type: 2}
