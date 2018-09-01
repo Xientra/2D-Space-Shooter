@@ -230,10 +230,14 @@ public class LaserBulletData : MonoBehaviour {
 
         foreach (SpriteRenderer SR in GetComponentsInChildren<SpriteRenderer>()) {
             if (SR.gameObject.GetComponent<LaserBulletData>() != null) {
-                if (SR.gameObject.GetComponent<LaserBulletData>().bulletType != BulletTypes.ShrapnelBullet) { //I don't want it to disable all Shrapnel Child Bullets
-                    SR.enabled = false;
+                if (bulletType == BulletTypes.ShrapnellExplosion) {
+                    if (SR.gameObject.GetComponent<LaserBulletData>().bulletType != BulletTypes.ShrapnelBullet) { //I don't want it to disable all Shrapnel Child Bullets
+                        SR.enabled = false;
+                    }
                 }
+                else SR.enabled = false;
             }
+            
         }
 
         //Unparent the TrailRendererGo
@@ -263,31 +267,6 @@ public class LaserBulletData : MonoBehaviour {
             //Instantiate(this.transform.gameObject, transform.position + Vector3.Cross(transform.right, new Vector3(0.75f, 0, 0)), goParent.transform.rotation, goParent.transform);
             timesToSplit--;
         }
-    }
-
-    GameObject GetNearestEnemyWithinRange() { //Returns the nearest Enemy if it is in homing range
-        GameObject returnGo = null;
-        //float returnGODistance;
-
-        GameObject[] GOList = GameObject.FindObjectsOfType<GameObject>();
-        foreach (GameObject GO in GOList) {
-            if (GO.layer == 10 /*Enemy*/) {
-                if (returnGo == null) {
-                    if (Vector3.SqrMagnitude(GO.transform.position - this.transform.position) <= homingDistance) {
-                        returnGo = GO;
-                    }
-                }
-                else {
-                    if (Vector3.SqrMagnitude(GO.transform.position - this.transform.position) <= homingDistance) {
-                        if (Vector3.SqrMagnitude(GO.transform.position - this.transform.position) < Vector3.SqrMagnitude(returnGo.transform.position - this.transform.position)) {
-                            returnGo = GO;
-                        }
-                        
-                    }
-                }
-            }
-        }
-        return returnGo;
     }
 
     GameObject GetNearestEnemy() {

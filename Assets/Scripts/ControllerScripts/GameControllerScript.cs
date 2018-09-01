@@ -14,7 +14,7 @@ public class GameControllerScript : MonoBehaviour {
 
     public static float currendCredits = 0f;
     public static bool UsingGamepad = false;
-    public static bool UsingUnityUI = true;
+    public bool UsingUnityUI = true;
 
     void Start() {
         if (mainCamera == null) mainCamera = Camera.main;
@@ -38,7 +38,7 @@ public class GameControllerScript : MonoBehaviour {
 
             shakeTimer -= Time.deltaTime;
             if (shakeTimer <= 0) {
-                Debug.Log("reset");
+                //Debug.Log("reset");
                 mainCamera.transform.position = originalPos;
             }
         }

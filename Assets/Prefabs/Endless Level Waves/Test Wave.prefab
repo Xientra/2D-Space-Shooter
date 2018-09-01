@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212795753428238456}
   m_Layer: 0
   m_Name: HealthBarGreen
-  m_TagString: HealthBar
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 212563677243832360}
   m_Layer: 0
   m_Name: HealthBarGreen
-  m_TagString: HealthBar
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -786,7 +786,7 @@ GameObject:
   - component: {fileID: 212971574990046338}
   m_Layer: 0
   m_Name: HealthBarGreen
-  m_TagString: HealthBar
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1121,7 +1121,7 @@ GameObject:
   - component: {fileID: 212221765995975832}
   m_Layer: 0
   m_Name: HealthBarGreen
-  m_TagString: HealthBar
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5498,19 +5498,19 @@ MonoBehaviour:
   EnemyTurretGameObject: {fileID: 0}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
-  CoinDrop: {fileID: 1039937174086562, guid: 30cde78446690204d886c9c31a77d9e5, type: 2}
-  PowerUpDrop: {fileID: 0}
   currendEnemyType: 0
   EnemyWeapon: 0
   currendAnimation: 1
   AnimationStartDelay: 1.5
-  hasHealthBar: 1
-  hasAnimation: 1
+  LimiterDestructionDelayAfterStart: 1
   hasTurret: 0
   canShoot: 0
   MaxHealth: 100
   Health: 100
   CollisionDamage: 50
+  ValueOfCreditDrop: 1
+  CanDropPowerUp: 0
+  PowerUpDropChangse: 0.2
 --- !u!114 &114274973437108478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5525,19 +5525,19 @@ MonoBehaviour:
   EnemyTurretGameObject: {fileID: 0}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
-  CoinDrop: {fileID: 1039937174086562, guid: 30cde78446690204d886c9c31a77d9e5, type: 2}
-  PowerUpDrop: {fileID: 0}
   currendEnemyType: 0
   EnemyWeapon: 0
   currendAnimation: 1
   AnimationStartDelay: 2.5
-  hasHealthBar: 1
-  hasAnimation: 1
+  LimiterDestructionDelayAfterStart: 1
   hasTurret: 0
   canShoot: 0
   MaxHealth: 100
   Health: 100
   CollisionDamage: 50
+  ValueOfCreditDrop: 1
+  CanDropPowerUp: 0
+  PowerUpDropChangse: 0.2
 --- !u!114 &114299212102312772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5552,19 +5552,19 @@ MonoBehaviour:
   EnemyTurretGameObject: {fileID: 0}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
-  CoinDrop: {fileID: 1039937174086562, guid: 30cde78446690204d886c9c31a77d9e5, type: 2}
-  PowerUpDrop: {fileID: 0}
   currendEnemyType: 0
   EnemyWeapon: 0
   currendAnimation: 1
   AnimationStartDelay: 3
-  hasHealthBar: 1
-  hasAnimation: 1
+  LimiterDestructionDelayAfterStart: 1
   hasTurret: 0
   canShoot: 0
   MaxHealth: 100
   Health: 100
   CollisionDamage: 50
+  ValueOfCreditDrop: 1
+  CanDropPowerUp: 0
+  PowerUpDropChangse: 0.2
 --- !u!114 &114311741696252732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5579,19 +5579,19 @@ MonoBehaviour:
   EnemyTurretGameObject: {fileID: 0}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
-  CoinDrop: {fileID: 1039937174086562, guid: 30cde78446690204d886c9c31a77d9e5, type: 2}
-  PowerUpDrop: {fileID: 0}
   currendEnemyType: 0
   EnemyWeapon: 0
   currendAnimation: 5
   AnimationStartDelay: 17
-  hasHealthBar: 1
-  hasAnimation: 1
+  LimiterDestructionDelayAfterStart: 1
   hasTurret: 0
   canShoot: 0
   MaxHealth: 100
   Health: 100
   CollisionDamage: 50
+  ValueOfCreditDrop: 1
+  CanDropPowerUp: 0
+  PowerUpDropChangse: 0.2
 --- !u!114 &114376302190935560
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5621,19 +5621,19 @@ MonoBehaviour:
   EnemyTurretGameObject: {fileID: 0}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
-  CoinDrop: {fileID: 1039937174086562, guid: 30cde78446690204d886c9c31a77d9e5, type: 2}
-  PowerUpDrop: {fileID: 0}
   currendEnemyType: 0
   EnemyWeapon: 0
   currendAnimation: 4
   AnimationStartDelay: 18
-  hasHealthBar: 1
-  hasAnimation: 1
+  LimiterDestructionDelayAfterStart: 1
   hasTurret: 0
   canShoot: 0
   MaxHealth: 100
   Health: 100
   CollisionDamage: 50
+  ValueOfCreditDrop: 1
+  CanDropPowerUp: 0
+  PowerUpDropChangse: 0.2
 --- !u!114 &114419744461135050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5648,19 +5648,19 @@ MonoBehaviour:
   EnemyTurretGameObject: {fileID: 1249284604022566}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
-  CoinDrop: {fileID: 1039937174086562, guid: 30cde78446690204d886c9c31a77d9e5, type: 2}
-  PowerUpDrop: {fileID: 0}
   currendEnemyType: 1
   EnemyWeapon: 1
   currendAnimation: 9
   AnimationStartDelay: 8
-  hasHealthBar: 1
-  hasAnimation: 1
+  LimiterDestructionDelayAfterStart: 1
   hasTurret: 1
   canShoot: 0
   MaxHealth: 100
   Health: 100
   CollisionDamage: 50
+  ValueOfCreditDrop: 1
+  CanDropPowerUp: 0
+  PowerUpDropChangse: 0.2
 --- !u!114 &114544451138830152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5675,19 +5675,19 @@ MonoBehaviour:
   EnemyTurretGameObject: {fileID: 0}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
-  CoinDrop: {fileID: 1039937174086562, guid: 30cde78446690204d886c9c31a77d9e5, type: 2}
-  PowerUpDrop: {fileID: 0}
   currendEnemyType: 0
   EnemyWeapon: 0
   currendAnimation: 1
   AnimationStartDelay: 3
-  hasHealthBar: 1
-  hasAnimation: 1
+  LimiterDestructionDelayAfterStart: 1
   hasTurret: 0
   canShoot: 0
   MaxHealth: 100
   Health: 100
   CollisionDamage: 50
+  ValueOfCreditDrop: 1
+  CanDropPowerUp: 0
+  PowerUpDropChangse: 0.2
 --- !u!114 &114560052862133528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5702,19 +5702,19 @@ MonoBehaviour:
   EnemyTurretGameObject: {fileID: 0}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
-  CoinDrop: {fileID: 1039937174086562, guid: 30cde78446690204d886c9c31a77d9e5, type: 2}
-  PowerUpDrop: {fileID: 0}
   currendEnemyType: 0
   EnemyWeapon: 0
   currendAnimation: 5
   AnimationStartDelay: 15
-  hasHealthBar: 1
-  hasAnimation: 1
+  LimiterDestructionDelayAfterStart: 1
   hasTurret: 0
   canShoot: 0
   MaxHealth: 100
   Health: 100
   CollisionDamage: 50
+  ValueOfCreditDrop: 1
+  CanDropPowerUp: 0
+  PowerUpDropChangse: 0.2
 --- !u!114 &114663046643367390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5729,19 +5729,19 @@ MonoBehaviour:
   EnemyTurretGameObject: {fileID: 0}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
-  CoinDrop: {fileID: 1039937174086562, guid: 30cde78446690204d886c9c31a77d9e5, type: 2}
-  PowerUpDrop: {fileID: 0}
   currendEnemyType: 0
   EnemyWeapon: 0
   currendAnimation: 4
   AnimationStartDelay: 16
-  hasHealthBar: 1
-  hasAnimation: 1
+  LimiterDestructionDelayAfterStart: 1
   hasTurret: 0
   canShoot: 0
   MaxHealth: 100
   Health: 100
   CollisionDamage: 50
+  ValueOfCreditDrop: 1
+  CanDropPowerUp: 0
+  PowerUpDropChangse: 0.2
 --- !u!114 &114795387974609220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5756,19 +5756,19 @@ MonoBehaviour:
   EnemyTurretGameObject: {fileID: 0}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
-  CoinDrop: {fileID: 1039937174086562, guid: 30cde78446690204d886c9c31a77d9e5, type: 2}
-  PowerUpDrop: {fileID: 0}
   currendEnemyType: 0
   EnemyWeapon: 0
   currendAnimation: 1
   AnimationStartDelay: 2
-  hasHealthBar: 1
-  hasAnimation: 1
+  LimiterDestructionDelayAfterStart: 1
   hasTurret: 0
   canShoot: 0
   MaxHealth: 100
   Health: 100
   CollisionDamage: 50
+  ValueOfCreditDrop: 1
+  CanDropPowerUp: 0
+  PowerUpDropChangse: 0.2
 --- !u!114 &114839892314597508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5783,19 +5783,19 @@ MonoBehaviour:
   EnemyTurretGameObject: {fileID: 0}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
-  CoinDrop: {fileID: 1284273132605000, guid: e58ef481bc06b9842a4898ec7d6013be, type: 2}
-  PowerUpDrop: {fileID: 0}
   currendEnemyType: 2
   EnemyWeapon: 2
   currendAnimation: 8
   AnimationStartDelay: 6
-  hasHealthBar: 1
-  hasAnimation: 1
+  LimiterDestructionDelayAfterStart: 1
   hasTurret: 0
   canShoot: 0
   MaxHealth: 300
   Health: 300
   CollisionDamage: 75
+  ValueOfCreditDrop: 1
+  CanDropPowerUp: 0
+  PowerUpDropChangse: 0.2
 --- !u!114 &114840043880381040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5810,19 +5810,19 @@ MonoBehaviour:
   EnemyTurretGameObject: {fileID: 0}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
-  CoinDrop: {fileID: 1039937174086562, guid: 30cde78446690204d886c9c31a77d9e5, type: 2}
-  PowerUpDrop: {fileID: 0}
   currendEnemyType: 0
   EnemyWeapon: 0
   currendAnimation: 1
   AnimationStartDelay: 2.5
-  hasHealthBar: 1
-  hasAnimation: 1
+  LimiterDestructionDelayAfterStart: 1
   hasTurret: 0
   canShoot: 0
   MaxHealth: 100
   Health: 100
   CollisionDamage: 50
+  ValueOfCreditDrop: 1
+  CanDropPowerUp: 0
+  PowerUpDropChangse: 0.2
 --- !u!114 &114863046554571944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5837,19 +5837,19 @@ MonoBehaviour:
   EnemyTurretGameObject: {fileID: 0}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
-  CoinDrop: {fileID: 1039937174086562, guid: 30cde78446690204d886c9c31a77d9e5, type: 2}
-  PowerUpDrop: {fileID: 0}
   currendEnemyType: 0
   EnemyWeapon: 0
   currendAnimation: 1
   AnimationStartDelay: 1.5
-  hasHealthBar: 1
-  hasAnimation: 1
+  LimiterDestructionDelayAfterStart: 1
   hasTurret: 0
   canShoot: 0
   MaxHealth: 100
   Health: 100
   CollisionDamage: 50
+  ValueOfCreditDrop: 1
+  CanDropPowerUp: 0
+  PowerUpDropChangse: 0.2
 --- !u!114 &114876091004803456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5864,19 +5864,19 @@ MonoBehaviour:
   EnemyTurretGameObject: {fileID: 0}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
-  CoinDrop: {fileID: 1039937174086562, guid: 30cde78446690204d886c9c31a77d9e5, type: 2}
-  PowerUpDrop: {fileID: 0}
   currendEnemyType: 0
   EnemyWeapon: 0
   currendAnimation: 1
   AnimationStartDelay: 1
-  hasHealthBar: 1
-  hasAnimation: 1
+  LimiterDestructionDelayAfterStart: 1
   hasTurret: 0
   canShoot: 0
   MaxHealth: 100
   Health: 100
   CollisionDamage: 50
+  ValueOfCreditDrop: 1
+  CanDropPowerUp: 0
+  PowerUpDropChangse: 0.2
 --- !u!114 &114877492691590534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5891,19 +5891,19 @@ MonoBehaviour:
   EnemyTurretGameObject: {fileID: 0}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
-  CoinDrop: {fileID: 1039937174086562, guid: 30cde78446690204d886c9c31a77d9e5, type: 2}
-  PowerUpDrop: {fileID: 0}
   currendEnemyType: 0
   EnemyWeapon: 0
   currendAnimation: 1
   AnimationStartDelay: 2
-  hasHealthBar: 1
-  hasAnimation: 1
+  LimiterDestructionDelayAfterStart: 1
   hasTurret: 0
   canShoot: 0
   MaxHealth: 100
   Health: 100
   CollisionDamage: 50
+  ValueOfCreditDrop: 1
+  CanDropPowerUp: 0
+  PowerUpDropChangse: 0.2
 --- !u!114 &114883595969012292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5918,19 +5918,19 @@ MonoBehaviour:
   EnemyTurretGameObject: {fileID: 0}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
-  CoinDrop: {fileID: 1039937174086562, guid: 30cde78446690204d886c9c31a77d9e5, type: 2}
-  PowerUpDrop: {fileID: 0}
   currendEnemyType: 0
   EnemyWeapon: 0
   currendAnimation: 1
   AnimationStartDelay: 1
-  hasHealthBar: 1
-  hasAnimation: 1
+  LimiterDestructionDelayAfterStart: 1
   hasTurret: 0
   canShoot: 0
   MaxHealth: 100
   Health: 100
   CollisionDamage: 50
+  ValueOfCreditDrop: 1
+  CanDropPowerUp: 0
+  PowerUpDropChangse: 0.2
 --- !u!114 &114915796302481854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5945,19 +5945,19 @@ MonoBehaviour:
   EnemyTurretGameObject: {fileID: 1794594685246044}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
-  CoinDrop: {fileID: 1039937174086562, guid: 30cde78446690204d886c9c31a77d9e5, type: 2}
-  PowerUpDrop: {fileID: 0}
   currendEnemyType: 1
   EnemyWeapon: 1
   currendAnimation: 9
   AnimationStartDelay: 7
-  hasHealthBar: 1
-  hasAnimation: 1
+  LimiterDestructionDelayAfterStart: 1
   hasTurret: 1
   canShoot: 0
   MaxHealth: 100
   Health: 100
   CollisionDamage: 50
+  ValueOfCreditDrop: 1
+  CanDropPowerUp: 0
+  PowerUpDropChangse: 0.2
 --- !u!114 &114962015400925390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5972,19 +5972,19 @@ MonoBehaviour:
   EnemyTurretGameObject: {fileID: 1450110661340552}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
-  CoinDrop: {fileID: 1039937174086562, guid: 30cde78446690204d886c9c31a77d9e5, type: 2}
-  PowerUpDrop: {fileID: 0}
   currendEnemyType: 1
   EnemyWeapon: 1
   currendAnimation: 17
   AnimationStartDelay: 14
-  hasHealthBar: 1
-  hasAnimation: 1
+  LimiterDestructionDelayAfterStart: 1
   hasTurret: 1
   canShoot: 0
   MaxHealth: 100
   Health: 100
   CollisionDamage: 50
+  ValueOfCreditDrop: 1
+  CanDropPowerUp: 0
+  PowerUpDropChangse: 0.2
 --- !u!212 &212010791667357792
 SpriteRenderer:
   m_ObjectHideFlags: 1

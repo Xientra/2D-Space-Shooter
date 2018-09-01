@@ -410,7 +410,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 break;
             case (Weapons.Helix_lvl_1):
                 if (Input.GetButton("Fire1")) {
-                    cooldown = 0.35f * fireRateMultiplyer;
+                    cooldown = 0.5f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
                         Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.HelixBullet_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
@@ -419,7 +419,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 break;
             case (Weapons.Helix_lvl_2):
                 if (Input.GetButton("Fire1")) {
-                    cooldown = 0.3f * fireRateMultiplyer;
+                    cooldown = 0.7f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
                         Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.HelixBullet_lvl_2)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
@@ -428,7 +428,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 break;
             case (Weapons.Helix_lvl_3):
                 if (Input.GetButton("Fire1")) {
-                    cooldown = 0.3f * fireRateMultiplyer;
+                    cooldown = 0.9f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
                         Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.HelixBullet_lvl_3)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
@@ -526,7 +526,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 break;
             case (Weapons.ShrapnelLauncher_lvl_2):
                 if (Input.GetButton("Fire1")) {
-                    cooldown = 0.9f * fireRateMultiplyer;
+                    cooldown = 1.2f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
                         Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Shrapnel_lvl_2)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
@@ -535,7 +535,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 break;
             case (Weapons.ShrapnelLauncher_lvl_3):
                 if (Input.GetButton("Fire1")) {
-                    cooldown = 1f * fireRateMultiplyer;
+                    cooldown = 1.4f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
                         Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Shrapnel_lvl_3)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
@@ -726,11 +726,6 @@ public class PlayerControllerScript : MonoBehaviour {
         }
     }
 
-    void ChangeWeaponSprite(Weapons _weaponType) {
-
-        TurretGameObject.GetComponentInChildren<SpriteRenderer>().sprite = ObjectHolder._TurretSprites[ObjectHolder.GetTurretSpriteIndex(_weaponType)];
-    }
-
     void ChangeWeaponTurret(Weapons _weaponType) {
         Destroy(TurretGameObject.GetComponentsInChildren<Transform>()[1].transform.gameObject);
         Instantiate(ObjectHolder._Turrets[ObjectHolder.GetTurretIndex(_weaponType)], TurretGameObject.transform);
@@ -742,7 +737,6 @@ public class PlayerControllerScript : MonoBehaviour {
 
         //Debug.Log(cooldown);
         //Debug.Log(cooldownTimeStamp);
-        Debug.Log(PercentUnitlCooldown);
         return PercentUnitlCooldown;
         /*
         cooldown = 0.005f * fireRateMultiplyer;

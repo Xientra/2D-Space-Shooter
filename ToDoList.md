@@ -7,4 +7,6 @@
 -Sprites for all the PickUps and the LaserBullets
 -the Split Laser is fucked up bc it's child objects are mot assinged as split laser childs
 -and destruction with lasers has to be managed
--the destruction of the LaserSword does not work somehow?
+-visual indicator for like all Menu interactions
+-In ShopMenu should be check if thers more than one Currend ... UI
+-the Buy Button has no functunallity yet
