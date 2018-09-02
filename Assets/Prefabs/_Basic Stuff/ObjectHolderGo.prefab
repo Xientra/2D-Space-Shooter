@@ -72,6 +72,29 @@ MonoBehaviour:
   EnemyBullets:
   - {fileID: 1410566720341952, guid: 93fc5193f0e8d594db0dadeef4e89f7b, type: 2}
   - {fileID: 1410566720341952, guid: c384e8914a9c7b2488f110d4bfa52138, type: 2}
+  PlayerWeapons:
+  - {fileID: 1662901710460724, guid: 1fa7ba4d02fad7446ae67fb911b170a4, type: 2}
+  - {fileID: 1662901710460724, guid: c6e8b061a84f10b47b78b47b7c12cc66, type: 2}
+  - {fileID: 1662901710460724, guid: 76ff94f858a0c3c408d06eb1e9dea075, type: 2}
+  - {fileID: 1662901710460724, guid: 8239c35f89f4bae41b09030625f35b0f, type: 2}
+  - {fileID: 1662901710460724, guid: cd08049e4d0910b4083979015d3f6699, type: 2}
+  - {fileID: 1662901710460724, guid: e0b153ca71a632648830dc53d9fc07b7, type: 2}
+  - {fileID: 1662901710460724, guid: d93600a22333ed74a87f0cef2ed40839, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 1392182663580346, guid: c474bd612b537424ab65b6eeeb2e3c6e, type: 2}
+  - {fileID: 1546623388567470, guid: fec804e8af35f334ba6c4f896e73805a, type: 2}
+  - {fileID: 1662901710460724, guid: fad7249e94e65e44bb96385a905622fa, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   PowerUps:
   - {fileID: 1638366046285052, guid: c78b1e3146ae60b4680ecf98b19e4205, type: 2}
   - {fileID: 1134414273897460, guid: 4fab5a721cebad94bafd9c8a699aed11, type: 2}
@@ -93,11 +116,6 @@ MonoBehaviour:
   - {fileID: 1219582461764428, guid: 5aefd846ae4a6ca468a7bb33f6a1f9a2, type: 2}
   - {fileID: 1016674509688452, guid: 53fe485346fe9ed48bce065f5305cc83, type: 2}
   - {fileID: 1671927100220848, guid: 3c41976126196d44fa56e0d5fc36e534, type: 2}
-  TurretSprites:
-  - {fileID: 21300000, guid: 517e275701f918845af0eb0d3ec9bd6e, type: 3}
-  - {fileID: 21300000, guid: 7b31880de5a75c64d93e28e66a200d7e, type: 3}
-  - {fileID: 21300000, guid: c9989fd179d2c274fb3a2286ae153692, type: 3}
-  - {fileID: 21300000, guid: 8486ca6825971d040b7d131d1b3c2816, type: 3}
   Effects:
   - {fileID: 1811824061054810, guid: 214ccf47d0a9a4b4e8b9ffa62734150d, type: 2}
   - {fileID: 1914619935101884, guid: 0a8fa9c61f48176469f09d07f2516330, type: 2}

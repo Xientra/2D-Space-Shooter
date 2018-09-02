@@ -377,6 +377,7 @@ public class PlayerControllerScript : MonoBehaviour {
     }
 
     void FireWeapon() {
+        
         switch (currentWeapon) {
             case (Weapons.Standart_lvl_1):
                 if (Input.GetButton("Fire1")) {
@@ -616,6 +617,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 Debug.LogError("The Weapon Type -" + currentWeapon.ToString() + "- has no values assinged!");
                 break;
         }
+        
     }
 
     private void fireChainGun(float offsetSpeed, float maxOffset, float BulletRng) {

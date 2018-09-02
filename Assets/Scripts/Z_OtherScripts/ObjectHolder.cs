@@ -10,12 +10,14 @@ public class ObjectHolder : MonoBehaviour {
     public GameObject[] EnemyBullets;
     public static GameObject[] _EnemyBullets;
 
+    public GameObject[] PlayerWeapons;
+    public static GameObject[] _PlayerWeapons;
+
     public GameObject[] PowerUps;
     public static GameObject[] _PowerUps;
 
     public GameObject[] Credits;
     public static GameObject[] _Credits;
-
 
     public GameObject[] PlayerShips;
     public static GameObject[] _PlayerShips;
@@ -33,6 +35,9 @@ public class ObjectHolder : MonoBehaviour {
 
         _EnemyBullets = new GameObject[EnemyBullets.Length];
         _EnemyBullets = EnemyBullets;
+
+        _PlayerWeapons = new GameObject[PlayerWeapons.Length];
+        _PlayerWeapons = PlayerWeapons;
 
         _PowerUps = new GameObject[PowerUps.Length];
         _PowerUps = PowerUps;
@@ -81,6 +86,20 @@ public class ObjectHolder : MonoBehaviour {
             i++;
         }
         Debug.LogError("Could not find: " + _EnemyBulletType);
+        return -1;
+    }
+
+    public static int GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes _weaponType) {
+        int i = 0;
+        foreach (GameObject go in _PlayerWeapons) {
+            if (go != null) {
+                if (go.GetComponentInChildren<WeaponBehaviourScript>().WeaponType == _weaponType) {
+                    return i;
+                }
+            }
+            i++;
+        }
+        Debug.LogError("Could not find: " + _weaponType);
         return -1;
     }
 
