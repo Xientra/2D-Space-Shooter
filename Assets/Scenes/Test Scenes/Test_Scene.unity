@@ -624,17 +624,17 @@ Prefab:
     - target: {fileID: 224916487510610196, guid: 46c816bbdc987ad48b4e410195782c69,
         type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224922492753933764, guid: 46c816bbdc987ad48b4e410195782c69,
         type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 224320673508058074, guid: 46c816bbdc987ad48b4e410195782c69,
         type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 224320673508058074, guid: 46c816bbdc987ad48b4e410195782c69,
         type: 2}
@@ -865,9 +865,9 @@ MonoBehaviour:
   TurretGameObject: {fileID: 1245885006}
   GameControllerGo: {fileID: 1134997163}
   ObjectHolderGo: {fileID: 168967501}
-  firstWeapon: {fileID: 1392182663580346, guid: c474bd612b537424ab65b6eeeb2e3c6e,
+  firstWeapon: {fileID: 1662901710460724, guid: cd378aa1658e30f498a544fa8a62bfff,
     type: 2}
-  secondWeapon: {fileID: 1662901710460724, guid: 1fa7ba4d02fad7446ae67fb911b170a4,
+  secondWeapon: {fileID: 1662901710460724, guid: 9ec6aa96948068c4f886175769f08bfa,
     type: 2}
   speedlimit: 10
   stopspeed: 0.95

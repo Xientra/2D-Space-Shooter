@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameControllerScript : MonoBehaviour {
 
@@ -22,12 +23,12 @@ public class GameControllerScript : MonoBehaviour {
     }
 
     void Update() {
-        /*
-        if (Input.GetButtonDown("Switch Weapon")) {
-            StartCoroutine(ShakeCamera(0.2f, 0.05f));
-            ScreenShake(0.25f, 0.25f);
+
+        //ESCMenu
+        if (Input.GetButton("Cancel")) {
+            //SceneManager.LoadScene("Main Menu");
         }
-        */
+
 
         //Camera Shake 
         if (shakeTimer > 0) {
@@ -144,11 +145,4 @@ public class GameControllerScript : MonoBehaviour {
         }
         mainCamera.transform.position = originalPosition;
     }
-
-    /*
-    public static void ShakeMainCameraStart(float _duration, float _magnitude) {
-
-            //StartCoroutine(ShakeMainCamera(_duration, _magnitude));
-    }
-    */
 }

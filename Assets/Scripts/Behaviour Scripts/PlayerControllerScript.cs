@@ -95,7 +95,7 @@ public class PlayerControllerScript : MonoBehaviour {
         }
         FireWeapon();
 
-        if (Input.GetButtonDown("Switch Weapon")) {
+        if (Input.GetButtonDown("Fire2")) {
             //SwitchWeapon();
             SwitchAllWeapons();         
         }
