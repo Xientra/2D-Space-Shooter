@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameControllerScript : MonoBehaviour {
 
@@ -19,16 +20,15 @@ public class GameControllerScript : MonoBehaviour {
     void Start() {
         if (mainCamera == null) mainCamera = Camera.main;
 
-        
     }
 
     void Update() {
-        /*
-        if (Input.GetButtonDown("Switch Weapon")) {
-            StartCoroutine(ShakeCamera(0.2f, 0.05f));
-            ScreenShake(0.25f, 0.25f);
+
+        //ESCMenu
+        if (Input.GetButton("Cancel")) {
+            //SceneManager.LoadScene("Main Menu");
         }
-        */
+
 
         //Camera Shake 
         if (shakeTimer > 0) {
@@ -45,23 +45,28 @@ public class GameControllerScript : MonoBehaviour {
 
         //Update UI
         if (GameObject.FindGameObjectWithTag("Player") != null) {
-            float _MaxHealth = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerControllerScript>().MaxHealth;
-            float _currendHealth = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerControllerScript>().currendHealth;
-            PlayerControllerScript.Weapons _currentWeapon = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerControllerScript>().currentWeapon;
+            float _MaxHealth = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerControllerScript1>().MaxHealth;
+            float _currendHealth = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerControllerScript1>().currendHealth;
+            WeaponBehaviourScript.WeaponTypes _firstWeapon = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerControllerScript1>().firstWeapon.GetComponent<WeaponBehaviourScript>().WeaponType;
+            WeaponBehaviourScript.WeaponTypes _secondWeapon = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerControllerScript1>().secondWeapon.GetComponent<WeaponBehaviourScript>().WeaponType;
+
             if (UsingUnityUI) {
                 if (onlyOnGOwithTag("Health Bar UI")) {
                     GameObject.FindGameObjectsWithTag("Health Bar UI")[0].GetComponent<Slider>().maxValue = _MaxHealth;
                     GameObject.FindGameObjectsWithTag("Health Bar UI")[0].GetComponent<Slider>().value = _currendHealth;
                 }
-                if (onlyOnGOwithTag("Currend Weapon UI")) {
-                    GameObject.FindGameObjectsWithTag("Currend Weapon UI")[0].GetComponent<Text>().text = "Weapon:" + System.Environment.NewLine + _currentWeapon.ToString();
+                if (onlyOnGOwithTag("First Weapon UI")) {
+                    GameObject.FindGameObjectsWithTag("First Weapon UI")[0].GetComponent<Text>().text = "Weapon:" + System.Environment.NewLine + _firstWeapon.ToString();
+                }
+                if (onlyOnGOwithTag("Second Weapon UI")) {
+                    GameObject.FindGameObjectsWithTag("Second Weapon UI")[0].GetComponent<Text>().text = "Weapon:" + System.Environment.NewLine + _secondWeapon.ToString();
                 }
                 if (onlyOnGOwithTag("Currend Credits UI")) {
                     GameObject.FindGameObjectsWithTag("Currend Credits UI")[0].GetComponent<Text>().text = "Credits:" + System.Environment.NewLine + currendCredits.ToString();
                 }
                 if (onlyOnGOwithTag("Cooldown UI")) {
                     
-                    GameObject.FindGameObjectsWithTag("Cooldown UI")[0].GetComponent<Slider>().value = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerControllerScript>().GetPercentUnitCooldown();
+                    GameObject.FindGameObjectsWithTag("Cooldown UI")[0].GetComponent<Slider>().value = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerControllerScript1>().GetPercentUnitCooldown();
                 }
             }
             else {
@@ -140,11 +145,4 @@ public class GameControllerScript : MonoBehaviour {
         }
         mainCamera.transform.position = originalPosition;
     }
-
-    /*
-    public static void ShakeMainCameraStart(float _duration, float _magnitude) {
-
-            //StartCoroutine(ShakeMainCamera(_duration, _magnitude));
-    }
-    */
 }

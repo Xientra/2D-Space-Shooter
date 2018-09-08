@@ -764,6 +764,34 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 320112618}
   m_CullTransparentMesh: 0
+--- !u!1 &341344167
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 341344168}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &341344168
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 341344167}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &371433887
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,7 +1195,7 @@ GameObject:
   - component: {fileID: 498526859}
   - component: {fileID: 498526858}
   m_Layer: 5
-  m_Name: Btn_Accept
+  m_Name: Btn_Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1232,7 +1260,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 296997162}
-        m_MethodName: Endless_Btn
+        m_MethodName: Btn_Back
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1345,7 +1373,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Weapon Shop
+  m_Text: Outfitter
 --- !u!222 &501203398
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1582,7 +1610,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 296997162}
-        m_MethodName: Endless_Btn
+        m_MethodName: Outfitter_Btn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2161,9 +2189,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Accept
-
-'
+  m_Text: Back
 --- !u!222 &1081258776
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3211,6 +3237,11 @@ Prefab:
     - target: {fileID: 114463958897777934, guid: 5d9acf72b4c17224492de96d7f687125,
         type: 2}
       propertyPath: ShopMenu
+      value: 
+      objectReference: {fileID: 405620975}
+    - target: {fileID: 114463958897777934, guid: 5d9acf72b4c17224492de96d7f687125,
+        type: 2}
+      propertyPath: OutfitterMenu
       value: 
       objectReference: {fileID: 405620975}
     m_RemovedComponents: []

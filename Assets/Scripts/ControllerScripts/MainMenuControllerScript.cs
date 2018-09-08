@@ -8,8 +8,8 @@ public class MainMenuControllerScript : MonoBehaviour {
 
     public GameObject StartMenu;
     //public GameObject StoryMenu;
-    public GameObject EndlessLevelMenu;
-    public GameObject ShopMenu;
+    //public GameObject EndlessLevelMenu;
+    public GameObject OutfitterMenu;
     //public GameObject OptionsMenu;
 
     public static PlayerControllerScript.Weapons firstWeapon = PlayerControllerScript.Weapons.Standart_lvl_1;
@@ -35,9 +35,11 @@ public class MainMenuControllerScript : MonoBehaviour {
 	}
 
     private void UpdateUI() {
-        GameObject.FindGameObjectsWithTag("Currend Credits UI")[0].GetComponent<Text>().text = "Credits:" + System.Environment.NewLine + GameControllerScript.currendCredits.ToString();
-        GameObject.FindGameObjectsWithTag("First Weapon UI")[0].GetComponent<Text>().text = "Weapon:" + System.Environment.NewLine + firstWeapon.ToString();
-        GameObject.FindGameObjectsWithTag("Second Weapon UI")[0].GetComponent<Text>().text = "Weapon:" + System.Environment.NewLine + secondWeapon.ToString();
+        if (OutfitterMenu.activeSelf == true) {
+            GameObject.FindGameObjectsWithTag("Currend Credits UI")[0].GetComponent<Text>().text = "Credits:" + System.Environment.NewLine + GameControllerScript.currendCredits.ToString();
+            GameObject.FindGameObjectsWithTag("First Weapon UI")[0].GetComponent<Text>().text = "Weapon:" + System.Environment.NewLine + firstWeapon.ToString();
+            GameObject.FindGameObjectsWithTag("Second Weapon UI")[0].GetComponent<Text>().text = "Weapon:" + System.Environment.NewLine + secondWeapon.ToString();
+        }
     }
 
     public void Story_Btn() {
@@ -46,6 +48,15 @@ public class MainMenuControllerScript : MonoBehaviour {
 
     public void Endless_Btn() {
         SceneManager.LoadScene("Endless Level");
+    }
+
+    public void Outfitter_Btn() {
+        StartMenu.SetActive(false);
+        //StoryMenu.SetActive(false);
+        //EndlessLevelMenu.SetActive(false);
+        OutfitterMenu.SetActive(true);
+        //OptionsMenu.SetActive(false);
+
     }
 
     public void Options_Btn() {
@@ -86,8 +97,16 @@ public class MainMenuControllerScript : MonoBehaviour {
         UpdateUI();
     }
 
-    public void Buy() {
+    public void Btn_Buy() {
 
+    }
+
+    public void Btn_Back() {
+        StartMenu.SetActive(true);
+        //StoryMenu.SetActive(false);
+        //EndlessLevelMenu.SetActive(false);
+        OutfitterMenu.SetActive(false);
+        //OptionsMenu.SetActive(false);
     }
 
     public void SelectStandart_lvl_1() {
