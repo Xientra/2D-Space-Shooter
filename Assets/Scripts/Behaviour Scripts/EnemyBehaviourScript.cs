@@ -125,10 +125,10 @@ public class EnemyBehaviourScript : MonoBehaviour {
         }
         if (noCollisionDamage == false) {
             if (collision.gameObject.CompareTag("Player")) {
-                if (PlayerControllerScript.regenerates == true) {
-                    PlayerControllerScript.regenerates = false;
+                if (PlayerBehaviourScript.regenerates == true) {
+                    PlayerBehaviourScript.regenerates = false;
                 }
-                collision.gameObject.GetComponent<PlayerControllerScript>().currendHealth -= CollisionDamage;
+                collision.gameObject.GetComponent<PlayerBehaviourScript>().currendHealth -= CollisionDamage;
                 StartCoroutine(GameControllerScript.ShakeMainCamera(0.2f, 0.05f));
             }
         }

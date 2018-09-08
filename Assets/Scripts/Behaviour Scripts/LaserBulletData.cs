@@ -150,7 +150,7 @@ public class LaserBulletData : MonoBehaviour {
         else {
             if (isLaser == false) {
                 if (collision.gameObject.CompareTag("Player")) {
-                    collision.gameObject.GetComponent<PlayerControllerScript>().currendHealth -= damage;
+                    collision.gameObject.GetComponent<PlayerBehaviourScript>().currendHealth -= damage;
                     StartCoroutine(GameControllerScript.ShakeMainCamera(0.2f, 0.05f));
                     InitiliseSelfDestruction();
                     //Debug.Log("SelfDes3");

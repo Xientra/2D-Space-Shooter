@@ -131,11 +131,11 @@ public class ObjectHolder : MonoBehaviour {
         return -1;
     }
 
-    public static int GetPlayerShipIndex(PlayerControllerScript.Ships _PlayerShip) {
+    public static int GetPlayerShipIndex(PlayerBehaviourScript.Ships _PlayerShip) {
         int i = 0;
         foreach (GameObject go in _PlayerShips) {
             if (go != null) {
-                if (go.GetComponentInChildren<PlayerControllerScript>().currendShip == _PlayerShip) {
+                if (go.GetComponentInChildren<PlayerBehaviourScript>().currendShip == _PlayerShip) {
                     return i;
                 }
             }

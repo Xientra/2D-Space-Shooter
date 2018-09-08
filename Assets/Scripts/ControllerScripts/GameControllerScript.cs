@@ -45,10 +45,10 @@ public class GameControllerScript : MonoBehaviour {
 
         //Update UI
         if (GameObject.FindGameObjectWithTag("Player") != null) {
-            float _MaxHealth = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerControllerScript1>().MaxHealth;
-            float _currendHealth = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerControllerScript1>().currendHealth;
-            WeaponBehaviourScript.WeaponTypes _firstWeapon = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerControllerScript1>().firstWeapon.GetComponent<WeaponBehaviourScript>().WeaponType;
-            WeaponBehaviourScript.WeaponTypes _secondWeapon = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerControllerScript1>().secondWeapon.GetComponent<WeaponBehaviourScript>().WeaponType;
+            float _MaxHealth = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerBehaviourScript>().MaxHealth;
+            float _currendHealth = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerBehaviourScript>().currendHealth;
+            WeaponBehaviourScript.WeaponTypes _firstWeapon = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerBehaviourScript>().firstWeapon.GetComponent<WeaponBehaviourScript>().WeaponType;
+            WeaponBehaviourScript.WeaponTypes _secondWeapon = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerBehaviourScript>().secondWeapon.GetComponent<WeaponBehaviourScript>().WeaponType;
 
             if (UsingUnityUI) {
                 if (onlyOnGOwithTag("Health Bar UI")) {
@@ -66,7 +66,7 @@ public class GameControllerScript : MonoBehaviour {
                 }
                 if (onlyOnGOwithTag("Cooldown UI")) {
                     
-                    GameObject.FindGameObjectsWithTag("Cooldown UI")[0].GetComponent<Slider>().value = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerControllerScript1>().GetPercentUnitCooldown();
+                    GameObject.FindGameObjectsWithTag("Cooldown UI")[0].GetComponent<Slider>().value = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerBehaviourScript>().GetPercentUnitCooldown();
                 }
             }
             else {

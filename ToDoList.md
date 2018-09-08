@@ -8,5 +8,5 @@
 -the Split Laser is fucked up bc it's child objects are mot assinged as split laser childs
 -and destruction with lasers has to be managed
 -visual indicator for like all Menu interactions
--In ShopMenu should be check if thers more than one Currend ... UI
 -the Buy Button has no functunallity yet
+-the outfitter Menu should work with objects instead of an int

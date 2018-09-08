@@ -23,7 +23,7 @@ public class EndlessLevelControllerScript : MonoBehaviour {
 
         if (GameObject.FindGameObjectWithTag("Player") == null) {
             Debug.Log("Spawned Player");
-            Instantiate(ObjectHolderGo.GetComponent<ObjectHolder>().PlayerShips[ObjectHolder.GetPlayerShipIndex(PlayerControllerScript.Ships.Standart)]);
+            Instantiate(ObjectHolderGo.GetComponent<ObjectHolder>().PlayerShips[ObjectHolder.GetPlayerShipIndex(PlayerBehaviourScript.Ships.Standart)]);
         }
     }
 

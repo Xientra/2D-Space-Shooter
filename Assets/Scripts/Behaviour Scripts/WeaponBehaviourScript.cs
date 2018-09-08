@@ -11,13 +11,18 @@ public class WeaponBehaviourScript : MonoBehaviour {
         LaserGun, SplitLaserGun
     }
 
-    public bool isBought = false;
     public float cooldown;
     public WeaponTypes WeaponType;
 
     private float chainGunOffset = 0;
     private bool chainGunOffsetUp = true;
     float BulletRng;
+
+    /*------------Stats for the Stats Menu--------------*/
+    public bool isBought = false;
+    public float price = 100;
+    public string weaponName = "";
+    public string description = "";
 
     void Start () {
 		

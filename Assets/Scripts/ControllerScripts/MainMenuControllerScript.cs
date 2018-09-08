@@ -10,10 +10,11 @@ public class MainMenuControllerScript : MonoBehaviour {
     //public GameObject StoryMenu;
     //public GameObject EndlessLevelMenu;
     public GameObject OutfitterMenu;
+    public GameObject WeaponInfoSrceen;
     //public GameObject OptionsMenu;
 
-    public static PlayerControllerScript.Weapons firstWeapon = PlayerControllerScript.Weapons.Standart_lvl_1;
-    public static PlayerControllerScript.Weapons secondWeapon = PlayerControllerScript.Weapons.Helix_lvl_1;
+    public static WeaponBehaviourScript.WeaponTypes firstWeapon = WeaponBehaviourScript.WeaponTypes.Standart_lvl_1;
+    public static WeaponBehaviourScript.WeaponTypes secondWeapon = WeaponBehaviourScript.WeaponTypes.Helix_lvl_1;
 
     public bool AllWeaponsUnlocked = false;
 
@@ -22,7 +23,7 @@ public class MainMenuControllerScript : MonoBehaviour {
     private bool[] BoughtWeapons;
 
 	void Start () {
-        BoughtWeapons = new bool[PlayerControllerScript.Weapons.GetNames(typeof(PlayerControllerScript.Weapons)).Length];
+        BoughtWeapons = new bool[WeaponBehaviourScript.WeaponTypes.GetNames(typeof(WeaponBehaviourScript.WeaponTypes)).Length];
         for (int i = 0; i < BoughtWeapons.Length; i++){
             BoughtWeapons[i] = AllWeaponsUnlocked;
         }
@@ -42,6 +43,24 @@ public class MainMenuControllerScript : MonoBehaviour {
         }
     }
 
+    private void OpenWeaponInfoSrceen() {
+        StartMenu.SetActive(false);
+        //StoryMenu.SetActive(false);
+        //EndlessLevelMenu.SetActive(false);
+        OutfitterMenu.SetActive(true);
+        WeaponInfoSrceen.SetActive(true);
+        //OptionsMenu.SetActive(false);
+
+        WeaponBehaviourScript.WeaponTypes wT = (WeaponBehaviourScript.WeaponTypes)SelectedWeaponNumber;
+        foreach (Transform t in WeaponInfoSrceen.transform) {
+            if (t.name == "Weapon Name Text") t.GetComponent<Text>().text = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(wT)].GetComponent<WeaponBehaviourScript>().weaponName;
+            if (t.name == "Weapon Price Text") t.GetComponent<Text>().text = "Price: " + ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(wT)].GetComponent<WeaponBehaviourScript>().price.ToString();
+            if (t.name == "Weapon Description Text") t.GetComponent<Text>().text = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(wT)].GetComponent<WeaponBehaviourScript>().description;
+        }
+    }
+
+
+    /*-------------------------------------------UI Buttons, etc.-------------------------------------------------------*/
     public void Story_Btn() {
         Debug.Log("Mayby later");
     }
@@ -55,6 +74,7 @@ public class MainMenuControllerScript : MonoBehaviour {
         //StoryMenu.SetActive(false);
         //EndlessLevelMenu.SetActive(false);
         OutfitterMenu.SetActive(true);
+        WeaponInfoSrceen.SetActive(false);
         //OptionsMenu.SetActive(false);
 
     }
@@ -70,7 +90,7 @@ public class MainMenuControllerScript : MonoBehaviour {
     public void SelectAsFirst() {
         if (SelectedWeaponNumber != -1) {
             if (BoughtWeapons[SelectedWeaponNumber] == true) {
-                firstWeapon = (PlayerControllerScript.Weapons)SelectedWeaponNumber;
+                firstWeapon = (WeaponBehaviourScript.WeaponTypes)SelectedWeaponNumber;
             }
             else {
                 Debug.Log("You'll have to buy this Weapon first");
@@ -80,12 +100,14 @@ public class MainMenuControllerScript : MonoBehaviour {
             Debug.Log("Please Select a Weapon"); //Please make this acually visible
         }
         UpdateUI();
+
+        WeaponInfoSrceen.SetActive(false);
     }
 
     public void SelectAsSecond() {
         if (SelectedWeaponNumber != -1) {
             if (BoughtWeapons[SelectedWeaponNumber] == true) {
-                secondWeapon = (PlayerControllerScript.Weapons)SelectedWeaponNumber;
+                secondWeapon = (WeaponBehaviourScript.WeaponTypes)SelectedWeaponNumber;
             }
             else {
                 Debug.Log("You'll have to buy this Weapon first");
@@ -95,10 +117,17 @@ public class MainMenuControllerScript : MonoBehaviour {
             Debug.Log("Please Select a Weapon"); //Please make this acually visible
         }
         UpdateUI();
+
+        WeaponInfoSrceen.SetActive(false);
     }
 
     public void Btn_Buy() {
 
+    }
+
+    public void Btn_WeaponSelectScreenBack() {
+        SelectedWeaponNumber = - 1;
+        WeaponInfoSrceen.SetActive(false);
     }
 
     public void Btn_Back() {
@@ -111,39 +140,45 @@ public class MainMenuControllerScript : MonoBehaviour {
 
     public void SelectStandart_lvl_1() {
         //SelectedWeapon = PlayerControllerScript.Weapons.Standart_lvl_1;
-        SelectedWeaponNumber = (int)PlayerControllerScript.Weapons.Standart_lvl_1;
+        SelectedWeaponNumber = (int)WeaponBehaviourScript.WeaponTypes.Standart_lvl_1;
 
         Debug.Log("Selected: " + SelectedWeapon); //Visual Indicator
+        OpenWeaponInfoSrceen();
     }
     public void SelectStandart_lvl_2() {
         //SelectedWeapon = PlayerControllerScript.Weapons.Standart_lvl_2;
-        SelectedWeaponNumber = (int)PlayerControllerScript.Weapons.Standart_lvl_2;
+        SelectedWeaponNumber = (int)WeaponBehaviourScript.WeaponTypes.Standart_lvl_2;
 
         Debug.Log("Selected: " + SelectedWeapon); //Visual Indicator
+        OpenWeaponInfoSrceen();
     }
     public void SelectStandart_lvl_3() {
         //SelectedWeapon = PlayerControllerScript.Weapons.Standart_lvl_3;
-        SelectedWeaponNumber = (int)PlayerControllerScript.Weapons.Standart_lvl_3;
+        SelectedWeaponNumber = (int)WeaponBehaviourScript.WeaponTypes.Standart_lvl_3;
 
         Debug.Log("Selected: " + SelectedWeapon); //Visual Indicator
+        OpenWeaponInfoSrceen();
     }
     public void SelectHelix_lvl_1() {
         //SelectedWeapon = PlayerControllerScript.Weapons.Helix_lvl_1;
-        SelectedWeaponNumber = (int)PlayerControllerScript.Weapons.Helix_lvl_1;
+        SelectedWeaponNumber = (int)WeaponBehaviourScript.WeaponTypes.Helix_lvl_1;
 
         Debug.Log("Selected: " + SelectedWeapon); //Visual Indicator
+        OpenWeaponInfoSrceen();
     }
     public void SelectHelix_lvl_2() {
         //SelectedWeapon = PlayerControllerScript.Weapons.Helix_lvl_2;
-        SelectedWeaponNumber = (int)PlayerControllerScript.Weapons.Helix_lvl_2;
+        SelectedWeaponNumber = (int)WeaponBehaviourScript.WeaponTypes.Helix_lvl_2;
 
         Debug.Log("Selected: " + SelectedWeapon); //Visual Indicator
+        OpenWeaponInfoSrceen();
     }
     public void SelectHelix_lvl_3() {
         //SelectedWeapon = PlayerControllerScript.Weapons.Helix_lvl_3;
-        SelectedWeaponNumber = (int)PlayerControllerScript.Weapons.Helix_lvl_3;
+        SelectedWeaponNumber = (int)WeaponBehaviourScript.WeaponTypes.Helix_lvl_3;
 
         Debug.Log("Selected: " + SelectedWeapon); //Visual Indicator
+        OpenWeaponInfoSrceen();
     }
 
 }
