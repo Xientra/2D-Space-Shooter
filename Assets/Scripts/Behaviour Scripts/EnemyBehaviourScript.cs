@@ -97,7 +97,9 @@ public class EnemyBehaviourScript : MonoBehaviour {
         */
 
         if (hasTurret) {
-            EnemyTurretGameObject.transform.right = GameObject.FindGameObjectsWithTag("Player")[0].transform.position - transform.position;
+            if (GameObject.FindGameObjectWithTag("Player") != null) {
+                EnemyTurretGameObject.transform.right = GameObject.FindGameObjectsWithTag("Player")[0].transform.position - transform.position;
+            }
         }
 
         if (canShoot == true) {

@@ -7,19 +7,23 @@ public class EndlessLevelControllerScript : MonoBehaviour {
 
     public GameObject ObjectHolderGo;
 
-    public GameObject[] Waves;
-    //private GameObject activeWave;
+    public GameObject activeWave;
 
-    //[NonSerialized]
+    [NonSerialized]
     public bool WaveActive = true;
 
     void Start() {
-        StartCoroutine(InstantiatePlayerAfterTime(0.00001f));
+        foreach (Transform child in transform) {
+
+            child.gameObject.SetActive(false);
+        }
+
+        StartCoroutine(InstantiatePlayerAfterOneFrame());
         StartCoroutine(StartAfterTime(1f));
     }
 
-    IEnumerator InstantiatePlayerAfterTime(float duration) {
-        yield return new WaitForSeconds(duration);
+    IEnumerator InstantiatePlayerAfterOneFrame() {
+        yield return null;
 
         if (GameObject.FindGameObjectWithTag("Player") == null) {
             Debug.Log("Spawned Player");
@@ -32,16 +36,20 @@ public class EndlessLevelControllerScript : MonoBehaviour {
         WaveActive = false;
     }
 
+    
+
     void Update() {
         if (WaveActive == false) {
-            Instantiate(Waves[UnityEngine.Random.Range(0, Waves.Length)], this.transform);
+            int childPosition = UnityEngine.Random.Range(1, transform.childCount+1);
+            int i = 1;
+            foreach (Transform child in transform) {
+                if (i == childPosition) {
+                    activeWave = Instantiate(child.gameObject);
+                    activeWave.SetActive(true);
+                }
+                i++;
+            }
             WaveActive = true;
         }
     }
-    /*
-    IEnumerator DelayWaveStart(float duration) {
-        yield return new WaitForSeconds(duration);
-        
-    }
-    */
 }
