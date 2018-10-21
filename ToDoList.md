@@ -5,8 +5,9 @@
 -regeneration is not framerate indipendent
 -make the PowerUps feel/look heavier
 -Sprites for all the PickUps and the LaserBullets
--the Split Laser is fucked up bc it's child objects are mot assinged as split laser childs
+-the Split Laser is fucked up bc it's child objects are not assinged as split laser childs
 -and destruction with lasers has to be managed
 -visual indicator for like all Menu interactions
 -the Buy Button has no functunallity yet
 -the outfitter Menu should work with objects instead of an int
+-the parents of enemies remain even when the enemies are destroyed

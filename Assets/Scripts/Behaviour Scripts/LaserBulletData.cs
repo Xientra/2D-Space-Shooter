@@ -11,7 +11,7 @@ public class LaserBulletData : MonoBehaviour {
         Rocket, Grenade, Shrapnel_lvl_1, Shrapnel_lvl_2, Shrapnel_lvl_3, ShrapnelBullet, HomingBullet_lvl_1, HomingBullet_lvl_2, HomingBullet_lvl_3, LaserSword_lvl_1,
         Explosion, ShrapnellExplosion,
         SimpleLaser, SplitLaser, SplitLaserChild, 
-        Enemy_SimpleBullet, Enemy_SlowAlienBullet
+        Enemy_SimpleBullet, Enemy_SlowAlienBullet, Enemy_AlienLaserBulletSmall
     }
     public BulletTypes bulletType = BulletTypes.Standart;
 

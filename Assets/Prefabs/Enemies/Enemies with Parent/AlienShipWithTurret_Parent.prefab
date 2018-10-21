@@ -296,7 +296,7 @@ Animator:
   m_GameObject: {fileID: 1446540340885602}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 27ae95bdcb21805468f2b7c9155f4e9d, type: 2}
+  m_Controller: {fileID: 9100000, guid: d8cc558371a9b8244b9f0315b8a4dcc5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -521,8 +521,6 @@ MonoBehaviour:
   EnemyTurretGameObject: {fileID: 1188137050244094}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
-  CoinDrop: {fileID: 1039937174086562, guid: 30cde78446690204d886c9c31a77d9e5, type: 2}
-  PowerUpDrop: {fileID: 0}
   currendEnemyType: 1
   EnemyWeapon: 1
   currendAnimation: 17
@@ -533,6 +531,9 @@ MonoBehaviour:
   MaxHealth: 100
   Health: 100
   CollisionDamage: 50
+  ValueOfCreditDrop: 1
+  CanDropPowerUp: 0
+  PowerUpDropChangse: 0.2
 --- !u!212 &212130691848024456
 SpriteRenderer:
   m_ObjectHideFlags: 1

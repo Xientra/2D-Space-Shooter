@@ -72,6 +72,7 @@ MonoBehaviour:
   EnemyBullets:
   - {fileID: 1410566720341952, guid: 93fc5193f0e8d594db0dadeef4e89f7b, type: 2}
   - {fileID: 1410566720341952, guid: c384e8914a9c7b2488f110d4bfa52138, type: 2}
+  - {fileID: 1991854627193970, guid: badfcf15ad43124489e1e2ff54abedd2, type: 2}
   PlayerWeapons:
   - {fileID: 1662901710460724, guid: 1fa7ba4d02fad7446ae67fb911b170a4, type: 2}
   - {fileID: 1662901710460724, guid: c6e8b061a84f10b47b78b47b7c12cc66, type: 2}
@@ -109,7 +110,7 @@ MonoBehaviour:
   - {fileID: 1150594941634016, guid: a8b7430565d1908409abbd24a31175f7, type: 2}
   PlayerShips:
   - {fileID: 1517047546398530, guid: 5be38424497c8bd4d87557da3b3aeb10, type: 2}
-  - {fileID: 1654128778518318, guid: a78caceea55110c45843a6f33fcdc9a1, type: 2}
+  - {fileID: 0}
   Turrets:
   - {fileID: 1671927100220848, guid: 843ca0449b31e6a4dbc02fd312a26213, type: 2}
   - {fileID: 1219582461764428, guid: 9bae1a4100fd7a9489717378195136e4, type: 2}

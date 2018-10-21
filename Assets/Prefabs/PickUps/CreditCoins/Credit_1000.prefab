@@ -143,8 +143,8 @@ MonoBehaviour:
   thisPickUpType: 0
   speed: {x: 0, y: 0, z: 0}
   startspeed: 5
-  speedToPlayer: 0.6
-  maxSpeedToPlayer: 7.5
+  speedToPlayer: 0.75
+  maxSpeedToPlayer: 12
   TimeBeforeDestroy: 20
   MinDistaceToPlayer: 5
 --- !u!198 &198384173168013808

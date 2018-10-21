@@ -13,10 +13,10 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
     private GameObject[] EnemyBullets;
 
-    public enum EnemyTypes { AlienStandart, AlienTurret, AlienHeavy }
+    public enum EnemyTypes { AlienStandart, AlienTurret, AlienHeavy, AilenWingShip_straight }
     public EnemyTypes currendEnemyType = EnemyTypes.AlienStandart;
 
-    public enum EnemyWeapons { None, FastSmall, FiveSpreadSlow}
+    public enum EnemyWeapons { None, FastSmall, FiveSpreadSlow, FourSmallLaserBullets }
     public EnemyWeapons EnemyWeapon = EnemyWeapons.FastSmall;
 
     public enum AnimationTypes {
@@ -214,6 +214,12 @@ public class EnemyBehaviourScript : MonoBehaviour {
                 Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_SlowAlienBullet)], transform.position, transform.rotation * Quaternion.Euler(0, 0, -tempAngle));
                 Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_SlowAlienBullet)], transform.position, transform.rotation * Quaternion.Euler(0, 0, tempAngle * 2));
                 Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_SlowAlienBullet)], transform.position, transform.rotation * Quaternion.Euler(0, 0, -tempAngle * 2));
+                break;
+            case (EnemyWeapons.FourSmallLaserBullets):
+                Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_AlienLaserBulletSmall)], transform.position + new Vector3(1.3f, -0.525f, 0), transform.rotation * Quaternion.Euler(0, 0, 0));
+                Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_AlienLaserBulletSmall)], transform.position + new Vector3(1f, -0.7f, 0), transform.rotation * Quaternion.Euler(0, 0, 0));
+                Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_AlienLaserBulletSmall)], transform.position + new Vector3(-1.3f, -0.525f, 0), transform.rotation * Quaternion.Euler(0, 0, 0));
+                Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_AlienLaserBulletSmall)], transform.position + new Vector3(-1f, -0.7f, 0), transform.rotation * Quaternion.Euler(0, 0, 0));
                 break;
         }
     }
