@@ -121,9 +121,9 @@ MonoBehaviour:
   CreditValue: 1
   thisPickUpType: 2
   speed: {x: 0, y: 0, z: 0}
-  startspeed: 5
-  speedToPlayer: 0.6
-  maxSpeedToPlayer: 7.5
+  startspeed: 4
+  speedToPlayer: 0.5
+  maxSpeedToPlayer: 12
   TimeBeforeDestroy: 100
   MinDistaceToPlayer: 5
 --- !u!212 &212001129001942520

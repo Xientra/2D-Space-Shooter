@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Behaviour Scripts\EnemyBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\Behaviour Scripts\EnemyParentBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Behaviour Scripts\LaserBulletData.cs" />
     <Compile Include="Assets\Scripts\Behaviour Scripts\PickUpBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Behaviour Scripts\PlayerBehaviourScript.cs" />

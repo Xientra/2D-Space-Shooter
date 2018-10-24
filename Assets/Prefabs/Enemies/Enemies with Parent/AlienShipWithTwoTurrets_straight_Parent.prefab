@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4765980029994932}
+  - component: {fileID: 114440710833225674}
   m_Layer: 0
   m_Name: AlienShipWithTwoTurrets_straight_Parent
   m_TagString: Untagged
@@ -36,6 +37,7 @@ GameObject:
   - component: {fileID: 4367600612250200}
   - component: {fileID: 212827248430800812}
   - component: {fileID: 70231519342000332}
+  - component: {fileID: 70762809370756114}
   - component: {fileID: 50620043165453060}
   - component: {fileID: 95152120249424126}
   - component: {fileID: 114969934037988068}
@@ -186,7 +188,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1004775251736072}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.223, y: -0.688, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4367600612250200}
@@ -228,6 +230,21 @@ CapsuleCollider2D:
   m_Offset: {x: -0, y: 0.15}
   m_Size: {x: 0.84, y: 0.6}
   m_Direction: 1
+--- !u!70 &70762809370756114
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1676363629433268}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.14}
+  m_Size: {x: 0.2, y: 0.64}
+  m_Direction: 0
 --- !u!95 &95152120249424126
 Animator:
   serializedVersion: 3
@@ -448,6 +465,17 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &114440710833225674
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1004775251736072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bbad66305303f14b935b04ab265850f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114969934037988068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -464,7 +492,7 @@ MonoBehaviour:
     type: 2}
   currendEnemyType: 3
   EnemyWeapon: 3
-  currendAnimation: 14
+  currendAnimation: 8
   AnimationStartDelay: 0.5
   LimiterDestructionDelayAfterStart: 1
   hasTurret: 0

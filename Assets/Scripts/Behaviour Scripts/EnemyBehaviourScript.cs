@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyBehaviourScript : MonoBehaviour {
 
-    public GameObject EnemyTurretGameObject;
+    public GameObject[] EnemyTurrets = new GameObject[0];
+    //public GameObject EnemyTurretGameObject;
     public GameObject ObjectHolderGo;
     //public GameObject GameControllerGo;
     private GameObject EnemyHealthBarRed;
@@ -13,11 +14,11 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
     private GameObject[] EnemyBullets;
 
-    public enum EnemyTypes { AlienStandart, AlienTurret, AlienHeavy, AilenWingShip_straight }
+    public enum EnemyTypes { AlienStandart, AlienTurret, AlienHeavy, AilenWingShip_straight, AilenWingShip_aim }
     public EnemyTypes currendEnemyType = EnemyTypes.AlienStandart;
 
     public enum EnemyWeapons { None, FastSmall, FiveSpreadSlow, FourSmallLaserBullets }
-    public EnemyWeapons EnemyWeapon = EnemyWeapons.FastSmall;
+    public EnemyWeapons EnemyWeapon = EnemyWeapons.None;
 
     public enum AnimationTypes {
         DoNotMove, StraightDown, ComeInFromRight, ComeInFromLeft, ComeDownMiddleGoUpRight, ComeDownMiddleGoUpLeft, StraightDownBoolShoot3, DownWaitUp, DownShoot2Up, HalfCircleRightLeftShoot2,
@@ -98,7 +99,9 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
         if (hasTurret) {
             if (GameObject.FindGameObjectWithTag("Player") != null) {
-                EnemyTurretGameObject.transform.right = GameObject.FindGameObjectsWithTag("Player")[0].transform.position - transform.position;
+                foreach (GameObject go in EnemyTurrets) {
+                    go.transform.right = GameObject.FindGameObjectWithTag("Player").transform.position - go.transform.position;
+                }
             }
         }
 
@@ -205,7 +208,9 @@ public class EnemyBehaviourScript : MonoBehaviour {
     void Fire() {
         switch (EnemyWeapon) {
             case (EnemyWeapons.FastSmall): //Must have a Turret
-                Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_SimpleBullet)], EnemyTurretGameObject.transform.position, EnemyTurretGameObject.transform.rotation * Quaternion.Euler(0, 0, 90));
+                foreach (GameObject go in EnemyTurrets) {
+                    Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_SimpleBullet)], go.transform.position, go.transform.rotation * Quaternion.Euler(0, 0, 90));
+                }
                 break;
             case (EnemyWeapons.FiveSpreadSlow):
                 float tempAngle = 10f;

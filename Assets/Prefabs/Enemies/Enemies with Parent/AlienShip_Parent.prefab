@@ -35,6 +35,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4549842260047748}
+  - component: {fileID: 114902002629572482}
   m_Layer: 0
   m_Name: AlienShip_Parent
   m_TagString: Untagged
@@ -315,6 +316,17 @@ MonoBehaviour:
   ValueOfCreditDrop: 1
   CanDropPowerUp: 0
   PowerUpDropChangse: 0.2
+--- !u!114 &114902002629572482
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1555032546699202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bbad66305303f14b935b04ab265850f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212498115965587726
 SpriteRenderer:
   m_ObjectHideFlags: 1
