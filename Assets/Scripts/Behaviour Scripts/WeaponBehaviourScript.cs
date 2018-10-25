@@ -5,9 +5,9 @@ using UnityEngine;
 public class WeaponBehaviourScript : MonoBehaviour {
 
     public enum WeaponTypes {
-        Standart_lvl_1, Standart_lvl_2, Standart_lvl_3, Spread_lvl_1, Spread_lvl_2, Spread_lvl_3, Homing_lvl_1, Homing_lvl_2, Homing_lvl_3, Helix_lvl_1, Helix_lvl_2, Helix_lvl_3, ChainGun_lvl_1, ChainGun_lvl_2, ChainGun_lvl_3,
-        WaveEmitter_lvl_1, LaserSword_lvl_1,
-        RocketLauncher_lvl_1, GrenadeLauncher_lvl_1, ShrapnelLauncher_lvl_1, ShrapnelLauncher_lvl_2, ShrapnelLauncher_lvl_3,
+        Standart_lvl_1, Standart_lvl_2, Standart_lvl_3, Spread_lvl_1, Spread_lvl_2, Spread_lvl_3, Homing_lvl_1, Homing_lvl_2, Homing_lvl_3, Helix_lvl_1, Helix_lvl_2, Helix_lvl_3,
+        ChainGun_lvl_1, ChainGun_lvl_2, ChainGun_lvl_3, WaveEmitter_lvl_1, WaveEmitter_lvl_2, WaveEmitter_lvl_3, LaserSword_lvl_1, LaserSword_lvl_2, LaserSword_lvl_3,
+        RocketLauncher_lvl_1, RocketLauncher_lvl_2, RocketLauncher_lvl_3, GrenadeLauncher_lvl_1, GrenadeLauncher_lvl_2, GrenadeLauncher_lvl_3, ShrapnelLauncher_lvl_1, ShrapnelLauncher_lvl_2, ShrapnelLauncher_lvl_3,
         LaserGun, SplitLaserGun
     }
 
@@ -94,10 +94,13 @@ public class WeaponBehaviourScript : MonoBehaviour {
                 break;
 
             case (WeaponTypes.LaserSword_lvl_1):
-                float fieldSize = 1.25f;
-                Vector3 RndFieldPos = transform.position + (TurretGameObject.transform.right * Random.Range(-fieldSize, fieldSize)) + (TurretGameObject.transform.up * Random.Range(-fieldSize, -fieldSize / 2));//new Vector3(Random.Range(-fieldSize, fieldSize), ;
-                Quaternion LookToMouse = Quaternion.LookRotation(Vector3.forward, (new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0) - RndFieldPos));
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.LaserSword_lvl_1)], RndFieldPos, LookToMouse);
+                fireLaserSowrd(1.5f, ProjectileSpawnPoint, TurretGameObject);
+                break;
+            case (WeaponTypes.LaserSword_lvl_2):
+                fireLaserSowrd(1.75f, ProjectileSpawnPoint, TurretGameObject);
+                break;
+            case (WeaponTypes.LaserSword_lvl_3):
+                fireLaserSowrd(2f, ProjectileSpawnPoint, TurretGameObject);
                 break;
 
             case (WeaponTypes.WaveEmitter_lvl_1):
@@ -189,6 +192,13 @@ public class WeaponBehaviourScript : MonoBehaviour {
         else chainGunOffset -= offsetSpeed;
         if (chainGunOffset >= maxOffset) chainGunOffsetUp = false;
         if (chainGunOffset <= -maxOffset) chainGunOffsetUp = true;
+    }
+
+    private void fireLaserSowrd(float _fieldSize, Vector3 _ProjectileSpawnPoint, GameObject _TurretGameObject) {
+        Vector3 RndFieldPos = _ProjectileSpawnPoint + (_TurretGameObject.transform.right * Random.Range(-_fieldSize, _fieldSize)) + (_TurretGameObject.transform.up * Random.Range(-_fieldSize, -_fieldSize / 2));//new Vector3(Random.Range(-fieldSize, fieldSize), ;
+        Quaternion LookToMouse = Quaternion.LookRotation(Vector3.forward, (new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0) - RndFieldPos));
+
+        Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.LaserSword_lvl_1)], RndFieldPos, LookToMouse);
     }
     /*
     private void fireAnyLaserGun(LaserBulletData.BulletTypes LaserToFire) {

@@ -67,8 +67,9 @@ public class PlayerBehaviourScript : MonoBehaviour {
 
     IEnumerator DoStuffAfterOneFrame() {
         yield return 0;
-        firstWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Standart_lvl_1)];
-        secondWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Helix_lvl_1)];
+        firstWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.LaserSword_lvl_1)];
+        secondWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.LaserSword_lvl_2)];
+        ChangeTurret(firstWeapon.GetComponent<WeaponBehaviourScript>().WeaponType);
     }
 
     void Update() {
@@ -539,16 +540,15 @@ public class PlayerBehaviourScript : MonoBehaviour {
         }
         else {
             currentWeapon = (WeaponBehaviourScript.WeaponTypes)(int)currentWeapon + 1;
-            //ChangeWeaponTurret(currentWeapon);
+            //ChangeTurret(currentWeapon);
         }
     }
     */
-    /*
-    void ChangeWeaponTurret(WeaponBehaviourScript.WeaponTypes _weaponType) {
+    
+    void ChangeTurret(WeaponBehaviourScript.WeaponTypes _weaponType) {
         Destroy(TurretGameObject.GetComponentsInChildren<Transform>()[1].transform.gameObject);
-        Instantiate(ObjectHolder._Turrets[ObjectHolder.GetTurretIndex(_weaponType)], TurretGameObject.transform);
+        Instantiate(ObjectHolder._Turrets[ObjectHolder.GetWeaponTurretIndex(_weaponType)], TurretGameObject.transform);
     }
-    */
 
     public float GetPercentUnitCooldown() {
         float PercentUnitlCooldown = -(((cooldownTimeStamp - Time.time) / cooldown) * 100) + 100;
