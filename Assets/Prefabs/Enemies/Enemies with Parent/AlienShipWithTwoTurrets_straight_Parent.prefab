@@ -487,7 +487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e92fe24fbb18264b87e32ddacde9f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyTurretGameObject: {fileID: 0}
+  EnemyTurrets: []
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
   currendEnemyType: 3
@@ -497,8 +497,8 @@ MonoBehaviour:
   LimiterDestructionDelayAfterStart: 1
   hasTurret: 0
   canShoot: 0
-  MaxHealth: 300
-  Health: 300
+  MaxHealth: 350
+  Health: 350
   CollisionDamage: 75
   ValueOfCreditDrop: 10
   CanDropPowerUp: 1

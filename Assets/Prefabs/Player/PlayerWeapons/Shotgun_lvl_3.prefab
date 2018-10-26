@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4129009945421706}
   - component: {fileID: 114029827636766654}
   m_Layer: 0
-  m_Name: Spread_lvl_1
+  m_Name: Shotgun_lvl_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,9 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21635e70faad5c141984db4aba35f468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldown: 1.2
+  WeaponType: 5
   isBought: 0
-  cooldown: 0.4
-  WeaponType: 3
-  weaponName: Spread Shot Level 1
-  description: This weapon was desinged to hit multiple targets at once but this effect
-    is not really noticable due to the small amount of bullets it fires.
+  price: 300
+  weaponName: Spread Shot Level 3
+  description: Even more bullets to increase the damage output.

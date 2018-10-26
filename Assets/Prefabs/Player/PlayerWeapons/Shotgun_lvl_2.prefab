@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4129009945421706}
   - component: {fileID: 114029827636766654}
   m_Layer: 0
-  m_Name: Spread_lvl_3
+  m_Name: Shotgun_lvl_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,9 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21635e70faad5c141984db4aba35f468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0.8
-  WeaponType: 5
+  cooldown: 1
+  WeaponType: 4
   isBought: 0
-  price: 300
-  weaponName: Spread Shot Level 3
-  description: Even more bullets to increase the damage output.
+  price: 200
+  weaponName: Spread Shot Level 2
+  description: With two more bullets this upgraded version now can do what it predecessor
+    promised.

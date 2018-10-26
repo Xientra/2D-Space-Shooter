@@ -7,8 +7,8 @@ public class LaserBulletData : MonoBehaviour {
     public GameObject createOnDeath;
 
     public enum BulletTypes {
-        Standart, HelixBullet_lvl_1, HelixBullet_lvl_2, HelixBullet_lvl_3, HelixBulletChild, Wave, ChainGunBullet,
-        Rocket, Grenade, Shrapnel_lvl_1, Shrapnel_lvl_2, Shrapnel_lvl_3, ShrapnelBullet, HomingBullet_lvl_1, HomingBullet_lvl_2, HomingBullet_lvl_3, LaserSword_lvl_1,
+        Standart, HelixBullet_lvl_1, HelixBullet_lvl_2, HelixBullet_lvl_3, HelixBulletChild, Wave, ChainGunBullet, ShotgunBullet, 
+        Rocket, Grenade, Shrapnel_lvl_1, Shrapnel_lvl_2, Shrapnel_lvl_3, ShrapnelBullet, HomingBullet_lvl_1, HomingBullet_lvl_2, HomingBullet_lvl_3, LaserSword_lvl_1, LaserSword_lvl_2, LaserSword_lvl_3, 
         Explosion, ShrapnellExplosion,
         SimpleLaser, SplitLaser, SplitLaserChild, 
         Enemy_SimpleBullet, Enemy_SlowAlienBullet, Enemy_AlienLaserBulletSmall
@@ -79,6 +79,7 @@ public class LaserBulletData : MonoBehaviour {
             transform.rotation = Quaternion.identity;
         }
 
+        //is this realy usefull?
         if (bulletType == BulletTypes.Enemy_SimpleBullet || bulletType == BulletTypes.Enemy_SlowAlienBullet) {
             isEnemyBullet = true;
         }
@@ -89,6 +90,10 @@ public class LaserBulletData : MonoBehaviour {
         if (bulletType == BulletTypes.LaserSword_lvl_1) {
             TempSpeed = speed;
             speed = 0;
+        }
+        if (bulletType == BulletTypes.ShrapnelBullet) {
+            float shrapnellBulletRNGSpread = 24; 
+            transform.rotation = transform.rotation * Quaternion.Euler(0, 0, Random.Range(shrapnellBulletRNGSpread, -shrapnellBulletRNGSpread));
         }
     }
 

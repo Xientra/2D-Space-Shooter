@@ -67,8 +67,8 @@ public class PlayerBehaviourScript : MonoBehaviour {
 
     IEnumerator DoStuffAfterOneFrame() {
         yield return 0;
-        firstWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.LaserSword_lvl_1)];
-        secondWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.LaserSword_lvl_2)];
+        firstWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Standart_lvl_1)];
+        secondWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Shotgun_lvl_1)];
         ChangeTurret(firstWeapon.GetComponent<WeaponBehaviourScript>().WeaponType);
     }
 

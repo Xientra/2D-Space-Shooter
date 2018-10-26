@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4129009945421706}
   - component: {fileID: 114029827636766654}
   m_Layer: 0
-  m_Name: Spread_lvl_2
+  m_Name: ShrapnelLauncher_lvl_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,10 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21635e70faad5c141984db4aba35f468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0.6
-  WeaponType: 4
+  cooldown: 1.4
+  WeaponType: 29
   isBought: 0
-  price: 200
-  weaponName: Spread Shot Level 2
-  description: With two more bullets this upgraded version now can do what it predecessor
-    promised.
+  price: 300
+  weaponName: Shrapnell Launcher Level 1
+  description: A weapon similar to the grenade with a smaler explosion but with fragments
+    shot in all directions on explosion.

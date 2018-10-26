@@ -10,4 +10,4 @@
 -visual indicator for like all Menu interactions
 -the Buy Button has no functunallity yet
 -the outfitter Menu should work with objects instead of an int
--the parents of enemies remain even when the enemies are destroyed
+-the shrapnell bullet should be spawned individualy and not as part of the shrapnell explosion
