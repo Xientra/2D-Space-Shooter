@@ -59,13 +59,13 @@ public class WeaponBehaviourScript : MonoBehaviour {
                 break;
 
             case (WeaponTypes.Shotgun_lvl_1):
-                fireShotgun(7, 6f, 0.1f, ProjectileSpawnPoint, TurretGameObject);
+                fireShotgun(7, 10f, 0.1f, ProjectileSpawnPoint, TurretGameObject);
                 break;
             case (WeaponTypes.Shotgun_lvl_2):
-                fireShotgun(11, 8f, 0.2f, ProjectileSpawnPoint, TurretGameObject);
+                fireShotgun(11, 12f, 0.2f, ProjectileSpawnPoint, TurretGameObject);
                 break;
             case (WeaponTypes.Shotgun_lvl_3):
-                fireShotgun(23, 10f, 0.3f, ProjectileSpawnPoint, TurretGameObject);
+                fireShotgun(15, 14f, 0.3f, ProjectileSpawnPoint, TurretGameObject);
                 break;
 
             case (WeaponTypes.Homing_lvl_1):

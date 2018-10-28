@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Down20Left7_5Up20
+  m_Name: Down20Rigth6Up20_anim
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -28,16 +28,16 @@ AnimationClip:
         outWeight: {x: 0.50639, y: 0.011067658, z: 0.33333334}
       - serializedVersion: 3
         time: 4
-        value: {x: -3, y: -20, z: 0}
-        inSlope: {x: -2.3110938, y: 0, z: 0}
-        outSlope: {x: -2.3110938, y: 0, z: 0}
+        value: {x: 3, y: -20, z: 0}
+        inSlope: {x: 2.1786618, y: 0, z: 0}
+        outSlope: {x: 2.1786618, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.02336526, y: 0.33333334, z: 0.33333334}
+        inWeight: {x: 0.03535205, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.11205149, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 8
-        value: {x: -7.5, y: 0, z: 0}
+        value: {x: 6, y: 0, z: 0}
         inSlope: {x: 0.09796, y: 5, z: 0}
         outSlope: {x: 0.09796, y: 0, z: 0}
         tangentMode: 0
@@ -101,16 +101,16 @@ AnimationClip:
         outWeight: 0.50639
       - serializedVersion: 3
         time: 4
-        value: -3
-        inSlope: -2.3110938
-        outSlope: -2.3110938
+        value: 3
+        inSlope: 2.1786618
+        outSlope: 2.1786618
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.02336526
+        inWeight: 0.03535205
+        outWeight: 0.11205149
       - serializedVersion: 3
         time: 8
-        value: -7.5
+        value: 6
         inSlope: 0.09796
         outSlope: 0.09796
         tangentMode: 0

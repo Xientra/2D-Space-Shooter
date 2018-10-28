@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Left7_5Down24
+  m_Name: Right15Down24_anim
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -21,23 +21,23 @@ AnimationClip:
         time: 0
         value: {x: 0, y: 0, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: -6, y: -2.0066667, z: 0}
+        outSlope: {x: 6, y: -2.0066667, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 1.5
-        value: {x: -11.160001, y: -3.01, z: 0}
-        inSlope: {x: -6.72, y: -2.408, z: 0}
-        outSlope: {x: -6.72, y: -2.408, z: 0}
+        value: {x: 11.160001, y: -3.01, z: 0}
+        inSlope: {x: 6.72, y: -2.408, z: 0}
+        outSlope: {x: 6.72, y: -2.408, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 2.5
-        value: {x: -15, y: -6.309435, z: 0}
+        value: {x: 15, y: -6.309435, z: 0}
         inSlope: {x: 0, y: -4.0794406, z: 0}
         outSlope: {x: 0, y: -4.0794406, z: 0}
         tangentMode: 0
@@ -46,7 +46,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 6
-        value: {x: -15, y: -24, z: 0}
+        value: {x: 15, y: -24, z: 0}
         inSlope: {x: 0, y: -4.6644444, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -103,14 +103,14 @@ AnimationClip:
         time: 0
         value: 0
         inSlope: 0
-        outSlope: -6
+        outSlope: 6
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 2.5
-        value: -15
+        value: 15
         inSlope: 0
         outSlope: 0
         tangentMode: 0
