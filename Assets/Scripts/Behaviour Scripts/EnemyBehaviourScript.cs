@@ -5,14 +5,15 @@ using UnityEngine;
 public class EnemyBehaviourScript : MonoBehaviour {
 
     public GameObject[] EnemyTurrets = new GameObject[0];
-    //public GameObject EnemyTurretGameObject;
     public GameObject ObjectHolderGo;
     //public GameObject GameControllerGo;
+
     private GameObject EnemyHealthBarRed;
     private GameObject EnemyHealthBarGreen;
     private Animator animator;
 
     private GameObject[] EnemyBullets;
+
 
     public enum EnemyTypes { AlienStandart, AlienTurret, AlienHeavy, AilenWingShip_straight, AilenWingShip_aim }
     public EnemyTypes currendEnemyType = EnemyTypes.AlienStandart;
@@ -20,9 +21,9 @@ public class EnemyBehaviourScript : MonoBehaviour {
     public enum EnemyWeapons { None, FastSmall, FiveSpreadSlow, FourSmallLaserBullets }
     public EnemyWeapons EnemyWeapon = EnemyWeapons.None;
 
+    //Start Delays
     [SerializeField]
     private float AnimationStartDelay = 0f;
-
     [SerializeField]
     private float LimiterDestructionDelayAfterStart = 1f;
     private bool LimiterDestruction = false;
@@ -60,13 +61,15 @@ public class EnemyBehaviourScript : MonoBehaviour {
         StartCoroutine(StartAfterTime());
         StartCoroutine(LimiterDestructionAfterTime());
 
-        foreach (Transform t in GetComponentsInChildren<Transform>()) {
+        foreach (Transform t in transform.parent.GetComponentsInChildren<Transform>()) {
             if (t.gameObject.CompareTag("HealthBar")) {
-                EnemyHealthBarRed = t.gameObject;
+                EnemyHealthBarRed = t.gameObject.GetComponentsInChildren<Transform>()[1].gameObject;
 
                 EnemyHealthBarGreen = EnemyHealthBarRed.GetComponentsInChildren<Transform>()[1].gameObject;
             }
         }
+
+        EnemyHealthBarRed.transform.localScale = new Vector2(MaxHealth/1000, EnemyHealthBarRed.transform.localScale.y);
 
         ChangeState(false);
     }
@@ -99,6 +102,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
         if (Health <= 0) {
             StartSelfDestruction(this.gameObject);
         }
+
         if (EnemyHealthBarRed != null) {
             EnemyHealthBarGreen.transform.localScale = new Vector3(((100 / MaxHealth) * Health) * 0.01f, EnemyHealthBarGreen.transform.localScale.y, EnemyHealthBarGreen.transform.localScale.z);
         }
@@ -174,6 +178,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
         }
 
         animator.enabled = ChangeTo; //starts/stops the animation
+        EnemyHealthBarRed.SetActive(ChangeTo);
     }
 
     void DropStuff() {
