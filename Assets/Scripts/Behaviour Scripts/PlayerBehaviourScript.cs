@@ -12,10 +12,6 @@ public class PlayerBehaviourScript : MonoBehaviour {
 
     private Vector3 ProjectileSpawnPoint;
 
-    //public WeaponBehaviourScript.WeaponTypes primaryWeapon = WeaponBehaviourScript.WeaponTypes.Standart_lvl_1;
-    //public WeaponBehaviourScript.WeaponTypes secondaryWeapon = WeaponBehaviourScript.WeaponTypes.LaserGun;
-    //public WeaponBehaviourScript.WeaponTypes currentWeapon = WeaponBehaviourScript.WeaponTypes.Standart_lvl_1;
-
     public GameObject firstWeapon;
     public GameObject secondWeapon;
 

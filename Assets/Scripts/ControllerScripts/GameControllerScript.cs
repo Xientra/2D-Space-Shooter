@@ -47,8 +47,11 @@ public class GameControllerScript : MonoBehaviour {
         if (GameObject.FindGameObjectWithTag("Player") != null) {
             float _MaxHealth = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerBehaviourScript>().MaxHealth;
             float _currendHealth = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerBehaviourScript>().currendHealth;
-            WeaponBehaviourScript.WeaponTypes _firstWeapon = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerBehaviourScript>().firstWeapon.GetComponent<WeaponBehaviourScript>().WeaponType;
-            WeaponBehaviourScript.WeaponTypes _secondWeapon = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerBehaviourScript>().secondWeapon.GetComponent<WeaponBehaviourScript>().WeaponType;
+            //WeaponBehaviourScript.WeaponTypes _firstWeapon = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerBehaviourScript>().firstWeapon.GetComponent<WeaponBehaviourScript>().WeaponType;
+            //WeaponBehaviourScript.WeaponTypes _secondWeapon = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerBehaviourScript>().secondWeapon.GetComponent<WeaponBehaviourScript>().WeaponType;
+
+            GameObject PlayerFirstWeapon = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviourScript>().firstWeapon;
+            GameObject PlayerSecondWeapon = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviourScript>().secondWeapon;
 
             if (UsingUnityUI) {
                 if (onlyOnGOwithTag("Health Bar UI")) {
@@ -56,10 +59,10 @@ public class GameControllerScript : MonoBehaviour {
                     GameObject.FindGameObjectsWithTag("Health Bar UI")[0].GetComponent<Slider>().value = _currendHealth;
                 }
                 if (onlyOnGOwithTag("First Weapon UI")) {
-                    GameObject.FindGameObjectsWithTag("First Weapon UI")[0].GetComponent<Text>().text = "Weapon:" + System.Environment.NewLine + _firstWeapon.ToString();
+                    GameObject.FindGameObjectsWithTag("First Weapon UI")[0].GetComponent<Text>().text = "Weapon 1:" + System.Environment.NewLine + PlayerFirstWeapon.GetComponent<WeaponBehaviourScript>().weaponName;
                 }
                 if (onlyOnGOwithTag("Second Weapon UI")) {
-                    GameObject.FindGameObjectsWithTag("Second Weapon UI")[0].GetComponent<Text>().text = "Weapon:" + System.Environment.NewLine + _secondWeapon.ToString();
+                    GameObject.FindGameObjectsWithTag("Second Weapon UI")[0].GetComponent<Text>().text = "Weapon 2:" + System.Environment.NewLine + PlayerSecondWeapon.GetComponent<WeaponBehaviourScript>().weaponName;
                 }
                 if (onlyOnGOwithTag("Currend Credits UI")) {
                     GameObject.FindGameObjectsWithTag("Currend Credits UI")[0].GetComponent<Text>().text = "Credits:" + System.Environment.NewLine + currendCredits.ToString();

@@ -221,8 +221,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1391400459479302}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.1161, y: 0, z: 0}
-  m_LocalScale: {x: 1.5000005, y: 1.5000005, z: 1}
+  m_LocalPosition: {x: 0.095, y: 0, z: 0}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 4494169505267836}
   m_RootOrder: 0
@@ -248,7 +248,7 @@ Transform:
   m_GameObject: {fileID: 1044398547975832}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.02, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4257870948846028}
   m_Father: {fileID: 4228931122986518}
@@ -569,14 +569,12 @@ MonoBehaviour:
   EnemyWeapon: 1
   AnimationStartDelay: 0
   LimiterDestructionDelayAfterStart: 1
-  hasTurret: 1
   canShoot: 0
   MaxHealth: 100
   Health: 100
   CollisionDamage: 50
   ValueOfCreditDrop: 1
-  CanDropPowerUp: 0
-  PowerUpDropChangse: 0.2
+  PowerUpDropChangse: 0
 --- !u!212 &212190006580240996
 SpriteRenderer:
   m_ObjectHideFlags: 1

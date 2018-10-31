@@ -365,14 +365,12 @@ MonoBehaviour:
   EnemyWeapon: 0
   AnimationStartDelay: 1
   LimiterDestructionDelayAfterStart: 1
-  hasTurret: 0
   canShoot: 0
   MaxHealth: 100
   Health: 100
   CollisionDamage: 50
   ValueOfCreditDrop: 1
-  CanDropPowerUp: 0
-  PowerUpDropChangse: 0.2
+  PowerUpDropChangse: 0
 --- !u!114 &114985079131696850
 MonoBehaviour:
   m_ObjectHideFlags: 1

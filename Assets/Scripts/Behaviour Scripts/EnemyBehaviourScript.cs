@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class EnemyBehaviourScript : MonoBehaviour {
 
-    public GameObject[] EnemyTurrets = new GameObject[0];
     public GameObject ObjectHolderGo;
-    //public GameObject GameControllerGo;
+    public GameObject[] EnemyTurrets = new GameObject[0];
 
     private GameObject EnemyHealthBarRed;
     private GameObject EnemyHealthBarGreen;
@@ -18,7 +17,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
     public enum EnemyTypes { AlienStandart, AlienTurret, AlienHeavy, AilenWingShip_straight, AilenWingShip_aim }
     public EnemyTypes currendEnemyType = EnemyTypes.AlienStandart;
 
-    public enum EnemyWeapons { None, FastSmall, FiveSpreadSlow, FourSmallLaserBullets }
+    public enum EnemyWeapons { None, FastSmall_aim, FiveSpreadSlow_straight, FourSmallLaserBullets_straight }
     public EnemyWeapons EnemyWeapon = EnemyWeapons.None;
 
     //Start Delays
@@ -28,10 +27,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
     private float LimiterDestructionDelayAfterStart = 1f;
     private bool LimiterDestruction = false;
 
-    //only Temp
-    public bool hasTurret = false;
-
-    //for animations
+    //the movement/behaviour animation change this value for one frame which will make the enemy shoot in that frame
     public bool canShoot = false; //Has to be Serializable to be able to be changed by an animation
 
 
@@ -42,11 +38,10 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
 
     /*--------------------DropStuff--------------------*/
-    public float ValueOfCreditDrop = 1f;
+    public float ValueOfCreditDrop = 1f; 
     int maxCoinDrop = 3;
     int minCoinDrop = 2;
-    public bool CanDropPowerUp;
-    public float PowerUpDropChangse = 0.2f;
+    public float PowerUpDropChangse = 0f; //0 for nothing (whaaat?)
 
     //PowerUp Variables
     public static bool noCollisionDamage = false;
@@ -86,11 +81,12 @@ public class EnemyBehaviourScript : MonoBehaviour {
     }
 
     void Update() {
-        if (hasTurret) {
-            if (GameObject.FindGameObjectWithTag("Player") != null) {
-                foreach (GameObject go in EnemyTurrets) {
+        if (GameObject.FindGameObjectWithTag("Player") != null) {
+            foreach (GameObject go in EnemyTurrets) {
+                if (go != null) {
                     go.transform.right = GameObject.FindGameObjectWithTag("Player").transform.position - go.transform.position;
                 }
+                else Debug.LogWarning("The enemy " + gameObject.name + " has a null element in the Turret array.");
             }
         }
 
@@ -140,12 +136,12 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
     void Fire() {
         switch (EnemyWeapon) {
-            case (EnemyWeapons.FastSmall): //Must have a Turret
+            case (EnemyWeapons.FastSmall_aim): //Must have a Turret
                 foreach (GameObject go in EnemyTurrets) {
                     Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_SimpleBullet)], go.transform.position, go.transform.rotation * Quaternion.Euler(0, 0, 90));
                 }
                 break;
-            case (EnemyWeapons.FiveSpreadSlow):
+            case (EnemyWeapons.FiveSpreadSlow_straight):
                 float tempAngle = 10f;
                 Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_SlowAlienBullet)], transform.position, transform.rotation * Quaternion.Euler(0, 0, 0));
                 Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_SlowAlienBullet)], transform.position, transform.rotation * Quaternion.Euler(0, 0, tempAngle));
@@ -153,7 +149,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
                 Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_SlowAlienBullet)], transform.position, transform.rotation * Quaternion.Euler(0, 0, tempAngle * 2));
                 Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_SlowAlienBullet)], transform.position, transform.rotation * Quaternion.Euler(0, 0, -tempAngle * 2));
                 break;
-            case (EnemyWeapons.FourSmallLaserBullets):
+            case (EnemyWeapons.FourSmallLaserBullets_straight):
                 Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_AlienLaserBulletSmall)], transform.position + new Vector3(1.3f, -0.525f, 0), transform.rotation * Quaternion.Euler(0, 0, 0));
                 Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_AlienLaserBulletSmall)], transform.position + new Vector3(1f, -0.7f, 0), transform.rotation * Quaternion.Euler(0, 0, 0));
                 Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.BulletTypes.Enemy_AlienLaserBulletSmall)], transform.position + new Vector3(-1.3f, -0.525f, 0), transform.rotation * Quaternion.Euler(0, 0, 0));
@@ -189,7 +185,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
         }
 
         //Drop PowerUp
-        if (CanDropPowerUp == true) {
+        if (PowerUpDropChangse == 0) {
             if (Random.Range(0f, 1f) <= PowerUpDropChangse) {
 
                 Debug.Log("Drop PowerUp");
