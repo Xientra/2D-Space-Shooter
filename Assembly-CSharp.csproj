@@ -68,12 +68,12 @@
     <Compile Include="Assets\Scripts\Behaviour Scripts\PlayerBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Behaviour Scripts\PlayerControllerScript.cs" />
     <Compile Include="Assets\Scripts\Behaviour Scripts\TrailRendererGoBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\Behaviour Scripts\WaveBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Behaviour Scripts\WeaponBehaviourScript.cs" />
-    <Compile Include="Assets\Scripts\ControllerScripts\EndlessLevelControllerScript.cs" />
     <Compile Include="Assets\Scripts\ControllerScripts\GameControllerScript.cs" />
     <Compile Include="Assets\Scripts\ControllerScripts\MainMenuControllerScript.cs" />
+    <Compile Include="Assets\Scripts\ControllerScripts\WaveControllerScript.cs" />
     <Compile Include="Assets\Scripts\EffectScripts\EffectBehaviourScript.cs" />
-    <Compile Include="Assets\Scripts\Z_OtherScripts\EndlessLevelWaveScript.cs" />
     <Compile Include="Assets\Scripts\Z_OtherScripts\ObjectHolder.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/_Documents/_Computerstuff/Projects - Unity/2D Space Shooter/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

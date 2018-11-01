@@ -377,7 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ee0ed55717ef047ac3bf6db6bcdc51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durationUntilDestroy: 10
+  durationUntilDestroy: 3
   isActive: 1
 --- !u!1001 &1231662696
 Prefab:
@@ -534,6 +534,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectHolderGo: {fileID: 336982723}
   activeWave: {fileID: 0}
+  isEndless: 0
 --- !u!4 &1410786658
 Transform:
   m_ObjectHideFlags: 0
@@ -631,7 +632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ee0ed55717ef047ac3bf6db6bcdc51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durationUntilDestroy: 10
+  durationUntilDestroy: 3
   isActive: 1
 --- !u!1001 &2106644082
 Prefab:
