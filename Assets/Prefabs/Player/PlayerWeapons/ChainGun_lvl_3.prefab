@@ -54,7 +54,12 @@ MonoBehaviour:
   cooldown: 0.005
   WeaponType: 14
   isBought: 0
+  WeaponLevel: 2
   price: 300
-  weaponName: Chain Gun Level 3
+  weaponName: Chain Gun3
   description: The spread has been lagely removed and it has an accuracy comparable
     with a laser.
+  WeaponFamily:
+  - {fileID: 1662901710460724, guid: b15d467e2a5ebf5408c37fb6df3d192c, type: 2}
+  - {fileID: 1662901710460724, guid: 35f1e58bcb6eb5045935349104f8415a, type: 2}
+  - {fileID: 1662901710460724}

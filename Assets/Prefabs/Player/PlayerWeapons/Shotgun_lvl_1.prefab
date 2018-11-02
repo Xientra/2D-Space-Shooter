@@ -53,8 +53,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 0.8
   WeaponType: 3
-  isBought: 0
+  isBought: 1
+  WeaponLevel: 0
   price: 100
-  weaponName: Spread Shot Level 1
+  weaponName: Spread Shot1
   description: This weapon was desinged to hit multiple targets at once but this effect
     is not really noticable due to the small amount of bullets it fires.
+  WeaponFamily:
+  - {fileID: 1662901710460724}
+  - {fileID: 1662901710460724, guid: cd378aa1658e30f498a544fa8a62bfff, type: 2}
+  - {fileID: 1662901710460724, guid: 9ec6aa96948068c4f886175769f08bfa, type: 2}

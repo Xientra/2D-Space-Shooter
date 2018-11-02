@@ -16,17 +16,10 @@ public class MainMenuControllerScript : MonoBehaviour {
     public static WeaponBehaviourScript.WeaponTypes firstWeapon = WeaponBehaviourScript.WeaponTypes.Standart_lvl_1;
     public static WeaponBehaviourScript.WeaponTypes secondWeapon = WeaponBehaviourScript.WeaponTypes.Helix_lvl_1;
 
-    public bool AllWeaponsUnlocked = false;
-
     private PlayerControllerScript.Weapons SelectedWeapon;
     private int SelectedWeaponNumber = -1;
-    private bool[] BoughtWeapons;
 
 	void Start () {
-        BoughtWeapons = new bool[WeaponBehaviourScript.WeaponTypes.GetNames(typeof(WeaponBehaviourScript.WeaponTypes)).Length];
-        for (int i = 0; i < BoughtWeapons.Length; i++){
-            BoughtWeapons[i] = AllWeaponsUnlocked;
-        }
 
         UpdateUI();
     }
@@ -40,6 +33,19 @@ public class MainMenuControllerScript : MonoBehaviour {
             GameObject.FindGameObjectsWithTag("Currend Credits UI")[0].GetComponent<Text>().text = "Credits:" + System.Environment.NewLine + GameControllerScript.currendCredits.ToString();
             GameObject.FindGameObjectsWithTag("First Weapon UI")[0].GetComponent<Text>().text = "Weapon:" + System.Environment.NewLine + firstWeapon.ToString();
             GameObject.FindGameObjectsWithTag("Second Weapon UI")[0].GetComponent<Text>().text = "Weapon:" + System.Environment.NewLine + secondWeapon.ToString();
+
+            foreach (Transform t in OutfitterMenu.transform) {
+                if (t.name == "First Weapon Dropdown") {
+                    t.GetComponent<Dropdown>().options.Clear();
+                    Debug.Log("Hi?");
+                    foreach (GameObject pWep in ObjectHolder._PlayerWeapons)
+                        if (pWep != null) {
+                            if (pWep.GetComponent<WeaponBehaviourScript>().isBought == true)
+                                t.GetComponent<Dropdown>().options.Add(new Dropdown.OptionData(pWep.GetComponent<WeaponBehaviourScript>().weaponName));
+                        }
+                        else Debug.LogWarning("There is a free element in the static _PlayerWeapons Array");
+                }
+            }
         }
     }
 
@@ -54,8 +60,12 @@ public class MainMenuControllerScript : MonoBehaviour {
         WeaponBehaviourScript.WeaponTypes wT = (WeaponBehaviourScript.WeaponTypes)SelectedWeaponNumber;
         foreach (Transform t in WeaponInfoSrceen.transform) {
             if (t.name == "Weapon Name Text") t.GetComponent<Text>().text = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(wT)].GetComponent<WeaponBehaviourScript>().weaponName;
+            if (t.name == "Weapon Level Text") t.GetComponent<Text>().text = "Level: " + ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(wT)].GetComponent<WeaponBehaviourScript>().WeaponLevel.ToString().Remove(0, 1);
             if (t.name == "Weapon Price Text") t.GetComponent<Text>().text = "Price: " + ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(wT)].GetComponent<WeaponBehaviourScript>().price.ToString();
+            //if (t.name == "Weapon Damage Text") t.GetComponent<Text>().text = "Damage: " + ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(wT)].GetComponent<WeaponBehaviourScript>().DamagePerShoot.ToString();
+            if (t.name == "Weapon FireRate Text") t.GetComponent<Text>().text = "Fire Rate: " + ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(wT)].GetComponent<WeaponBehaviourScript>().cooldown.ToString();
             if (t.name == "Weapon Description Text") t.GetComponent<Text>().text = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(wT)].GetComponent<WeaponBehaviourScript>().description;
+
         }
     }
 
@@ -84,17 +94,13 @@ public class MainMenuControllerScript : MonoBehaviour {
     }
 
     public void Quit_Btn() {
-        Debug.Log("Quit");
+        Debug.Log("Quit is not implemented");
     }
 
     public void SelectAsFirst() {
         if (SelectedWeaponNumber != -1) {
-            if (BoughtWeapons[SelectedWeaponNumber] == true) {
-                firstWeapon = (WeaponBehaviourScript.WeaponTypes)SelectedWeaponNumber;
-            }
-            else {
-                Debug.Log("You'll have to buy this Weapon first");
-            }
+            firstWeapon = (WeaponBehaviourScript.WeaponTypes)SelectedWeaponNumber;
+            //Debug.Log("You'll have to buy this Weapon first");
         }
         else {
             Debug.Log("Please Select a Weapon"); //Please make this acually visible
@@ -106,12 +112,8 @@ public class MainMenuControllerScript : MonoBehaviour {
 
     public void SelectAsSecond() {
         if (SelectedWeaponNumber != -1) {
-            if (BoughtWeapons[SelectedWeaponNumber] == true) {
-                secondWeapon = (WeaponBehaviourScript.WeaponTypes)SelectedWeaponNumber;
-            }
-            else {
-                Debug.Log("You'll have to buy this Weapon first");
-            }
+            secondWeapon = (WeaponBehaviourScript.WeaponTypes)SelectedWeaponNumber;
+            //Debug.Log("You'll have to buy this Weapon first");
         }
         else {
             Debug.Log("Please Select a Weapon"); //Please make this acually visible

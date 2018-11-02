@@ -51,8 +51,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21635e70faad5c141984db4aba35f468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBought: 0
   cooldown: 0.01
   WeaponType: 12
-  weaponName: Chain Gun Level 1
+  isBought: 0
+  WeaponLevel: 0
+  price: 100
+  weaponName: Chain Gun1
   description: It shoots like really fast but at the cost of accuracy.
+  WeaponFamily:
+  - {fileID: 1662901710460724}
+  - {fileID: 1662901710460724, guid: 35f1e58bcb6eb5045935349104f8415a, type: 2}
+  - {fileID: 1662901710460724, guid: fd9441cf1e49ddc4fbca136453cae51b, type: 2}

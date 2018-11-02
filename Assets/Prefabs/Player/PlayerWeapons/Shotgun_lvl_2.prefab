@@ -54,7 +54,12 @@ MonoBehaviour:
   cooldown: 1
   WeaponType: 4
   isBought: 0
+  WeaponLevel: 1
   price: 200
-  weaponName: Spread Shot Level 2
+  weaponName: Spread Shot2
   description: With two more bullets this upgraded version now can do what it predecessor
     promised.
+  WeaponFamily:
+  - {fileID: 1662901710460724, guid: d93600a22333ed74a87f0cef2ed40839, type: 2}
+  - {fileID: 1662901710460724}
+  - {fileID: 1662901710460724, guid: 9ec6aa96948068c4f886175769f08bfa, type: 2}

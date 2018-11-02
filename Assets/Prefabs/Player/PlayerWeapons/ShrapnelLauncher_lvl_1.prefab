@@ -54,7 +54,12 @@ MonoBehaviour:
   cooldown: 0.8
   WeaponType: 27
   isBought: 0
+  WeaponLevel: 0
   price: 100
-  weaponName: Shrapnell Launcher Level 1
+  weaponName: Shrapnell Launcher1
   description: A weapon similar to the grenade with a smaler explosion but with fragments
     shot in all directions on explosion.
+  WeaponFamily:
+  - {fileID: 1662901710460724}
+  - {fileID: 1662901710460724, guid: cf00ca5e2f5ffae47aa46dbec8ad0488, type: 2}
+  - {fileID: 1662901710460724, guid: d19464aeafef68a4ebc375b124d59f8b, type: 2}

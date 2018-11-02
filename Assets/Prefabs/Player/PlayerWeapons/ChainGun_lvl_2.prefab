@@ -54,6 +54,11 @@ MonoBehaviour:
   cooldown: 0.01
   WeaponType: 13
   isBought: 0
+  WeaponLevel: 1
   price: 200
-  weaponName: Chain Gun Level 2
+  weaponName: Chain Gun2
   description: It still sprays somewhat but the spread was greatly reduced.
+  WeaponFamily:
+  - {fileID: 1662901710460724, guid: b15d467e2a5ebf5408c37fb6df3d192c, type: 2}
+  - {fileID: 1662901710460724}
+  - {fileID: 1662901710460724, guid: fd9441cf1e49ddc4fbca136453cae51b, type: 2}

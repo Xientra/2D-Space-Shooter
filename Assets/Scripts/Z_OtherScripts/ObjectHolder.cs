@@ -28,33 +28,37 @@ public class ObjectHolder : MonoBehaviour {
     public GameObject[] Effects;
     public static GameObject[] _Effects;
 
+    private bool GameJustStarted = true;
+
     void Start() {
-        
-        _Bullets = new GameObject[Bullets.Length];
-        _Bullets = Bullets;
+        if (GameJustStarted == true) {
+            _Bullets = new GameObject[Bullets.Length];
+            _Bullets = Bullets;
 
-        _EnemyBullets = new GameObject[EnemyBullets.Length];
-        _EnemyBullets = EnemyBullets;
+            _EnemyBullets = new GameObject[EnemyBullets.Length];
+            _EnemyBullets = EnemyBullets;
 
-        _PlayerWeapons = new GameObject[PlayerWeapons.Length];
-        _PlayerWeapons = PlayerWeapons;
+            _PlayerWeapons = new GameObject[PlayerWeapons.Length];
+            _PlayerWeapons = PlayerWeapons;
 
-        _PowerUps = new GameObject[PowerUps.Length];
-        _PowerUps = PowerUps;
+            _PowerUps = new GameObject[PowerUps.Length];
+            _PowerUps = PowerUps;
 
-        _Credits = new GameObject[Credits.Length];
-        _Credits = Credits;
+            _Credits = new GameObject[Credits.Length];
+            _Credits = Credits;
 
-        _PlayerShips = new GameObject[PlayerShips.Length];
-        _PlayerShips = PlayerShips;
+            _PlayerShips = new GameObject[PlayerShips.Length];
+            _PlayerShips = PlayerShips;
 
-        _Turrets = new GameObject[Turrets.Length];
-        _Turrets = Turrets;
+            _Turrets = new GameObject[Turrets.Length];
+            _Turrets = Turrets;
 
-        _Effects = new GameObject[Effects.Length];
-        _Effects = Effects;
+            _Effects = new GameObject[Effects.Length];
+            _Effects = Effects;
 
-        Debug.Log("Assinged all Static Object Arrays");
+            Debug.Log("Assinged all Static Object Arrays at the start of the Game.");
+            GameJustStarted = false;
+        }
     }
     /*
     void Update() {

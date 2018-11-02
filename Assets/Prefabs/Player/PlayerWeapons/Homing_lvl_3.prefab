@@ -54,7 +54,12 @@ MonoBehaviour:
   cooldown: 0.1
   WeaponType: 8
   isBought: 0
+  WeaponLevel: 2
   price: 300
-  weaponName: Homing Level 3
+  weaponName: Homing3
   description: To increase the the fire rate even more the increasing spread was accepted
     due to the homing effect it has.
+  WeaponFamily:
+  - {fileID: 1662901710460724, guid: 8239c35f89f4bae41b09030625f35b0f, type: 2}
+  - {fileID: 1662901710460724, guid: cd08049e4d0910b4083979015d3f6699, type: 2}
+  - {fileID: 1662901710460724}

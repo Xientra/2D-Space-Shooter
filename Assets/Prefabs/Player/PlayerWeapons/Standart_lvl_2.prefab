@@ -54,6 +54,11 @@ MonoBehaviour:
   cooldown: 0.3
   WeaponType: 1
   isBought: 0
+  WeaponLevel: 1
   price: 200
-  weaponName: Standart Weapon Level 2
+  weaponName: Standart Weapon2
   description: Double the shoots means double the damage right?
+  WeaponFamily:
+  - {fileID: 1392182663580346, guid: c474bd612b537424ab65b6eeeb2e3c6e, type: 2}
+  - {fileID: 1546623388567470}
+  - {fileID: 1662901710460724, guid: fad7249e94e65e44bb96385a905622fa, type: 2}

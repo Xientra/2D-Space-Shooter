@@ -54,7 +54,12 @@ MonoBehaviour:
   cooldown: 0.9
   WeaponType: 11
   isBought: 0
+  WeaponLevel: 2
   price: 300
-  weaponName: Helix Level 3
+  weaponName: Helix3
   description: A lager bullet with a crazy amount of orbiting bullets. If all of them
     hit it deals devestating damage.
+  WeaponFamily:
+  - {fileID: 1662901710460724, guid: 1fa7ba4d02fad7446ae67fb911b170a4, type: 2}
+  - {fileID: 1662901710460724, guid: c6e8b061a84f10b47b78b47b7c12cc66, type: 2}
+  - {fileID: 1662901710460724}

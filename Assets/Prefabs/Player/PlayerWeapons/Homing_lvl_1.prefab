@@ -51,9 +51,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21635e70faad5c141984db4aba35f468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBought: 0
   cooldown: 0.3
   WeaponType: 6
-  weaponName: Homing Level 1
+  isBought: 0
+  WeaponLevel: 0
+  price: 100
+  weaponName: Homing1
   description: A small bullet with weak damage but it accelerates towarts enemies
     when near enouth.
+  WeaponFamily:
+  - {fileID: 1662901710460724}
+  - {fileID: 1662901710460724, guid: cd08049e4d0910b4083979015d3f6699, type: 2}
+  - {fileID: 1662901710460724, guid: e0b153ca71a632648830dc53d9fc07b7, type: 2}

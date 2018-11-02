@@ -51,8 +51,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21635e70faad5c141984db4aba35f468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBought: 0
   cooldown: 0.5
   WeaponType: 9
-  weaponName: Helix Level 1
+  isBought: 1
+  WeaponLevel: 0
+  price: 100
+  weaponName: Helix1
   description: A lager bullet orbited by two smaller bullets.
+  WeaponFamily:
+  - {fileID: 1662901710460724}
+  - {fileID: 1662901710460724, guid: c6e8b061a84f10b47b78b47b7c12cc66, type: 2}
+  - {fileID: 1662901710460724, guid: 76ff94f858a0c3c408d06eb1e9dea075, type: 2}

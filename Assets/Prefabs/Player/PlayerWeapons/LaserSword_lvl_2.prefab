@@ -54,7 +54,12 @@ MonoBehaviour:
   cooldown: 0.45
   WeaponType: 19
   isBought: 0
+  WeaponLevel: 1
   price: 200
-  weaponName: Laser Sword Level 2
+  weaponName: Laser Sword2
   description: It creates sword made out of energy behind the ship and then accelerates
     them.
+  WeaponFamily:
+  - {fileID: 1937445777880226, guid: 6cbb45b6c17374545abc123cce7c38e0, type: 2}
+  - {fileID: 1937445777880226}
+  - {fileID: 1937445777880226, guid: 6d1af4b540fbf8742a2df6f944427235, type: 2}

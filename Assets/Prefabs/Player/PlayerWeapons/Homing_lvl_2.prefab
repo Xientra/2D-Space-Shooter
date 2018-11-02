@@ -54,7 +54,12 @@ MonoBehaviour:
   cooldown: 0.2
   WeaponType: 7
   isBought: 0
+  WeaponLevel: 1
   price: 200
-  weaponName: Homing Level 2
+  weaponName: Homing2
   description: Since the homing effect could not be increased this weapon was upgraded
     with a higher fire rate, which tho comes at a cost of a small bullet spread.
+  WeaponFamily:
+  - {fileID: 1662901710460724, guid: 8239c35f89f4bae41b09030625f35b0f, type: 2}
+  - {fileID: 1662901710460724}
+  - {fileID: 1662901710460724, guid: e0b153ca71a632648830dc53d9fc07b7, type: 2}

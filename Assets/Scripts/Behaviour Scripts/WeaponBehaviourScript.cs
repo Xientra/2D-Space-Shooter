@@ -20,11 +20,14 @@ public class WeaponBehaviourScript : MonoBehaviour {
 
     /*------------Stats for the Stats Menu--------------*/
     public bool isBought = false;
-    public enum WeaponLevels { Level_1, Level_2, Level_3}
-    public WeaponLevels WeaponLevel = WeaponLevels.Level_1;
+    public enum WeaponLevels { _1, _2, _3}
+    public WeaponLevels WeaponLevel = WeaponLevels._1;
     public float price = 100;
     public string weaponName = "";
     public string description = "";
+    //public float DamagePerShoot = 20;
+
+    public GameObject[] WeaponFamily = new GameObject[3];
 
     void Start() {
 
