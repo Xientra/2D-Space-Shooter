@@ -13,39 +13,75 @@ public class MainMenuControllerScript : MonoBehaviour {
     public GameObject WeaponInfoSrceen;
     //public GameObject OptionsMenu;
 
+    //Outfitter Elements
+    private GameObject FirstWeaponDropdownGO;
+    private GameObject SecondWeaponDropdownGO;
+
     public static WeaponBehaviourScript.WeaponTypes firstWeapon = WeaponBehaviourScript.WeaponTypes.Standart_lvl_1;
     public static WeaponBehaviourScript.WeaponTypes secondWeapon = WeaponBehaviourScript.WeaponTypes.Helix_lvl_1;
+
+    public static GameObject firstWeaponGO;
+    public static GameObject secondWeaponGO;
 
     private PlayerControllerScript.Weapons SelectedWeapon;
     private int SelectedWeaponNumber = -1;
 
 	void Start () {
 
+        foreach (Transform t in OutfitterMenu.transform) {
+            if (t.name == "First Weapon Dropdown") {
+                FirstWeaponDropdownGO = t.gameObject;
+            }
+            if (t.name == "Second Weapon Dropdown") {
+                SecondWeaponDropdownGO = t.gameObject;
+            }
+        }
+
         UpdateUI();
+        StartCoroutine(DoStuffAfterOneFrame());
     }
-	
-	void Update () {
+    IEnumerator DoStuffAfterOneFrame() {
+        yield return 0;
+        firstWeaponGO = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Standart_lvl_1)];
+        secondWeaponGO = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Shotgun_lvl_1)];
+    }
+
+    void Update () {
 		
 	}
 
     private void UpdateUI() {
         if (OutfitterMenu.activeSelf == true) {
             GameObject.FindGameObjectsWithTag("Currend Credits UI")[0].GetComponent<Text>().text = "Credits:" + System.Environment.NewLine + GameControllerScript.currendCredits.ToString();
-            GameObject.FindGameObjectsWithTag("First Weapon UI")[0].GetComponent<Text>().text = "Weapon:" + System.Environment.NewLine + firstWeapon.ToString();
-            GameObject.FindGameObjectsWithTag("Second Weapon UI")[0].GetComponent<Text>().text = "Weapon:" + System.Environment.NewLine + secondWeapon.ToString();
-
-            foreach (Transform t in OutfitterMenu.transform) {
-                if (t.name == "First Weapon Dropdown") {
-                    t.GetComponent<Dropdown>().options.Clear();
-                    Debug.Log("Hi?");
-                    foreach (GameObject pWep in ObjectHolder._PlayerWeapons)
-                        if (pWep != null) {
-                            if (pWep.GetComponent<WeaponBehaviourScript>().isBought == true)
-                                t.GetComponent<Dropdown>().options.Add(new Dropdown.OptionData(pWep.GetComponent<WeaponBehaviourScript>().weaponName));
-                        }
-                        else Debug.LogWarning("There is a free element in the static _PlayerWeapons Array");
-                }
+            //GameObject.FindGameObjectsWithTag("First Weapon UI")[0].GetComponent<Text>().text = "First Weapon:" + System.Environment.NewLine + firstWeapon.ToString();
+            //GameObject.FindGameObjectsWithTag("Second Weapon UI")[0].GetComponent<Text>().text = "Second Weapon:" + System.Environment.NewLine + secondWeapon.ToString();
+            
+            
+            
+            if (FirstWeaponDropdownGO != null) {
+                FirstWeaponDropdownGO.GetComponent<Dropdown>().options.Clear();
+                foreach (GameObject pWep in ObjectHolder._PlayerWeapons)
+                    if (pWep != null) {
+                        if (pWep.GetComponent<WeaponBehaviourScript>().isBought == true)
+                            FirstWeaponDropdownGO.GetComponent<Dropdown>().options.Add(new Dropdown.OptionData(pWep.GetComponent<WeaponBehaviourScript>().weaponName));
+                    }
+                    else Debug.LogWarning("There is a free element in the static _PlayerWeapons Array");
+                FirstWeaponDropdownGO.GetComponentInChildren<Text>().text = FirstWeaponDropdownGO.GetComponent<Dropdown>().options[0].text;
             }
+            else Debug.LogError("The FirstWeaponDropdownGO is null.");
+
+
+            if (SecondWeaponDropdownGO != null) {
+                SecondWeaponDropdownGO.GetComponent<Dropdown>().options.Clear();
+                foreach (GameObject pWep in ObjectHolder._PlayerWeapons)
+                    if (pWep != null) {
+                        if (pWep.GetComponent<WeaponBehaviourScript>().isBought == true)
+                            SecondWeaponDropdownGO.GetComponent<Dropdown>().options.Add(new Dropdown.OptionData(pWep.GetComponent<WeaponBehaviourScript>().weaponName));
+                    }
+                    else Debug.LogWarning("There is a free element in the static _PlayerWeapons Array");
+                SecondWeaponDropdownGO.GetComponentInChildren<Text>().text = SecondWeaponDropdownGO.GetComponent<Dropdown>().options[0].text;
+            }
+            else Debug.LogError("The SecondWeaponDropdownGO is null.");
         }
     }
 
@@ -183,4 +219,35 @@ public class MainMenuControllerScript : MonoBehaviour {
         OpenWeaponInfoSrceen();
     }
 
+    public void OnValueChangeFirstWeaponDropdown() {
+        int i = FirstWeaponDropdownGO.GetComponent<Dropdown>().value;
+        int counter = 0;
+
+        foreach (GameObject pWep in ObjectHolder._PlayerWeapons) {
+            if (pWep != null)
+                if (pWep.GetComponent<WeaponBehaviourScript>().isBought == true) {
+                    if (counter == i)
+                        firstWeaponGO = pWep;
+                    counter++;
+                }
+        }
+
+        Debug.Log("first weapon = "+firstWeaponGO.name);
+    }
+
+    public void OnValueChangeSecondWeaponDropdown() {
+        int i = SecondWeaponDropdownGO.GetComponent<Dropdown>().value;
+        int counter = 0;
+
+        foreach (GameObject pWep in ObjectHolder._PlayerWeapons) {
+            if (pWep != null)
+                if (pWep.GetComponent<WeaponBehaviourScript>().isBought == true) {
+                    if (counter == i)
+                        secondWeaponGO = pWep;
+                    counter++;
+                }
+        }
+
+        Debug.Log("second weapon = "+secondWeaponGO.name);
+    }
 }
