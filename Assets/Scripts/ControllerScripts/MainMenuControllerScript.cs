@@ -16,6 +16,7 @@ public class MainMenuControllerScript : MonoBehaviour {
     //Outfitter Elements
     private GameObject FirstWeaponDropdownGO;
     private GameObject SecondWeaponDropdownGO;
+    private GameObject WeaponsViewGO;
 
     public static WeaponBehaviourScript.WeaponTypes firstWeapon = WeaponBehaviourScript.WeaponTypes.Standart_lvl_1;
     public static WeaponBehaviourScript.WeaponTypes secondWeapon = WeaponBehaviourScript.WeaponTypes.Helix_lvl_1;
@@ -34,6 +35,9 @@ public class MainMenuControllerScript : MonoBehaviour {
             }
             if (t.name == "Second Weapon Dropdown") {
                 SecondWeaponDropdownGO = t.gameObject;
+            }
+            if (t.name == "Weapons View") {
+                WeaponsViewGO = t.gameObject;
             }
         }
 

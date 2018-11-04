@@ -25,6 +25,7 @@ public class WeaponBehaviourScript : MonoBehaviour {
     public float price = 100;
     public string weaponName = "";
     public string description = "";
+    public Sprite WeaponImage;
     //public float DamagePerShoot = 20;
 
     public GameObject[] WeaponFamily = new GameObject[3];
