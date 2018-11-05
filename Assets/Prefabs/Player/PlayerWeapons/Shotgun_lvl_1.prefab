@@ -59,6 +59,7 @@ MonoBehaviour:
   weaponName: Shotgun1
   description: This weapon was desinged to hit multiple targets at once but this effect
     is not really noticable due to the small amount of bullets it fires.
+  WeaponImage: {fileID: 21300000, guid: 95ac61ea026181e49b48c51f7cd68593, type: 3}
   WeaponFamily:
   - {fileID: 1662901710460724}
   - {fileID: 1662901710460724, guid: cd378aa1658e30f498a544fa8a62bfff, type: 2}
