@@ -254,4 +254,29 @@ public class MainMenuControllerScript : MonoBehaviour {
 
         Debug.Log("second weapon = "+secondWeaponGO.name);
     }
+
+    //Is called from WeaponsViewElementDataScript
+    public void OpenWeaponInfoScreen_Btn(GameObject _weaponObject) {
+        if (_weaponObject.GetComponent<WeaponBehaviourScript>() != null) {
+            StartMenu.SetActive(false);
+            //StoryMenu.SetActive(false);
+            //EndlessLevelMenu.SetActive(false);
+            OutfitterMenu.SetActive(true);
+            WeaponInfoSrceen.SetActive(true);
+            //OptionsMenu.SetActive(false);
+
+            foreach (Transform t in WeaponInfoSrceen.transform) {
+                if (t.name == "Weapon Name Text") t.GetComponent<Text>().text = _weaponObject.GetComponent<WeaponBehaviourScript>().weaponName;
+                if (t.name == "Weapon Level Text") t.GetComponent<Text>().text = "Level: " + _weaponObject.GetComponent<WeaponBehaviourScript>().WeaponLevel.ToString().Remove(0, 1);
+                if (t.name == "Weapon Price Text") t.GetComponent<Text>().text = "Price: " + _weaponObject.GetComponent<WeaponBehaviourScript>().price.ToString();
+                //if (t.name == "Weapon Damage Text") t.GetComponent<Text>().text = "Damage: " + _weaponObject.GetComponent<WeaponBehaviourScript>().DamagePerShoot.ToString();
+                if (t.name == "Weapon FireRate Text") t.GetComponent<Text>().text = "Fire Rate: " + _weaponObject.GetComponent<WeaponBehaviourScript>().cooldown.ToString();
+                if (t.name == "Weapon Description Text") t.GetComponent<Text>().text = _weaponObject.GetComponent<WeaponBehaviourScript>().description;
+            }
+
+        }
+        else {
+            Debug.LogError("OpenWeaponInfoScreen_Btn hass been called with the object " + _weaponObject.name + ", which has no WeaponBehaviourScript ssinged.");
+        }
+    }
 }

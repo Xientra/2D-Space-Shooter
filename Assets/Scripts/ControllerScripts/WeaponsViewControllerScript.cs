@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class WeaponsViewControllerScript : MonoBehaviour {
 
@@ -36,7 +37,13 @@ public class WeaponsViewControllerScript : MonoBehaviour {
             if (WepElement != null) {
                 GameObject goTemp = Instantiate(ExampleElement, PaddingContent.transform);
                 goTemp.GetComponent<Image>().sprite = WepElement.GetComponent<WeaponBehaviourScript>().WeaponImage;
-                
+                goTemp.GetComponent<WeaponsViewElementDataScript>().WeaponPreafab = WepElement;
+                goTemp.GetComponent<WeaponsViewElementDataScript>().isBought = WepElement.GetComponent<WeaponBehaviourScript>().isBought;
+                goTemp.GetComponent<Button>().interactable = goTemp.GetComponent<WeaponsViewElementDataScript>().isBought;
+
+                UnityAction _action = new UnityAction(goTemp.GetComponent<WeaponsViewElementDataScript>().OpenWeaponInfoScreen_Btn);
+                goTemp.GetComponent<Button>().onClick.AddListener(_action);
+
                 //Debug.Log(widthOfAElement * collumPosCounter + widthOfAElement / 2);
 
                 goTemp.GetComponent<RectTransform>().anchoredPosition = new Vector2(widthOfAElement * collumPosCounter + widthOfAElement / 2, -(widthOfAElement * rowPosCounter + widthOfAElement / 2));
