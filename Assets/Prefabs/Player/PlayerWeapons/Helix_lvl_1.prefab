@@ -56,10 +56,8 @@ MonoBehaviour:
   isBought: 1
   WeaponLevel: 0
   price: 100
-  weaponName: Helix1
+  weaponName: Duo Helix
   description: A lager bullet orbited by two smaller bullets.
   WeaponImage: {fileID: 21300000, guid: 95ac61ea026181e49b48c51f7cd68593, type: 3}
-  WeaponFamily:
-  - {fileID: 1662901710460724}
-  - {fileID: 1662901710460724, guid: c6e8b061a84f10b47b78b47b7c12cc66, type: 2}
-  - {fileID: 1662901710460724, guid: 76ff94f858a0c3c408d06eb1e9dea075, type: 2}
+  PreviousWeapon: {fileID: 0}
+  NextWeapon: {fileID: 1662901710460724, guid: c6e8b061a84f10b47b78b47b7c12cc66, type: 2}

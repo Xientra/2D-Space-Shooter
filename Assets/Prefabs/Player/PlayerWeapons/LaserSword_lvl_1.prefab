@@ -60,7 +60,5 @@ MonoBehaviour:
   description: It creates sword made out of energy behind the ship and then accelerates
     them.
   WeaponImage: {fileID: 21300000, guid: 95ac61ea026181e49b48c51f7cd68593, type: 3}
-  WeaponFamily:
-  - {fileID: 1937445777880226}
-  - {fileID: 1937445777880226, guid: 03b1cc999d237944e89ab6a552748277, type: 2}
-  - {fileID: 1937445777880226, guid: 6d1af4b540fbf8742a2df6f944427235, type: 2}
+  PreviousWeapon: {fileID: 0}
+  NextWeapon: {fileID: 1937445777880226, guid: 03b1cc999d237944e89ab6a552748277, type: 2}

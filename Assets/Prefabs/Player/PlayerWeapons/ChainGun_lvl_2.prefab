@@ -59,7 +59,6 @@ MonoBehaviour:
   weaponName: Chain Gun2
   description: It still sprays somewhat but the spread was greatly reduced.
   WeaponImage: {fileID: 21300000, guid: f4f8970cd6ae4f04f976906ab5cce178, type: 3}
-  WeaponFamily:
-  - {fileID: 1662901710460724, guid: b15d467e2a5ebf5408c37fb6df3d192c, type: 2}
-  - {fileID: 1662901710460724}
-  - {fileID: 1662901710460724, guid: fd9441cf1e49ddc4fbca136453cae51b, type: 2}
+  PreviousWeapon: {fileID: 1662901710460724, guid: b15d467e2a5ebf5408c37fb6df3d192c,
+    type: 2}
+  NextWeapon: {fileID: 1662901710460724, guid: fd9441cf1e49ddc4fbca136453cae51b, type: 2}

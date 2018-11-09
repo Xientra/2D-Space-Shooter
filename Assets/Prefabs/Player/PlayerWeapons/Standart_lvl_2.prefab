@@ -59,7 +59,6 @@ MonoBehaviour:
   weaponName: Standart Weapon2
   description: Double the shoots means double the damage right?
   WeaponImage: {fileID: 21300000, guid: baf9f63a54c57764cbc23dcc4b1e5572, type: 3}
-  WeaponFamily:
-  - {fileID: 1392182663580346, guid: c474bd612b537424ab65b6eeeb2e3c6e, type: 2}
-  - {fileID: 1546623388567470}
-  - {fileID: 1662901710460724, guid: fad7249e94e65e44bb96385a905622fa, type: 2}
+  PreviousWeapon: {fileID: 1392182663580346, guid: c474bd612b537424ab65b6eeeb2e3c6e,
+    type: 2}
+  NextWeapon: {fileID: 1662901710460724, guid: fad7249e94e65e44bb96385a905622fa, type: 2}

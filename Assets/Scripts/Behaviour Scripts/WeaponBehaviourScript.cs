@@ -28,7 +28,8 @@ public class WeaponBehaviourScript : MonoBehaviour {
     public Sprite WeaponImage;
     //public float DamagePerShoot = 20;
 
-    public GameObject[] WeaponFamily = new GameObject[3];
+    public GameObject PreviousWeapon;
+    public GameObject NextWeapon;
 
     void Start() {
 

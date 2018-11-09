@@ -24,10 +24,11 @@ public class MainMenuControllerScript : MonoBehaviour {
     public static GameObject firstWeaponGO;
     public static GameObject secondWeaponGO;
 
-    private PlayerControllerScript.Weapons SelectedWeapon;
-    private int SelectedWeaponNumber = -1;
+    private GameObject WeaponInfoScreenWeaponGo = null;
+    //for the movement of the back and the upgrade buttons
+    private float BackButtonStandartPos = -1;
 
-	void Start () {
+    void Start () {
 
         foreach (Transform t in OutfitterMenu.transform) {
             if (t.name == "First Weapon Dropdown") {
@@ -89,28 +90,7 @@ public class MainMenuControllerScript : MonoBehaviour {
         }
     }
 
-    private void OpenWeaponInfoSrceen() {
-        StartMenu.SetActive(false);
-        //StoryMenu.SetActive(false);
-        //EndlessLevelMenu.SetActive(false);
-        OutfitterMenu.SetActive(true);
-        WeaponInfoSrceen.SetActive(true);
-        //OptionsMenu.SetActive(false);
-
-        WeaponBehaviourScript.WeaponTypes wT = (WeaponBehaviourScript.WeaponTypes)SelectedWeaponNumber;
-        foreach (Transform t in WeaponInfoSrceen.transform) {
-            if (t.name == "Weapon Name Text") t.GetComponent<Text>().text = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(wT)].GetComponent<WeaponBehaviourScript>().weaponName;
-            if (t.name == "Weapon Level Text") t.GetComponent<Text>().text = "Level: " + ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(wT)].GetComponent<WeaponBehaviourScript>().WeaponLevel.ToString().Remove(0, 1);
-            if (t.name == "Weapon Price Text") t.GetComponent<Text>().text = "Price: " + ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(wT)].GetComponent<WeaponBehaviourScript>().price.ToString();
-            //if (t.name == "Weapon Damage Text") t.GetComponent<Text>().text = "Damage: " + ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(wT)].GetComponent<WeaponBehaviourScript>().DamagePerShoot.ToString();
-            if (t.name == "Weapon FireRate Text") t.GetComponent<Text>().text = "Fire Rate: " + ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(wT)].GetComponent<WeaponBehaviourScript>().cooldown.ToString();
-            if (t.name == "Weapon Description Text") t.GetComponent<Text>().text = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(wT)].GetComponent<WeaponBehaviourScript>().description;
-
-        }
-    }
-
-
-    /*-------------------------------------------UI Buttons, etc.-------------------------------------------------------*/
+    /*-------------------------------------------Main Menu-------------------------------------------------------*/
     public void Story_Btn() {
         Debug.Log("Mayby later");
     }
@@ -137,39 +117,10 @@ public class MainMenuControllerScript : MonoBehaviour {
         Debug.Log("Quit is not implemented");
     }
 
-    public void SelectAsFirst() {
-        if (SelectedWeaponNumber != -1) {
-            firstWeapon = (WeaponBehaviourScript.WeaponTypes)SelectedWeaponNumber;
-            //Debug.Log("You'll have to buy this Weapon first");
-        }
-        else {
-            Debug.Log("Please Select a Weapon"); //Please make this acually visible
-        }
-        UpdateUI();
 
-        WeaponInfoSrceen.SetActive(false);
-    }
-
-    public void SelectAsSecond() {
-        if (SelectedWeaponNumber != -1) {
-            secondWeapon = (WeaponBehaviourScript.WeaponTypes)SelectedWeaponNumber;
-            //Debug.Log("You'll have to buy this Weapon first");
-        }
-        else {
-            Debug.Log("Please Select a Weapon"); //Please make this acually visible
-        }
-        UpdateUI();
-
-        WeaponInfoSrceen.SetActive(false);
-    }
-
+    /*-----------------------------------------Outfitter-----------------------------------------------*/
     public void Btn_Buy() {
 
-    }
-
-    public void Btn_WeaponSelectScreenBack() {
-        SelectedWeaponNumber = - 1;
-        WeaponInfoSrceen.SetActive(false);
     }
 
     public void Btn_Back() {
@@ -178,49 +129,6 @@ public class MainMenuControllerScript : MonoBehaviour {
         //EndlessLevelMenu.SetActive(false);
         OutfitterMenu.SetActive(false);
         //OptionsMenu.SetActive(false);
-    }
-
-    public void SelectStandart_lvl_1() {
-        //SelectedWeapon = PlayerControllerScript.Weapons.Standart_lvl_1;
-        SelectedWeaponNumber = (int)WeaponBehaviourScript.WeaponTypes.Standart_lvl_1;
-
-        Debug.Log("Selected: " + SelectedWeapon); //Visual Indicator
-        OpenWeaponInfoSrceen();
-    }
-    public void SelectStandart_lvl_2() {
-        //SelectedWeapon = PlayerControllerScript.Weapons.Standart_lvl_2;
-        SelectedWeaponNumber = (int)WeaponBehaviourScript.WeaponTypes.Standart_lvl_2;
-
-        Debug.Log("Selected: " + SelectedWeapon); //Visual Indicator
-        OpenWeaponInfoSrceen();
-    }
-    public void SelectStandart_lvl_3() {
-        //SelectedWeapon = PlayerControllerScript.Weapons.Standart_lvl_3;
-        SelectedWeaponNumber = (int)WeaponBehaviourScript.WeaponTypes.Standart_lvl_3;
-
-        Debug.Log("Selected: " + SelectedWeapon); //Visual Indicator
-        OpenWeaponInfoSrceen();
-    }
-    public void SelectHelix_lvl_1() {
-        //SelectedWeapon = PlayerControllerScript.Weapons.Helix_lvl_1;
-        SelectedWeaponNumber = (int)WeaponBehaviourScript.WeaponTypes.Helix_lvl_1;
-
-        Debug.Log("Selected: " + SelectedWeapon); //Visual Indicator
-        OpenWeaponInfoSrceen();
-    }
-    public void SelectHelix_lvl_2() {
-        //SelectedWeapon = PlayerControllerScript.Weapons.Helix_lvl_2;
-        SelectedWeaponNumber = (int)WeaponBehaviourScript.WeaponTypes.Helix_lvl_2;
-
-        Debug.Log("Selected: " + SelectedWeapon); //Visual Indicator
-        OpenWeaponInfoSrceen();
-    }
-    public void SelectHelix_lvl_3() {
-        //SelectedWeapon = PlayerControllerScript.Weapons.Helix_lvl_3;
-        SelectedWeaponNumber = (int)WeaponBehaviourScript.WeaponTypes.Helix_lvl_3;
-
-        Debug.Log("Selected: " + SelectedWeapon); //Visual Indicator
-        OpenWeaponInfoSrceen();
     }
 
     public void OnValueChangeFirstWeaponDropdown() {
@@ -255,6 +163,7 @@ public class MainMenuControllerScript : MonoBehaviour {
         Debug.Log("second weapon = "+secondWeaponGO.name);
     }
 
+    /*-----------------------------------------Weapon Info Screen-----------------------------------------------*/
     //Is called from WeaponsViewElementDataScript
     public void OpenWeaponInfoScreen_Btn(GameObject _weaponObject) {
         if (_weaponObject.GetComponent<WeaponBehaviourScript>() != null) {
@@ -265,18 +174,65 @@ public class MainMenuControllerScript : MonoBehaviour {
             WeaponInfoSrceen.SetActive(true);
             //OptionsMenu.SetActive(false);
 
+            WeaponInfoScreenWeaponGo = _weaponObject;
+
             foreach (Transform t in WeaponInfoSrceen.transform) {
-                if (t.name == "Weapon Name Text") t.GetComponent<Text>().text = _weaponObject.GetComponent<WeaponBehaviourScript>().weaponName;
-                if (t.name == "Weapon Level Text") t.GetComponent<Text>().text = "Level: " + _weaponObject.GetComponent<WeaponBehaviourScript>().WeaponLevel.ToString().Remove(0, 1);
-                if (t.name == "Weapon Price Text") t.GetComponent<Text>().text = "Price: " + _weaponObject.GetComponent<WeaponBehaviourScript>().price.ToString();
+                if (t.name == "Weapon Name Text") t.GetComponent<Text>().text = WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().weaponName;
+                if (t.name == "Weapon Level Text") t.GetComponent<Text>().text = "Level: " + WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().WeaponLevel.ToString().Remove(0, 1);
+                if (t.name == "Weapon Price Text") t.GetComponent<Text>().text = "Price: " + WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().price.ToString();
                 //if (t.name == "Weapon Damage Text") t.GetComponent<Text>().text = "Damage: " + _weaponObject.GetComponent<WeaponBehaviourScript>().DamagePerShoot.ToString();
-                if (t.name == "Weapon FireRate Text") t.GetComponent<Text>().text = "Fire Rate: " + _weaponObject.GetComponent<WeaponBehaviourScript>().cooldown.ToString();
-                if (t.name == "Weapon Description Text") t.GetComponent<Text>().text = _weaponObject.GetComponent<WeaponBehaviourScript>().description;
+                if (t.name == "Weapon FireRate Text") t.GetComponent<Text>().text = "Fire Rate: " + WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().cooldown.ToString();
+                if (t.name == "Weapon Description Text") t.GetComponent<Text>().text = WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().description;
+
+                if (t.name == "Btn_PreviousWeapon") {
+                    if (WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().PreviousWeapon == null)
+                        t.GetComponent<Button>().interactable = false;
+                    else
+                        t.GetComponent<Button>().interactable = true;
+                }
+                if (t.name == "Btn_NextWeapon") {
+                    if (WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().NextWeapon == null)
+                        t.GetComponent<Button>().interactable = false;
+                    else
+                        t.GetComponent<Button>().interactable = true;
+                }
+                if (t.name == "Btn_Back") {
+                    bool ActivateUpgrade = false;
+                    //float BackButtonStandartPos = -1;
+                    if (BackButtonStandartPos == -1) BackButtonStandartPos = t.GetComponent<RectTransform>().anchoredPosition.x;
+
+                    if (WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().NextWeapon != null) {
+                        if (WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().NextWeapon.GetComponent<WeaponBehaviourScript>().isBought == false) {
+                            ActivateUpgrade = true;
+                        }
+                    }
+                    if (ActivateUpgrade == false) {
+                        foreach (Transform upgradeBtn in WeaponInfoSrceen.transform)  if (upgradeBtn.name == "Btn_UpgradeWeapon") upgradeBtn.gameObject.SetActive(false);
+                        t.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, t.GetComponent<RectTransform>().anchoredPosition.y);
+                    }
+                    if (ActivateUpgrade == true) {
+                        foreach (Transform upgradeBtn in WeaponInfoSrceen.transform) if (upgradeBtn.name == "Btn_UpgradeWeapon") upgradeBtn.gameObject.SetActive(true);
+                        t.GetComponent<RectTransform>().anchoredPosition = new Vector2(BackButtonStandartPos, t.GetComponent<RectTransform>().anchoredPosition.y);
+                    }
+                }
             }
 
         }
         else {
-            Debug.LogError("OpenWeaponInfoScreen_Btn hass been called with the object " + _weaponObject.name + ", which has no WeaponBehaviourScript ssinged.");
+            Debug.LogError("OpenWeaponInfoScreen_Btn hass been called with the object " + _weaponObject.name + ", which has no WeaponBehaviourScript assinged.");
         }
+    }
+
+    public void PreviousWeapon_Btn() {
+        OpenWeaponInfoScreen_Btn(WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().PreviousWeapon);
+    }
+
+    public void NextWeapon_Btn() {
+        OpenWeaponInfoScreen_Btn(WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().NextWeapon);
+    }
+
+    public void Btn_WeaponSelectScreenBack() {
+        WeaponInfoSrceen.SetActive(false);
+        WeaponInfoScreenWeaponGo = null;
     }
 }

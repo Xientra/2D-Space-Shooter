@@ -60,7 +60,6 @@ MonoBehaviour:
   description: A weapon similar to the grenade with a smaler explosion but with fragments
     shot in all directions on explosion.
   WeaponImage: {fileID: 21300000, guid: 95ac61ea026181e49b48c51f7cd68593, type: 3}
-  WeaponFamily:
-  - {fileID: 1662901710460724, guid: 159d5d89d82d9414cbfe76524ef8ae1e, type: 2}
-  - {fileID: 1662901710460724}
-  - {fileID: 1662901710460724, guid: d19464aeafef68a4ebc375b124d59f8b, type: 2}
+  PreviousWeapon: {fileID: 1662901710460724, guid: 159d5d89d82d9414cbfe76524ef8ae1e,
+    type: 2}
+  NextWeapon: {fileID: 1662901710460724, guid: d19464aeafef68a4ebc375b124d59f8b, type: 2}
