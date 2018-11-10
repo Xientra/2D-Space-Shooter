@@ -2615,7 +2615,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0000045502024, y: 0.0000019073486}
+  m_AnchoredPosition: {x: -0.000027265827, y: -2.3663588e-10}
   m_SizeDelta: {x: 0, y: 110}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &924051111
@@ -3167,7 +3167,7 @@ GameObject:
   - component: {fileID: 1117775481}
   m_Layer: 5
   m_Name: Weapons View
-  m_TagString: Untagged
+  m_TagString: Weapons View UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3191,7 +3191,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -114, y: -20.5}
-  m_SizeDelta: {x: 500, y: 330}
+  m_SizeDelta: {x: 500, y: 335}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1117775478
 MonoBehaviour:
@@ -3271,6 +3271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Elements: []
   ExampleElement: {fileID: 1952026354}
+  Content: {fileID: 898580615}
   PaddingContent: {fileID: 1480967601}
 --- !u!1 &1127941006
 GameObject:
@@ -4424,7 +4425,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 296997162}
-        m_MethodName: 
+        m_MethodName: Btn_UpgradeWeapon
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -9,6 +9,7 @@ public class WeaponsViewControllerScript : MonoBehaviour {
     public List<GameObject> Elements = new List<GameObject>();
 
     public GameObject ExampleElement;
+    public GameObject Content;
     public GameObject PaddingContent;
 
     private int row = 1;
@@ -17,6 +18,19 @@ public class WeaponsViewControllerScript : MonoBehaviour {
     private float widthOfAElement = 75f; //this should maybe be felxible
 
 	void Start () {
+        UpdateWeaponsView();
+    }
+
+    void Update () {
+        //adjusts the size of the padding content to be the same as the normal contents - the padding
+        PaddingContent.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(PaddingContent.transform.GetComponent<RectTransform>().sizeDelta.x, PaddingContent.transform.parent.GetComponent<RectTransform>().sizeDelta.y + 2*PaddingContent.transform.GetComponent<RectTransform>().offsetMax.y);
+        //PaddingContent.transform.GetComponent<RectTransform>().sizeDelta
+    }
+
+    public void UpdateWeaponsView() {
+        foreach (GameObject Element in Elements) {
+            Destroy(Element);
+        }
         Elements.Clear();
 
         //Test---------------------V
@@ -28,11 +42,11 @@ public class WeaponsViewControllerScript : MonoBehaviour {
         //Elements.Add(goTemp);
 
 
-        
+
         int elementsPerRow = Mathf.RoundToInt(PaddingContent.transform.GetComponent<RectTransform>().sizeDelta.x / widthOfAElement); //is 6 now, with the width of 445
         int collumPosCounter = -elementsPerRow / 2;
         int rowPosCounter = 0;
-        
+
         foreach (GameObject WepElement in ObjectHolder._PlayerWeapons) {
             if (WepElement != null) {
                 GameObject goTemp = Instantiate(ExampleElement, PaddingContent.transform);
@@ -48,23 +62,17 @@ public class WeaponsViewControllerScript : MonoBehaviour {
 
                 goTemp.GetComponent<RectTransform>().anchoredPosition = new Vector2(widthOfAElement * collumPosCounter + widthOfAElement / 2, -(widthOfAElement * rowPosCounter + widthOfAElement / 2));
 
+                //adjusts the size of the content go to fit the new element
+                //Content.GetComponent<RectTransform>().sizeDelta = new Vector2(Content.GetComponent<RectTransform>().sizeDelta.x, widthOfAElement * (rowPosCounter+1) + Mathf.Abs(PaddingContent.transform.GetComponent<RectTransform>().offsetMax.y) + Mathf.Abs(widthOfAElement / 4));
+
                 goTemp.SetActive(true);
                 Elements.Add(goTemp);
                 collumPosCounter++;
-                //if (rowPosCounter == 0) rowPosCounter++;
                 if (collumPosCounter == elementsPerRow / 2) {
                     collumPosCounter = -elementsPerRow / 2;
                     rowPosCounter++;
                 }
-                //if (rowPosCounter == elementsPerRow) rowPosCounter = 0;
             }
         }
-        
-    }
-
-    void Update () {
-        //adjusts the size of the padding content to be the same as the normal contents - the padding
-        PaddingContent.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(PaddingContent.transform.GetComponent<RectTransform>().sizeDelta.x, PaddingContent.transform.parent.GetComponent<RectTransform>().sizeDelta.y + 2*PaddingContent.transform.GetComponent<RectTransform>().offsetMax.y);
-        //PaddingContent.transform.GetComponent<RectTransform>().sizeDelta
     }
 }

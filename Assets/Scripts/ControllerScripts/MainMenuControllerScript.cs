@@ -30,6 +30,8 @@ public class MainMenuControllerScript : MonoBehaviour {
 
     void Start () {
 
+        GameControllerScript.currendCredits += 1000;
+
         foreach (Transform t in OutfitterMenu.transform) {
             if (t.name == "First Weapon Dropdown") {
                 FirstWeaponDropdownGO = t.gameObject;
@@ -37,7 +39,7 @@ public class MainMenuControllerScript : MonoBehaviour {
             if (t.name == "Second Weapon Dropdown") {
                 SecondWeaponDropdownGO = t.gameObject;
             }
-            if (t.name == "Weapons View") {
+            if (t.name == "Weapons View") {  //GameObject.FindGameObjectWithTag("Weapons View UI").GetComponent<WeaponsViewControllerScript>();
                 WeaponsViewGO = t.gameObject;
             }
         }
@@ -60,9 +62,7 @@ public class MainMenuControllerScript : MonoBehaviour {
             GameObject.FindGameObjectsWithTag("Currend Credits UI")[0].GetComponent<Text>().text = "Credits:" + System.Environment.NewLine + GameControllerScript.currendCredits.ToString();
             //GameObject.FindGameObjectsWithTag("First Weapon UI")[0].GetComponent<Text>().text = "First Weapon:" + System.Environment.NewLine + firstWeapon.ToString();
             //GameObject.FindGameObjectsWithTag("Second Weapon UI")[0].GetComponent<Text>().text = "Second Weapon:" + System.Environment.NewLine + secondWeapon.ToString();
-            
-            
-            
+
             if (FirstWeaponDropdownGO != null) {
                 FirstWeaponDropdownGO.GetComponent<Dropdown>().options.Clear();
                 foreach (GameObject pWep in ObjectHolder._PlayerWeapons)
@@ -185,17 +185,22 @@ public class MainMenuControllerScript : MonoBehaviour {
                 if (t.name == "Weapon Description Text") t.GetComponent<Text>().text = WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().description;
 
                 if (t.name == "Btn_PreviousWeapon") {
-                    if (WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().PreviousWeapon == null)
-                        t.GetComponent<Button>().interactable = false;
-                    else
-                        t.GetComponent<Button>().interactable = true;
+                    if (WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().PreviousWeapon != null) {
+                        if (WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().PreviousWeapon.GetComponent<WeaponBehaviourScript>().isBought == true)
+                            t.GetComponent<Button>().interactable = true;
+                        else t.GetComponent<Button>().interactable = false;
+                    }
+                    else t.GetComponent<Button>().interactable = false;
                 }
                 if (t.name == "Btn_NextWeapon") {
-                    if (WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().NextWeapon == null)
-                        t.GetComponent<Button>().interactable = false;
-                    else
-                        t.GetComponent<Button>().interactable = true;
+                    if (WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().NextWeapon != null) {
+                        if (WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().NextWeapon.GetComponent<WeaponBehaviourScript>().isBought == true) 
+                            t.GetComponent<Button>().interactable = true;
+                        else t.GetComponent<Button>().interactable = false;
+                    }
+                    else t.GetComponent<Button>().interactable = false;
                 }
+
                 if (t.name == "Btn_Back") {
                     bool ActivateUpgrade = false;
                     //float BackButtonStandartPos = -1;
@@ -229,6 +234,19 @@ public class MainMenuControllerScript : MonoBehaviour {
 
     public void NextWeapon_Btn() {
         OpenWeaponInfoScreen_Btn(WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().NextWeapon);
+    }
+
+    public void Btn_UpgradeWeapon() {
+        WeaponBehaviourScript _nextwep = WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().NextWeapon.GetComponent<WeaponBehaviourScript>();
+        if (GameControllerScript.currendCredits >= _nextwep.price) {
+            GameControllerScript.currendCredits -= _nextwep.price;
+
+
+            _nextwep.isBought = true;
+            WeaponsViewGO.GetComponent<WeaponsViewControllerScript>().UpdateWeaponsView();
+            NextWeapon_Btn();
+        }
+        else Debug.Log("You need some visual feedback that the player has not enouth money to uprgade the weapoon...");
     }
 
     public void Btn_WeaponSelectScreenBack() {
