@@ -24,6 +24,8 @@ public class MainMenuControllerScript : MonoBehaviour {
     public static GameObject firstWeaponGO;
     public static GameObject secondWeaponGO;
 
+    public static float NewWeaponPrice = 200f;
+
     private GameObject WeaponInfoScreenWeaponGo = null;
     //for the movement of the back and the upgrade buttons
     private float BackButtonStandartPos = -1;
@@ -59,9 +61,15 @@ public class MainMenuControllerScript : MonoBehaviour {
 
     private void UpdateUI() {
         if (OutfitterMenu.activeSelf == true) {
-            GameObject.FindGameObjectsWithTag("Currend Credits UI")[0].GetComponent<Text>().text = "Credits:" + System.Environment.NewLine + GameControllerScript.currendCredits.ToString();
-            //GameObject.FindGameObjectsWithTag("First Weapon UI")[0].GetComponent<Text>().text = "First Weapon:" + System.Environment.NewLine + firstWeapon.ToString();
-            //GameObject.FindGameObjectsWithTag("Second Weapon UI")[0].GetComponent<Text>().text = "Second Weapon:" + System.Environment.NewLine + secondWeapon.ToString();
+
+            foreach (Transform t in OutfitterMenu.transform) {
+                if (t.CompareTag("Currend Credits UI")) t.GetComponent<Text>().text = "Credits:" + System.Environment.NewLine + GameControllerScript.currendCredits.ToString();
+                //GameObject.FindGameObjectsWithTag("First Weapon UI")[0].GetComponent<Text>().text = "First Weapon:" + System.Environment.NewLine + firstWeapon.ToString();
+                //GameObject.FindGameObjectsWithTag("Second Weapon UI")[0].GetComponent<Text>().text = "Second Weapon:" + System.Environment.NewLine + secondWeapon.ToString();
+
+
+                if (t.name == "Btn_BuyNewWeapon") t.GetComponentsInChildren<Transform>()[1].GetComponent<Text>().text = NewWeaponPrice.ToString();
+            }
 
             if (FirstWeaponDropdownGO != null) {
                 FirstWeaponDropdownGO.GetComponent<Dropdown>().options.Clear();
@@ -119,9 +127,33 @@ public class MainMenuControllerScript : MonoBehaviour {
 
 
     /*-----------------------------------------Outfitter-----------------------------------------------*/
-    public void Btn_Buy() {
+    public void Btn_BuyNewWeapon() {
+        List<GameObject> buyableWeapons = new List<GameObject>();
+        foreach (GameObject WepGo in ObjectHolder._PlayerWeapons) {
+            if (WepGo != null) 
+                if (WepGo.GetComponent<WeaponBehaviourScript>().WeaponLevel == WeaponBehaviourScript.WeaponLevels._1 && WepGo.GetComponent<WeaponBehaviourScript>().isBought == false) 
+                    buyableWeapons.Add(WepGo);
+        }
 
-    }
+        if (buyableWeapons.Count != 0) {
+            if (GameControllerScript.currendCredits >= NewWeaponPrice) {
+                
+                GameControllerScript.currendCredits -= NewWeaponPrice;
+                NewWeaponPrice += 100;
+
+                GameObject randomWeponGo = buyableWeapons[Random.Range(0, buyableWeapons.Count)];
+                randomWeponGo.GetComponent<WeaponBehaviourScript>().isBought = true;
+                WeaponsViewGO.GetComponent<WeaponsViewControllerScript>().UpdateWeaponsView();
+                UpdateUI();
+                OpenWeaponInfoScreen(randomWeponGo);
+            }
+            else Debug.Log("You need some visual feedback that the player has not enouth money to buy a new weapoon...");
+        }
+        else
+            foreach (Transform t in OutfitterMenu.transform) {
+                if (t.name == "Btn_BuyNewWeapon") t.GetComponent<Button>().interactable = false;
+            }
+        }
 
     public void Btn_Back() {
         StartMenu.SetActive(true);
@@ -165,7 +197,7 @@ public class MainMenuControllerScript : MonoBehaviour {
 
     /*-----------------------------------------Weapon Info Screen-----------------------------------------------*/
     //Is called from WeaponsViewElementDataScript
-    public void OpenWeaponInfoScreen_Btn(GameObject _weaponObject) {
+    public void OpenWeaponInfoScreen(GameObject _weaponObject) {
         if (_weaponObject.GetComponent<WeaponBehaviourScript>() != null) {
             StartMenu.SetActive(false);
             //StoryMenu.SetActive(false);
@@ -224,16 +256,16 @@ public class MainMenuControllerScript : MonoBehaviour {
 
         }
         else {
-            Debug.LogError("OpenWeaponInfoScreen_Btn hass been called with the object " + _weaponObject.name + ", which has no WeaponBehaviourScript assinged.");
+            Debug.LogError("OpenWeaponInfoScreen hass been called with the object " + _weaponObject.name + ", which has no WeaponBehaviourScript assinged.");
         }
     }
 
     public void PreviousWeapon_Btn() {
-        OpenWeaponInfoScreen_Btn(WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().PreviousWeapon);
+        OpenWeaponInfoScreen(WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().PreviousWeapon);
     }
 
     public void NextWeapon_Btn() {
-        OpenWeaponInfoScreen_Btn(WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().NextWeapon);
+        OpenWeaponInfoScreen(WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().NextWeapon);
     }
 
     public void Btn_UpgradeWeapon() {
@@ -244,7 +276,8 @@ public class MainMenuControllerScript : MonoBehaviour {
 
             _nextwep.isBought = true;
             WeaponsViewGO.GetComponent<WeaponsViewControllerScript>().UpdateWeaponsView();
-            NextWeapon_Btn();
+            UpdateUI();
+            OpenWeaponInfoScreen(WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().NextWeapon);
         }
         else Debug.Log("You need some visual feedback that the player has not enouth money to uprgade the weapoon...");
     }

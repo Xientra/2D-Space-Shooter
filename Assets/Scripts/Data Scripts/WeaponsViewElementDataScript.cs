@@ -12,6 +12,6 @@ public class WeaponsViewElementDataScript : MonoBehaviour {
 
     public void OpenWeaponInfoScreen_Btn() {
         //Debug.Log(this.gameObject.name);
-        MainMenuControllerGo.GetComponent<MainMenuControllerScript>().OpenWeaponInfoScreen_Btn(WeaponPreafab);
+        MainMenuControllerGo.GetComponent<MainMenuControllerScript>().OpenWeaponInfoScreen(WeaponPreafab);
     }
 }

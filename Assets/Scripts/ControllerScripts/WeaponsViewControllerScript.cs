@@ -45,7 +45,7 @@ public class WeaponsViewControllerScript : MonoBehaviour {
 
         int elementsPerRow = Mathf.RoundToInt(PaddingContent.transform.GetComponent<RectTransform>().sizeDelta.x / widthOfAElement); //is 6 now, with the width of 445
         int collumPosCounter = -elementsPerRow / 2;
-        int rowPosCounter = 0;
+        int rowPosCounter = 1;
 
         foreach (GameObject WepElement in ObjectHolder._PlayerWeapons) {
             if (WepElement != null) {
@@ -60,10 +60,14 @@ public class WeaponsViewControllerScript : MonoBehaviour {
 
                 //Debug.Log(widthOfAElement * collumPosCounter + widthOfAElement / 2);
 
-                goTemp.GetComponent<RectTransform>().anchoredPosition = new Vector2(widthOfAElement * collumPosCounter + widthOfAElement / 2, -(widthOfAElement * rowPosCounter + widthOfAElement / 2));
+                goTemp.GetComponent<RectTransform>().anchoredPosition = new Vector2(widthOfAElement * collumPosCounter + widthOfAElement / 2, -(widthOfAElement * rowPosCounter - widthOfAElement / 2));
 
                 //adjusts the size of the content go to fit the new element
-                //Content.GetComponent<RectTransform>().sizeDelta = new Vector2(Content.GetComponent<RectTransform>().sizeDelta.x, widthOfAElement * (rowPosCounter+1) + Mathf.Abs(PaddingContent.transform.GetComponent<RectTransform>().offsetMax.y) + Mathf.Abs(widthOfAElement / 4));
+                float f = widthOfAElement * (rowPosCounter) + Mathf.Abs(PaddingContent.transform.GetComponent<RectTransform>().offsetMax.y) + Mathf.Abs(widthOfAElement / 4);
+                //Debug.Log(f);
+                Content.GetComponent<RectTransform>().sizeDelta = new Vector2(Content.GetComponent<RectTransform>().sizeDelta.x, f);
+
+                
 
                 goTemp.SetActive(true);
                 Elements.Add(goTemp);

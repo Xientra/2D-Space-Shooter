@@ -1404,6 +1404,7 @@ RectTransform:
   - {fileID: 486650375}
   - {fileID: 1241185547}
   - {fileID: 498526857}
+  - {fileID: 1269936478}
   - {fileID: 1419188015}
   - {fileID: 1720780384}
   m_Father: {fileID: 230662501}
@@ -1587,7 +1588,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 301.4, y: -167}
+  m_AnchoredPosition: {x: 301.4, y: -178.5}
   m_SizeDelta: {x: 70, y: 24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &498526858
@@ -2615,7 +2616,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000027265827, y: -2.3663588e-10}
+  m_AnchoredPosition: {x: -0.000017135264, y: 0.000004120913}
   m_SizeDelta: {x: 0, y: 110}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &924051111
@@ -2685,7 +2686,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Buy New Weapon
+  m_Text: XXXXX
 --- !u!222 &924051114
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3191,7 +3192,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -114, y: -20.5}
-  m_SizeDelta: {x: 500, y: 335}
+  m_SizeDelta: {x: 500, y: 340}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1117775478
 MonoBehaviour:
@@ -3882,7 +3883,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Credits:
 
-    XXX'
+    XXXXX'
 --- !u!222 &1241185549
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3966,6 +3967,85 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1261423170}
   m_CullTransparentMesh: 0
+--- !u!1 &1269936477
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1107115885157264, guid: 46c816bbdc987ad48b4e410195782c69,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1269936478}
+  - component: {fileID: 1269936480}
+  - component: {fileID: 1269936479}
+  m_Layer: 5
+  m_Name: Buy New Weapon Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1269936478
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 224320673508058074, guid: 46c816bbdc987ad48b4e410195782c69,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1269936477}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 405620976}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 256.62, y: -192.7}
+  m_SizeDelta: {x: 80.86, y: 41.95}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1269936479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114365402084578106, guid: 46c816bbdc987ad48b4e410195782c69,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1269936477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0.87058824, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 18
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Buy New Weapon:'
+--- !u!222 &1269936480
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 222982580014963884, guid: 46c816bbdc987ad48b4e410195782c69,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1269936477}
+  m_CullTransparentMesh: 0
 --- !u!1 &1419188014
 GameObject:
   m_ObjectHideFlags: 0
@@ -3996,12 +4076,12 @@ RectTransform:
   m_Children:
   - {fileID: 924051112}
   m_Father: {fileID: 405620976}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 251.3, y: -124.3}
-  m_SizeDelta: {x: 170.21, y: 24}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 249.62, y: -228.525}
+  m_SizeDelta: {x: 67.72, y: 24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1419188016
 MonoBehaviour:
@@ -4043,7 +4123,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 296997162}
-        m_MethodName: Btn_Back
+        m_MethodName: Btn_BuyNewWeapon
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4119,7 +4199,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -220, y: -20}
+  m_AnchoredPosition: {x: -222.5, y: -20}
   m_SizeDelta: {x: 445, y: 70}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1486368273
@@ -4970,7 +5050,7 @@ RectTransform:
   - {fileID: 1548542925}
   - {fileID: 1552001838}
   m_Father: {fileID: 405620976}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
