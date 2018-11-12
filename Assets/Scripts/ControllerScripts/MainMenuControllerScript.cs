@@ -32,7 +32,24 @@ public class MainMenuControllerScript : MonoBehaviour {
 
     void Start () {
 
-        GameControllerScript.currendCredits += 1000;
+        GameControllerScript.currendCredits += 10000;
+
+        //Sets all Weapons.isBought to false exept for a few selected ones
+        foreach (GameObject playerWeapon in ObjectHolder._PlayerWeapons) {
+            switch (playerWeapon.GetComponent<WeaponBehaviourScript>().WeaponType) {
+                case WeaponBehaviourScript.WeaponTypes.Standart_lvl_1:
+                    playerWeapon.GetComponent<WeaponBehaviourScript>().isBought = true;
+                    break;
+                case WeaponBehaviourScript.WeaponTypes.Shotgun_lvl_1:
+                    playerWeapon.GetComponent<WeaponBehaviourScript>().isBought = true;
+                    break;
+
+                default:
+                    playerWeapon.GetComponent<WeaponBehaviourScript>().isBought = false;
+                    break;
+            }
+        }
+
 
         foreach (Transform t in OutfitterMenu.transform) {
             if (t.name == "First Weapon Dropdown") {
@@ -46,13 +63,14 @@ public class MainMenuControllerScript : MonoBehaviour {
             }
         }
 
-        UpdateUI();
+        //UpdateUI();
         StartCoroutine(DoStuffAfterOneFrame());
     }
     IEnumerator DoStuffAfterOneFrame() {
         yield return 0;
         firstWeaponGO = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Standart_lvl_1)];
         secondWeaponGO = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Shotgun_lvl_1)];
+        UpdateUI();
     }
 
     void Update () {
@@ -72,27 +90,41 @@ public class MainMenuControllerScript : MonoBehaviour {
             }
 
             if (FirstWeaponDropdownGO != null) {
+                int counter1 = 0;
                 FirstWeaponDropdownGO.GetComponent<Dropdown>().options.Clear();
                 foreach (GameObject pWep in ObjectHolder._PlayerWeapons)
                     if (pWep != null) {
-                        if (pWep.GetComponent<WeaponBehaviourScript>().isBought == true)
+                        if (pWep.GetComponent<WeaponBehaviourScript>().isBought == true) {
                             FirstWeaponDropdownGO.GetComponent<Dropdown>().options.Add(new Dropdown.OptionData(pWep.GetComponent<WeaponBehaviourScript>().weaponName));
+                            if (firstWeaponGO != null)
+                                if (pWep.GetComponent<WeaponBehaviourScript>().WeaponType == firstWeaponGO.GetComponent<WeaponBehaviourScript>().WeaponType) {
+                                    FirstWeaponDropdownGO.GetComponent<Dropdown>().value = counter1;
+                                }
+                            counter1++;
+                        }
                     }
                     else Debug.LogWarning("There is a free element in the static _PlayerWeapons Array");
-                FirstWeaponDropdownGO.GetComponentInChildren<Text>().text = FirstWeaponDropdownGO.GetComponent<Dropdown>().options[0].text;
+                FirstWeaponDropdownGO.GetComponent<Dropdown>().RefreshShownValue();
             }
             else Debug.LogError("The FirstWeaponDropdownGO is null.");
 
 
             if (SecondWeaponDropdownGO != null) {
+                int counter2 = 0;
                 SecondWeaponDropdownGO.GetComponent<Dropdown>().options.Clear();
                 foreach (GameObject pWep in ObjectHolder._PlayerWeapons)
                     if (pWep != null) {
-                        if (pWep.GetComponent<WeaponBehaviourScript>().isBought == true)
+                        if (pWep.GetComponent<WeaponBehaviourScript>().isBought == true) {
                             SecondWeaponDropdownGO.GetComponent<Dropdown>().options.Add(new Dropdown.OptionData(pWep.GetComponent<WeaponBehaviourScript>().weaponName));
+                            if (secondWeaponGO != null)
+                                if (pWep.GetComponent<WeaponBehaviourScript>().WeaponType == secondWeaponGO.GetComponent<WeaponBehaviourScript>().WeaponType) {
+                                    SecondWeaponDropdownGO.GetComponent<Dropdown>().value = counter2;
+                                }
+                            counter2++;
+                        }
                     }
                     else Debug.LogWarning("There is a free element in the static _PlayerWeapons Array");
-                SecondWeaponDropdownGO.GetComponentInChildren<Text>().text = SecondWeaponDropdownGO.GetComponent<Dropdown>().options[0].text;
+                SecondWeaponDropdownGO.GetComponent<Dropdown>().RefreshShownValue();
             }
             else Debug.LogError("The SecondWeaponDropdownGO is null.");
         }
@@ -126,7 +158,7 @@ public class MainMenuControllerScript : MonoBehaviour {
     }
 
 
-    /*-----------------------------------------Outfitter-----------------------------------------------*/
+    /*-----------------------------------------Outfitter Menu-----------------------------------------------*/
     public void Btn_BuyNewWeapon() {
         List<GameObject> buyableWeapons = new List<GameObject>();
         foreach (GameObject WepGo in ObjectHolder._PlayerWeapons) {
@@ -154,14 +186,6 @@ public class MainMenuControllerScript : MonoBehaviour {
                 if (t.name == "Btn_BuyNewWeapon") t.GetComponent<Button>().interactable = false;
             }
         }
-
-    public void Btn_Back() {
-        StartMenu.SetActive(true);
-        //StoryMenu.SetActive(false);
-        //EndlessLevelMenu.SetActive(false);
-        OutfitterMenu.SetActive(false);
-        //OptionsMenu.SetActive(false);
-    }
 
     public void OnValueChangeFirstWeaponDropdown() {
         int i = FirstWeaponDropdownGO.GetComponent<Dropdown>().value;
@@ -193,6 +217,14 @@ public class MainMenuControllerScript : MonoBehaviour {
         }
 
         Debug.Log("second weapon = "+secondWeaponGO.name);
+    }
+
+    public void Btn_Back() {
+        StartMenu.SetActive(true);
+        //StoryMenu.SetActive(false);
+        //EndlessLevelMenu.SetActive(false);
+        OutfitterMenu.SetActive(false);
+        //OptionsMenu.SetActive(false);
     }
 
     /*-----------------------------------------Weapon Info Screen-----------------------------------------------*/
