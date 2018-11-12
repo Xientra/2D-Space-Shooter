@@ -17,18 +17,16 @@ public class MainMenuControllerScript : MonoBehaviour {
     private GameObject FirstWeaponDropdownGO;
     private GameObject SecondWeaponDropdownGO;
     private GameObject WeaponsViewGO;
+    private GameObject WeaponInfoScreenWeaponGo = null;
+    //for the movement of the back and the upgrade buttons
+    private float BackButtonStandartPos = -1;
 
-    public static WeaponBehaviourScript.WeaponTypes firstWeapon = WeaponBehaviourScript.WeaponTypes.Standart_lvl_1;
-    public static WeaponBehaviourScript.WeaponTypes secondWeapon = WeaponBehaviourScript.WeaponTypes.Helix_lvl_1;
 
     public static GameObject firstWeaponGO;
     public static GameObject secondWeaponGO;
 
     public static float NewWeaponPrice = 200f;
 
-    private GameObject WeaponInfoScreenWeaponGo = null;
-    //for the movement of the back and the upgrade buttons
-    private float BackButtonStandartPos = -1;
 
     void Start () {
 

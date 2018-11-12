@@ -13,6 +13,9 @@ public class WaveControllerScript : MonoBehaviour {
     [NonSerialized]
     public bool WaveActive = true;
 
+    //Only Debug
+    private int PastSecondsSinceStart = 0;
+
     void Start() {
         foreach (Transform child in transform) {
 
@@ -21,6 +24,8 @@ public class WaveControllerScript : MonoBehaviour {
 
         StartCoroutine(InstantiatePlayerAfterOneFrame());
         StartCoroutine(StartAfterTime(1f));
+
+        StartCoroutine(DisplayPastSeconds());
     }
 
     IEnumerator InstantiatePlayerAfterOneFrame() {
@@ -55,5 +60,13 @@ public class WaveControllerScript : MonoBehaviour {
             }
             WaveActive = true;
         }
+    }
+
+    /*------------------------------Displays Time-----------------------------------------*/
+    IEnumerator DisplayPastSeconds() {
+        yield return new WaitForSeconds(1);
+        this.gameObject.name = "Wave Controller  -( " + PastSecondsSinceStart.ToString() + " )-";
+        PastSecondsSinceStart++;
+        StartCoroutine(DisplayPastSeconds());
     }
 }
