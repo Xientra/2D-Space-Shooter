@@ -8,7 +8,13 @@ public class WaveBehaviourScript : MonoBehaviour {
 
     public bool isActive = true;
 
-	void Start () {
+    private int PastSecondsSinceStart = 0;
+    private string OriginalObjectName;
+
+    void Start () {
+        OriginalObjectName = this.gameObject.name;
+        StartCoroutine(DisplaySecondsTillDestruction());
+
         StartCoroutine(destroyAfterDuration());
     }
 	
@@ -23,5 +29,12 @@ public class WaveBehaviourScript : MonoBehaviour {
         GameObject.FindGameObjectWithTag("Endless Level Controller").GetComponent<WaveControllerScript>().WaveActive = false;
         //this.gameObject.SetActive(false);
         Destroy(this.gameObject);
+    }
+
+    IEnumerator DisplaySecondsTillDestruction() {
+        yield return new WaitForSeconds(1);
+        this.gameObject.name = OriginalObjectName + "  -( " + PastSecondsSinceStart.ToString() + "/" + durationUntilDestroy.ToString() + " )-";
+        PastSecondsSinceStart++;
+        StartCoroutine(DisplaySecondsTillDestruction());
     }
 }

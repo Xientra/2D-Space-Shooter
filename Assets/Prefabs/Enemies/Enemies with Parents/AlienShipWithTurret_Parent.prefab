@@ -561,17 +561,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e92fe24fbb18264b87e32ddacde9f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyTurrets:
-  - {fileID: 1044398547975832}
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
+  EnemyTurrets:
+  - {fileID: 1044398547975832}
   currendEnemyType: 1
   EnemyWeapon: 1
-  AnimationStartDelay: 0
+  AnimationStartDelay: 1
   LimiterDestructionDelayAfterStart: 1
   canShoot: 0
-  MaxHealth: 100
-  Health: 100
+  MaxHealth: 60
+  Health: 60
   CollisionDamage: 50
   ValueOfCreditDrop: 1
   PowerUpDropChangse: 0

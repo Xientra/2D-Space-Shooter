@@ -8,6 +8,8 @@ public class WaveControllerScript : MonoBehaviour {
     public GameObject ObjectHolderGo;
     public GameObject activeWave;
 
+    public bool isActive = true;
+
     public bool isEndless = false;
 
     [NonSerialized]
@@ -43,22 +45,24 @@ public class WaveControllerScript : MonoBehaviour {
     }
 
     void Update() {
-        if (WaveActive == false) {
-            int counter = 1;
-            int childPosition = 1;
-            if (isEndless == true)
-                childPosition = UnityEngine.Random.Range(1, transform.childCount + 1);
+        if (isActive == true) {
+            if (WaveActive == false) {
+                int counter = 1;
+                int childPosition = 1;
+                if (isEndless == true)
+                    childPosition = UnityEngine.Random.Range(1, transform.childCount + 1);
 
-            foreach (Transform child in transform) {
-                if (counter == childPosition) {
-                    activeWave = child.gameObject;
-                    if (isEndless == true)
-                        activeWave = Instantiate(child.gameObject);
-                    activeWave.SetActive(true);
+                foreach (Transform child in transform) {
+                    if (counter == childPosition) {
+                        activeWave = child.gameObject;
+                        if (isEndless == true)
+                            activeWave = Instantiate(child.gameObject);
+                        activeWave.SetActive(true);
+                    }
+                    counter++;
                 }
-                counter++;
+                WaveActive = true;
             }
-            WaveActive = true;
         }
     }
 

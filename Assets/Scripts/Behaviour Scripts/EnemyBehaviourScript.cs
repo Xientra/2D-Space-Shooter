@@ -49,6 +49,9 @@ public class EnemyBehaviourScript : MonoBehaviour {
     /*---------------------------------------------End-Of-Variables---------------------------------------------------------------------------*/
     void Start() {
         EnemyBullets = ObjectHolderGo.GetComponent<ObjectHolder>().EnemyBullets;
+
+        Health = MaxHealth;
+
         if (GetComponent<Animator>() != null) {
             animator = GetComponent<Animator>();
         }
