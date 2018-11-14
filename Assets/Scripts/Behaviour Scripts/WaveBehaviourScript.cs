@@ -6,7 +6,7 @@ public class WaveBehaviourScript : MonoBehaviour {
 
     public float durationUntilDestroy;
 
-    public bool isActive = true;
+    //public bool isActive = true;
 
     private int PastSecondsSinceStart = 0;
     private string OriginalObjectName;
@@ -23,10 +23,11 @@ public class WaveBehaviourScript : MonoBehaviour {
 
     IEnumerator destroyAfterDuration() {
         yield return new WaitForSeconds(durationUntilDestroy);
-        isActive = false;
+        //isActive = false;
 
         //this.transform.parent.transform.gameObject.GetComponent<EndlessLevelControllerScript>().WaveActive = false;
-        GameObject.FindGameObjectWithTag("Endless Level Controller").GetComponent<WaveControllerScript>().WaveActive = false;
+        //GameObject.FindGameObjectWithTag("Endless Level Controller").GetComponent<WaveControllerScript>().WaveActive = false;
+        
         //this.gameObject.SetActive(false);
         Destroy(this.gameObject);
     }

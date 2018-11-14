@@ -10,6 +10,7 @@
 -visual indicator for like all Menu interactions
 -the shrapnell bullet should be spawned individualy and not as part of the shrapnell explosion
 -PickUps just stop when the player dies
+-the player needs to have some ivincibility when hit 
 
 
 # Bugs To Fix Later

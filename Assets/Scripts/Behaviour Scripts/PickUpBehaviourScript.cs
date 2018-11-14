@@ -75,6 +75,8 @@ public class PickUpBehaviourScript : MonoBehaviour {
 
             //speed.Normalize();
             speed += PlayerDirection * speedToPlayer;
+
+            speedToPlayer *= 1.01f;
         }
         speed = new Vector3(Mathf.Clamp(speed.x, -maxSpeedToPlayer, maxSpeedToPlayer), Mathf.Clamp(speed.y, -maxSpeedToPlayer, maxSpeedToPlayer), 0);
 

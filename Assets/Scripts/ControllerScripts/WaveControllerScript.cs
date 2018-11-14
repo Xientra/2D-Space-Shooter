@@ -25,7 +25,7 @@ public class WaveControllerScript : MonoBehaviour {
         }
 
         StartCoroutine(InstantiatePlayerAfterOneFrame());
-        StartCoroutine(StartAfterTime(1f));
+        //StartCoroutine(StartAfterTime(1f));
 
         StartCoroutine(DisplayPastSeconds());
     }
@@ -45,6 +45,10 @@ public class WaveControllerScript : MonoBehaviour {
     }
 
     void Update() {
+        if (activeWave == null) {
+            WaveActive = false;
+        }
+
         if (isActive == true) {
             if (WaveActive == false) {
                 int counter = 1;

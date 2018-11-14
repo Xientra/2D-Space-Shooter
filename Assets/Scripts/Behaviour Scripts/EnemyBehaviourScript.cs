@@ -166,14 +166,14 @@ public class EnemyBehaviourScript : MonoBehaviour {
             Sp.enabled = ChangeTo;
         }
 
-        if (GetComponent<CircleCollider2D>() != null) {
-            GetComponent<CircleCollider2D>().enabled = ChangeTo;
+        foreach (CircleCollider2D CiC2D in GetComponents<CircleCollider2D>()) {
+            CiC2D.enabled = ChangeTo;
         }
-        if (GetComponent<BoxCollider2D>() != null) {
-            GetComponent<BoxCollider2D>().enabled = ChangeTo;
+        foreach (BoxCollider2D BoC2D in GetComponents<BoxCollider2D>()) {
+            BoC2D.enabled = ChangeTo;
         }
-        if (GetComponent<CapsuleCollider2D>() != null) {
-            GetComponent<CapsuleCollider2D>().enabled = ChangeTo;
+        foreach (CapsuleCollider2D CaC2D in GetComponents<CapsuleCollider2D>()) {
+            CaC2D.enabled = ChangeTo;
         }
 
         animator.enabled = ChangeTo; //starts/stops the animation

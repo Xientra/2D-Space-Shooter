@@ -215,7 +215,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1587446453242676}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4041731673541292}
@@ -502,9 +502,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e92fe24fbb18264b87e32ddacde9f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyTurrets: []
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
+  EnemyTurrets: []
   currendEnemyType: 2
   EnemyWeapon: 2
   AnimationStartDelay: 1
