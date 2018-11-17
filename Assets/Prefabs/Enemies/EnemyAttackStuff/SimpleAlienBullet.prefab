@@ -263,6 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createOnDeath: {fileID: 0}
   bulletType: 25
+  enemyBulletType: 1
   direction: {x: 0, y: -1, z: 0}
   isEnemyBullet: 1
   speed: 3.5

@@ -11,9 +11,16 @@ public class LaserBulletData : MonoBehaviour {
         Rocket, Grenade, Shrapnel_lvl_1, Shrapnel_lvl_2, Shrapnel_lvl_3, ShrapnelBullet, HomingBullet_lvl_1, HomingBullet_lvl_2, HomingBullet_lvl_3, LaserSword_lvl_1, LaserSword_lvl_2, LaserSword_lvl_3, 
         Explosion, ShrapnellExplosion,
         SimpleLaser, SplitLaser, SplitLaserChild, 
-        Enemy_SimpleBullet, Enemy_SlowAlienBullet, Enemy_AlienLaserBulletSmall
+        EnemyBullet
     }
     public BulletTypes bulletType = BulletTypes.Standart;
+
+    public enum EnemyBulletTypes {
+        PlayerBullet, SimpleBullet, SlowAlienBullet, AlienLaserBulletSmall, AilenBulletBig
+    }
+    public EnemyBulletTypes enemyBulletType = EnemyBulletTypes.PlayerBullet;
+
+
 
     public Vector3 direction = new Vector3(1, 0, 0);
 
@@ -69,24 +76,31 @@ public class LaserBulletData : MonoBehaviour {
     void Start() {
         StartCoroutine(destroyAfterTime());
 
+        //Bullet affiliation check
+        if (bulletType == BulletTypes.EnemyBullet && enemyBulletType == EnemyBulletTypes.PlayerBullet) {
+            Debug.LogError("The bullet " + this.gameObject.name + "has no affiliation to any side!");
+        }
+        if (isEnemyBullet == false && bulletType != BulletTypes.EnemyBullet) {
+            Debug.LogError("The bullet " + this.gameObject.name + @" was set to player bullet but still has no (player)bulletType");
+        }
+        if (isEnemyBullet == true && enemyBulletType != EnemyBulletTypes.PlayerBullet) {
+            Debug.LogError("The bullet " + this.gameObject.name + @" was set to enemy bullet but still has no enemyBulletType");
+        }
+
+
+
         if (bulletType == BulletTypes.SimpleLaser || bulletType == BulletTypes.SplitLaser) {
             isLaser = true;
             damageDelayTimeStamp = Time.time + damageDelay;
+        }
+        if (bulletType == BulletTypes.SplitLaserChild) {
+            transform.rotation *= Quaternion.Euler(0, 0, Random.Range(SplitAngle, -SplitAngle));
         }
 
         if (bulletType == BulletTypes.HomingBullet_lvl_1 || bulletType == BulletTypes.HomingBullet_lvl_2 || bulletType == BulletTypes.HomingBullet_lvl_3) {
             direction = transform.rotation * direction;
             transform.rotation = Quaternion.identity;
-        }
-
-        //is this realy usefull?
-        if (bulletType == BulletTypes.Enemy_SimpleBullet || bulletType == BulletTypes.Enemy_SlowAlienBullet) {
-            isEnemyBullet = true;
-        }
-
-        if (bulletType == BulletTypes.SplitLaserChild) {
-            transform.rotation *= Quaternion.Euler(0, 0, Random.Range(SplitAngle, -SplitAngle));
-        }
+        }        
         if (bulletType == BulletTypes.LaserSword_lvl_1) {
             TempSpeed = speed;
             speed = 0;

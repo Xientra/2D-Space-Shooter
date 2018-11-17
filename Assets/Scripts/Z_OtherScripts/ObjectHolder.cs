@@ -79,11 +79,11 @@ public class ObjectHolder : MonoBehaviour {
         return -1;
     }
 
-    public static int GetEnemyBulletIndex(LaserBulletData.BulletTypes _EnemyBulletType) {
+    public static int GetEnemyBulletIndex(LaserBulletData.EnemyBulletTypes _EnemyBulletType) {
         int i = 0;
         foreach (GameObject go in _EnemyBullets) {
             if (go != null) {
-                if (go.GetComponentInChildren<LaserBulletData>().bulletType == _EnemyBulletType) {
+                if (go.GetComponentInChildren<LaserBulletData>().enemyBulletType == _EnemyBulletType) {
                     return i;
                 }
             }
