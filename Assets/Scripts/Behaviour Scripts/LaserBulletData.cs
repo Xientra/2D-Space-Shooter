@@ -80,10 +80,10 @@ public class LaserBulletData : MonoBehaviour {
         if (bulletType == BulletTypes.EnemyBullet && enemyBulletType == EnemyBulletTypes.PlayerBullet) {
             Debug.LogError("The bullet " + this.gameObject.name + "has no affiliation to any side!");
         }
-        if (isEnemyBullet == false && bulletType != BulletTypes.EnemyBullet) {
+        if (isEnemyBullet == false && bulletType == BulletTypes.EnemyBullet) {
             Debug.LogError("The bullet " + this.gameObject.name + @" was set to player bullet but still has no (player)bulletType");
         }
-        if (isEnemyBullet == true && enemyBulletType != EnemyBulletTypes.PlayerBullet) {
+        if (isEnemyBullet == true && enemyBulletType == EnemyBulletTypes.PlayerBullet) {
             Debug.LogError("The bullet " + this.gameObject.name + @" was set to enemy bullet but still has no enemyBulletType");
         }
 
