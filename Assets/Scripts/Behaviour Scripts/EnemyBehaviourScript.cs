@@ -27,6 +27,10 @@ public class EnemyBehaviourScript : MonoBehaviour {
     private float LimiterDestructionDelayAfterStart = 1f;
     private bool LimiterDestruction = false;
 
+    public bool lookForwardWhenMoving = false;
+    private Vector3 lastFramePos;
+
+
     //the movement/behaviour animation change this value for one frame which will make the enemy shoot in that frame
     public bool canShoot = false; //Has to be Serializable to be able to be changed by an animation
 
@@ -51,6 +55,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
         EnemyBullets = ObjectHolderGo.GetComponent<ObjectHolder>().EnemyBullets;
 
         Health = MaxHealth;
+        lastFramePos = transform.position;
 
         if (GetComponent<Animator>() != null) {
             animator = GetComponent<Animator>();
@@ -92,6 +97,8 @@ public class EnemyBehaviourScript : MonoBehaviour {
                 else Debug.LogWarning("The enemy " + gameObject.name + " has a null element in the Turret array.");
             }
         }
+
+        LookForward();
 
         if (canShoot == true) {
             Fire();
@@ -204,6 +211,17 @@ public class EnemyBehaviourScript : MonoBehaviour {
                 PickUpBehaviourScript.PickUpTypes RandomPickUp = (PickUpBehaviourScript.PickUpTypes)Random.Range(1/*cus 0 is credit*/, ObjectHolder._PowerUps.Length);
                 Instantiate(ObjectHolder._PowerUps[ObjectHolder.GetPowerUpIndex(RandomPickUp)], transform.position, Quaternion.identity);
             }
+        }
+    }
+
+    void LookForward() {
+        if (lookForwardWhenMoving == true) {
+            Vector3 lookDirection = transform.position - lastFramePos;
+            Vector3.Normalize(lookDirection);
+
+            transform.up = -lookDirection;
+
+            lastFramePos = transform.position;
         }
     }
 }
