@@ -30,6 +30,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
     public bool lookForwardWhenMoving = false;
     private Vector3 lastFramePos;
 
+    public bool destroyAfterAnimation = true;
 
     //the movement/behaviour animation change this value for one frame which will make the enemy shoot in that frame
     public bool canShoot = false; //Has to be Serializable to be able to be changed by an animation
@@ -99,6 +100,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
         }
 
         LookForward();
+        DestroyIfAnimationEnd();
 
         if (canShoot == true) {
             Fire();
@@ -106,7 +108,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
         }
 
         if (Health <= 0) {
-            StartSelfDestruction(this.gameObject);
+            DestroyAndDropStuff(this.gameObject);
         }
 
         if (EnemyHealthBarRed != null) {
@@ -138,7 +140,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
         }
     }
 
-    void StartSelfDestruction(GameObject toDestroy) {
+    void DestroyAndDropStuff(GameObject toDestroy) {
 
         DropStuff();
         Destroy(toDestroy);
@@ -165,14 +167,15 @@ public class EnemyBehaviourScript : MonoBehaviour {
                 Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.EnemyBulletTypes.SlowAlienBullet)], transform.position, transform.rotation * Quaternion.Euler(0, 0, -tempAngle * 2));
                 break;
             case (EnemyWeapons.FourSmallLaserBullets_straight):
-                Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.EnemyBulletTypes.AlienLaserBulletSmall)], transform.position + new Vector3(1.3f, -0.525f, 0), transform.rotation * Quaternion.Euler(0, 0, 0));
-                Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.EnemyBulletTypes.AlienLaserBulletSmall)], transform.position + new Vector3(1f, -0.7f, 0), transform.rotation * Quaternion.Euler(0, 0, 0));
-                Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.EnemyBulletTypes.AlienLaserBulletSmall)], transform.position + new Vector3(-1.3f, -0.525f, 0), transform.rotation * Quaternion.Euler(0, 0, 0));
-                Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.EnemyBulletTypes.AlienLaserBulletSmall)], transform.position + new Vector3(-1f, -0.7f, 0), transform.rotation * Quaternion.Euler(0, 0, 0));
+                Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.EnemyBulletTypes.AlienLaserBulletSmall)], transform.position + transform.right * 1.3f + transform.up * -0.525f, transform.rotation * Quaternion.Euler(0, 0, 0));
+                Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.EnemyBulletTypes.AlienLaserBulletSmall)], transform.position + transform.right * 1f + transform.up * -0.7f, transform.rotation * Quaternion.Euler(0, 0, 0));
+                Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.EnemyBulletTypes.AlienLaserBulletSmall)], transform.position + transform.right * -1.3f + transform.up * -0.525f, transform.rotation * Quaternion.Euler(0, 0, 0));
+                Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.EnemyBulletTypes.AlienLaserBulletSmall)], transform.position + transform.right * -1f + transform.up * -0.7f, transform.rotation * Quaternion.Euler(0, 0, 0));
                 break;
             case (EnemyWeapons.OneBigForceFieldBullet_straight):
                 Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.EnemyBulletTypes.AilenBulletBig)], transform.position, transform.rotation * Quaternion.Euler(0, 0, 0));
                 break;
+                //transform.right* x + y
         }
     }
 
@@ -210,6 +213,14 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
                 PickUpBehaviourScript.PickUpTypes RandomPickUp = (PickUpBehaviourScript.PickUpTypes)Random.Range(1/*cus 0 is credit*/, ObjectHolder._PowerUps.Length);
                 Instantiate(ObjectHolder._PowerUps[ObjectHolder.GetPowerUpIndex(RandomPickUp)], transform.position, Quaternion.identity);
+            }
+        }
+    }
+
+    void DestroyIfAnimationEnd() {
+        if (destroyAfterAnimation == true) {
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1) { //(I think: ) normelized time is the percentige of the time so if it is over 1 the animation is also over
+                Destroy(this.gameObject);
             }
         }
     }

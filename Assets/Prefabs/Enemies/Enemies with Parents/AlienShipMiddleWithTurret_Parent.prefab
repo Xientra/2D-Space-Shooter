@@ -425,9 +425,10 @@ MonoBehaviour:
   EnemyWeapon: 1
   AnimationStartDelay: 1
   LimiterDestructionDelayAfterStart: 1
+  lookForwardWhenMoving: 0
   canShoot: 0
-  MaxHealth: 90
-  Health: 90
+  MaxHealth: 120
+  Health: 120
   CollisionDamage: 40
   ValueOfCreditDrop: 1
   PowerUpDropChangse: 0

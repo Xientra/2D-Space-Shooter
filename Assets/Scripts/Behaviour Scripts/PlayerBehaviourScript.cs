@@ -15,6 +15,10 @@ public class PlayerBehaviourScript : MonoBehaviour {
     public GameObject firstWeapon;
     public GameObject secondWeapon;
 
+    /*----LookVars----*/
+    private bool lookForwardWhenMoving = false;
+    private Vector3 lastFramePos;
+
     /*Movement Vars*/
     [SerializeField]
     private float acceleration = 1f;
@@ -57,6 +61,9 @@ public class PlayerBehaviourScript : MonoBehaviour {
     void Start() {
         Bullets = ObjectHolder._Bullets;
 
+        lastFramePos = transform.position;
+
+
         StartCoroutine(DoStuffAfterOneFrame());
 
     }
@@ -70,6 +77,7 @@ public class PlayerBehaviourScript : MonoBehaviour {
     }
 
     void Update() {
+        LookForward();
 
         if (GameControllerScript.UsingGamepad == false) {
             TurretGameObject.transform.up = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0) - transform.position;
@@ -560,5 +568,16 @@ public class PlayerBehaviourScript : MonoBehaviour {
             cooldownTimeStamp = Time.time + cooldown;
         }
         */
+    }
+
+    void LookForward() {
+        if (lookForwardWhenMoving == true) {
+            Vector3 lookDirection = transform.position - lastFramePos;
+            Vector3.Normalize(lookDirection);
+
+            transform.up = -lookDirection;
+
+            lastFramePos = transform.position;
+        }
     }
 }

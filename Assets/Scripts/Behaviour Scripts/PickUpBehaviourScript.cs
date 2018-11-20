@@ -22,6 +22,8 @@ public class PickUpBehaviourScript : MonoBehaviour {
     [SerializeField]
     private float maxSpeedToPlayer = 7.5f;
 
+    private float speedFactor = 1.01f;
+
     [SerializeField]
     private float TimeBeforeDestroy = 10f;
     [SerializeField]
@@ -65,21 +67,25 @@ public class PickUpBehaviourScript : MonoBehaviour {
     }
 
     void AccelerationMovement() {
-        if (MoveToPlayer == false) {
-            if (Vector2.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) < MinDistaceToPlayer) {
-                MoveToPlayer = true;
+        if (GameObject.FindGameObjectWithTag("Player") != null) {
+            if (MoveToPlayer == false) {
+                if (Vector2.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) < MinDistaceToPlayer) {
+                    MoveToPlayer = true;
+                }
             }
-        }
-        else {
-            Vector3 PlayerDirection = Vector3.Normalize(GameObject.FindGameObjectWithTag("Player").transform.position - transform.position);
+            else if (MoveToPlayer == true) {
+                Vector3 PlayerDirection = Vector3.Normalize(GameObject.FindGameObjectWithTag("Player").transform.position - transform.position);
 
-            //speed.Normalize();
-            speed += PlayerDirection * speedToPlayer;
+                //speed.Normalize();
+                speed += PlayerDirection * speedToPlayer;
 
-            speedToPlayer *= 1.01f;
+                speedToPlayer *= (speedFactor);
+            }
         }
         speed = new Vector3(Mathf.Clamp(speed.x, -maxSpeedToPlayer, maxSpeedToPlayer), Mathf.Clamp(speed.y, -maxSpeedToPlayer, maxSpeedToPlayer), 0);
 
         transform.position += speed * Time.deltaTime;
+
+        
     }
 }
