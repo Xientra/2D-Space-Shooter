@@ -17,7 +17,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
     public enum EnemyTypes { AlienStandart, AlienTurret, AlienHeavy, AilenWingShip_straight, AilenWingShip_aim, AlienMiddleShip }
     public EnemyTypes currendEnemyType = EnemyTypes.AlienStandart;
 
-    public enum EnemyWeapons { None, FastSmall_aim, FiveSpreadSlow_straight, FourSmallLaserBullets_straight, OneBigForceFieldBullet_straight, OneBigForceFieldBullet_aim }
+    public enum EnemyWeapons { None, FastSmall_aim, FiveSpreadSlow_straight, FourSmallLaserBullets_straight, OneBigForceFieldBullet_straight, OneBigForceFieldBullet_aim, OneSmallLaserBullets_straight }
     public EnemyWeapons EnemyWeapon = EnemyWeapons.None;
 
     //Start Delays
@@ -165,6 +165,9 @@ public class EnemyBehaviourScript : MonoBehaviour {
                 Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.EnemyBulletTypes.SlowAlienBullet)], transform.position, transform.rotation * Quaternion.Euler(0, 0, -tempAngle));
                 Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.EnemyBulletTypes.SlowAlienBullet)], transform.position, transform.rotation * Quaternion.Euler(0, 0, tempAngle * 2));
                 Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.EnemyBulletTypes.SlowAlienBullet)], transform.position, transform.rotation * Quaternion.Euler(0, 0, -tempAngle * 2));
+                break;
+            case (EnemyWeapons.OneSmallLaserBullets_straight):
+                Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.EnemyBulletTypes.AlienLaserBulletSmall)], transform.position, transform.rotation * Quaternion.Euler(0, 0, 0));
                 break;
             case (EnemyWeapons.FourSmallLaserBullets_straight):
                 Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletData.EnemyBulletTypes.AlienLaserBulletSmall)], transform.position + transform.right * 1.3f + transform.up * -0.525f, transform.rotation * Quaternion.Euler(0, 0, 0));
