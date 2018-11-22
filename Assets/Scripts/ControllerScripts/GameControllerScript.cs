@@ -10,6 +10,9 @@ public class GameControllerScript : MonoBehaviour {
     public Camera assingedCamera;
     private Vector3 originalPos;
 
+    public GameObject InGameUI;
+    public GameObject InGameExitMenu;
+
     private float shakeTimer;
     private float shakeAmount;
 
@@ -23,7 +26,16 @@ public class GameControllerScript : MonoBehaviour {
     private bool UpdateEverything = false;
 
     void Start() {
+        //assing stuff if it's still null
         if (mainCamera == null) mainCamera = Camera.main;
+        if (InGameUI == null)
+            if (onlyOnGOwithTag("InGameUI"))
+                InGameUI = GameObject.FindGameObjectWithTag("InGameUI");
+        foreach (Transform t in InGameUI.transform) {
+            if (InGameExitMenu == null) if (t.gameObject.name == "InGameExitMenu") InGameExitMenu = t.gameObject;
+        }
+
+
         StartCoroutine(DoStuffAfterOneFrame());
     }
     IEnumerator DoStuffAfterOneFrame() {
@@ -45,9 +57,9 @@ public class GameControllerScript : MonoBehaviour {
         if (UpdateEverything == true) {
             //ESCMenu
             if (Input.GetButton("Cancel")) {
-                //SceneManager.LoadScene("Main Menu");
+                InGameExitMenu.SetActive(true);
+                Time.timeScale = 0;
             }
-
 
             //Camera Shake 
             if (shakeTimer > 0) {
@@ -162,5 +174,14 @@ public class GameControllerScript : MonoBehaviour {
             yield return null;
         }
         mainCamera.transform.position = originalPosition;
+    }
+
+    public void Btn_Yes() {
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    public void Btn_No() {
+        InGameExitMenu.SetActive(false);
+            Time.timeScale = 1;
     }
 }
