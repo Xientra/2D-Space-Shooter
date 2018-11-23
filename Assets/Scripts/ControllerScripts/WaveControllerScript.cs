@@ -24,19 +24,9 @@ public class WaveControllerScript : MonoBehaviour {
             child.gameObject.SetActive(false);
         }
 
-        StartCoroutine(InstantiatePlayerAfterOneFrame());
         //StartCoroutine(StartAfterTime(1f));
 
         StartCoroutine(DisplayPastSeconds());
-    }
-
-    IEnumerator InstantiatePlayerAfterOneFrame() {
-        yield return null;
-
-        if (GameObject.FindGameObjectWithTag("Player") == null) {
-            Debug.Log("Spawned Player");
-            Instantiate(ObjectHolderGo.GetComponent<ObjectHolder>().PlayerShips[ObjectHolder.GetPlayerShipIndex(PlayerBehaviourScript.Ships.Standart)]);
-        }
     }
 
     IEnumerator StartAfterTime(float duration) {

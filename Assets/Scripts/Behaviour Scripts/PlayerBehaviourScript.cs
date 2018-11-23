@@ -73,7 +73,10 @@ public class PlayerBehaviourScript : MonoBehaviour {
         firstWeapon = GameControllerScript.PlayerFirstWeapon;
         secondWeapon = GameControllerScript.PlayerSecondWeapon;
 
-        ChangeTurret(firstWeapon.GetComponent<WeaponBehaviourScript>().WeaponType);
+        if (firstWeapon != null && secondWeapon != null)
+            ChangeTurret(firstWeapon.GetComponent<WeaponBehaviourScript>().WeaponType);
+        else
+            Debug.LogError("When trying to assing the player weapons at least one of GameControllerWeapons was null");
     }
 
     void Update() {

@@ -10,33 +10,25 @@ public class GameControllerScript : MonoBehaviour {
     public Camera assingedCamera;
     private Vector3 originalPos;
 
-    public GameObject InGameUI;
-    public GameObject InGameExitMenu;
+    public GameObject StarsGo;
 
     private float shakeTimer;
     private float shakeAmount;
 
-    public static float currendCredits = 0f;
+
     public static bool UsingGamepad = false;
     public bool UsingUnityUI = true;
 
     public static GameObject PlayerFirstWeapon;
     public static GameObject PlayerSecondWeapon;
-
-    private bool UpdateEverything = false;
+    public static float currendCredits = 0f;
 
     void Start() {
         //assing stuff if it's still null
         if (mainCamera == null) mainCamera = Camera.main;
-        if (InGameUI == null)
-            if (onlyOnGOwithTag("InGameUI"))
-                InGameUI = GameObject.FindGameObjectWithTag("InGameUI");
-        foreach (Transform t in InGameUI.transform) {
-            if (InGameExitMenu == null) if (t.gameObject.name == "InGameExitMenu") InGameExitMenu = t.gameObject;
-        }
-
 
         StartCoroutine(DoStuffAfterOneFrame());
+        StartCoroutine(InstantiateStuffAfterOneFrame());
     }
     IEnumerator DoStuffAfterOneFrame() {
         yield return 0;
@@ -49,69 +41,33 @@ public class GameControllerScript : MonoBehaviour {
             PlayerSecondWeapon = MainMenuControllerScript.secondWeaponGO;
         else
             PlayerSecondWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Shotgun_lvl_1)];
+    }
 
-        UpdateEverything = true;
+    IEnumerator InstantiateStuffAfterOneFrame() {
+        yield return null;
+
+        if (GameObject.FindGameObjectWithTag("Player") == null) {
+            Debug.Log("Spawned Player");
+            Instantiate(ObjectHolder._PlayerShips[ObjectHolder.GetPlayerShipIndex(PlayerBehaviourScript.Ships.Standart)]);
+        }
+        if (GameObject.FindGameObjectWithTag("Stars") == null) {
+            Debug.Log("Instantiated Stars");
+            Instantiate(StarsGo);
+        }
     }
 
     void Update() {
-        if (UpdateEverything == true) {
-            //ESCMenu
-            if (Input.GetButton("Cancel")) {
-                InGameExitMenu.SetActive(true);
-                Time.timeScale = 0;
-            }
 
-            //Camera Shake 
-            if (shakeTimer > 0) {
-                Vector2 ShakePos = Random.insideUnitCircle * shakeAmount;
+        //Camera Shake 
+        if (shakeTimer > 0) {
+            Vector2 ShakePos = Random.insideUnitCircle * shakeAmount;
 
-                mainCamera.transform.position = new Vector3(mainCamera.transform.position.x + ShakePos.x, mainCamera.transform.position.y + ShakePos.y, mainCamera.transform.position.z);
+            mainCamera.transform.position = new Vector3(mainCamera.transform.position.x + ShakePos.x, mainCamera.transform.position.y + ShakePos.y, mainCamera.transform.position.z);
 
-                shakeTimer -= Time.deltaTime;
-                if (shakeTimer <= 0) {
-                    //Debug.Log("reset");
-                    mainCamera.transform.position = originalPos;
-                }
-            }
-
-            //Update UI
-            if (GameObject.FindGameObjectWithTag("Player") != null) {
-                float _MaxHealth = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerBehaviourScript>().MaxHealth;
-                float _currendHealth = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerBehaviourScript>().currendHealth;
-
-                if (UsingUnityUI) {
-                    if (onlyOnGOwithTag("Health Bar UI")) {
-                        GameObject.FindGameObjectsWithTag("Health Bar UI")[0].GetComponent<Slider>().maxValue = _MaxHealth;
-                        GameObject.FindGameObjectsWithTag("Health Bar UI")[0].GetComponent<Slider>().value = _currendHealth;
-                    }
-                    if (onlyOnGOwithTag("First Weapon UI")) {
-                        GameObject.FindGameObjectsWithTag("First Weapon UI")[0].GetComponent<Text>().text = "First Weapon:" + System.Environment.NewLine + PlayerFirstWeapon.GetComponent<WeaponBehaviourScript>().weaponName;
-                    }
-                    if (onlyOnGOwithTag("Second Weapon UI")) {
-                        GameObject.FindGameObjectsWithTag("Second Weapon UI")[0].GetComponent<Text>().text = "Second Weapon:" + System.Environment.NewLine + PlayerSecondWeapon.GetComponent<WeaponBehaviourScript>().weaponName;
-                    }
-                    if (onlyOnGOwithTag("Currend Credits UI")) {
-                        GameObject.FindGameObjectsWithTag("Currend Credits UI")[0].GetComponent<Text>().text = "Credits:" + System.Environment.NewLine + currendCredits.ToString();
-                    }
-                    if (onlyOnGOwithTag("Cooldown UI")) {
-
-                        GameObject.FindGameObjectsWithTag("Cooldown UI")[0].GetComponent<Slider>().value = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerBehaviourScript>().GetPercentUnitCooldown();
-                    }
-                }
-                else {
-                    if (onlyOnGOwithTag("Health Bar UI")) {
-                        GameObject HealthBarUIGO = GameObject.FindGameObjectsWithTag("Health Bar UI")[0];
-                        HealthBarUIGO.transform.localScale = new Vector3(_currendHealth / _MaxHealth, HealthBarUIGO.transform.localScale.y, HealthBarUIGO.transform.localScale.z);
-                    }
-                    /*
-                    if (onlyOnGOwithTag("Currend Weapon UI")) {
-                        GameObject.FindGameObjectsWithTag("Currend Weapon UI")[0].transform = "Weapon:" + System.Environment.NewLine + _currentWeapon.ToString();
-                    }
-                    if (onlyOnGOwithTag("Currend Credits UI")) {
-                        GameObject.FindGameObjectsWithTag("Currend Credits UI")[0].transform = "Credits:" + System.Environment.NewLine + currendCredits.ToString();
-                    }
-                    */
-                }
+            shakeTimer -= Time.deltaTime;
+            if (shakeTimer <= 0) {
+                //Debug.Log("reset");
+                mainCamera.transform.position = originalPos;
             }
         }
     }
@@ -174,14 +130,5 @@ public class GameControllerScript : MonoBehaviour {
             yield return null;
         }
         mainCamera.transform.position = originalPosition;
-    }
-
-    public void Btn_Yes() {
-        SceneManager.LoadScene("Main Menu");
-    }
-
-    public void Btn_No() {
-        InGameExitMenu.SetActive(false);
-            Time.timeScale = 1;
     }
 }
