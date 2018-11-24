@@ -17,8 +17,16 @@ public class InGameUIControllerScript : MonoBehaviour {
             InGameUI = GameObject.FindGameObjectWithTag("InGameUI");
 
         foreach (Transform t in InGameUI.transform) {
-            if (InGameExitMenu == null) if (t.gameObject.name == "InGameExitMenu") InGameExitMenu = t.gameObject;
-            if (InGameDeathMenu == null) if (t.gameObject.name == "InGameDeathMenu") InGameDeathMenu = t.gameObject;
+            if (InGameExitMenu == null)
+                if (t.gameObject.name == "InGameExitMenu") {
+                    InGameExitMenu = t.gameObject;
+                    InGameExitMenu.SetActive(false);
+                }
+            if (InGameDeathMenu == null)
+                if (t.gameObject.name == "InGameDeathMenu") {
+                    InGameDeathMenu = t.gameObject;
+                    InGameDeathMenu.SetActive(false);
+                }
         }
 
         StartCoroutine(DoStuffAfterOneFrame());
@@ -30,8 +38,13 @@ public class InGameUIControllerScript : MonoBehaviour {
     }
 
     void Update () {
-        if (Input.GetButton("Cancel")) {
-            OpenInGameExitMenu();
+        if (Input.GetButtonDown("Cancel")) {
+            if (InGameExitMenu.activeSelf == false) {
+                OpenInGameExitMenu();
+            }
+            else {
+                Btn_No(); //which deactivates the InGameExitMenu and starts Time again
+            }
         }
 
         if (UpdateUI == true)
@@ -62,31 +75,31 @@ public class InGameUIControllerScript : MonoBehaviour {
 
     public void OpenInGameExitMenu() {
         InGameExitMenu.SetActive(true);
-        Time.timeScale = 0;
+        GameControllerScript.PauseGame(true);
     }
 
     public void OpenInGameDeathMenu() {
         InGameDeathMenu.SetActive(true);
-        Time.timeScale = 0;
+        GameControllerScript.PauseGame(true);
     }
 
     /*-------------------------------------------InGame Menu-------------------------------------------------------*/
 
     public void Btn_Yes() {
         SceneManager.LoadScene("Main Menu");
-        Time.timeScale = 1;
+        GameControllerScript.PauseGame(false);
     }
     public void Btn_No() {
         InGameExitMenu.SetActive(false);
-        Time.timeScale = 1;
+        GameControllerScript.PauseGame(false);
     }
 
     public void Btn_Retry() {
-        SceneManager.LoadScene("Endless Level");
-        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameControllerScript.PauseGame(false);
     }
     public void Btn_Back() {
         SceneManager.LoadScene("Main Menu");
-        Time.timeScale = 1;
+        GameControllerScript.PauseGame(false);
     }
 }

@@ -82,20 +82,15 @@ public class PlayerBehaviourScript : MonoBehaviour {
     void Update() {
         LookForward();
 
-        if (GameControllerScript.UsingGamepad == false) {
-            TurretGameObject.transform.up = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0) - transform.position;
-        }
-        else {
-            Vector2 ShootDirection = new Vector2(Input.GetAxis("HorizontalRight"), Input.GetAxis("VerticalRight"));
-            if (Input.GetAxis("HorizontalRight") != 0 || Input.GetAxis("VerticalRight") != 0)
-                TurretGameObject.transform.right = ShootDirection.normalized;
-        }
-        
-        if (Input.GetButton("Fire1")) {
-            FireWeapon(firstWeapon);
-        }
-        if (Input.GetButton("Fire2")) {
-            FireWeapon(secondWeapon);
+        RotateTurret();
+
+        if (GameControllerScript.GameIsPaused != true) {
+            if (Input.GetButton("Fire1")) {
+                FireWeapon(firstWeapon);
+            }
+            if (Input.GetButton("Fire2")) {
+                FireWeapon(secondWeapon);
+            }
         }
 
         if (regenerates == true) {
@@ -108,8 +103,8 @@ public class PlayerBehaviourScript : MonoBehaviour {
         ProjectileSpawnPoint = TurretGameObject.transform.position;
         ProjectileSpawnPoint = TurretGameObject.transform.position + (TurretGameObject.transform.up * (transform.localScale.y / 5f));
 
-        if (currendHealth <= 0) Destroy(this.gameObject);
-        if (currendHealth > MaxHealth) currendHealth = MaxHealth;
+
+        CheckPlayerDeath();
     }
 
     void FixedUpdate() {
@@ -213,6 +208,30 @@ public class PlayerBehaviourScript : MonoBehaviour {
 
         //Actual Moving
         transform.Translate(xspeed * Time.deltaTime, yspeed * Time.deltaTime, 0);
+    }
+
+    void RotateTurret() {
+        if (GameControllerScript.UsingGamepad == false) {
+            TurretGameObject.transform.up = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0) - transform.position;
+        }
+        else {
+            Vector2 ShootDirection = new Vector2(Input.GetAxis("HorizontalRight"), Input.GetAxis("VerticalRight"));
+            if (Input.GetAxis("HorizontalRight") != 0 || Input.GetAxis("VerticalRight") != 0)
+                TurretGameObject.transform.right = ShootDirection.normalized;
+        }
+    }
+
+    void CheckPlayerDeath() {
+        if (currendHealth > MaxHealth) currendHealth = MaxHealth;
+
+
+        if (currendHealth <= 0) {
+            if (GameObject.FindGameObjectWithTag("InGameUI") != null)
+                GameObject.FindGameObjectWithTag("InGameUI").GetComponent<InGameUIControllerScript>().OpenInGameDeathMenu();
+            else Debug.LogError("The Player Object could not find \"InGameUI\" and so not open the InGameDeathMenu");
+
+            Destroy(this.gameObject);
+        }
     }
 
     void adjustScale(float xscale, float yscale) {

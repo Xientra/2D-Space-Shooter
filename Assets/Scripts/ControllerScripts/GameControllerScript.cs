@@ -15,7 +15,7 @@ public class GameControllerScript : MonoBehaviour {
     private float shakeTimer;
     private float shakeAmount;
 
-
+    public static bool GameIsPaused = false;
     public static bool UsingGamepad = false;
     public bool UsingUnityUI = true;
 
@@ -45,10 +45,11 @@ public class GameControllerScript : MonoBehaviour {
 
     IEnumerator InstantiateStuffAfterOneFrame() {
         yield return null;
-
-        if (GameObject.FindGameObjectWithTag("Player") == null) {
-            Debug.Log("Spawned Player");
-            Instantiate(ObjectHolder._PlayerShips[ObjectHolder.GetPlayerShipIndex(PlayerBehaviourScript.Ships.Standart)]);
+        if (SceneManager.GetActiveScene().name != "Main Menu") {
+            if (GameObject.FindGameObjectWithTag("Player") == null) {
+                Debug.Log("Spawned Player");
+                Instantiate(ObjectHolder._PlayerShips[ObjectHolder.GetPlayerShipIndex(PlayerBehaviourScript.Ships.Standart)]);
+            }
         }
         if (GameObject.FindGameObjectWithTag("Stars") == null) {
             Debug.Log("Instantiated Stars");
@@ -100,8 +101,8 @@ public class GameControllerScript : MonoBehaviour {
         Vector3 originalPosition = assingedCamera.transform.position;
 
         float timeElepsed = 0;
-
-        while (timeElepsed < duration) {
+        
+        while (timeElepsed < duration && GameIsPaused == false) {
             float x = Random.Range(-1f, 1f) * magnitude;
             float y = Random.Range(-1f, 1f) * magnitude;
 
@@ -119,7 +120,7 @@ public class GameControllerScript : MonoBehaviour {
 
         float timeElepsed = 0;
 
-        while (timeElepsed < duration) {
+        while (timeElepsed < duration && GameIsPaused == false) {
             float x = Random.Range(-1f, 1f) * magnitude;
             float y = Random.Range(-1f, 1f) * magnitude;
 
@@ -130,5 +131,16 @@ public class GameControllerScript : MonoBehaviour {
             yield return null;
         }
         mainCamera.transform.position = originalPosition;
+    }
+
+    public static void PauseGame(bool _state) {
+        if (_state == true) {
+            Time.timeScale = 0;
+            GameIsPaused = true;
+        }
+        else if (_state == false) {
+            Time.timeScale = 1;
+            GameIsPaused = false;
+        }
     }
 }
