@@ -42,7 +42,9 @@ public class EnemyBehaviourScript : MonoBehaviour {
     public float CollisionDamage = 50f;
 
 
-    /*--------------------DropStuff--------------------*/
+    /*--------------------Drop / Score--------------------*/
+    public float scoreValue = 100;
+
     public float ValueOfCreditDrop = 1f; 
     int maxCoinDrop = 3;
     int minCoinDrop = 2;
@@ -141,6 +143,8 @@ public class EnemyBehaviourScript : MonoBehaviour {
     }
 
     void DestroyAndDropStuff(GameObject toDestroy) {
+
+        GameControllerScript.currendScore += scoreValue;
 
         DropStuff();
         Destroy(toDestroy);

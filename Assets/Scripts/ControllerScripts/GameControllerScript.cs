@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Timers;
 
 public class GameControllerScript : MonoBehaviour {
 
@@ -22,10 +23,21 @@ public class GameControllerScript : MonoBehaviour {
     public static GameObject PlayerFirstWeapon;
     public static GameObject PlayerSecondWeapon;
     public static float currendCredits = 0f;
+    public static float currendScore = 0f;
+
+    float scoreIntervall = 1000f; //1 Second?
+    float scorePerTick = 3f;
+
+    Timer scoreTimer = new Timer();
 
     void Start() {
         //assing stuff if it's still null
         if (mainCamera == null) mainCamera = Camera.main;
+
+        //inistikasdlize timer
+        scoreTimer.Elapsed += new ElapsedEventHandler(OnScoreTimerTick);
+        scoreTimer.Interval = scoreIntervall;
+        scoreTimer.Start();
 
         StartCoroutine(DoStuffAfterOneFrame());
         StartCoroutine(InstantiateStuffAfterOneFrame());
@@ -42,7 +54,6 @@ public class GameControllerScript : MonoBehaviour {
         else
             PlayerSecondWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Shotgun_lvl_1)];
     }
-
     IEnumerator InstantiateStuffAfterOneFrame() {
         yield return null;
         if (SceneManager.GetActiveScene().name != "Main Menu") {
@@ -59,6 +70,10 @@ public class GameControllerScript : MonoBehaviour {
 
     void Update() {
 
+        if (Time.timeScale == 0) {
+            scoreTimer.Stop();
+        }
+
         //Camera Shake 
         if (shakeTimer > 0) {
             Vector2 ShakePos = Random.insideUnitCircle * shakeAmount;
@@ -71,6 +86,10 @@ public class GameControllerScript : MonoBehaviour {
                 mainCamera.transform.position = originalPos;
             }
         }
+    }
+
+    private void OnScoreTimerTick(object source, ElapsedEventArgs e) {
+        GameControllerScript.currendScore += scorePerTick;
     }
 
     public static bool onlyOnGOwithTag(string _tag) {
@@ -142,5 +161,15 @@ public class GameControllerScript : MonoBehaviour {
             Time.timeScale = 1;
             GameIsPaused = false;
         }
+    }
+
+    public void StartGameOver() {
+        StartCoroutine(DelayGameOver());
+    }
+
+    public static IEnumerator DelayGameOver() {
+        yield return new WaitForSecondsRealtime(0f);
+
+        
     }
 }

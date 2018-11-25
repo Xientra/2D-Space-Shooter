@@ -80,11 +80,12 @@ public class PlayerBehaviourScript : MonoBehaviour {
     }
 
     void Update() {
-        LookForward();
-
-        RotateTurret();
 
         if (GameControllerScript.GameIsPaused != true) {
+
+            LookForward();
+            RotateTurret();
+
             if (Input.GetButton("Fire1")) {
                 FireWeapon(firstWeapon);
             }
@@ -226,9 +227,11 @@ public class PlayerBehaviourScript : MonoBehaviour {
 
 
         if (currendHealth <= 0) {
+            //GameControllerGo.GetComponent<GameControllerScript>().StartGameOver();
+
             if (GameObject.FindGameObjectWithTag("InGameUI") != null)
                 GameObject.FindGameObjectWithTag("InGameUI").GetComponent<InGameUIControllerScript>().OpenInGameDeathMenu();
-            else Debug.LogError("The Player Object could not find \"InGameUI\" and so not open the InGameDeathMenu");
+            else Debug.LogError("The (Player/GameController) Object could not find Go with Tag: \"InGameUI\" and so not open the InGameDeathMenu");
 
             Destroy(this.gameObject);
         }

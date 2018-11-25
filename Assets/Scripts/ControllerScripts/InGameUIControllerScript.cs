@@ -68,8 +68,10 @@ public class InGameUIControllerScript : MonoBehaviour {
                 t.gameObject.GetComponent<Text>().text = "First Weapon:" + System.Environment.NewLine + GameControllerScript.PlayerFirstWeapon.GetComponent<WeaponBehaviourScript>().weaponName;
             if (t.gameObject.name == "Second Weapon Text")
                 t.gameObject.GetComponent<Text>().text = "Second Weapon:" + System.Environment.NewLine + GameControllerScript.PlayerSecondWeapon.GetComponent<WeaponBehaviourScript>().weaponName;
-            if (t.gameObject.name == "Currend Creddits Text")
+            if (t.gameObject.name == "Currend Credits Text")
                 t.gameObject.GetComponent<Text>().text = "Credits:" + System.Environment.NewLine + GameControllerScript.currendCredits.ToString();
+            if (t.gameObject.name == "Currend Score Text")
+                t.gameObject.GetComponent<Text>().text = "Score: " + System.Environment.NewLine + GameControllerScript.currendScore.ToString();
         }
     }
 
@@ -98,7 +100,7 @@ public class InGameUIControllerScript : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         GameControllerScript.PauseGame(false);
     }
-    public void Btn_Back() {
+    public void Btn_Exit() {
         SceneManager.LoadScene("Main Menu");
         GameControllerScript.PauseGame(false);
     }

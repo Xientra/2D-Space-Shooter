@@ -11,7 +11,7 @@
 -the shrapnell bullet should be spawned individualy and not as part of the shrapnell explosion
 -PickUps just stop when the player dies
 -the player needs to have some ivincibility when hit 
-
+-Every WaitForSeconds in IEnumerators are using the scaledTime which they should not...
 
 # Bugs To Fix Later
 
