@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerBehaviourScript : MonoBehaviour {
 
+    public GameObject CreateOnDeath;
+
     public GameObject TurretGameObject;
     public GameObject GameControllerGo;
     public GameObject ObjectHolderGo;
@@ -227,11 +229,9 @@ public class PlayerBehaviourScript : MonoBehaviour {
 
 
         if (currendHealth <= 0) {
-            //GameControllerGo.GetComponent<GameControllerScript>().StartGameOver();
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameControllerScript>().StartGameOver(2.3f);
 
-            if (GameObject.FindGameObjectWithTag("InGameUI") != null)
-                GameObject.FindGameObjectWithTag("InGameUI").GetComponent<InGameUIControllerScript>().OpenInGameDeathMenu();
-            else Debug.LogError("The (Player/GameController) Object could not find Go with Tag: \"InGameUI\" and so not open the InGameDeathMenu");
+            Instantiate(CreateOnDeath, transform.position, transform.rotation);
 
             Destroy(this.gameObject);
         }

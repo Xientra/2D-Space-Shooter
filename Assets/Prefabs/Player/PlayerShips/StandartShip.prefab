@@ -420,6 +420,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be552457fb4d9d7428aa82d44c049368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CreateOnDeath: {fileID: 1194317682406058, guid: 7ebb9bf1f3ecf3446b7ff4effd479d0c,
+    type: 2}
   TurretGameObject: {fileID: 1596211785451302}
   GameControllerGo: {fileID: 1843393788396870, guid: c60d9cba6161c574d92570cb778fadb2,
     type: 2}

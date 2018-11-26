@@ -163,13 +163,27 @@ public class GameControllerScript : MonoBehaviour {
         }
     }
 
-    public void StartGameOver() {
-        StartCoroutine(DelayGameOver());
+    public void StartGameOver(float animationLegth) {
+        StartCoroutine(DelayGameOver(animationLegth));
     }
 
-    public static IEnumerator DelayGameOver() {
-        yield return new WaitForSecondsRealtime(0f);
+    public IEnumerator DelayGameOver(float _delay) {
 
-        
+
+        yield return new WaitForSecondsRealtime(_delay * 0.6f);
+
+        for (int i = 1; i <= 10; i++) {
+            yield return new WaitForSecondsRealtime(0.16f);
+            if (Time.timeScale - 0.1f < 0)
+                Time.timeScale = 0;
+            else
+                Time.timeScale -= 0.1f;
+        }
+
+        yield return new WaitForSecondsRealtime(_delay * 0.2f);
+
+        if (GameObject.FindGameObjectWithTag("InGameUI") != null)
+            GameObject.FindGameObjectWithTag("InGameUI").GetComponent<InGameUIControllerScript>().OpenInGameDeathMenu();
+        else Debug.LogError("The (Player/GameController) Object could not find Go with Tag: \"InGameUI\" and so not open the InGameDeathMenu");
     }
 }

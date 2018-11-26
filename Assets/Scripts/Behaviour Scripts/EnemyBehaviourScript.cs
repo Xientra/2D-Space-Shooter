@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBehaviourScript : MonoBehaviour {
-
     public GameObject ObjectHolderGo;
     public GameObject[] EnemyTurrets = new GameObject[0];
 
@@ -100,7 +99,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
                 else Debug.LogWarning("The enemy " + gameObject.name + " has a null element in the Turret array.");
             }
         }
-
+        
         LookForward();
         DestroyIfAnimationEnd();
 
@@ -234,12 +233,14 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
     void LookForward() {
         if (lookForwardWhenMoving == true) {
-            Vector3 lookDirection = transform.position - lastFramePos;
-            Vector3.Normalize(lookDirection);
+            if (Time.timeScale != 0) {
+                Vector3 lookDirection = transform.position - lastFramePos;
+                Vector3.Normalize(lookDirection);
 
-            transform.up = -lookDirection;
+                transform.up = -lookDirection;
 
-            lastFramePos = transform.position;
+                lastFramePos = transform.position;
+            }
         }
     }
 }
