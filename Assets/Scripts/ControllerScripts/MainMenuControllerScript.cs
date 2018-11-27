@@ -30,7 +30,7 @@ public class MainMenuControllerScript : MonoBehaviour {
 
     void Start () {
 
-        GameControllerScript.currendCredits += 10000;
+        //GameControllerScript.currendCredits += 10000;
 
         //Sets all Weapons.isBought to false exept for a few selected ones
         foreach (GameObject playerWeapon in ObjectHolder._PlayerWeapons) {
@@ -153,6 +153,7 @@ public class MainMenuControllerScript : MonoBehaviour {
 
     public void Quit_Btn() {
         Debug.Log("Quit is not implemented");
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 
 
