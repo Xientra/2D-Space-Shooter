@@ -235,10 +235,11 @@ MonoBehaviour:
   createOnDeath: {fileID: 1294480290156844, guid: 68632d3986ae45640b90391645a34acb,
     type: 2}
   bulletType: 12
+  enemyBulletType: 0
   direction: {x: 0, y: 1, z: 0}
   isEnemyBullet: 0
   speed: 5
-  damage: 10
+  damage: 5
   duration: 1.2
   DelayDestructionTime: 0.5
   HelixBulletChild_RotationSpeed: 10

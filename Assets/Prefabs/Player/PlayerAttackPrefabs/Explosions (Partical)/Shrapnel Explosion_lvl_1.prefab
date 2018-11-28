@@ -1752,10 +1752,11 @@ MonoBehaviour:
   createOnDeath: {fileID: 1914619935101884, guid: beb9a814423165f4cb8fd15bb00a7b77,
     type: 2}
   bulletType: 13
+  enemyBulletType: 0
   direction: {x: 0, y: 1, z: 0}
   isEnemyBullet: 0
   speed: 10
-  damage: 20
+  damage: 15
   duration: 1.5
   DelayDestructionTime: 0.5
   HelixBulletChild_RotationSpeed: 10
@@ -1786,10 +1787,11 @@ MonoBehaviour:
   createOnDeath: {fileID: 1914619935101884, guid: beb9a814423165f4cb8fd15bb00a7b77,
     type: 2}
   bulletType: 13
+  enemyBulletType: 0
   direction: {x: 0, y: 1, z: 0}
   isEnemyBullet: 0
   speed: 10
-  damage: 20
+  damage: 15
   duration: 1.5
   DelayDestructionTime: 0.5
   HelixBulletChild_RotationSpeed: 10
@@ -1809,10 +1811,11 @@ MonoBehaviour:
   createOnDeath: {fileID: 1914619935101884, guid: beb9a814423165f4cb8fd15bb00a7b77,
     type: 2}
   bulletType: 13
+  enemyBulletType: 0
   direction: {x: 0, y: 1, z: 0}
   isEnemyBullet: 0
   speed: 10
-  damage: 20
+  damage: 15
   duration: 1.5
   DelayDestructionTime: 0.5
   HelixBulletChild_RotationSpeed: 10
@@ -1865,10 +1868,11 @@ MonoBehaviour:
   createOnDeath: {fileID: 1914619935101884, guid: beb9a814423165f4cb8fd15bb00a7b77,
     type: 2}
   bulletType: 13
+  enemyBulletType: 0
   direction: {x: 0, y: 1, z: 0}
   isEnemyBullet: 0
   speed: 10
-  damage: 20
+  damage: 15
   duration: 1.5
   DelayDestructionTime: 0.5
   HelixBulletChild_RotationSpeed: 10
@@ -1888,10 +1892,11 @@ MonoBehaviour:
   createOnDeath: {fileID: 1914619935101884, guid: beb9a814423165f4cb8fd15bb00a7b77,
     type: 2}
   bulletType: 13
+  enemyBulletType: 0
   direction: {x: 0, y: 1, z: 0}
   isEnemyBullet: 0
   speed: 10
-  damage: 20
+  damage: 15
   duration: 1.5
   DelayDestructionTime: 0.5
   HelixBulletChild_RotationSpeed: 10
@@ -1910,6 +1915,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createOnDeath: {fileID: 0}
   bulletType: 21
+  enemyBulletType: 0
   direction: {x: 0, y: 0, z: 0}
   isEnemyBullet: 0
   speed: 0
@@ -1944,10 +1950,11 @@ MonoBehaviour:
   createOnDeath: {fileID: 1914619935101884, guid: beb9a814423165f4cb8fd15bb00a7b77,
     type: 2}
   bulletType: 13
+  enemyBulletType: 0
   direction: {x: 0, y: 1, z: 0}
   isEnemyBullet: 0
   speed: 10
-  damage: 20
+  damage: 15
   duration: 1.5
   DelayDestructionTime: 0.5
   HelixBulletChild_RotationSpeed: 10
@@ -1967,10 +1974,11 @@ MonoBehaviour:
   createOnDeath: {fileID: 1914619935101884, guid: beb9a814423165f4cb8fd15bb00a7b77,
     type: 2}
   bulletType: 13
+  enemyBulletType: 0
   direction: {x: 0, y: 1, z: 0}
   isEnemyBullet: 0
   speed: 10
-  damage: 20
+  damage: 15
   duration: 1.5
   DelayDestructionTime: 0.5
   HelixBulletChild_RotationSpeed: 10
@@ -2012,10 +2020,11 @@ MonoBehaviour:
   createOnDeath: {fileID: 1914619935101884, guid: beb9a814423165f4cb8fd15bb00a7b77,
     type: 2}
   bulletType: 13
+  enemyBulletType: 0
   direction: {x: 0, y: 1, z: 0}
   isEnemyBullet: 0
   speed: 10
-  damage: 20
+  damage: 15
   duration: 1.5
   DelayDestructionTime: 0.5
   HelixBulletChild_RotationSpeed: 10

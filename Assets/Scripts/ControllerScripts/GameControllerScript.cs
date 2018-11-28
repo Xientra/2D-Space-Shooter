@@ -20,6 +20,9 @@ public class GameControllerScript : MonoBehaviour {
     public static bool UsingGamepad = false;
     public bool UsingUnityUI = true;
 
+    public GameObject toAssingFirstWep;
+    public GameObject toAssingSecondWep;
+
     public static GameObject PlayerFirstWeapon;
     public static GameObject PlayerSecondWeapon;
     public static float currendCredits = 0f;
@@ -53,6 +56,11 @@ public class GameControllerScript : MonoBehaviour {
             PlayerSecondWeapon = MainMenuControllerScript.secondWeaponGO;
         else
             PlayerSecondWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Shotgun_lvl_1)];
+
+        if (toAssingFirstWep != null) 
+            PlayerFirstWeapon = toAssingFirstWep;
+        if (toAssingSecondWep != null)
+            PlayerSecondWeapon = toAssingSecondWep;
     }
     IEnumerator InstantiateStuffAfterOneFrame() {
         yield return null;

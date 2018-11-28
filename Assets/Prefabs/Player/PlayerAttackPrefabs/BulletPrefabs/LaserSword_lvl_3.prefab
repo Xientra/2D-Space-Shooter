@@ -245,10 +245,11 @@ MonoBehaviour:
   createOnDeath: {fileID: 1065364461765786, guid: d8404c81a6ffd7c4d9b2a5afa7345739,
     type: 2}
   bulletType: 19
+  enemyBulletType: 0
   direction: {x: 0, y: 1, z: 0}
   isEnemyBullet: 0
   speed: 15
-  damage: 60
+  damage: 30
   duration: 2.2
   DelayDestructionTime: 0.5
   HelixBulletChild_RotationSpeed: 10
