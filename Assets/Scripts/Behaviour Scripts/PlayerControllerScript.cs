@@ -502,7 +502,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 if (Input.GetButton("Fire1")) {
                     cooldown = 0.8f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
-                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Rocket)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Missile_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
                     }
                 }
@@ -511,7 +511,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 if (Input.GetButton("Fire1")) {
                     cooldown = 0.8f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
-                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Grenade)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Grenade_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
                     }
                 }

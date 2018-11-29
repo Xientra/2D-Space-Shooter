@@ -234,7 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createOnDeath: {fileID: 1294480290156844, guid: 68632d3986ae45640b90391645a34acb,
     type: 2}
-  bulletType: 12
+  bulletType: 16
   enemyBulletType: 0
   direction: {x: 0, y: 1, z: 0}
   isEnemyBullet: 0
@@ -245,6 +245,7 @@ MonoBehaviour:
   HelixBulletChild_RotationSpeed: 10
   homingStrength: 0
   homingDistance: 10
+  RotationSpeed: 10
 --- !u!212 &212098619499874350
 SpriteRenderer:
   m_ObjectHideFlags: 1

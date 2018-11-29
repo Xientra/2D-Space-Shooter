@@ -8,7 +8,7 @@ public class LaserBulletData : MonoBehaviour {
 
     public enum BulletTypes {
         Standart, HelixBullet_lvl_1, HelixBullet_lvl_2, HelixBullet_lvl_3, HelixBulletChild, Wave, ChainGunBullet, ShotgunBullet, 
-        Rocket, Grenade, Shrapnel_lvl_1, Shrapnel_lvl_2, Shrapnel_lvl_3, ShrapnelBullet, HomingBullet_lvl_1, HomingBullet_lvl_2, HomingBullet_lvl_3, LaserSword_lvl_1, LaserSword_lvl_2, LaserSword_lvl_3, 
+        Missile_lvl_1, Missile_lvl_2, Missile_lvl_3, Grenade_lvl_1, Grenade_lvl_2, Grenade_lvl_3, Shrapnel_lvl_1, Shrapnel_lvl_2, Shrapnel_lvl_3, ShrapnelBullet, HomingBullet_lvl_1, HomingBullet_lvl_2, HomingBullet_lvl_3, LaserSword_lvl_1, LaserSword_lvl_2, LaserSword_lvl_3, 
         Explosion, ShrapnellExplosion,
         SimpleLaser, SplitLaser, SplitLaserChild, 
         EnemyBullet
@@ -68,7 +68,11 @@ public class LaserBulletData : MonoBehaviour {
 
     //Specific behaviour vars
     private float TempSpeed;
-    private float LaserSwordAcc = 0;
+    private float LaserSwordAcc = 0f;
+
+    [SerializeField]
+    private float RotationSpeed = 1f;
+    private float RotationProgress = 0f;
 
     //PowerUp Variables
     public static float damageMultiplyer = 1f;
@@ -124,6 +128,21 @@ public class LaserBulletData : MonoBehaviour {
                 }
             }
 
+        }
+
+        if (bulletType == BulletTypes.Missile_lvl_1 || bulletType == BulletTypes.Missile_lvl_2 || bulletType == BulletTypes.Missile_lvl_3) {
+            if (GetNearestEnemy() != null) {
+                if (Vector3.SqrMagnitude(GetNearestEnemy().transform.position - this.transform.position) <= homingDistance) {
+
+                    RotationProgress += Time.deltaTime * RotationSpeed;
+                    transform.up = Vector3.Lerp(transform.up, Vector3.Normalize(GetNearestEnemy().transform.position - transform.position), RotationProgress);
+
+                    Debug.DrawLine(transform.position, transform.position + GetNearestEnemy().transform.position - transform.position, Color.red);
+
+                    //Debug.DrawLine(transform.position, transform.position + Vector3.Normalize(GetNearestEnemy().transform.position - transform.position));
+                    //Debug.DrawLine(transform.position, transform.position + transform.up);
+                }
+            }
         }
 
         if (homingStrength != 0) {
@@ -205,7 +224,7 @@ public class LaserBulletData : MonoBehaviour {
         if (bulletType == BulletTypes.Explosion) {
             StartCoroutine(DelayDestruction());
         }
-        else if (bulletType == BulletTypes.Rocket || bulletType == BulletTypes.Grenade || bulletType == BulletTypes.Shrapnel_lvl_1 || bulletType == BulletTypes.Shrapnel_lvl_2 || bulletType == BulletTypes.Shrapnel_lvl_3) {
+        else if (bulletType == BulletTypes.Missile_lvl_1 || bulletType == BulletTypes.Missile_lvl_2 || bulletType == BulletTypes.Missile_lvl_3 || bulletType == BulletTypes.Grenade_lvl_1 || bulletType == BulletTypes.Shrapnel_lvl_1 || bulletType == BulletTypes.Shrapnel_lvl_2 || bulletType == BulletTypes.Shrapnel_lvl_3) {
             Instantiate(createOnDeath, transform.position, transform.rotation);
         }
         else {
