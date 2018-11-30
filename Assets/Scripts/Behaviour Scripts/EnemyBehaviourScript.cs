@@ -109,10 +109,12 @@ public class EnemyBehaviourScript : MonoBehaviour {
         }
 
         if (Health <= 0) {
+            Health = 0;
             DestroyAndDropStuff(this.gameObject);
         }
 
         if (EnemyHealthBarRed != null) {
+            
             EnemyHealthBarGreen.transform.localScale = new Vector3(((100 / MaxHealth) * Health) * 0.01f, EnemyHealthBarGreen.transform.localScale.y, EnemyHealthBarGreen.transform.localScale.z);
         }
     }

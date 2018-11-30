@@ -246,6 +246,7 @@ MonoBehaviour:
     type: 2}
   bulletType: 8
   enemyBulletType: 0
+  isExplosion: 0
   direction: {x: 0, y: 1, z: 0}
   isEnemyBullet: 0
   speed: 15
@@ -254,7 +255,7 @@ MonoBehaviour:
   DelayDestructionTime: 0.5
   HelixBulletChild_RotationSpeed: 10
   homingStrength: 0
-  homingDistance: 80
+  homingDistance: 100
   RotationSpeed: 0.1
 --- !u!212 &212616958528291902
 SpriteRenderer:

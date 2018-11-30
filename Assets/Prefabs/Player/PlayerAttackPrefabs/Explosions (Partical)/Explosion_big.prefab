@@ -70,7 +70,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   createOnDeath: {fileID: 0}
-  bulletType: 20
+  bulletType: 28
+  enemyBulletType: 0
+  isExplosion: 1
   direction: {x: 0, y: 0, z: 0}
   isEnemyBullet: 0
   speed: 0
@@ -80,6 +82,7 @@ MonoBehaviour:
   HelixBulletChild_RotationSpeed: 10
   homingStrength: 0
   homingDistance: 10
+  RotationSpeed: 1
 --- !u!198 &198444633171652868
 ParticleSystem:
   m_ObjectHideFlags: 1

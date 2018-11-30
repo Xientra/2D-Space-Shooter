@@ -8,19 +8,19 @@ public class LaserBulletData : MonoBehaviour {
 
     public enum BulletTypes {
         Standart, HelixBullet_lvl_1, HelixBullet_lvl_2, HelixBullet_lvl_3, HelixBulletChild, Wave, ChainGunBullet, ShotgunBullet, 
-        Missile_lvl_1, Missile_lvl_2, Missile_lvl_3, Grenade_lvl_1, Grenade_lvl_2, Grenade_lvl_3, Shrapnel_lvl_1, Shrapnel_lvl_2, Shrapnel_lvl_3, ShrapnelBullet, HomingBullet_lvl_1, HomingBullet_lvl_2, HomingBullet_lvl_3, LaserSword_lvl_1, LaserSword_lvl_2, LaserSword_lvl_3, 
-        Explosion, ShrapnellExplosion,
-        SimpleLaser, SplitLaser, SplitLaserChild, 
-        EnemyBullet
+        Missile_lvl_1, Missile_lvl_2, Missile_lvl_3, Grenade_lvl_1, Grenade_lvl_2, Grenade_lvl_3, Shrapnel_lvl_1, Shrapnel_lvl_2, Shrapnel_lvl_3, ShrapnellBullet, HomingBullet_lvl_1, HomingBullet_lvl_2, HomingBullet_lvl_3, LaserSword_lvl_1, LaserSword_lvl_2, LaserSword_lvl_3, 
+        ShrapnellExplosion,
+        SimpleLaser, SplitLaser, SplitLaserChild,  
+        _null_, SplitBullet
     }
-    public BulletTypes bulletType = BulletTypes.Standart;
+    public BulletTypes bulletType = BulletTypes._null_;
 
     public enum EnemyBulletTypes {
-        PlayerBullet, SimpleBullet, SlowAlienBullet, AlienLaserBulletSmall, AilenBulletBig
+        _null_, SimpleBullet, SlowAlienBullet, AlienLaserBulletSmall, AilenBulletBig
     }
-    public EnemyBulletTypes enemyBulletType = EnemyBulletTypes.PlayerBullet;
+    public EnemyBulletTypes enemyBulletType = EnemyBulletTypes._null_;
 
-
+    public bool isExplosion = false;
 
     public Vector3 direction = new Vector3(1, 0, 0);
 
@@ -46,51 +46,68 @@ public class LaserBulletData : MonoBehaviour {
     //[SerializeField]
     //private SpecialEffects SpecialEffect = SpecialEffects.none;
 
+
+    private bool SelfDestructionActive = false;
+
+    //-----Lasers-----
+    private float damageDelay = 0.1f; //this is kinda important for the damage of Lasers-------------------------------------------------------------------
+    private float damageDelayTimeStamp;
+    //-----Split Laser-----
+    private static int timesToSplit = 1;
+    private float SplitAngle = 25f;
+
+
+    //Specific behaviour vars
+    //-----Helix-----
     [SerializeField]
     private float HelixBulletChild_RotationSpeed = 10f;
-
+    //LaserSword-----
+    private float TempSpeed;
+    private float LaserSwordAcc = 0f;
+    //-----homing-----
     [SerializeField]
     private float homingStrength = 0f;
     [SerializeField]
     private float homingDistance = 10f;
-
-
-    private bool SelfDestructionActive = false;
-
-
-    private float damageDelay = 0.1f; //this is kinda important for the damage of Lasers-------------------------------------------------------------------
-    private float damageDelayTimeStamp;
-    
-    
-    //for Split Laser
-    private static int timesToSplit = 1;
-    private float SplitAngle = 25f;
-
-    //Specific behaviour vars
-    private float TempSpeed;
-    private float LaserSwordAcc = 0f;
-
+    //-----Rocked homing-----
     [SerializeField]
-    private float RotationSpeed = 1f;
+    private float RotationSpeed = 0.1f;
     private float RotationProgress = 0f;
+    //-----Shrapnell-----
+    [SerializeField]
+    private int AmountOfShrapnellBulletsSpawnedOnDeath = 0;
+
 
     //PowerUp Variables
     public static float damageMultiplyer = 1f;
+
+
 
     void Start() {
         StartCoroutine(destroyAfterTime());
 
         //Bullet affiliation check
-        if (bulletType == BulletTypes.EnemyBullet && enemyBulletType == EnemyBulletTypes.PlayerBullet) {
+        if (bulletType == BulletTypes._null_ && enemyBulletType == EnemyBulletTypes._null_) {
             Debug.LogError("The bullet " + this.gameObject.name + "has no affiliation to any side!");
         }
-        if (isEnemyBullet == false && bulletType == BulletTypes.EnemyBullet) {
-            Debug.LogError("The bullet " + this.gameObject.name + @" was set to player bullet but still has no (player)bulletType");
+        if (isEnemyBullet == false && bulletType == BulletTypes._null_) {
+            Debug.LogError("The bullet " + this.gameObject.name + @" was set to _null_ but still has no (player)bulletType");
         }
-        if (isEnemyBullet == true && enemyBulletType == EnemyBulletTypes.PlayerBullet) {
-            Debug.LogError("The bullet " + this.gameObject.name + @" was set to enemy bullet but still has no enemyBulletType");
+        if (isEnemyBullet == true && enemyBulletType == EnemyBulletTypes._null_ && isExplosion == false) {
+            Debug.LogError("The bullet " + this.gameObject.name + @" was set to _null_ but still has no enemyBulletType");
         }
-
+        /*
+        if (isExplosion == true) {
+            if (bulletType != BulletTypes._null_) {
+                bulletType = BulletTypes._null_;
+                Debug.Log(gameObject.name + ": the BulletType was set to _null_.");
+            }
+            if (enemyBulletType != EnemyBulletTypes._null_) {
+                enemyBulletType = EnemyBulletTypes._null_;
+                Debug.Log(gameObject.name + ": the EnemyBulletType was set to _null_.");
+            }
+        }
+        */
 
 
         if (bulletType == BulletTypes.SimpleLaser || bulletType == BulletTypes.SplitLaser) {
@@ -109,7 +126,7 @@ public class LaserBulletData : MonoBehaviour {
             TempSpeed = speed;
             speed = 0;
         }
-        if (bulletType == BulletTypes.ShrapnelBullet) {
+        if (bulletType == BulletTypes.ShrapnellBullet) {
             float shrapnellBulletRNGSpread = 24; 
             transform.rotation = transform.rotation * Quaternion.Euler(0, 0, Random.Range(shrapnellBulletRNGSpread, -shrapnellBulletRNGSpread));
         }
@@ -160,11 +177,100 @@ public class LaserBulletData : MonoBehaviour {
     }
 
     IEnumerator destroyAfterTime() {
-        
         yield return new WaitForSeconds(duration);
         if (SelfDestructionActive != true) {
             Debug.Log("SelfDes1");
             InitiliseSelfDestruction();
+        }
+    }
+
+    private void OnDestroy() {
+    }
+
+    void InitiliseSelfDestruction() {
+        SelfDestructionActive = true;
+
+        if (isExplosion == true) {
+            StartCoroutine(DelayDestruction());
+        }
+        else {
+            //specific bullet behaviour
+            if (AmountOfShrapnellBulletsSpawnedOnDeath != 0) {
+                Debug.Log("hmm");
+                for (int i = 1; i <= AmountOfShrapnellBulletsSpawnedOnDeath; i++) {
+                    Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(BulletTypes.ShrapnellBullet)], transform.position, Quaternion.Euler(0, 0, (360 / AmountOfShrapnellBulletsSpawnedOnDeath) * i)); //360 / Amount devides the cicle to all the shrapnellbullets
+                }
+            }
+
+            switch (bulletType) {
+                //case (BulletTypes.Shrapnel_lvl_1):
+                //    break;
+            }
+
+
+
+            //deactivate Collider
+            if (GetComponent<CircleCollider2D>() != null) {
+                GetComponent<CircleCollider2D>().enabled = false;
+            }
+            if (GetComponent<BoxCollider2D>() != null) {
+                GetComponent<BoxCollider2D>().enabled = false;
+            }
+            if (GetComponent<CapsuleCollider2D>() != null) {
+                GetComponent<CapsuleCollider2D>().enabled = false;
+            }
+
+            StartCoroutine(DelayDestruction());
+
+            speed = speed / 10f;
+
+            if (createOnDeath != null) {
+                Instantiate(createOnDeath, transform);
+                //if (createOnDeath.GetComponent<LaserBulletData>() == null) Instantiate(createOnDeath, transform);
+                //else Debug.LogWarning("If you want to Intantiate an explosion please make this more clear(?)");
+            }
+        }
+        
+        StartCoroutine(FinishDestructionAfterOneFrame());
+    }
+
+    IEnumerator DelayDestruction() {
+        DelayingDestruction = true;
+        yield return new WaitForSeconds(DelayDestructionTime);
+
+        Destroy(this.gameObject);
+        DelayingDestruction = false;
+    }
+
+    IEnumerator FinishDestructionAfterOneFrame() {
+        yield return 0;
+
+        foreach (SpriteRenderer SR in GetComponentsInChildren<SpriteRenderer>()) {
+            if (SR.gameObject.GetComponent<LaserBulletData>() != null) {
+                if (bulletType == BulletTypes.ShrapnellExplosion) {
+                    if (SR.gameObject.GetComponent<LaserBulletData>().bulletType != BulletTypes.ShrapnellBullet) { //I don't want it to disable all Shrapnel Child Bullets
+                        SR.enabled = false;
+                    }
+                }
+                else SR.enabled = false;
+            }
+
+        }
+
+        //Unparent the TrailRendererGo
+        if (!(bulletType == BulletTypes.ShrapnellExplosion)) {
+            foreach (TrailRenderer TR in GetComponentsInChildren<TrailRenderer>()) {
+
+                if (TR.gameObject.GetComponent<LaserBulletData>() == null) {
+                    TR.time = TR.time / 2;
+                    TR.transform.SetParent(null, true);
+                    Debug.Log("TR disabled2");
+                }
+            }
+        }
+
+        if (DelayingDestruction == false) {
+            Destroy(this.gameObject);
         }
     }
 
@@ -213,87 +319,6 @@ public class LaserBulletData : MonoBehaviour {
             }
         }
         else { }
-    }
-
-    private void OnDestroy() {
-    }
-
-    void InitiliseSelfDestruction() {
-        SelfDestructionActive = true;
-
-        if (bulletType == BulletTypes.Explosion) {
-            StartCoroutine(DelayDestruction());
-        }
-        else if (bulletType == BulletTypes.Missile_lvl_1 || bulletType == BulletTypes.Missile_lvl_2 || bulletType == BulletTypes.Missile_lvl_3 || bulletType == BulletTypes.Grenade_lvl_1 || bulletType == BulletTypes.Shrapnel_lvl_1 || bulletType == BulletTypes.Shrapnel_lvl_2 || bulletType == BulletTypes.Shrapnel_lvl_3) {
-            Instantiate(createOnDeath, transform.position, transform.rotation);
-        }
-        else {
-            //deactivate Collider
-            if (GetComponent<CircleCollider2D>() != null) {
-                GetComponent<CircleCollider2D>().enabled = false;
-            }
-            if (GetComponent<BoxCollider2D>() != null) {
-                GetComponent<BoxCollider2D>().enabled = false;
-            }
-            if (GetComponent<CapsuleCollider2D>() != null) {
-                GetComponent<CapsuleCollider2D>().enabled = false;
-            }
-
-
-            StartCoroutine(DelayDestruction());
-
-            speed = speed / 10f;
-
-            if (createOnDeath != null) {
-                if (createOnDeath.GetComponent<LaserBulletData>() == null) Instantiate(createOnDeath, transform);
-                else Debug.LogWarning("If you want to Intantiate an explosion please make this mor clear(?)");
-            }
-            //Instantiate(ObjectHolder._Effects[ObjectHolder.GetEffectIndex(EffectBehaviourScript.EffectTypes.BulletDestruction)], transform);
-
-        }
-        StartCoroutine(DoStuffAfterOneFrame());
-        
-    }
-
-    IEnumerator DelayDestruction() {
-        DelayingDestruction = true;
-        yield return new WaitForSeconds(DelayDestructionTime);
-
-        Destroy(this.gameObject);
-        DelayingDestruction = false;
-    }
-
-    IEnumerator DoStuffAfterOneFrame() {
-        yield return 0;
-
-        foreach (SpriteRenderer SR in GetComponentsInChildren<SpriteRenderer>()) {
-            if (SR.gameObject.GetComponent<LaserBulletData>() != null) {
-                if (bulletType == BulletTypes.ShrapnellExplosion) {
-                    if (SR.gameObject.GetComponent<LaserBulletData>().bulletType != BulletTypes.ShrapnelBullet) { //I don't want it to disable all Shrapnel Child Bullets
-                        SR.enabled = false;
-                    }
-                }
-                else SR.enabled = false;
-            }
-            
-        }
-
-        //Unparent the TrailRendererGo
-        if (!(bulletType == BulletTypes.ShrapnellExplosion)) {
-            foreach (TrailRenderer TR in GetComponentsInChildren<TrailRenderer>()) {
-
-                if (TR.gameObject.GetComponent<LaserBulletData>() == null) {
-                    TR.time = TR.time / 2;
-                    TR.transform.SetParent(null, true);
-                    Debug.Log("TR disabled2");
-                }
-            }
-        }
-
-        if (DelayingDestruction == false) { 
-            Destroy(this.gameObject);
-        }
-        
     }
 
     void startSplitLaser(float lengthOfParent) {
