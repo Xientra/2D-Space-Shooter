@@ -34,6 +34,8 @@ public class GameControllerScript : MonoBehaviour {
     Timer scoreTimer = new Timer();
 
     void Start() {
+        //Time.timeScale = 0.5f;
+
         //assing stuff if it's still null
         if (mainCamera == null) mainCamera = Camera.main;
 

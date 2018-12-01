@@ -5,6 +5,7 @@ using UnityEngine;
 public class LaserBulletData : MonoBehaviour {
 
     public GameObject createOnDeath;
+    public GameObject explosionOnDeath;
 
     public enum BulletTypes {
         Standart, HelixBullet_lvl_1, HelixBullet_lvl_2, HelixBullet_lvl_3, HelixBulletChild, Wave, ChainGunBullet, ShotgunBullet, 
@@ -27,7 +28,6 @@ public class LaserBulletData : MonoBehaviour {
     private LineRenderer lineRenderer;
 
     private bool isLaser = false;
-    [SerializeField]
     private bool isEnemyBullet = false;
 
 
@@ -59,8 +59,8 @@ public class LaserBulletData : MonoBehaviour {
 
     //Specific behaviour vars
     //-----Helix-----
-    [SerializeField]
-    private float HelixBulletChild_RotationSpeed = 10f;
+    //[HideInInspector]
+    public float HelixBulletChild_RotationSpeed = 10f;
     //LaserSword-----
     private float TempSpeed;
     private float LaserSwordAcc = 0f;
@@ -87,16 +87,13 @@ public class LaserBulletData : MonoBehaviour {
         StartCoroutine(destroyAfterTime());
 
         //Bullet affiliation check
-        if (bulletType == BulletTypes._null_ && enemyBulletType == EnemyBulletTypes._null_) {
-            Debug.LogError("The bullet " + this.gameObject.name + "has no affiliation to any side!");
+        if (bulletType == BulletTypes._null_ && enemyBulletType == EnemyBulletTypes._null_ && isExplosion == false) {
+            Debug.LogError("The bullet --" + this.gameObject.name + "-- has no affiliation to any side!");
         }
-        if (isEnemyBullet == false && bulletType == BulletTypes._null_) {
-            Debug.LogError("The bullet " + this.gameObject.name + @" was set to _null_ but still has no (player)bulletType");
+        if (enemyBulletType != EnemyBulletTypes._null_ && bulletType != BulletTypes._null_) {
+            enemyBulletType = EnemyBulletTypes._null_;
+            Debug.LogError("The bullet --" + this.gameObject.name + @"-- has a (player)bulletType and a EnemyBulletType. The EnemyBulletType was set to _null_.");
         }
-        if (isEnemyBullet == true && enemyBulletType == EnemyBulletTypes._null_ && isExplosion == false) {
-            Debug.LogError("The bullet " + this.gameObject.name + @" was set to _null_ but still has no enemyBulletType");
-        }
-        /*
         if (isExplosion == true) {
             if (bulletType != BulletTypes._null_) {
                 bulletType = BulletTypes._null_;
@@ -107,12 +104,37 @@ public class LaserBulletData : MonoBehaviour {
                 Debug.Log(gameObject.name + ": the EnemyBulletType was set to _null_.");
             }
         }
-        */
 
-
+        //Sets the state vars like isEnemyBullet and isLaser after affiliation check
+        if (enemyBulletType != EnemyBulletTypes._null_) {
+            isEnemyBullet = true;
+        }
         if (bulletType == BulletTypes.SimpleLaser || bulletType == BulletTypes.SplitLaser) {
             isLaser = true;
             damageDelayTimeStamp = Time.time + damageDelay;
+        }
+
+
+        //Does bulletspecific stuff
+        switch (bulletType) {
+            case (BulletTypes.HelixBulletChild):
+                duration = transform.parent.gameObject.GetComponent<LaserBulletData>().duration;
+
+                switch (transform.parent.gameObject.GetComponent<LaserBulletData>().bulletType) {
+                    case (BulletTypes.HelixBullet_lvl_1):
+                        HelixBulletChild_RotationSpeed = 800f;
+                        break;
+                    case (BulletTypes.HelixBullet_lvl_2):
+                        HelixBulletChild_RotationSpeed = 800f;
+                        break;
+                    case (BulletTypes.HelixBullet_lvl_3):
+                        HelixBulletChild_RotationSpeed = 400f;
+                        break;
+                    case (BulletTypes.HelixBulletChild):
+                        HelixBulletChild_RotationSpeed = 200f;
+                        break;
+                }
+                break;
         }
         if (bulletType == BulletTypes.SplitLaserChild) {
             transform.rotation *= Quaternion.Euler(0, 0, Random.Range(SplitAngle, -SplitAngle));
@@ -130,11 +152,13 @@ public class LaserBulletData : MonoBehaviour {
             float shrapnellBulletRNGSpread = 24; 
             transform.rotation = transform.rotation * Quaternion.Euler(0, 0, Random.Range(shrapnellBulletRNGSpread, -shrapnellBulletRNGSpread));
         }
+        
     }
 
     void Update() {
         if (bulletType == BulletTypes.HelixBulletChild) {
-            this.transform.RotateAround(transform.parent.transform.position, Vector3.forward, HelixBulletChild_RotationSpeed);
+            if (transform.parent != null)
+                this.transform.RotateAround(transform.parent.transform.position, Vector3.forward, HelixBulletChild_RotationSpeed * Time.deltaTime);
         }
 
         if (bulletType == BulletTypes.LaserSword_lvl_1) {
@@ -196,17 +220,25 @@ public class LaserBulletData : MonoBehaviour {
         else {
             //specific bullet behaviour
             if (AmountOfShrapnellBulletsSpawnedOnDeath != 0) {
-                Debug.Log("hmm");
                 for (int i = 1; i <= AmountOfShrapnellBulletsSpawnedOnDeath; i++) {
                     Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(BulletTypes.ShrapnellBullet)], transform.position, Quaternion.Euler(0, 0, (360 / AmountOfShrapnellBulletsSpawnedOnDeath) * i)); //360 / Amount devides the cicle to all the shrapnellbullets
                 }
             }
-
+            /*
             switch (bulletType) {
-                //case (BulletTypes.Shrapnel_lvl_1):
-                //    break;
+                case (BulletTypes._null_):
+                    break;
             }
+            */
 
+            //detaches all (Helix)BulletChilds of the own transform and gives them speed
+            foreach (Transform ImminentChildTransform in transform) {
+                if (ImminentChildTransform.GetComponent<LaserBulletData>() != null) {
+                    ImminentChildTransform.rotation = transform.rotation;
+                    ImminentChildTransform.GetComponent<LaserBulletData>().speed = speed / 2;
+                    ImminentChildTransform.parent = null;
+                }
+            }
 
 
             //deactivate Collider
@@ -226,9 +258,17 @@ public class LaserBulletData : MonoBehaviour {
 
             if (createOnDeath != null) {
                 Instantiate(createOnDeath, transform);
-                //if (createOnDeath.GetComponent<LaserBulletData>() == null) Instantiate(createOnDeath, transform);
-                //else Debug.LogWarning("If you want to Intantiate an explosion please make this more clear(?)");
+
+                if (createOnDeath.GetComponent<LaserBulletData>() != null)
+                    Debug.LogWarning("If you want to Intantiate an explosion please do that with explosionOnDeath.");
             }
+            if (explosionOnDeath != null) {
+                Instantiate(explosionOnDeath, transform.position, Quaternion.identity);
+
+                if (explosionOnDeath.GetComponent<LaserBulletData>() == null)
+                    Debug.LogWarning("If you want to Intantiate an OnDeathEffect please do that with createOnDeath.");
+            }
+
         }
         
         StartCoroutine(FinishDestructionAfterOneFrame());

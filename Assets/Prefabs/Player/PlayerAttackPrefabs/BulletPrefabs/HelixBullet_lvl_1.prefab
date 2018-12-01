@@ -653,10 +653,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createOnDeath: {fileID: 1914619935101884, guid: 817f2b92ab6ba1e4699c1705890d5d31,
     type: 2}
+  explosionOnDeath: {fileID: 0}
   bulletType: 1
   enemyBulletType: 0
+  isExplosion: 0
   direction: {x: 0, y: 1, z: 0}
-  isEnemyBullet: 0
   speed: 15
   damage: 20
   duration: 2
@@ -664,6 +665,8 @@ MonoBehaviour:
   HelixBulletChild_RotationSpeed: 10
   homingStrength: 0
   homingDistance: 10
+  RotationSpeed: 0.1
+  AmountOfShrapnellBulletsSpawnedOnDeath: 0
 --- !u!114 &114040534559098114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -688,17 +691,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createOnDeath: {fileID: 1976775451198108, guid: 7a5adfd221ccbcc4381434fc7890482e,
     type: 2}
+  explosionOnDeath: {fileID: 0}
   bulletType: 4
   enemyBulletType: 0
+  isExplosion: 0
   direction: {x: 1, y: 0, z: 0}
-  isEnemyBullet: 0
   speed: 0
   damage: 20
   duration: 2
   DelayDestructionTime: 0.5
-  HelixBulletChild_RotationSpeed: 8
+  HelixBulletChild_RotationSpeed: 800
   homingStrength: 0
   homingDistance: 10
+  RotationSpeed: 0.1
+  AmountOfShrapnellBulletsSpawnedOnDeath: 0
 --- !u!114 &114675828965421364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -723,17 +729,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createOnDeath: {fileID: 1976775451198108, guid: 7a5adfd221ccbcc4381434fc7890482e,
     type: 2}
+  explosionOnDeath: {fileID: 0}
   bulletType: 4
   enemyBulletType: 0
+  isExplosion: 0
   direction: {x: 1, y: 0, z: 0}
-  isEnemyBullet: 0
   speed: 0
   damage: 20
   duration: 2
   DelayDestructionTime: 0.5
-  HelixBulletChild_RotationSpeed: 8
+  HelixBulletChild_RotationSpeed: 800
   homingStrength: 0
   homingDistance: 10
+  RotationSpeed: 0.1
+  AmountOfShrapnellBulletsSpawnedOnDeath: 0
 --- !u!114 &114836644884975758
 MonoBehaviour:
   m_ObjectHideFlags: 1

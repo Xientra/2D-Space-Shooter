@@ -232,12 +232,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c627ba8c3e5ae4f812c0539972bdb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createOnDeath: {fileID: 1294480290156844, guid: 68632d3986ae45640b90391645a34acb,
+  createOnDeath: {fileID: 0}
+  explosionOnDeath: {fileID: 1237063411365404, guid: ff9c8fe9c41f08e40842ef634a7f15c6,
     type: 2}
   bulletType: 16
   enemyBulletType: 0
+  isExplosion: 0
   direction: {x: 0, y: 1, z: 0}
-  isEnemyBullet: 0
   speed: 5
   damage: 5
   duration: 1.2
@@ -246,6 +247,7 @@ MonoBehaviour:
   homingStrength: 0
   homingDistance: 10
   RotationSpeed: 10
+  AmountOfShrapnellBulletsSpawnedOnDeath: 24
 --- !u!212 &212098619499874350
 SpriteRenderer:
   m_ObjectHideFlags: 1
