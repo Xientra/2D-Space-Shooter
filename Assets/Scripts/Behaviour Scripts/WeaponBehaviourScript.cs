@@ -43,26 +43,26 @@ public class WeaponBehaviourScript : MonoBehaviour {
     public void Fire(Vector3 ProjectileSpawnPoint, GameObject TurretGameObject) {
         switch (WeaponType) {
             case (WeaponTypes.Standart_lvl_1):
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                 break;
             case (WeaponTypes.Standart_lvl_2):
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.right * 0.1f), TurretGameObject.transform.rotation);
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.right * -0.1f), TurretGameObject.transform.rotation);
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.right * 0.1f), TurretGameObject.transform.rotation);
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.right * -0.1f), TurretGameObject.transform.rotation);
                 break;
             case (WeaponTypes.Standart_lvl_3):
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.right * 0.2f), TurretGameObject.transform.rotation);
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.right * -0.2f), TurretGameObject.transform.rotation);
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.right * 0.2f), TurretGameObject.transform.rotation);
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.right * -0.2f), TurretGameObject.transform.rotation);
                 break;
 
             case (WeaponTypes.Helix_lvl_1):
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.HelixBullet_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.HelixBullet_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                 break;
             case (WeaponTypes.Helix_lvl_2):
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.HelixBullet_lvl_2)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.HelixBullet_lvl_2)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                 break;
             case (WeaponTypes.Helix_lvl_3):
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.HelixBullet_lvl_3)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.HelixBullet_lvl_3)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                 break;
 
             case (WeaponTypes.Shotgun_lvl_1):
@@ -77,15 +77,15 @@ public class WeaponBehaviourScript : MonoBehaviour {
 
             case (WeaponTypes.Homing_lvl_1):
                 BulletRng = 1f;
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.HomingBullet_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, Random.Range(BulletRng, -BulletRng)));
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.HomingBullet_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, Random.Range(BulletRng, -BulletRng)));
                 break;
             case (WeaponTypes.Homing_lvl_2):
                 BulletRng = 6f;
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.HomingBullet_lvl_2)], ProjectileSpawnPoint, TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, Random.Range(BulletRng, -BulletRng)));
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.HomingBullet_lvl_2)], ProjectileSpawnPoint, TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, Random.Range(BulletRng, -BulletRng)));
                 break;
             case (WeaponTypes.Homing_lvl_3):
                 BulletRng = 12f;
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.HomingBullet_lvl_3)], ProjectileSpawnPoint, TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, Random.Range(BulletRng, -BulletRng)));
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.HomingBullet_lvl_3)], ProjectileSpawnPoint, TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, Random.Range(BulletRng, -BulletRng)));
                 break;
 
             case (WeaponTypes.LaserSword_lvl_1):
@@ -99,31 +99,31 @@ public class WeaponBehaviourScript : MonoBehaviour {
                 break;
 
             case (WeaponTypes.WaveEmitter_lvl_1):
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Wave)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Wave)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                 break;
 
             case (WeaponTypes.MissileLauncher_lvl_1):
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Missile_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Missile_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                 break;
             case (WeaponTypes.MissileLauncher_lvl_2):
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Missile_lvl_2)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Missile_lvl_2)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                 break;
             case (WeaponTypes.MissileLauncher_lvl_3):
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Missile_lvl_3)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Missile_lvl_3)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                 break;
 
             case (WeaponTypes.GrenadeLauncher_lvl_1):
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Grenade_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Grenade_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                 break;
 
             case (WeaponTypes.ShrapnelLauncher_lvl_1):
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Shrapnel_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Shrapnel_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                 break;
             case (WeaponTypes.ShrapnelLauncher_lvl_2):
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Shrapnel_lvl_2)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Shrapnel_lvl_2)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                 break;
             case (WeaponTypes.ShrapnelLauncher_lvl_3):
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Shrapnel_lvl_3)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Shrapnel_lvl_3)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                 break;
 
             case (WeaponTypes.ChainGun_lvl_1):
@@ -144,7 +144,7 @@ public class WeaponBehaviourScript : MonoBehaviour {
     }
 
     private void fireChainGun(float offsetSpeed, float maxOffset, float _BulletRng, Vector3 _ProjectileSpawnPoint, GameObject _TurretGameObject) {
-        Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.ChainGunBullet)], _ProjectileSpawnPoint + (_TurretGameObject.transform.right * chainGunOffset), _TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, Random.Range(_BulletRng, -_BulletRng)));
+        Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.ChainGunBullet)], _ProjectileSpawnPoint + (_TurretGameObject.transform.right * chainGunOffset), _TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, Random.Range(_BulletRng, -_BulletRng)));
         if (chainGunOffsetUp) chainGunOffset += offsetSpeed;
         else chainGunOffset -= offsetSpeed;
         if (chainGunOffset >= maxOffset) chainGunOffsetUp = false;
@@ -155,7 +155,7 @@ public class WeaponBehaviourScript : MonoBehaviour {
         Vector3 RndFieldPos = _ProjectileSpawnPoint + (_TurretGameObject.transform.right * Random.Range(-_fieldSize, _fieldSize)) + (_TurretGameObject.transform.up * Random.Range(-_fieldSize, -_fieldSize / 2));
         Quaternion LookToMouse = Quaternion.LookRotation(Vector3.forward, (new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0) - RndFieldPos));
 
-        Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.LaserSword_lvl_1)], RndFieldPos, LookToMouse);
+        Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.LaserSword_lvl_1)], RndFieldPos, LookToMouse);
     }
 
     private void fireShotgun(int _bulletAmount, float _bulletRng, float _bulletDisplacement,  Vector3 _ProjectileSpawnPoint, GameObject _TurretGameObject) {
@@ -163,11 +163,11 @@ public class WeaponBehaviourScript : MonoBehaviour {
             Vector3 displacement = (_TurretGameObject.transform.right * Random.Range(-_bulletDisplacement, _bulletDisplacement)) + (_TurretGameObject.transform.up * Random.Range(-_bulletDisplacement * 2, _bulletDisplacement * 2));
             Quaternion spread = Quaternion.Euler(0, 0, Random.Range(_bulletRng, -_bulletRng));
 
-            Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.ShotgunBullet)], _ProjectileSpawnPoint + displacement, _TurretGameObject.transform.rotation * spread);
+            Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.ShotgunBullet)], _ProjectileSpawnPoint + displacement, _TurretGameObject.transform.rotation * spread);
         }
     }
     /*
-    private void fireAnyLaserGun(LaserBulletData.BulletTypes LaserToFire) {
+    private void fireAnyLaserGun(LaserBulletBehaviourScript.BulletTypes LaserToFire) {
         if (cooldownTimeStamp <= Time.time) {
             if (Input.GetButtonDown("Fire1")) {
                 pressedButtonDown = true;
@@ -211,7 +211,7 @@ public class WeaponBehaviourScript : MonoBehaviour {
                     if (Input.GetButton("Fire1")) {
                         cooldown = 0.3f * fireRateMultiplyer;
                         if (cooldownTimeStamp <= Time.time) {
-                            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Wave)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Wave)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                             cooldownTimeStamp = Time.time + cooldown;
                         }
                     }
@@ -220,7 +220,7 @@ public class WeaponBehaviourScript : MonoBehaviour {
                     if (Input.GetButton("Fire1")) {
                         cooldown = 0.8f * fireRateMultiplyer;
                         if (cooldownTimeStamp <= Time.time) {
-                            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.Grenade)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Grenade)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                             cooldownTimeStamp = Time.time + cooldown;
                         }
                     }
@@ -248,7 +248,7 @@ public class WeaponBehaviourScript : MonoBehaviour {
                         if (pressedButtonDown == true) {
                             if (Input.GetButtonUp("Fire1")) {
                                 if (loadTimeStamp <= Time.time) {
-                                    Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletData.BulletTypes.SimpleLaser)], transform.position, transform.rotation, this.transform);
+                                    Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.SimpleLaser)], transform.position, transform.rotation, this.transform);
                                     loadTimeStamp = Time.time + loadTime;
                                     cooldownTimeStamp = Time.time + cooldown; //Apply cooldown when firered
                                 }
@@ -266,7 +266,7 @@ public class WeaponBehaviourScript : MonoBehaviour {
                 case (Weapons.SplitLaserGun):
                     cooldown = 2f * fireRateMultiplyer;
                     loadTime = 1f;
-                    fireAnyLaserGun(LaserBulletData.BulletTypes.SplitLaser);
+                    fireAnyLaserGun(LaserBulletBehaviourScript.BulletTypes.SplitLaser);
                     break;
                 default:
                     Debug.LogError("The Weapon Type -" + currentWeapon.ToString() + "- has no values assinged!");

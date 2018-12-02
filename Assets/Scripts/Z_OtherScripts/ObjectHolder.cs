@@ -65,11 +65,11 @@ public class ObjectHolder : MonoBehaviour {
     }
     */
 
-    public static int GetBulletIndex(LaserBulletData.BulletTypes _bulletType) {
+    public static int GetBulletIndex(LaserBulletBehaviourScript.BulletTypes _bulletType) {
         int i = 0;
         foreach (GameObject go in _Bullets) {
             if (go != null) {
-                if (go.GetComponentInChildren<LaserBulletData>().bulletType == _bulletType) {
+                if (go.GetComponentInChildren<LaserBulletBehaviourScript>().bulletType == _bulletType) {
                     return i;
                 }
             }
@@ -79,11 +79,11 @@ public class ObjectHolder : MonoBehaviour {
         return -1;
     }
 
-    public static int GetEnemyBulletIndex(LaserBulletData.EnemyBulletTypes _EnemyBulletType) {
+    public static int GetEnemyBulletIndex(LaserBulletBehaviourScript.EnemyBulletTypes _EnemyBulletType) {
         int i = 0;
         foreach (GameObject go in _EnemyBullets) {
             if (go != null) {
-                if (go.GetComponentInChildren<LaserBulletData>().enemyBulletType == _EnemyBulletType) {
+                if (go.GetComponentInChildren<LaserBulletBehaviourScript>().enemyBulletType == _EnemyBulletType) {
                     return i;
                 }
             }

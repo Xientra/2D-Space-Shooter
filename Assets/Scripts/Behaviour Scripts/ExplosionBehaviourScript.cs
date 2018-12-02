@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosionBehaviourScript : LaserBulletData {
+public class ExplosionBehaviourScript : LaserBulletBehaviourScript {
 
     
 

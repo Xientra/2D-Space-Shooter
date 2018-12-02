@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserBulletData : MonoBehaviour {
+public class LaserBulletBehaviourScript : MonoBehaviour {
 
     public GameObject createOnDeath;
     public GameObject explosionOnDeath;
@@ -118,9 +118,9 @@ public class LaserBulletData : MonoBehaviour {
         //Does bulletspecific stuff
         switch (bulletType) {
             case (BulletTypes.HelixBulletChild):
-                duration = transform.parent.gameObject.GetComponent<LaserBulletData>().duration;
+                duration = transform.parent.gameObject.GetComponent<LaserBulletBehaviourScript>().duration;
 
-                switch (transform.parent.gameObject.GetComponent<LaserBulletData>().bulletType) {
+                switch (transform.parent.gameObject.GetComponent<LaserBulletBehaviourScript>().bulletType) {
                     case (BulletTypes.HelixBullet_lvl_1):
                         HelixBulletChild_RotationSpeed = 800f;
                         break;
@@ -233,9 +233,9 @@ public class LaserBulletData : MonoBehaviour {
 
             //detaches all (Helix)BulletChilds of the own transform and gives them speed
             foreach (Transform ImminentChildTransform in transform) {
-                if (ImminentChildTransform.GetComponent<LaserBulletData>() != null) {
+                if (ImminentChildTransform.GetComponent<LaserBulletBehaviourScript>() != null) {
                     ImminentChildTransform.rotation = transform.rotation;
-                    ImminentChildTransform.GetComponent<LaserBulletData>().speed = speed / 2;
+                    ImminentChildTransform.GetComponent<LaserBulletBehaviourScript>().speed = speed / 2;
                     ImminentChildTransform.parent = null;
                 }
             }
@@ -259,13 +259,13 @@ public class LaserBulletData : MonoBehaviour {
             if (createOnDeath != null) {
                 Instantiate(createOnDeath, transform);
 
-                if (createOnDeath.GetComponent<LaserBulletData>() != null)
+                if (createOnDeath.GetComponent<LaserBulletBehaviourScript>() != null)
                     Debug.LogWarning("If you want to Intantiate an explosion please do that with explosionOnDeath.");
             }
             if (explosionOnDeath != null) {
                 Instantiate(explosionOnDeath, transform.position, Quaternion.identity);
 
-                if (explosionOnDeath.GetComponent<LaserBulletData>() == null)
+                if (explosionOnDeath.GetComponent<LaserBulletBehaviourScript>() == null)
                     Debug.LogWarning("If you want to Intantiate an OnDeathEffect please do that with createOnDeath.");
             }
 
@@ -286,9 +286,9 @@ public class LaserBulletData : MonoBehaviour {
         yield return 0;
 
         foreach (SpriteRenderer SR in GetComponentsInChildren<SpriteRenderer>()) {
-            if (SR.gameObject.GetComponent<LaserBulletData>() != null) {
+            if (SR.gameObject.GetComponent<LaserBulletBehaviourScript>() != null) {
                 if (bulletType == BulletTypes.ShrapnellExplosion) {
-                    if (SR.gameObject.GetComponent<LaserBulletData>().bulletType != BulletTypes.ShrapnellBullet) { //I don't want it to disable all Shrapnel Child Bullets
+                    if (SR.gameObject.GetComponent<LaserBulletBehaviourScript>().bulletType != BulletTypes.ShrapnellBullet) { //I don't want it to disable all Shrapnel Child Bullets
                         SR.enabled = false;
                     }
                 }
@@ -301,7 +301,7 @@ public class LaserBulletData : MonoBehaviour {
         if (!(bulletType == BulletTypes.ShrapnellExplosion)) {
             foreach (TrailRenderer TR in GetComponentsInChildren<TrailRenderer>()) {
 
-                if (TR.gameObject.GetComponent<LaserBulletData>() == null) {
+                if (TR.gameObject.GetComponent<LaserBulletBehaviourScript>() == null) {
                     TR.time = TR.time / 2;
                     TR.transform.SetParent(null, true);
                     Debug.Log("TR disabled2");
@@ -325,19 +325,23 @@ public class LaserBulletData : MonoBehaviour {
         if (isEnemyBullet != true) {
             if (isLaser == false) {
                 if (collision.gameObject.layer == 10/*Enemy*/) {
-                    collision.gameObject.GetComponent<EnemyBehaviourScript>().Health -= damage * damageMultiplyer;
-                    InitiliseSelfDestruction();
-                    //Debug.Log("SelfDes2");
+                    if (collision.gameObject.GetComponent<EnemyBehaviourScript>().Health >= 0) {
+                        collision.gameObject.GetComponent<EnemyBehaviourScript>().Health -= damage * damageMultiplyer;
+                        InitiliseSelfDestruction();
+                        //Debug.Log("SelfDes2");
+                    }
                 }
             }
         }
         else {
             if (isLaser == false) {
                 if (collision.gameObject.CompareTag("Player")) {
-                    collision.gameObject.GetComponent<PlayerBehaviourScript>().currendHealth -= damage;
-                    StartCoroutine(GameControllerScript.ShakeMainCamera(0.2f, 0.05f));
-                    InitiliseSelfDestruction();
-                    //Debug.Log("SelfDes3");
+                    if (collision.gameObject.GetComponent<PlayerBehaviourScript>().currendHealth >= 0) {
+                        collision.gameObject.GetComponent<PlayerBehaviourScript>().currendHealth -= damage;
+                        StartCoroutine(GameControllerScript.ShakeMainCamera(0.2f, 0.05f));
+                        InitiliseSelfDestruction();
+                        //Debug.Log("SelfDes3");
+                    }
                 }
             }
         }
