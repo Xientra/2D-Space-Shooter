@@ -81,6 +81,11 @@ public class InGameUIControllerScript : MonoBehaviour {
     }
 
     public void OpenInGameDeathMenu() {
+        foreach (Transform t in InGameDeathMenu.transform) {
+            if (t.name == "HightScore_Text") t.GetComponent<Text>().text = "Hightscore: " + System.Environment.NewLine + GameControllerScript.HightScore.ToString();
+            if (t.name == "YourScore_Text") t.GetComponent<Text>().text = "Your Score: " + System.Environment.NewLine + GameControllerScript.currendScore.ToString();
+        }
+
         InGameDeathMenu.SetActive(true);
         GameControllerScript.PauseGame(true);
     }

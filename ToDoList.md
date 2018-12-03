@@ -17,3 +17,4 @@
 
 -if one wave of the wavecontroller is active when starting the game it will deavtivate and activate wrong objects and maybe, probably fuck things up...
 -there should be a short cooldown for every enemy shoot to prevent double fireing in one frame
+-the Score is not sopting to count up when the player dies and also not disblayed right (he Highscore was lower then "YourSore" ...);

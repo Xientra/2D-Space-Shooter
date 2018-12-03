@@ -23,7 +23,7 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
 
     public bool isExplosion = false;
 
-    public Vector3 direction = new Vector3(1, 0, 0);
+    public Vector3 direction = new Vector3(0, 1, 0);
 
     private LineRenderer lineRenderer;
 

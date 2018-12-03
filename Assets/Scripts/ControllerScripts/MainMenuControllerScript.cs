@@ -76,14 +76,20 @@ public class MainMenuControllerScript : MonoBehaviour {
 	}
 
     private void UpdateUI() {
+        if (StartMenu.activeSelf == true) {
+            foreach (Transform t in StartMenu.transform) {
+                if (t.name == "Hight Score Text") t.GetComponent<Text>().text = "Hight Score: " + System.Environment.NewLine + GameControllerScript.HightScore.ToString();
+            }
+        }
+
         if (OutfitterMenu.activeSelf == true) {
 
             foreach (Transform t in OutfitterMenu.transform) {
-                if (t.CompareTag("Currend Credits UI")) t.GetComponent<Text>().text = "Credits:" + System.Environment.NewLine + GameControllerScript.currendCredits.ToString();
+                //if (t.CompareTag("Currend Credits UI")) t.GetComponent<Text>().text = "Credits:" + System.Environment.NewLine + GameControllerScript.currendCredits.ToString();
                 //GameObject.FindGameObjectsWithTag("First Weapon UI")[0].GetComponent<Text>().text = "First Weapon:" + System.Environment.NewLine + firstWeapon.ToString();
                 //GameObject.FindGameObjectsWithTag("Second Weapon UI")[0].GetComponent<Text>().text = "Second Weapon:" + System.Environment.NewLine + secondWeapon.ToString();
 
-
+                if (t.name == "Currend Credits Text") t.GetComponent<Text>().text = "Credits:" + System.Environment.NewLine + GameControllerScript.currendCredits.ToString();
                 if (t.name == "Btn_BuyNewWeapon") t.GetComponentsInChildren<Transform>()[1].GetComponent<Text>().text = NewWeaponPrice.ToString();
             }
 
@@ -145,6 +151,7 @@ public class MainMenuControllerScript : MonoBehaviour {
         WeaponInfoSrceen.SetActive(false);
         //OptionsMenu.SetActive(false);
 
+        UpdateUI();
     }
 
     public void Options_Btn() {
@@ -224,6 +231,8 @@ public class MainMenuControllerScript : MonoBehaviour {
         //EndlessLevelMenu.SetActive(false);
         OutfitterMenu.SetActive(false);
         //OptionsMenu.SetActive(false);
+
+        UpdateUI();
     }
 
     /*-----------------------------------------Weapon Info Screen-----------------------------------------------*/
@@ -236,6 +245,8 @@ public class MainMenuControllerScript : MonoBehaviour {
             OutfitterMenu.SetActive(true);
             WeaponInfoSrceen.SetActive(true);
             //OptionsMenu.SetActive(false);
+
+            UpdateUI();
 
             WeaponInfoScreenWeaponGo = _weaponObject;
 
@@ -316,5 +327,6 @@ public class MainMenuControllerScript : MonoBehaviour {
     public void Btn_WeaponSelectScreenBack() {
         WeaponInfoSrceen.SetActive(false);
         WeaponInfoScreenWeaponGo = null;
+        UpdateUI();
     }
 }

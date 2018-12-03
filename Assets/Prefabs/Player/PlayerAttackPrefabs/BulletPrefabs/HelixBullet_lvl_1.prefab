@@ -695,7 +695,7 @@ MonoBehaviour:
   bulletType: 4
   enemyBulletType: 0
   isExplosion: 0
-  direction: {x: 1, y: 0, z: 0}
+  direction: {x: 0, y: 1, z: 0}
   speed: 0
   damage: 20
   duration: 2
@@ -733,7 +733,7 @@ MonoBehaviour:
   bulletType: 4
   enemyBulletType: 0
   isExplosion: 0
-  direction: {x: 1, y: 0, z: 0}
+  direction: {x: 0, y: 1, z: 0}
   speed: 0
   damage: 20
   duration: 2
