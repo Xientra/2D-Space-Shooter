@@ -26,7 +26,7 @@ public class GameControllerScript : MonoBehaviour {
     public static GameObject PlayerFirstWeapon;
     public static GameObject PlayerSecondWeapon;
     public static float currendCredits = 0f;
-    public static float currendScore = 0f;
+    public static float currendScore = 1000f;
     public static float HightScore = 0f;
 
     float scoreIntervall = 1000f; //1 Second?
@@ -83,7 +83,7 @@ public class GameControllerScript : MonoBehaviour {
 
     void Update() {
 
-        if (Time.timeScale == 0) {
+        if (Time.timeScale == 0 || SceneManager.GetActiveScene().name == "Main Menu") {
             scoreTimer.Stop();
         }
 
@@ -102,6 +102,7 @@ public class GameControllerScript : MonoBehaviour {
     }
 
     private void OnScoreTimerTick(object source, ElapsedEventArgs e) {
+        //Debug.Log(scoreTimer.Enabled);
         GameControllerScript.currendScore += scorePerTick;
     }
 
@@ -177,12 +178,16 @@ public class GameControllerScript : MonoBehaviour {
     }
 
     public void StartGameOver(float animationLegth) {
-        StartCoroutine(DelayGameOver(animationLegth));
 
         scoreTimer.Stop();
+        if (scoreTimer != null)
+        Debug.Log(scoreTimer.Enabled);
 
-        HightScore = currendScore;
+        if (currendScore > HightScore)
+            HightScore = currendScore;
         //currendScore = 0f;
+
+        StartCoroutine(DelayGameOver(animationLegth));
     }
 
     public IEnumerator DelayGameOver(float _delay) {

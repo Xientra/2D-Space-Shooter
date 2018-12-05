@@ -268,9 +268,8 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
                 if (explosionOnDeath.GetComponent<LaserBulletBehaviourScript>() == null)
                     Debug.LogWarning("If you want to Intantiate an OnDeathEffect please do that with createOnDeath.");
             }
-
         }
-        
+
         StartCoroutine(FinishDestructionAfterOneFrame());
     }
 
@@ -294,17 +293,14 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
                 }
                 else SR.enabled = false;
             }
-
         }
 
         //Unparent the TrailRendererGo
         if (!(bulletType == BulletTypes.ShrapnellExplosion)) {
             foreach (TrailRenderer TR in GetComponentsInChildren<TrailRenderer>()) {
-
                 if (TR.gameObject.GetComponent<LaserBulletBehaviourScript>() == null) {
                     TR.time = TR.time / 2;
                     TR.transform.SetParent(null, true);
-                    Debug.Log("TR disabled2");
                 }
             }
         }
