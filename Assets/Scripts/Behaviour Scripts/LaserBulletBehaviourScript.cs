@@ -174,14 +174,37 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
         if (bulletType == BulletTypes.Missile_lvl_1 || bulletType == BulletTypes.Missile_lvl_2 || bulletType == BulletTypes.Missile_lvl_3) {
             if (GetNearestEnemy() != null) {
                 if (Vector3.SqrMagnitude(GetNearestEnemy().transform.position - this.transform.position) <= homingDistance) {
+                    //Draw Line Effect
+                    if (GetComponentInChildren<LineRenderer>() != null) {
+                        LineRenderer lr = GetComponentInChildren<LineRenderer>();
 
+                        lr.SetPosition(0, lr.transform.position);
+                        lr.SetPosition(1, GetNearestEnemy().transform.position);
+                    }
+
+
+                    //Homing Effect
                     RotationProgress += Time.deltaTime * RotationSpeed;
                     transform.up = Vector3.Lerp(transform.up, Vector3.Normalize(GetNearestEnemy().transform.position - transform.position), RotationProgress);
 
-                    Debug.DrawLine(transform.position, transform.position + GetNearestEnemy().transform.position - transform.position, Color.red);
+                    //Debug.DrawLine(transform.position, transform.position + GetNearestEnemy().transform.position - transform.position, Color.red);
 
                     //Debug.DrawLine(transform.position, transform.position + Vector3.Normalize(GetNearestEnemy().transform.position - transform.position));
                     //Debug.DrawLine(transform.position, transform.position + transform.up);
+                }
+                else {
+                    if (GetComponentInChildren<LineRenderer>() != null) {
+                        LineRenderer lr = GetComponentInChildren<LineRenderer>();
+                        lr.SetPosition(0, lr.transform.position);
+                        lr.SetPosition(1, lr.transform.position);
+                    }
+                }
+            }
+            else {
+                if (GetComponentInChildren<LineRenderer>() != null) {
+                    LineRenderer lr = GetComponentInChildren<LineRenderer>();
+                    lr.SetPosition(0, lr.transform.position);
+                    lr.SetPosition(1, lr.transform.position);
                 }
             }
         }
@@ -240,6 +263,10 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
                 }
             }
 
+
+            foreach (LineRenderer LineRendererGo in GetComponentsInChildren<LineRenderer>()) {
+                Destroy(LineRendererGo.transform.gameObject);
+            }
 
             //deactivate Collider
             if (GetComponent<CircleCollider2D>() != null) {
