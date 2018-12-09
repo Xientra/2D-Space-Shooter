@@ -18,6 +18,8 @@ public class WeaponBehaviourScript : MonoBehaviour {
     private bool chainGunOffsetUp = true;
     float BulletRng;
 
+    public GameObject TurretGameObject;
+
     /*------------Stats for the Stats Menu--------------*/
     public bool isBought = false;
     public enum WeaponLevels { _1, _2, _3}

@@ -53,6 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 0.3
   WeaponType: 1
+  TurretGameObject: {fileID: 1219582461764428, guid: 9bae1a4100fd7a9489717378195136e4,
+    type: 2}
   isBought: 0
   WeaponLevel: 1
   price: 200

@@ -244,10 +244,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createOnDeath: {fileID: 1914619935101884, guid: 429d3a5a9a424114dba9bcc2a46bfec8,
     type: 2}
+  explosionOnDeath: {fileID: 0}
   bulletType: 6
   enemyBulletType: 0
+  isExplosion: 0
   direction: {x: 0, y: 1, z: 0}
-  isEnemyBullet: 0
   speed: 45
   damage: 3
   duration: 0.75
@@ -255,6 +256,8 @@ MonoBehaviour:
   HelixBulletChild_RotationSpeed: 10
   homingStrength: 0
   homingDistance: 10
+  RotationSpeed: 0.1
+  AmountOfShrapnellBulletsSpawnedOnDeath: 0
 --- !u!212 &212480431836990796
 SpriteRenderer:
   m_ObjectHideFlags: 1

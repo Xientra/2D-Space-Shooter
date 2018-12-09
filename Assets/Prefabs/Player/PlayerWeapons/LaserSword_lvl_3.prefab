@@ -53,7 +53,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 0.3
   WeaponType: 20
-  isBought: 1
+  TurretGameObject: {fileID: 1016674509688452, guid: 53fe485346fe9ed48bce065f5305cc83,
+    type: 2}
+  isBought: 0
   WeaponLevel: 2
   price: 300
   weaponName: Laser Sword3

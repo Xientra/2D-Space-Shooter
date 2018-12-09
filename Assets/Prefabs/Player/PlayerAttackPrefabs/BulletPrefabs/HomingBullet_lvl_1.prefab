@@ -244,11 +244,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createOnDeath: {fileID: 1914619935101884, guid: 92e565127c1674c44bf54fe969334319,
     type: 2}
+  explosionOnDeath: {fileID: 0}
   bulletType: 18
   enemyBulletType: 0
   isExplosion: 0
   direction: {x: 0, y: 1, z: 0}
-  isEnemyBullet: 0
   speed: 20
   damage: 20
   duration: 2
