@@ -197,6 +197,48 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b0b735b1d6281145afe09aaa8431fe4, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1001 &449047713
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4041614393359500, guid: ccda2c2693ba99d459cca8589a7022a9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041614393359500, guid: ccda2c2693ba99d459cca8589a7022a9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041614393359500, guid: ccda2c2693ba99d459cca8589a7022a9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041614393359500, guid: ccda2c2693ba99d459cca8589a7022a9, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041614393359500, guid: ccda2c2693ba99d459cca8589a7022a9, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041614393359500, guid: ccda2c2693ba99d459cca8589a7022a9, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041614393359500, guid: ccda2c2693ba99d459cca8589a7022a9, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041614393359500, guid: ccda2c2693ba99d459cca8589a7022a9, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ccda2c2693ba99d459cca8589a7022a9, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1001 &556901940
 Prefab:
   m_ObjectHideFlags: 0
@@ -449,6 +491,12 @@ Prefab:
       propertyPath: toAssingSecondWep
       value: 
       objectReference: {fileID: 1937445777880226, guid: 6cbb45b6c17374545abc123cce7c38e0,
+        type: 2}
+    - target: {fileID: 114717018711693094, guid: c60d9cba6161c574d92570cb778fadb2,
+        type: 2}
+      propertyPath: toAssingFirstWep
+      value: 
+      objectReference: {fileID: 1662901710460724, guid: 222e038b92f941d4e96dcd71c1a71ef4,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c60d9cba6161c574d92570cb778fadb2, type: 2}

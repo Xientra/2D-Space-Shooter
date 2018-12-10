@@ -53,11 +53,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 1.75
   WeaponType: 21
+  TurretGameObject: {fileID: 0}
   isBought: 0
   WeaponLevel: 0
   price: 100
   weaponName: Missile Launcher1
   description: Launches a homing Missile, that trys to turn towards enemies.
-  WeaponImage: {fileID: 21300000, guid: 95ac61ea026181e49b48c51f7cd68593, type: 3}
+  WeaponImage: {fileID: 21300000, guid: f3cd649c47477344d8e3bcd31522affc, type: 3}
   PreviousWeapon: {fileID: 0}
   NextWeapon: {fileID: 1662901710460724, guid: 70129fa14df14134e9746d1597dfb4ca, type: 2}

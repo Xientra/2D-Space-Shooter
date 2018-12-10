@@ -98,13 +98,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1297212035845184}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.707107, w: 0.7071066}
   m_LocalPosition: {x: 0, y: -0.125, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4041614393359500}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90.00001}
 --- !u!50 &50427514044814644
 Rigidbody2D:
   serializedVersion: 4
@@ -204,10 +204,10 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.5
+  m_Time: 0.1
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 0.1
+    widthMultiplier: 0.2
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -222,7 +222,7 @@ TrailRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0
+        value: 0.5
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -234,8 +234,8 @@ TrailRenderer:
       m_RotationOrder: 0
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 0.8392157}
-      key1: {r: 1, g: 1, b: 1, a: 0.5803922}
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 0.60784316}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -251,7 +251,7 @@ TrailRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 65535
+      atime1: 64957
       atime2: 0
       atime3: 0
       atime4: 0
@@ -298,7 +298,7 @@ MonoBehaviour:
   enemyBulletType: 0
   isExplosion: 0
   direction: {x: 0, y: 1, z: 0}
-  speed: 15
+  speed: 13
   damage: 120
   duration: 1.2
   DelayDestructionTime: 0.5
