@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\Data Scripts\WeaponsViewElementDataScript.cs" />
     <Compile Include="Assets\Scripts\EffectScripts\EffectBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Z_OtherScripts\ObjectHolder.cs" />
+    <Compile Include="Assets\Scripts\Z_OtherScripts\SomeGameObjectChild.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/_Documents/_Computerstuff/Projects - Unity/2D Space Shooter/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

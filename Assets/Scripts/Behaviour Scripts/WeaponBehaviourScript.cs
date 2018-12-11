@@ -14,9 +14,12 @@ public class WeaponBehaviourScript : MonoBehaviour {
     public float cooldown;
     public WeaponTypes WeaponType;
 
+    //vars for the different firering types of the weapons
     private float chainGunOffset = 0;
     private bool chainGunOffsetUp = true;
     float BulletRng;
+    private bool Standartlvl3OffsetDirection = true;
+
 
     public GameObject TurretGameObject;
 
@@ -34,7 +37,6 @@ public class WeaponBehaviourScript : MonoBehaviour {
     public GameObject NextWeapon;
 
     void Start() {
-
     }
 
     void Update() {
@@ -52,9 +54,18 @@ public class WeaponBehaviourScript : MonoBehaviour {
                 Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.right * -0.1f), TurretGameObject.transform.rotation);
                 break;
             case (WeaponTypes.Standart_lvl_3):
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.right * 0.2f), TurretGameObject.transform.rotation);
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.right * -0.2f), TurretGameObject.transform.rotation);
+                float _value = 0.1125f;
+                float _offset = _value;
+                if (Standartlvl3OffsetDirection == true)
+                    _offset = _value;
+                if (Standartlvl3OffsetDirection == false)
+                    _offset = -_value;
+                Standartlvl3OffsetDirection = !Standartlvl3OffsetDirection;
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.right * _offset), TurretGameObject.transform.rotation);
+
+                //Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                //Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.right * 0.2f), TurretGameObject.transform.rotation);
+                //Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.right * -0.2f), TurretGameObject.transform.rotation);
                 break;
 
             case (WeaponTypes.Helix_lvl_1):

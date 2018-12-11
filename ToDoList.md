@@ -12,6 +12,7 @@
 -PickUps just stop when the player dies
 -the player needs to have some ivincibility when hit 
 -Every WaitForSeconds in IEnumerators are using the scaledTime which they should not...
+-(at least the standart_lvl_3_weapon turret) while facing left or right the upper barrel is in the focus  
 
 # Bugs To Fix Later
 

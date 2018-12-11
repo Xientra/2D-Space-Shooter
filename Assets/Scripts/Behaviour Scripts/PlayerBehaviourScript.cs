@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//[RequireComponent(typeof(Rigidbody))]
 public class PlayerBehaviourScript : MonoBehaviour {
 
     public GameObject CreateOnDeath;
 
     public GameObject TurretRotationAnchorGo;
     private GameObject TurretGameObject;
-    
+
     public GameObject ObjectHolderGo;
 
     private GameObject[] Bullets;
@@ -25,7 +26,7 @@ public class PlayerBehaviourScript : MonoBehaviour {
     [SerializeField]
     private float speedlimit = 10f;
     [SerializeField]
-    private float stopspeed = 0.9f;    
+    private float stopspeed = 0.9f;
     [SerializeField]
     private float xspeed = 0;
     [SerializeField]
@@ -37,7 +38,6 @@ public class PlayerBehaviourScript : MonoBehaviour {
     //Ship Stats
     public enum Ships { Standart, Heavy, Fast }
     public Ships currendShip = Ships.Standart;
-
 
     public GameObject firstWeapon;
     public GameObject secondWeapon;
@@ -110,8 +110,14 @@ public class PlayerBehaviourScript : MonoBehaviour {
         }
 
         ProjectileSpawnPoint = TurretRotationAnchorGo.transform.position;
-        ProjectileSpawnPoint = TurretRotationAnchorGo.transform.position + (TurretRotationAnchorGo.transform.up * (transform.localScale.y / 5f));
-
+        //ProjectileSpawnPoint = TurretRotationAnchorGo.transform.position + (TurretRotationAnchorGo.transform.up * (transform.localScale.y / 5f));
+        if (TurretGameObject != null) {
+            foreach (Transform tChild in TurretGameObject.transform) {
+                if (tChild.gameObject.name == "ProjectileSpawnPointGo") ProjectileSpawnPoint = tChild.position;
+            }
+            if (ProjectileSpawnPoint == TurretRotationAnchorGo.transform.position) Debug.Log("The ProjectileSpawnPoint is the same as the TurretAnchor. This means, that the Point has not been moved yet or it does not exist at all");
+        }
+        
 
         CheckPlayerDeath();
     }
@@ -530,7 +536,7 @@ public class PlayerBehaviourScript : MonoBehaviour {
                     if (loadTimeStamp <= Time.time) {
                         Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserToFire)], transform.position, transform.rotation, this.transform);
                         loadTimeStamp = Time.time + loadTime;
-                        cooldownTimeStamp = Time.time + cooldown; //Apply cooldown when firered
+                        cooldownTimeStamp = Time.time + cooldown; //Applies cooldown when firered
                     }
                     else {
                         loadTimeStamp = Time.time + loadTime;
@@ -543,22 +549,6 @@ public class PlayerBehaviourScript : MonoBehaviour {
             }
         }
     }
-    /*
-    public int GetBulletIndex(LaserBulletBehaviourScript.BulletTypes _bulletType) {
-        int i = 0;
-        foreach (GameObject go in Bullets) {
-            if (go != null) {
-                if (go.GetComponentInChildren<LaserBulletBehaviourScript>().bulletType == _bulletType) {
-                    return i;
-                }
-            }
-            i++;
-        }
-        Debug.LogError("Could not find: " + _bulletType);
-        return -1;
-    }
-    */
-
     
     void SwitchWeapon() {
         GameObject tempWep = firstWeapon;
@@ -566,32 +556,28 @@ public class PlayerBehaviourScript : MonoBehaviour {
         secondWeapon = tempWep;
         ChangeTurret(firstWeapon.GetComponent<WeaponBehaviourScript>().WeaponType);
     }
-
-    /*
-    void SwitchAllWeapons() {
-        if ((int)currentWeapon == WeaponBehaviourScript.WeaponTypes.GetNames(typeof(WeaponBehaviourScript.WeaponTypes)).Length - 1) {
-            currentWeapon = (WeaponBehaviourScript.WeaponTypes)0;
-        }
-        else {
-            currentWeapon = (WeaponBehaviourScript.WeaponTypes)(int)currentWeapon + 1;
-            //ChangeTurret(currentWeapon);
-        }
-    }
-    */
     
     void ChangeTurret(WeaponBehaviourScript.WeaponTypes _weaponType) {
+        //destroys existing turret
+        if (TurretRotationAnchorGo.GetComponentsInChildren<Transform>().Length > 0)
+            for (int i = 1; i <= TurretRotationAnchorGo.GetComponentsInChildren<Transform>().Length - 1; i++) { /*-1 da der erste transform des arrays nicht zerstört werden soll*/
+                Destroy(TurretRotationAnchorGo.GetComponentsInChildren<Transform>()[i].gameObject);
+            }
 
-
-        Destroy(TurretRotationAnchorGo.GetComponentsInChildren<Transform>()[1].transform.gameObject);
-        TurretGameObject = Instantiate(ObjectHolder._Turrets[ObjectHolder.GetWeaponTurretIndex(_weaponType)], TurretRotationAnchorGo.transform);
+        //spawns new turret
+        if (firstWeapon.GetComponent<WeaponBehaviourScript>().TurretGameObject != null) {
+            TurretGameObject = Instantiate(firstWeapon.GetComponent<WeaponBehaviourScript>().TurretGameObject, TurretRotationAnchorGo.transform);
+        }
+        else {
+            TurretGameObject = Instantiate(ObjectHolder._Turrets[ObjectHolder.GetWeaponTurretIndex(WeaponBehaviourScript.WeaponTypes.Standart_lvl_1)], TurretRotationAnchorGo.transform);
+            //TurretGameObject = Instantiate(ObjectHolder._Turrets[ObjectHolder.GetWeaponTurretIndex(_weaponType)], TurretRotationAnchorGo.transform);
+        }
     }
 
     public float GetPercentUnitCooldown() {
         float PercentUnitlCooldown = -(((cooldownTimeStamp - Time.time) / cooldown) * 100) + 100;
         PercentUnitlCooldown = Mathf.Clamp(PercentUnitlCooldown, 0, 100);
 
-        //Debug.Log(cooldown);
-        //Debug.Log(cooldownTimeStamp);
         return PercentUnitlCooldown;
         /*
         cooldown = 0.005f * fireRateMultiplyer;
