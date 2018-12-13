@@ -140,13 +140,13 @@ public class WeaponBehaviourScript : MonoBehaviour {
                 break;
 
             case (WeaponTypes.ChainGun_lvl_1):
-                fireChainGun(0.04f, 0.1f, 6f, ProjectileSpawnPoint, TurretGameObject);
+                fireChainGun(0.03f, 0.09f, 6f, ProjectileSpawnPoint, TurretGameObject);
                 break;
             case (WeaponTypes.ChainGun_lvl_2):
-                fireChainGun(0.04f, 0.1f, 3f, ProjectileSpawnPoint, TurretGameObject);
+                fireChainGun(0.03f, 0.09f, 3f, ProjectileSpawnPoint, TurretGameObject);
                 break;
             case (WeaponTypes.ChainGun_lvl_3):
-                fireChainGun(0.04f, 0.1f, 1f, ProjectileSpawnPoint, TurretGameObject);
+                fireChainGun(0.03f, 0.09f, 1f, ProjectileSpawnPoint, TurretGameObject);
                 break;
 
             default:
