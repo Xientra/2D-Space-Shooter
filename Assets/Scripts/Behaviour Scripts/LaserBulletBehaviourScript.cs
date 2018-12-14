@@ -152,7 +152,6 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
             float shrapnellBulletRNGSpread = 24; 
             transform.rotation = transform.rotation * Quaternion.Euler(0, 0, Random.Range(shrapnellBulletRNGSpread, -shrapnellBulletRNGSpread));
         }
-        
     }
 
     void Update() {
@@ -209,6 +208,10 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
             }
         }
 
+        if ((bulletType == BulletTypes.Grenade_lvl_2 || bulletType == BulletTypes.Grenade_lvl_3) && Input.GetMouseButtonUp(0) == true) {
+            InitiliseSelfDestruction();
+        }
+
         if (homingStrength != 0) {
             if (GetNearestEnemy() != null) {
                 if (Vector3.SqrMagnitude(GetNearestEnemy().transform.position - this.transform.position) <= homingDistance) {
@@ -226,7 +229,7 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
     IEnumerator destroyAfterTime() {
         yield return new WaitForSeconds(duration);
         if (SelfDestructionActive != true) {
-            Debug.Log("SelfDes1");
+            //Debug.Log("SelfDes1");
             InitiliseSelfDestruction();
         }
     }

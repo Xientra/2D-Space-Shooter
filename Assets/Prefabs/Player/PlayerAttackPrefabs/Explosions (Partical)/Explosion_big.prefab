@@ -70,11 +70,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   createOnDeath: {fileID: 0}
+  explosionOnDeath: {fileID: 0}
   bulletType: 28
   enemyBulletType: 0
   isExplosion: 1
   direction: {x: 0, y: 0, z: 0}
-  isEnemyBullet: 0
   speed: 0
   damage: 120
   duration: 0
@@ -83,6 +83,7 @@ MonoBehaviour:
   homingStrength: 0
   homingDistance: 10
   RotationSpeed: 1
+  AmountOfShrapnellBulletsSpawnedOnDeath: 0
 --- !u!198 &198444633171652868
 ParticleSystem:
   m_ObjectHideFlags: 1

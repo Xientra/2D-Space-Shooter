@@ -8,7 +8,6 @@ public class WeaponBehaviourScript : MonoBehaviour {
         Standart_lvl_1, Standart_lvl_2, Standart_lvl_3, Shotgun_lvl_1, Shotgun_lvl_2, Shotgun_lvl_3, Homing_lvl_1, Homing_lvl_2, Homing_lvl_3, Helix_lvl_1, Helix_lvl_2, Helix_lvl_3,
         ChainGun_lvl_1, ChainGun_lvl_2, ChainGun_lvl_3, WaveEmitter_lvl_1, WaveEmitter_lvl_2, WaveEmitter_lvl_3, LaserSword_lvl_1, LaserSword_lvl_2, LaserSword_lvl_3,
         MissileLauncher_lvl_1, MissileLauncher_lvl_2, MissileLauncher_lvl_3, GrenadeLauncher_lvl_1, GrenadeLauncher_lvl_2, GrenadeLauncher_lvl_3, ShrapnelLauncher_lvl_1, ShrapnelLauncher_lvl_2, ShrapnelLauncher_lvl_3,
-        LaserGun, SplitLaserGun
     }
 
     public float cooldown;
@@ -127,6 +126,12 @@ public class WeaponBehaviourScript : MonoBehaviour {
 
             case (WeaponTypes.GrenadeLauncher_lvl_1):
                 Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Grenade_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                break;
+            case (WeaponTypes.GrenadeLauncher_lvl_2):
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Grenade_lvl_2)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                break;
+            case (WeaponTypes.GrenadeLauncher_lvl_3):
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Grenade_lvl_3)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                 break;
 
             case (WeaponTypes.ShrapnelLauncher_lvl_1):
