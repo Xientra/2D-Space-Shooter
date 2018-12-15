@@ -152,6 +152,9 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
             float shrapnellBulletRNGSpread = 24; 
             transform.rotation = transform.rotation * Quaternion.Euler(0, 0, Random.Range(shrapnellBulletRNGSpread, -shrapnellBulletRNGSpread));
         }
+        if (bulletType == BulletTypes.Grenade_lvl_2) {
+
+        }
     }
 
     void Update() {
@@ -209,7 +212,9 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
         }
 
         if ((bulletType == BulletTypes.Grenade_lvl_2 || bulletType == BulletTypes.Grenade_lvl_3) && Input.GetMouseButtonUp(0) == true) {
-            InitiliseSelfDestruction();
+            if (SelfDestructionActive != true) {
+                InitiliseSelfDestruction();
+            }
         }
 
         if (homingStrength != 0) {
@@ -241,6 +246,7 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
         SelfDestructionActive = true;
 
         if (isExplosion == true) {
+            OnExplosion();
             StartCoroutine(DelayDestruction());
         }
         else {
@@ -418,5 +424,8 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
             }
         }
         return returnGo;
+    }
+
+    protected virtual void OnExplosion() {
     }
 }

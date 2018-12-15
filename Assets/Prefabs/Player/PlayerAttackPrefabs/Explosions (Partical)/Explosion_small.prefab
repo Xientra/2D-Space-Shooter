@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198779280472760414}
   - component: {fileID: 199525696075015500}
   - component: {fileID: 58198856968469654}
-  - component: {fileID: 114488983179640264}
+  - component: {fileID: 114152547163126656}
   m_Layer: 9
   m_Name: Explosion_small
   m_TagString: Explosion
@@ -58,7 +58,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.7
---- !u!114 &114488983179640264
+--- !u!114 &114152547163126656
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -66,15 +66,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1914619935101884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6c627ba8c3e5ae4f812c0539972bdb9, type: 3}
+  m_Script: {fileID: 11500000, guid: da1bccafffc5ded4893becc7946462ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   createOnDeath: {fileID: 0}
+  explosionOnDeath: {fileID: 0}
   bulletType: 28
   enemyBulletType: 0
   isExplosion: 1
   direction: {x: 0, y: 0, z: 0}
-  isEnemyBullet: 0
   speed: 0
   damage: 60
   duration: 0
@@ -82,7 +82,9 @@ MonoBehaviour:
   HelixBulletChild_RotationSpeed: 10
   homingStrength: 0
   homingDistance: 10
-  RotationSpeed: 1
+  RotationSpeed: 0.1
+  AmountOfShrapnellBulletsSpawnedOnDeath: 0
+  explosionType: 2
 --- !u!198 &198779280472760414
 ParticleSystem:
   m_ObjectHideFlags: 1

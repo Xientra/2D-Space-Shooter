@@ -165,6 +165,25 @@ public class GameControllerScript : MonoBehaviour {
         }
         mainCamera.transform.position = originalPosition;
     }
+    public static IEnumerator ShakeMainCamera(float duration, float magnitude, float MagnitudeMultiplyer) {
+        Vector3 originalPosition = mainCamera.transform.position;
+
+        float timeElepsed = 0;
+
+        while (timeElepsed < duration && GameIsPaused == false) {
+            float x = Random.Range(-1f, 1f) * magnitude;
+            float y = Random.Range(-1f, 1f) * magnitude;
+
+            mainCamera.transform.position = new Vector3(originalPosition.x + x, originalPosition.y + y, mainCamera.transform.position.z);
+
+            magnitude *= MagnitudeMultiplyer;
+
+            timeElepsed += Time.deltaTime;
+
+            yield return null;
+        }
+        mainCamera.transform.position = originalPosition;
+    }
 
     public static void PauseGame(bool _state) {
         if (_state == true) {
