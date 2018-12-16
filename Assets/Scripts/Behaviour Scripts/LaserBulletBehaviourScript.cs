@@ -152,9 +152,11 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
             float shrapnellBulletRNGSpread = 24; 
             transform.rotation = transform.rotation * Quaternion.Euler(0, 0, Random.Range(shrapnellBulletRNGSpread, -shrapnellBulletRNGSpread));
         }
+        /* this was ment for the precise grenade explosion (it explodes there wehere the mouse is)
         if (bulletType == BulletTypes.Grenade_lvl_2) {
-
+            Vector3 distance = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0) - transform.position;
         }
+        */
     }
 
     void Update() {

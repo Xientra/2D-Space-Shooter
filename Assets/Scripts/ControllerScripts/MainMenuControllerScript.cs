@@ -84,6 +84,8 @@ public class MainMenuControllerScript : MonoBehaviour {
 
         if (OutfitterMenu.activeSelf == true) {
 
+            WeaponsViewGO.GetComponent<WeaponsViewControllerScript>().UpdateWeaponsView();
+
             foreach (Transform t in OutfitterMenu.transform) {
                 //if (t.CompareTag("Currend Credits UI")) t.GetComponent<Text>().text = "Credits:" + System.Environment.NewLine + GameControllerScript.currendCredits.ToString();
                 //GameObject.FindGameObjectsWithTag("First Weapon UI")[0].GetComponent<Text>().text = "First Weapon:" + System.Environment.NewLine + firstWeapon.ToString();
@@ -233,6 +235,7 @@ public class MainMenuControllerScript : MonoBehaviour {
         //OptionsMenu.SetActive(false);
 
         UpdateUI();
+        
     }
 
     /*-----------------------------------------Weapon Info Screen-----------------------------------------------*/
