@@ -9,7 +9,7 @@ public class ExplosionBehaviourScript : LaserBulletBehaviourScript {
     }
     public ExplosionTypes explosionType = ExplosionTypes._null_;
 
-    protected override void OnExplosion() {
+    protected override bool OnExplosion() {
         base.OnExplosion();
 
         if (explosionType == ExplosionTypes.Explosion_big) {
@@ -21,6 +21,8 @@ public class ExplosionBehaviourScript : LaserBulletBehaviourScript {
         if (explosionType == ExplosionTypes.Explosion_impact) {
             StartCoroutine(GameControllerScript.ShakeMainCamera(0.9f, 0.5f, 0.975f));
         }
+
+        return true; //this will mark this method as called from ExplosionBehaviourScript
     }
 
 }

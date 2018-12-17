@@ -81,19 +81,22 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
     //PowerUp Variables
     public static float damageMultiplyer = 1f;
 
-
+    
 
     void Start() {
         StartCoroutine(destroyAfterTime());
 
         //Bullet affiliation check
-        if (bulletType == BulletTypes._null_ && enemyBulletType == EnemyBulletTypes._null_ && isExplosion == false) {
-            Debug.LogError("The bullet --" + this.gameObject.name + "-- has no affiliation to any side!");
+        if (this.GetType() != typeof(ExplosionBehaviourScript)) {
+            if (bulletType == BulletTypes._null_ && enemyBulletType == EnemyBulletTypes._null_) {
+                Debug.LogError("The bullet --" + this.gameObject.name + "-- has no affiliation to any side!");
+            }
+            if (enemyBulletType != EnemyBulletTypes._null_ && bulletType != BulletTypes._null_) {
+                enemyBulletType = EnemyBulletTypes._null_;
+                Debug.LogError("The bullet --" + this.gameObject.name + @"-- has a (player)bulletType and a EnemyBulletType. The EnemyBulletType was set to _null_.");
+            }
         }
-        if (enemyBulletType != EnemyBulletTypes._null_ && bulletType != BulletTypes._null_) {
-            enemyBulletType = EnemyBulletTypes._null_;
-            Debug.LogError("The bullet --" + this.gameObject.name + @"-- has a (player)bulletType and a EnemyBulletType. The EnemyBulletType was set to _null_.");
-        }
+        /*
         if (isExplosion == true) {
             if (bulletType != BulletTypes._null_) {
                 bulletType = BulletTypes._null_;
@@ -104,6 +107,9 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
                 Debug.Log(gameObject.name + ": the EnemyBulletType was set to _null_.");
             }
         }
+        */
+
+        
 
         //Sets the state vars like isEnemyBullet and isLaser after affiliation check
         if (enemyBulletType != EnemyBulletTypes._null_) {
@@ -247,7 +253,7 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
     void InitiliseSelfDestruction() {
         SelfDestructionActive = true;
 
-        if (isExplosion == true) {
+        if (this.GetType() == typeof(ExplosionBehaviourScript)) {
             OnExplosion();
             StartCoroutine(DelayDestruction());
         }
@@ -355,9 +361,8 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        
-        if (isEnemyBullet != true) {
-            if (isLaser == false) {
+        if (this.GetType() != typeof(ExplosionBehaviourScript)) {
+            if (isEnemyBullet != true) {
                 if (collision.gameObject.layer == 10/*Enemy*/) {
                     if (collision.gameObject.GetComponent<EnemyBehaviourScript>().Health >= 0) {
                         collision.gameObject.GetComponent<EnemyBehaviourScript>().Health -= damage * damageMultiplyer;
@@ -366,9 +371,7 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
                     }
                 }
             }
-        }
-        else {
-            if (isLaser == false) {
+            else {
                 if (collision.gameObject.CompareTag("Player")) {
                     if (collision.gameObject.GetComponent<PlayerBehaviourScript>().currendHealth >= 0) {
                         collision.gameObject.GetComponent<PlayerBehaviourScript>().currendHealth -= damage;
@@ -378,10 +381,10 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
                     }
                 }
             }
-        }
-        if (collision.gameObject.layer == 8/*Static*/) {
-            InitiliseSelfDestruction();
-            //Debug.Log("SelfDes4");
+            if (collision.gameObject.layer == 8/*Static*/) {
+                InitiliseSelfDestruction();
+                //Debug.Log("SelfDes4");
+            }
         }
     }
 
@@ -428,6 +431,7 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
         return returnGo;
     }
 
-    protected virtual void OnExplosion() {
+    protected virtual bool OnExplosion() {
+        return false;
     }
 }

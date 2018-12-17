@@ -298,14 +298,14 @@ MonoBehaviour:
   enemyBulletType: 0
   isExplosion: 0
   direction: {x: 0, y: 1, z: 0}
-  speed: 13
+  speed: 12
   damage: 120
-  duration: 1.2
+  duration: 2.5
   DelayDestructionTime: 0.5
   HelixBulletChild_RotationSpeed: 10
   homingStrength: 0
   homingDistance: 100
-  RotationSpeed: 0.1
+  RotationSpeed: 0.05
   AmountOfShrapnellBulletsSpawnedOnDeath: 0
 --- !u!120 &120746853705233934
 LineRenderer:
