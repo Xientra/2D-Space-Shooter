@@ -42,7 +42,7 @@ public class WeaponBehaviourScript : MonoBehaviour {
 
     }
 
-
+    //UnityEditor.EditorApplication.isPaused = true;
     public void Fire(Vector3 ProjectileSpawnPoint, GameObject TurretGameObject) {
         switch (WeaponType) {
             case (WeaponTypes.Standart_lvl_1):
@@ -78,13 +78,13 @@ public class WeaponBehaviourScript : MonoBehaviour {
                 break;
 
             case (WeaponTypes.Shotgun_lvl_1):
-                fireShotgun(7, 10f, 0.1f, ProjectileSpawnPoint, TurretGameObject);
+                fireShotgun(7, 10f, 0.4f, ProjectileSpawnPoint, TurretGameObject);
                 break;
             case (WeaponTypes.Shotgun_lvl_2):
-                fireShotgun(11, 12f, 0.2f, ProjectileSpawnPoint, TurretGameObject);
+                fireShotgun(11, 12f, 0.4f, ProjectileSpawnPoint, TurretGameObject);
                 break;
             case (WeaponTypes.Shotgun_lvl_3):
-                fireShotgun(15, 14f, 0.3f, ProjectileSpawnPoint, TurretGameObject);
+                fireShotgun(15, 14f, 0.4f, ProjectileSpawnPoint, TurretGameObject);
                 break;
 
             case (WeaponTypes.Homing_lvl_1):
@@ -158,7 +158,6 @@ public class WeaponBehaviourScript : MonoBehaviour {
                 Debug.LogError("The Weapon Type -" + WeaponType.ToString() + "- has no values assinged!");
                 break;
         }
-
     }
 
     private void fireChainGun(float offsetSpeed, float maxOffset, float _BulletRng, Vector3 _ProjectileSpawnPoint, GameObject _TurretGameObject) {
@@ -178,11 +177,12 @@ public class WeaponBehaviourScript : MonoBehaviour {
 
     private void fireShotgun(int _bulletAmount, float _bulletRng, float _bulletDisplacement,  Vector3 _ProjectileSpawnPoint, GameObject _TurretGameObject) {
         for (int i = 1; i <= _bulletAmount; i++) {
-            Vector3 displacement = (_TurretGameObject.transform.right * Random.Range(-_bulletDisplacement, _bulletDisplacement)) + (_TurretGameObject.transform.up * Random.Range(-_bulletDisplacement * 2, _bulletDisplacement * 2));
+            Vector3 displacement = (_TurretGameObject.transform.up * Random.Range(-_bulletDisplacement, _bulletDisplacement));
             Quaternion spread = Quaternion.Euler(0, 0, Random.Range(_bulletRng, -_bulletRng));
 
             Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.ShotgunBullet)], _ProjectileSpawnPoint + displacement, _TurretGameObject.transform.rotation * spread);
         }
+        //UnityEditor.EditorApplication.isPaused = true;
     }
     /*
     private void fireAnyLaserGun(LaserBulletBehaviourScript.BulletTypes LaserToFire) {

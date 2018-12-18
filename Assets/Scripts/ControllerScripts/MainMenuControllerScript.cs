@@ -26,26 +26,30 @@ public class MainMenuControllerScript : MonoBehaviour {
     public static GameObject secondWeaponGO;
 
     public static float NewWeaponPrice = 200f;
-
+    public static bool doOnce = true;
+    
 
     void Start () {
+        if (doOnce == true) {
+            GameControllerScript.currendCredits += 10000;
 
-        //GameControllerScript.currendCredits += 10000;
+            //Sets all Weapons.isBought to false exept for a few selected ones
+            foreach (GameObject playerWeapon in ObjectHolder._PlayerWeapons) {
+                switch (playerWeapon.GetComponent<WeaponBehaviourScript>().WeaponType) {
+                    case WeaponBehaviourScript.WeaponTypes.Standart_lvl_1:
+                        playerWeapon.GetComponent<WeaponBehaviourScript>().isBought = true;
+                        break;
+                    case WeaponBehaviourScript.WeaponTypes.Shotgun_lvl_1:
+                        playerWeapon.GetComponent<WeaponBehaviourScript>().isBought = true;
+                        break;
 
-        //Sets all Weapons.isBought to false exept for a few selected ones
-        foreach (GameObject playerWeapon in ObjectHolder._PlayerWeapons) {
-            switch (playerWeapon.GetComponent<WeaponBehaviourScript>().WeaponType) {
-                case WeaponBehaviourScript.WeaponTypes.Standart_lvl_1:
-                    playerWeapon.GetComponent<WeaponBehaviourScript>().isBought = true;
-                    break;
-                case WeaponBehaviourScript.WeaponTypes.Shotgun_lvl_1:
-                    playerWeapon.GetComponent<WeaponBehaviourScript>().isBought = true;
-                    break;
-
-                default:
-                    playerWeapon.GetComponent<WeaponBehaviourScript>().isBought = false;
-                    break;
+                    default:
+                        playerWeapon.GetComponent<WeaponBehaviourScript>().isBought = false;
+                        break;
+                }
             }
+
+            doOnce = false;
         }
 
 
@@ -161,8 +165,8 @@ public class MainMenuControllerScript : MonoBehaviour {
     }
 
     public void Quit_Btn() {
-        Debug.Log("Quit is not implemented");
-        UnityEditor.EditorApplication.isPlaying = false;
+        Application.Quit();
+        //UnityEditor.EditorApplication.isPlaying = false;
     }
 
 

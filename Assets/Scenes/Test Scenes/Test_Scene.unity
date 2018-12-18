@@ -448,13 +448,13 @@ Prefab:
         type: 2}
       propertyPath: toAssingSecondWep
       value: 
-      objectReference: {fileID: 1662901710460724, guid: 70129fa14df14134e9746d1597dfb4ca,
+      objectReference: {fileID: 1662901710460724, guid: 1fa7ba4d02fad7446ae67fb911b170a4,
         type: 2}
     - target: {fileID: 114717018711693094, guid: c60d9cba6161c574d92570cb778fadb2,
         type: 2}
       propertyPath: toAssingFirstWep
       value: 
-      objectReference: {fileID: 1662901710460724, guid: 222e038b92f941d4e96dcd71c1a71ef4,
+      objectReference: {fileID: 1662901710460724, guid: b15d467e2a5ebf5408c37fb6df3d192c,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c60d9cba6161c574d92570cb778fadb2, type: 2}
@@ -510,11 +510,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4892024586171042, guid: 9846023f75897544da838f1b2b31c75e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -12.59
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4892024586171042, guid: 9846023f75897544da838f1b2b31c75e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 6.25
+      value: 6.41
       objectReference: {fileID: 0}
     - target: {fileID: 4892024586171042, guid: 9846023f75897544da838f1b2b31c75e, type: 2}
       propertyPath: m_LocalPosition.z

@@ -29,6 +29,7 @@ public class GameControllerScript : MonoBehaviour {
     public static float currendScore = 1000f;
     public static float HightScore = 0f;
 
+
     float scoreIntervall = 1000f; //1 Second?
     float scorePerTick = 3f;
 

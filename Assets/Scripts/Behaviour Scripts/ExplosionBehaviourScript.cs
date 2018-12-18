@@ -24,5 +24,4 @@ public class ExplosionBehaviourScript : LaserBulletBehaviourScript {
 
         return true; //this will mark this method as called from ExplosionBehaviourScript
     }
-
 }
