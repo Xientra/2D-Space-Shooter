@@ -444,18 +444,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114717018711693094, guid: c60d9cba6161c574d92570cb778fadb2,
-        type: 2}
-      propertyPath: toAssingSecondWep
-      value: 
-      objectReference: {fileID: 1662901710460724, guid: 1fa7ba4d02fad7446ae67fb911b170a4,
-        type: 2}
-    - target: {fileID: 114717018711693094, guid: c60d9cba6161c574d92570cb778fadb2,
-        type: 2}
-      propertyPath: toAssingFirstWep
-      value: 
-      objectReference: {fileID: 1662901710460724, guid: b15d467e2a5ebf5408c37fb6df3d192c,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c60d9cba6161c574d92570cb778fadb2, type: 2}
   m_IsPrefabAsset: 0
@@ -539,31 +527,6 @@ Prefab:
     - target: {fileID: 4892024586171042, guid: 9846023f75897544da838f1b2b31c75e, type: 2}
       propertyPath: m_RootOrder
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 95394790762767424, guid: 9846023f75897544da838f1b2b31c75e,
-        type: 2}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550844775510286, guid: 9846023f75897544da838f1b2b31c75e,
-        type: 2}
-      propertyPath: lookForwardWhenMoving
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550844775510286, guid: 9846023f75897544da838f1b2b31c75e,
-        type: 2}
-      propertyPath: destroyAfterAnimation
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550844775510286, guid: 9846023f75897544da838f1b2b31c75e,
-        type: 2}
-      propertyPath: MaxHealth
-      value: 75000000
-      objectReference: {fileID: 0}
-    - target: {fileID: 114550844775510286, guid: 9846023f75897544da838f1b2b31c75e,
-        type: 2}
-      propertyPath: Health
-      value: 75000000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9846023f75897544da838f1b2b31c75e, type: 2}

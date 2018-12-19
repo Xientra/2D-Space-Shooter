@@ -17,9 +17,9 @@ public class PlayerBehaviourScript : MonoBehaviour {
     private Vector3 ProjectileSpawnPoint;
 
     /*----LookVars----*/
-    private bool lookForwardWhenMoving = false;
+    public bool lookForwardWhenMoving = false;
     private Vector3 lastFramePos;
-
+    public GameObject ShipGFX;
     /*Movement Vars*/
     [SerializeField]
     private float acceleration = 1f;
@@ -590,10 +590,13 @@ public class PlayerBehaviourScript : MonoBehaviour {
     void LookForward() {
         if (lookForwardWhenMoving == true) {
             Vector3 lookDirection = transform.position - lastFramePos;
-            Vector3.Normalize(lookDirection);
+            if (lookDirection.magnitude > 0.01f) {
+                Vector3.Normalize(lookDirection);
 
-            transform.up = -lookDirection;
+                //transform.up = lookDirection;
+                ShipGFX.transform.up = lookDirection;
 
+            }
             lastFramePos = transform.position;
         }
     }
