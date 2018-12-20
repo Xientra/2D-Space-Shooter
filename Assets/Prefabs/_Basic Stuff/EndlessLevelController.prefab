@@ -53,7 +53,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectHolderGo: {fileID: 1002031145327696, guid: b7a595a43d419b14fa33e077fb1b413f,
     type: 2}
-  Waves:
-  - {fileID: 1586451340884724, guid: ca398ebed66bf2d48add866c0f6f5048, type: 2}
   activeWave: {fileID: 0}
-  WaveActive: 0
+  isActive: 1
+  isEndless: 0
