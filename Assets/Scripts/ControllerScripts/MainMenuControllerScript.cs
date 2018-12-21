@@ -30,27 +30,7 @@ public class MainMenuControllerScript : MonoBehaviour {
     
 
     void Start () {
-        if (doOnce == true) {
-            GameControllerScript.currendCredits += 10000;
 
-            //Sets all Weapons.isBought to false exept for a few selected ones
-            foreach (GameObject playerWeapon in ObjectHolder._PlayerWeapons) {
-                switch (playerWeapon.GetComponent<WeaponBehaviourScript>().WeaponType) {
-                    case WeaponBehaviourScript.WeaponTypes.Standart_lvl_1:
-                        playerWeapon.GetComponent<WeaponBehaviourScript>().isBought = true;
-                        break;
-                    case WeaponBehaviourScript.WeaponTypes.Shotgun_lvl_1:
-                        playerWeapon.GetComponent<WeaponBehaviourScript>().isBought = true;
-                        break;
-
-                    default:
-                        playerWeapon.GetComponent<WeaponBehaviourScript>().isBought = false;
-                        break;
-                }
-            }
-
-            doOnce = false;
-        }
 
 
         foreach (Transform t in OutfitterMenu.transform) {
@@ -70,6 +50,27 @@ public class MainMenuControllerScript : MonoBehaviour {
     }
     IEnumerator DoStuffAfterOneFrame() {
         yield return 0;
+        if (doOnce == true) {
+            GameControllerScript.currendCredits += 10000;
+
+            //Sets all Weapons.isBought to false exept for a few selected ones
+            foreach (GameObject playerWeapon in ObjectHolder._PlayerWeapons) {
+                switch (playerWeapon.GetComponent<WeaponBehaviourScript>().WeaponType) {
+                    case WeaponBehaviourScript.WeaponTypes.Standart_lvl_1:
+                        playerWeapon.GetComponent<WeaponBehaviourScript>().isBought = true;
+                        break;
+                    case WeaponBehaviourScript.WeaponTypes.Shotgun_lvl_1:
+                        playerWeapon.GetComponent<WeaponBehaviourScript>().isBought = true;
+                        break;
+
+                    default:
+                        playerWeapon.GetComponent<WeaponBehaviourScript>().isBought = false;
+                        break;
+                }
+            }
+            doOnce = false;
+        }
+
         firstWeaponGO = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Standart_lvl_1)];
         secondWeaponGO = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Shotgun_lvl_1)];
         UpdateUI();
@@ -169,6 +170,13 @@ public class MainMenuControllerScript : MonoBehaviour {
         //UnityEditor.EditorApplication.isPlaying = false;
     }
 
+    //¯\_(ツ)_/¯
+    public void UnlockAllWeapons() {
+        foreach (GameObject playerWeapon in ObjectHolder._PlayerWeapons) {
+            playerWeapon.GetComponent<WeaponBehaviourScript>().isBought = true;
+            UpdateUI();
+        }
+    }
 
     /*-----------------------------------------Outfitter Menu-----------------------------------------------*/
     public void Btn_BuyNewWeapon() {
