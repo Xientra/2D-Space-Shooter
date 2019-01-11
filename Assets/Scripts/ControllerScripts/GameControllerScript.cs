@@ -29,6 +29,7 @@ public class GameControllerScript : MonoBehaviour {
     public static float currendScore = 1000f;
     public static float HightScore = 0f;
 
+    public GameObject CursorGUIGo;
 
     float scoreIntervall = 1000f; //1 Second?
     float scorePerTick = 3f;
@@ -74,7 +75,15 @@ public class GameControllerScript : MonoBehaviour {
             if (GameObject.FindGameObjectWithTag("Player") == null) {
                 Debug.Log("Spawned Player");
                 Instantiate(ObjectHolder._PlayerShips[ObjectHolder.GetPlayerShipIndex(PlayerBehaviourScript.Ships.Standart)]);
+
+                if (CursorGUIGo != null) {
+                    Instantiate(CursorGUIGo, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0), Quaternion.identity);
+                    Cursor.visible = false;
+                }
             }
+        }
+        else {
+            Cursor.visible = true;
         }
         if (GameObject.FindGameObjectWithTag("Stars") == null) {
             Debug.Log("Instantiated Stars");

@@ -30,7 +30,7 @@ public class ObjectHolder : MonoBehaviour {
 
     private bool GameJustStarted = true;
 
-    void Start() {
+    void Awake() {
         if (GameJustStarted == true) {
             _Bullets = new GameObject[Bullets.Length];
             _Bullets = Bullets;
@@ -56,7 +56,7 @@ public class ObjectHolder : MonoBehaviour {
             _Effects = new GameObject[Effects.Length];
             _Effects = Effects;
 
-            Debug.Log("Assinged all Static Object Arrays at the start of the Game.");
+            Debug.Log("Assinged all Static Object Arrays in Awake of ObjectHolderGo");
             GameJustStarted = false;
         }
     }

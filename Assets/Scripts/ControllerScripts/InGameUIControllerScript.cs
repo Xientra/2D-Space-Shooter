@@ -78,6 +78,7 @@ public class InGameUIControllerScript : MonoBehaviour {
     public void OpenInGameExitMenu() {
         InGameExitMenu.SetActive(true);
         GameControllerScript.PauseGame(true);
+        Cursor.visible = true;
     }
 
     public void OpenInGameDeathMenu() {
@@ -88,6 +89,7 @@ public class InGameUIControllerScript : MonoBehaviour {
 
         InGameDeathMenu.SetActive(true);
         GameControllerScript.PauseGame(true);
+        Cursor.visible = true;
     }
 
     /*-------------------------------------------InGame Menu-------------------------------------------------------*/
@@ -99,6 +101,7 @@ public class InGameUIControllerScript : MonoBehaviour {
     public void Btn_No() {
         InGameExitMenu.SetActive(false);
         GameControllerScript.PauseGame(false);
+        Cursor.visible = false;
     }
 
     public void Btn_Retry() {
