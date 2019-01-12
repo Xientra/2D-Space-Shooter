@@ -12,8 +12,10 @@ public class WeaponsViewControllerScript : MonoBehaviour {
     public GameObject Content;
     public GameObject PaddingContent;
 
+    /*
     private int row = 1;
     private int collum = 1;
+    */
 
     private float widthOfAElement = 75f; //this should maybe be felxible
 

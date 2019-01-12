@@ -12,7 +12,7 @@ public class InGameUIControllerScript : MonoBehaviour {
 
     private bool UpdateUI = false; //to not update the UI in the first frame
 
-    void Start () {
+    void Start() {
         if (InGameUI == null)
             InGameUI = GameObject.FindGameObjectWithTag("InGameUI");
 
@@ -37,7 +37,7 @@ public class InGameUIControllerScript : MonoBehaviour {
         UpdateUI = true;
     }
 
-    void Update () {
+    void Update() {
         if (Input.GetButtonDown("Cancel")) {
             if (InGameExitMenu.activeSelf == false) {
                 OpenInGameExitMenu();
@@ -76,9 +76,7 @@ public class InGameUIControllerScript : MonoBehaviour {
     }
 
     public void OpenInGameExitMenu() {
-        InGameExitMenu.SetActive(true);
-        GameControllerScript.PauseGame(true);
-        Cursor.visible = true;
+        OpenInGameMenu(InGameExitMenu);
     }
 
     public void OpenInGameDeathMenu() {
@@ -87,21 +85,17 @@ public class InGameUIControllerScript : MonoBehaviour {
             if (t.name == "YourScore_Text") t.GetComponent<Text>().text = "Your Score: " + System.Environment.NewLine + GameControllerScript.currendScore.ToString();
         }
 
-        InGameDeathMenu.SetActive(true);
-        GameControllerScript.PauseGame(true);
-        Cursor.visible = true;
+        OpenInGameMenu(InGameDeathMenu);
     }
 
-    /*-------------------------------------------InGame Menu-------------------------------------------------------*/
+    /*-------------------------------------------InGame Menu Buttons-------------------------------------------------------*/
 
     public void Btn_Yes() {
         SceneManager.LoadScene("Main Menu");
         GameControllerScript.PauseGame(false);
     }
     public void Btn_No() {
-        InGameExitMenu.SetActive(false);
-        GameControllerScript.PauseGame(false);
-        Cursor.visible = false;
+        CloseInGameMenu(InGameExitMenu);
     }
 
     public void Btn_Retry() {
@@ -111,5 +105,16 @@ public class InGameUIControllerScript : MonoBehaviour {
     public void Btn_Exit() {
         SceneManager.LoadScene("Main Menu");
         GameControllerScript.PauseGame(false);
+    }
+
+    private void OpenInGameMenu(GameObject _menuGo) {
+        _menuGo.SetActive(true);
+        GameControllerScript.PauseGame(true);
+        Cursor.visible = true;
+    }
+    private void CloseInGameMenu(GameObject _menuGo) {
+        _menuGo.SetActive(false);
+        GameControllerScript.PauseGame(false);
+        Cursor.visible = false;
     }
 }

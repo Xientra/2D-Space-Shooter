@@ -49,11 +49,7 @@ public class GameControllerScript : MonoBehaviour {
 
         currendScore = 0f;
 
-        StartCoroutine(DoStuffAfterOneFrame());
-        StartCoroutine(InstantiateStuffAfterOneFrame());
-    }
-    IEnumerator DoStuffAfterOneFrame() {
-        yield return 0;
+        //assing player weapons
         if (MainMenuControllerScript.firstWeaponGO != null)
             PlayerFirstWeapon = MainMenuControllerScript.firstWeaponGO;
         else
@@ -64,13 +60,12 @@ public class GameControllerScript : MonoBehaviour {
         else
             PlayerSecondWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Shotgun_lvl_1)];
 
-        if (toAssingFirstWep != null) 
+        if (toAssingFirstWep != null)
             PlayerFirstWeapon = toAssingFirstWep;
         if (toAssingSecondWep != null)
             PlayerSecondWeapon = toAssingSecondWep;
-    }
-    IEnumerator InstantiateStuffAfterOneFrame() {
-        yield return null;
+
+        //Instantiate stuff based on the scene
         if (SceneManager.GetActiveScene().name != "Main Menu") {
             if (GameObject.FindGameObjectWithTag("Player") == null) {
                 Debug.Log("Spawned Player");

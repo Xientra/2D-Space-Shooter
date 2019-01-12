@@ -291,3 +291,253 @@ public class WeaponBehaviourScript : MonoBehaviour {
                     break;
             }
             */
+
+/*
+ * Vars for firering a laser
+//laser firering vars
+private float loadTime = 0.2f;
+private float loadTimeStamp;
+private bool isReady = false;
+private bool pressedButtonDown = false;
+*/
+/*
+switch (currentWeapon) {
+case (Weapons.Standart_lvl_1):
+    if (Input.GetButton("Fire1")) {
+        cooldown = 0.3f * fireRateMultiplyer;
+        if (cooldownTimeStamp <= Time.time) {
+            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint, TurretRotationAnchorGo.transform.rotation);
+            cooldownTimeStamp = Time.time + cooldown;
+        }
+    }
+    break;
+case (Weapons.Standart_lvl_2):
+    if (Input.GetButton("Fire1")) {
+        cooldown = 0.3f * fireRateMultiplyer;
+        if (cooldownTimeStamp <= Time.time) {
+            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretRotationAnchorGo.transform.right * 0.1f), TurretRotationAnchorGo.transform.rotation);
+            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretRotationAnchorGo.transform.right * -0.1f), TurretRotationAnchorGo.transform.rotation);
+            cooldownTimeStamp = Time.time + cooldown;
+        }
+    }
+    break;
+case (Weapons.Standart_lvl_3):
+    if (Input.GetButton("Fire1")) {
+        cooldown = 0.4f * fireRateMultiplyer;
+        if (cooldownTimeStamp <= Time.time) {
+            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint, TurretRotationAnchorGo.transform.rotation);
+            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretRotationAnchorGo.transform.right * 0.2f), TurretRotationAnchorGo.transform.rotation);
+            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretRotationAnchorGo.transform.right * -0.2f), TurretRotationAnchorGo.transform.rotation);
+            cooldownTimeStamp = Time.time + cooldown;
+        }
+    }
+    break;
+case (Weapons.Helix_lvl_1):
+    if (Input.GetButton("Fire1")) {
+        cooldown = 0.5f * fireRateMultiplyer;
+        if (cooldownTimeStamp <= Time.time) {
+            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.HelixBullet_lvl_1)], ProjectileSpawnPoint, TurretRotationAnchorGo.transform.rotation);
+            cooldownTimeStamp = Time.time + cooldown;
+        }
+    }
+    break;
+case (Weapons.Helix_lvl_2):
+    if (Input.GetButton("Fire1")) {
+        cooldown = 0.7f * fireRateMultiplyer;
+        if (cooldownTimeStamp <= Time.time) {
+            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.HelixBullet_lvl_2)], ProjectileSpawnPoint, TurretRotationAnchorGo.transform.rotation);
+            cooldownTimeStamp = Time.time + cooldown;
+        }
+    }
+    break;
+case (Weapons.Helix_lvl_3):
+    if (Input.GetButton("Fire1")) {
+        cooldown = 0.9f * fireRateMultiplyer;
+        if (cooldownTimeStamp <= Time.time) {
+            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.HelixBullet_lvl_3)], ProjectileSpawnPoint, TurretRotationAnchorGo.transform.rotation);
+            cooldownTimeStamp = Time.time + cooldown;
+        }
+    }
+    break;
+case (Weapons.Spread):
+    if (Input.GetButton("Fire1")) {
+        cooldown = 0.4f * fireRateMultiplyer;
+        if (cooldownTimeStamp <= Time.time) {
+            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint, TurretRotationAnchorGo.transform.rotation);
+            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint, TurretRotationAnchorGo.transform.rotation * Quaternion.Euler(0, 0, -10));
+            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint, TurretRotationAnchorGo.transform.rotation * Quaternion.Euler(0, 0, 10));
+            cooldownTimeStamp = Time.time + cooldown;
+        }
+    }
+    break;
+case (Weapons.Homing_lvl_1):
+    if (Input.GetButton("Fire1")) {
+        cooldown = 0.3f * fireRateMultiplyer;
+        if (cooldownTimeStamp <= Time.time) {
+            float BulletRng = 1f;
+            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.HomingBullet_lvl_1)], ProjectileSpawnPoint, TurretRotationAnchorGo.transform.rotation * Quaternion.Euler(0, 0, Random.Range(BulletRng, -BulletRng)));
+            cooldownTimeStamp = Time.time + cooldown;
+        }
+    }
+    break;
+case (Weapons.Homing_lvl_2):
+    if (Input.GetButton("Fire1")) {
+        cooldown = 0.2f * fireRateMultiplyer;
+        if (cooldownTimeStamp <= Time.time) {
+            float BulletRng = 6f;
+            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.HomingBullet_lvl_2)], ProjectileSpawnPoint, TurretRotationAnchorGo.transform.rotation * Quaternion.Euler(0, 0, Random.Range(BulletRng, -BulletRng)));
+            cooldownTimeStamp = Time.time + cooldown;
+        }
+    }
+    break;
+case (Weapons.Homing_lvl_3):
+    if (Input.GetButton("Fire1")) {
+        cooldown = 0.1f * fireRateMultiplyer;
+        if (cooldownTimeStamp <= Time.time) {
+            float BulletRng = 12f;
+            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.HomingBullet_lvl_3)], ProjectileSpawnPoint, TurretRotationAnchorGo.transform.rotation * Quaternion.Euler(0, 0, Random.Range(BulletRng, -BulletRng)));
+            cooldownTimeStamp = Time.time + cooldown;
+        }
+    }
+    break;
+case (Weapons.LaserSword_lvl_1):
+    if (Input.GetButton("Fire1")) {
+        cooldown = 0.5f * fireRateMultiplyer;
+        if (cooldownTimeStamp <= Time.time) {
+            float fieldSize = 1.25f;
+            Vector3 RndFieldPos = transform.position + (TurretRotationAnchorGo.transform.right * Random.Range(-fieldSize, fieldSize)) + (TurretRotationAnchorGo.transform.up * Random.Range(-fieldSize, -fieldSize / 2));//new Vector3(Random.Range(-fieldSize, fieldSize), ;
+            Quaternion LookToMouse = Quaternion.LookRotation(Vector3.forward, (new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0) - RndFieldPos));
+            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.LaserSword_lvl_1)], RndFieldPos, LookToMouse);
+            cooldownTimeStamp = Time.time + cooldown;
+        }
+    }
+    break;
+case (Weapons.WaveEmitter_lvl_1):
+    if (Input.GetButton("Fire1")) {
+        cooldown = 0.3f * fireRateMultiplyer;
+        if (cooldownTimeStamp <= Time.time) {
+            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Wave)], ProjectileSpawnPoint, TurretRotationAnchorGo.transform.rotation);
+            cooldownTimeStamp = Time.time + cooldown;
+        }
+    }
+    break;
+case (Weapons.RocketLauncher_lvl_1):
+    if (Input.GetButton("Fire1")) {
+        cooldown = 0.8f * fireRateMultiplyer;
+        if (cooldownTimeStamp <= Time.time) {
+            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Rocket)], ProjectileSpawnPoint, TurretRotationAnchorGo.transform.rotation);
+            cooldownTimeStamp = Time.time + cooldown;
+        }
+    }
+    break;
+case (Weapons.GrenadeLauncher_lvl_1):
+    if (Input.GetButton("Fire1")) {
+        cooldown = 0.8f * fireRateMultiplyer;
+        if (cooldownTimeStamp <= Time.time) {
+            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Grenade)], ProjectileSpawnPoint, TurretRotationAnchorGo.transform.rotation);
+            cooldownTimeStamp = Time.time + cooldown;
+        }
+    }
+    break;
+case (Weapons.ShrapnelLauncher_lvl_1):
+    if (Input.GetButton("Fire1")) {
+        cooldown = 0.8f * fireRateMultiplyer;
+        if (cooldownTimeStamp <= Time.time) {
+            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Shrapnel_lvl_1)], ProjectileSpawnPoint, TurretRotationAnchorGo.transform.rotation);
+            cooldownTimeStamp = Time.time + cooldown;
+        }
+    }
+    break;
+case (Weapons.ShrapnelLauncher_lvl_2):
+    if (Input.GetButton("Fire1")) {
+        cooldown = 1.2f * fireRateMultiplyer;
+        if (cooldownTimeStamp <= Time.time) {
+            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Shrapnel_lvl_2)], ProjectileSpawnPoint, TurretRotationAnchorGo.transform.rotation);
+            cooldownTimeStamp = Time.time + cooldown;
+        }
+    }
+    break;
+case (Weapons.ShrapnelLauncher_lvl_3):
+    if (Input.GetButton("Fire1")) {
+        cooldown = 1.4f * fireRateMultiplyer;
+        if (cooldownTimeStamp <= Time.time) {
+            Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Shrapnel_lvl_3)], ProjectileSpawnPoint, TurretRotationAnchorGo.transform.rotation);
+            cooldownTimeStamp = Time.time + cooldown;
+        }
+    }
+    break;
+case (Weapons.ChainGun_lvl_1):
+    if (Input.GetButton("Fire1")) {
+        cooldown = 0.01f * fireRateMultiplyer;
+        if (cooldownTimeStamp <= Time.time) {
+            fireChainGun(0.04f, 0.1f, 6f);
+            cooldownTimeStamp = Time.time + cooldown;
+        }
+    }
+    break;
+case (Weapons.ChainGun_lvl_2):
+    if (Input.GetButton("Fire1")) {
+        cooldown = 0.01f * fireRateMultiplyer * fireRateMultiplyer;
+        if (cooldownTimeStamp <= Time.time) {
+            fireChainGun(0.04f, 0.1f, 3f);
+            cooldownTimeStamp = Time.time + cooldown;
+        }
+    }
+    break;
+case (Weapons.ChainGun_lvl_3):
+    if (Input.GetButton("Fire1")) {
+        cooldown = 0.005f * fireRateMultiplyer;
+        if (cooldownTimeStamp <= Time.time) {
+            fireChainGun(0.04f, 0.1f, 1f);
+            cooldownTimeStamp = Time.time + cooldown;
+        }
+    }
+    break;
+case (Weapons.LaserGun):
+    cooldown = 2f * fireRateMultiplyer;
+    loadTime = 1f;
+    if (cooldownTimeStamp <= Time.time) {
+        if (Input.GetButtonDown("Fire1")) {
+            pressedButtonDown = true;
+            loadTimeStamp = Time.time + loadTime;
+            isReady = true;
+        }
+        if (loadTimeStamp >= Time.time) {
+            if (isReady == true) {
+                Debug.Log("Loading");
+            }
+        }
+        if (loadTimeStamp <= Time.time) {
+            if (isReady == true) {
+                Instantiate(ObjectHolder._Effects[ObjectHolder.GetEffectIndex(EffectBehaviourScript.EffectTypes.LaserLoaded)], transform.position, transform.rotation, transform);
+                isReady = false;
+            }
+        }
+        if (pressedButtonDown == true) {
+            if (Input.GetButtonUp("Fire1")) {
+                if (loadTimeStamp <= Time.time) {
+                    Instantiate(Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.SimpleLaser)], transform.position, transform.rotation, this.transform);
+                    loadTimeStamp = Time.time + loadTime;
+                    cooldownTimeStamp = Time.time + cooldown; //Apply cooldown when firered
+                }
+                else {
+                    loadTimeStamp = Time.time + loadTime;
+                    //no cooldown wehen reset
+                    Debug.Log("reset");
+                }
+                isReady = false;
+                pressedButtonDown = false;
+            }
+        }
+    }
+    break;
+case (Weapons.SplitLaserGun):
+    cooldown = 2f * fireRateMultiplyer;
+    loadTime = 1f;
+    fireAnyLaserGun(LaserBulletBehaviourScript.BulletTypes.SplitLaser);
+    break;
+default:
+    Debug.LogError("The Weapon Type -" + currentWeapon.ToString() + "- has no values assinged!");
+    break;
+}
+*/

@@ -19,8 +19,8 @@ public class PlayerControllerScript : MonoBehaviour {
     public Weapons currentWeapon = Weapons.Standart_lvl_1;
 
     /*Movement Vars*/
-    [SerializeField]
-    private float speedlimit = 10f;
+    //[SerializeField]
+    //private float speedlimit = 10f;
     [SerializeField]
     private float stopspeed = 0.9f;    
     [SerializeField]
@@ -30,8 +30,8 @@ public class PlayerControllerScript : MonoBehaviour {
     public float currendHealth = 100f;
 
     //betterMovement vars
-    [SerializeField]
-    private float maxSpeed = 10f;
+    //[SerializeField]
+    //private float maxSpeed = 10f;
 
     //Ship Stats
     public enum Ships { Standart, Heavy, Fast }

@@ -444,6 +444,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114717018711693094, guid: c60d9cba6161c574d92570cb778fadb2,
+        type: 2}
+      propertyPath: toAssingFirstWep
+      value: 
+      objectReference: {fileID: 1662901710460724, guid: fd9441cf1e49ddc4fbca136453cae51b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c60d9cba6161c574d92570cb778fadb2, type: 2}
   m_IsPrefabAsset: 0
