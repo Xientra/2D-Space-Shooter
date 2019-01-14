@@ -31,8 +31,6 @@ public class MainMenuControllerScript : MonoBehaviour {
 
     void Start () {
 
-
-
         foreach (Transform t in OutfitterMenu.transform) {
             if (t.name == "First Weapon Dropdown") {
                 FirstWeaponDropdownGO = t.gameObject;

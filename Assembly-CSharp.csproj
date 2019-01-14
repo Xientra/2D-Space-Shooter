@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Behaviour Scripts\CursorGUIBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Behaviour Scripts\EnemyBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Behaviour Scripts\EnemyParentBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Behaviour Scripts\ExplosionBehaviourScript.cs" />
@@ -69,18 +70,19 @@
     <Compile Include="Assets\Scripts\Behaviour Scripts\PickUpBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Behaviour Scripts\PlayerBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Behaviour Scripts\PlayerControllerScript.cs" />
+    <Compile Include="Assets\Scripts\Behaviour Scripts\PowerUpUIElementBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Behaviour Scripts\TrailRendererGoBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Behaviour Scripts\WaveBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Behaviour Scripts\WeaponBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\ControllerScripts\GameControllerScript.cs" />
     <Compile Include="Assets\Scripts\ControllerScripts\InGameUIControllerScript.cs" />
     <Compile Include="Assets\Scripts\ControllerScripts\MainMenuControllerScript.cs" />
+    <Compile Include="Assets\Scripts\ControllerScripts\PowerUpViewControllerScript.cs" />
     <Compile Include="Assets\Scripts\ControllerScripts\WaveControllerScript.cs" />
     <Compile Include="Assets\Scripts\ControllerScripts\WeaponsViewControllerScript.cs" />
+    <Compile Include="Assets\Scripts\Data Scripts\ObjectHolder.cs" />
     <Compile Include="Assets\Scripts\Data Scripts\WeaponsViewElementDataScript.cs" />
     <Compile Include="Assets\Scripts\EffectScripts\EffectBehaviourScript.cs" />
-    <Compile Include="Assets\Scripts\Z_OtherScripts\CursorGUIBehaviourScript.cs" />
-    <Compile Include="Assets\Scripts\Z_OtherScripts\ObjectHolder.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/_Documents/_Computerstuff/Projects - Unity/2D Space Shooter/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
