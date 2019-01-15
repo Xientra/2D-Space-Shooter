@@ -7,45 +7,43 @@ public class PowerUpViewControllerScript : MonoBehaviour {
 
     public GameObject PowerUpExampleElement;
 
-    public List<GameObject> PowerUpElements = new List<GameObject>();
+    private GameObject[] PowerUpElements = new GameObject[9];
 
-    
+
 
     void Start () {
+        
+        
         CreatePowerUpUIObject(1f);
         CreatePowerUpUIObject(2f);
         CreatePowerUpUIObject(3f);
         CreatePowerUpUIObject(4f);
         CreatePowerUpUIObject(5f);
         CreatePowerUpUIObject(6f);
-        CreatePowerUpUIObject(7f);
-        StartCoroutine(Wait(2.2f));
+        StartCoroutine(Wait(3.5f));
+        
     }
 	
 	void Update () {
 		
 	}
 
-    public void CreatePowerUpUIObject(float _duration) { //PickUpBehaviourScript.PickUpTypes _pickUpType, 
+    public void CreatePowerUpUIObject(float _duration) { //PickUpBehaviourScript.PickUpTypes _pickUpType, float _duration) {
         if (PowerUpExampleElement != null) {
             GameObject temp = Instantiate(PowerUpExampleElement, this.transform);
-
-            /*
-            bool b = false;
-            for (int i = 0; i < PowerUpElements.Count; i++) {
-                if (b == false && PowerUpElements.)
+            int index = FillInNewElement(temp);
+            if (index == -1) {
+                Destroy(temp);
+                Debug.LogError("there couldn't be found a empty space in the PowerUpElements Array");
             }
-            if (b == false) {
-                PowerUpElements.Add(temp);
-            }
-            */
-            //temp.GetComponent<Image>().sprite = ;
+            else {
+                temp.SetActive(true);
 
-            temp.SetActive(true);
+                //temp.GetComponent<RectTransform>().anchoredPosition = new Vector2((PowerUpExampleElement.GetComponent<RectTransform>().sizeDelta.x + 10) * index, 0); //goes right
+                temp.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, (PowerUpExampleElement.GetComponent<RectTransform>().sizeDelta.y + 10) * -index); //goes down
 
-            temp.GetComponent<PowerUpUIElementBehaviourScript>().StartCoroutine(temp.GetComponent<PowerUpUIElementBehaviourScript>().DestroyAfterTime(_duration));
-
-            temp.GetComponent<RectTransform>().anchoredPosition = new Vector2((PowerUpExampleElement.GetComponent<RectTransform>().sizeDelta.x + 10) * PowerUpElements.IndexOf(temp), 0);
+                temp.GetComponent<PowerUpUIElementBehaviourScript>().StartCoroutine(temp.GetComponent<PowerUpUIElementBehaviourScript>().DestroyAfterTime(_duration));
+             }
         }
         else {
             Debug.LogError("The PowerUp View Script has no Example Element Assing to it");
@@ -55,5 +53,17 @@ public class PowerUpViewControllerScript : MonoBehaviour {
     public IEnumerator Wait(float _time) {
         yield return new WaitForSecondsRealtime(_time);
         CreatePowerUpUIObject(4f);
+    }
+
+    private int FillInNewElement(GameObject _element) {
+
+        for (int i = 0; i < PowerUpElements.Length; i++) {
+            if (PowerUpElements[i] == null) {
+                PowerUpElements[i] = _element;
+                return i;
+            }
+        }
+        //else
+        return -1;
     }
 }
