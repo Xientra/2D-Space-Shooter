@@ -118,8 +118,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c8ac7ba737d6d84093531aba10d591f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CreditValue: 1
   thisPickUpType: 5
+  VisualEffect: {fileID: 1799394072973398, guid: b46db8bbca365bc4e8da4ed32b68a184,
+    type: 2}
+  CreditValue: 1
+  duration: 7
   speed: {x: 0, y: 0, z: 0}
   startspeed: 4
   speedToPlayer: 0.5

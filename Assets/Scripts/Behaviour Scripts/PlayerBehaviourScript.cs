@@ -54,13 +54,13 @@ public class PlayerBehaviourScript : MonoBehaviour {
     /*----------Stuff for PickUps----------*/
     private static float fireRateMultiplyer = 1;
     public static bool regenerates = false;
-    private static float regenerationSpeed = 0.1f; //Not framerate indipendent
+    private static float regenerationSpeed = 5f;
+    private GameObject regenerationVisualEffectGo;
 
 
 
     /*---------------------------------------------End-Of-Variables---------------------------------------------------------------------------*/
     void Start() {
-
         lastFramePos = transform.position;
 
         CheckForWeapons();
@@ -94,13 +94,19 @@ public class PlayerBehaviourScript : MonoBehaviour {
                 SwitchWeapon();
             }
 
+            
             if (regenerates == true) {
                 if (currendHealth < MaxHealth) {
-                    currendHealth += regenerationSpeed;
+                    currendHealth += regenerationSpeed * Time.deltaTime;
                 }
-                else regenerates = false;
+                else {
+                    regenerates = false;
+                    if (regenerationVisualEffectGo != null)
+                        Destroy(regenerationVisualEffectGo);
+                }
             }
         }
+
         CheckPlayerDeath();
     }
 
@@ -121,18 +127,22 @@ public class PlayerBehaviourScript : MonoBehaviour {
     
     void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("PickUp")) {
-            if (collision.GetComponent<PickUpBehaviourScript>().thisPickUpType == PickUpBehaviourScript.PickUpTypes.Credit) {
+
+            PickUpBehaviourScript _pickUp = collision.GetComponent<PickUpBehaviourScript>();
+
+            if (_pickUp.thisPickUpType == PickUpBehaviourScript.PickUpTypes.Credit) {
                 GameControllerScript.currendCredits += collision.GetComponent<PickUpBehaviourScript>().CreditValue;
-                Destroy(collision.gameObject);
+                //Destroy(collision.gameObject);
             }
-            else if(collision.GetComponent<PickUpBehaviourScript>().thisPickUpType == PickUpBehaviourScript.PickUpTypes.HealthUp) {
+            else if(_pickUp.thisPickUpType == PickUpBehaviourScript.PickUpTypes.HealthUp) {
                 currendHealth += MaxHealth * 0.2f;
-            }
-            else if (collision.GetComponent<PickUpBehaviourScript>().thisPickUpType == PickUpBehaviourScript.PickUpTypes.Regeneration) {
-                regenerates = true;
+                GameObject Go = Instantiate(_pickUp.VisualEffect, ShipGFX.transform);
+                Destroy(Go, 3f);
             }
             else
-                StartCoroutine(ActivatePowerUpforTime((int)collision.gameObject.GetComponent<PickUpBehaviourScript>().thisPickUpType, 5f));
+                StartCoroutine(ActivatePowerUpforTime((int)_pickUp.thisPickUpType, _pickUp.duration, _pickUp.VisualEffect));
+
+
             Destroy(collision.gameObject);
         }
     }
@@ -250,8 +260,10 @@ public class PlayerBehaviourScript : MonoBehaviour {
         }
     }
 
-    IEnumerator ActivatePowerUpforTime(int PowerUpNr, float TimeToWait) {
-        Debug.Log((PickUpBehaviourScript.PickUpTypes)PowerUpNr + " started."); //Update some UI or stuff pls
+    IEnumerator ActivatePowerUpforTime(int PowerUpNr, float TimeToWait, GameObject _VisualEffect) {
+        //Debug.Log((PickUpBehaviourScript.PickUpTypes)PowerUpNr + " started."); //Update some UI or stuff pls
+
+        bool createEffect = true;
 
         switch ((PickUpBehaviourScript.PickUpTypes)PowerUpNr) {
             case (PickUpBehaviourScript.PickUpTypes.FireRateUp):
@@ -266,12 +278,29 @@ public class PlayerBehaviourScript : MonoBehaviour {
             case (PickUpBehaviourScript.PickUpTypes.SloMo):
                 Time.timeScale = 0.8f;
                 break;
+            case (PickUpBehaviourScript.PickUpTypes.Regeneration):
+                regenerates = true;
+                regenerationVisualEffectGo = Instantiate(_VisualEffect, ShipGFX.transform);
+
+                createEffect = false;
+                break;
             default:
                 Debug.LogError("The PickUp -" + (PickUpBehaviourScript.PickUpTypes)PowerUpNr + "- has no effect assinged!");
+                createEffect = false;
                 break;
+
         }
 
+        GameObject tempGo = null;
+        if (createEffect == true && _VisualEffect != null) {
+            tempGo = Instantiate(_VisualEffect, ShipGFX.transform);
+        }
+
+        
+
         yield return new WaitForSeconds(TimeToWait);
+
+        createEffect = true;
 
         switch ((PickUpBehaviourScript.PickUpTypes)PowerUpNr) {
             case (PickUpBehaviourScript.PickUpTypes.FireRateUp):
@@ -286,12 +315,24 @@ public class PlayerBehaviourScript : MonoBehaviour {
             case (PickUpBehaviourScript.PickUpTypes.SloMo):
                 Time.timeScale = 1f;
                 break;
+            case (PickUpBehaviourScript.PickUpTypes.Regeneration):
+                regenerates = false;
+                if (regenerationVisualEffectGo != null)
+                    Destroy(regenerationVisualEffectGo);
+
+                createEffect = false;
+                break;
             default:
                 Debug.LogError("The PickUp -" + (PickUpBehaviourScript.PickUpTypes)PowerUpNr + "- has no effect assinged!");
+                createEffect = false;
                 break;
         }
 
-        Debug.Log((PickUpBehaviourScript.PickUpTypes)PowerUpNr + " stoped"); //Update some UI or stuff pls
+        if (createEffect == true && _VisualEffect != null) {
+            Destroy(tempGo);
+        }
+
+        //Debug.Log((PickUpBehaviourScript.PickUpTypes)PowerUpNr + " stoped"); //Update some UI or stuff pls
     }
 
     void adjustScale(float xscale, float yscale) {

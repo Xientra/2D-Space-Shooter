@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PickUpBehaviourScript : MonoBehaviour {
 
-    public float CreditValue = 1;
 
     /*--Use this if you want to get specific values from other Scripts--*/
     //public int IndexOfCreditValue = 1;
@@ -12,6 +11,16 @@ public class PickUpBehaviourScript : MonoBehaviour {
 
     public enum PickUpTypes { Credit, HealthUp, Regeneration, FireRateUp, DamageUp, Invincibility, SloMo }
     public PickUpTypes thisPickUpType;
+
+    public GameObject VisualEffect;
+
+    [Header("Stats:")]
+
+    public float CreditValue = 1;
+    public float duration = 5f;
+
+
+    [Header("Movement Stats:")]
 
     [SerializeField]
     private Vector3 speed = new Vector3();
