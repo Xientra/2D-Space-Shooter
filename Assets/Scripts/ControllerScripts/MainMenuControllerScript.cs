@@ -8,9 +8,9 @@ public class MainMenuControllerScript : MonoBehaviour {
 
     public GameObject StartMenu;
     //public GameObject StoryMenu;
-    //public GameObject EndlessLevelMenu;
+    public GameObject LevelSelect;
     public GameObject OutfitterMenu;
-    public GameObject WeaponInfoSrceen;
+    public GameObject WeaponInfoScreen;
     //public GameObject OptionsMenu;
 
     //Outfitter Elements
@@ -75,7 +75,11 @@ public class MainMenuControllerScript : MonoBehaviour {
     }
 
     void Update () {
-		
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (WeaponInfoScreen.activeSelf == true) {
+                Btn_WeaponSelectScreenBack();
+            }
+        }
 	}
 
     private void UpdateUI() {
@@ -140,41 +144,74 @@ public class MainMenuControllerScript : MonoBehaviour {
     }
 
     /*-------------------------------------------Main Menu-------------------------------------------------------*/
-    public void Story_Btn() {
-        Debug.Log("Mayby later");
+    public void Btn_Story() {
+        Debug.Log("probably never...");
     }
 
-    public void Endless_Btn() {
+    public void Btn_LevelSelect() {
+        StartMenu.SetActive(false);
+        //StoryMenu.SetActive(false);
+        LevelSelect.SetActive(true);
+        OutfitterMenu.SetActive(false);
+        WeaponInfoScreen.SetActive(false);
+        //OptionsMenu.SetActive(false);
+    }
+
+    public void Btn_Endless() {
         SceneManager.LoadScene("Endless Level");
     }
 
-    public void Outfitter_Btn() {
+    public void Btn_Outfitter() {
         StartMenu.SetActive(false);
         //StoryMenu.SetActive(false);
-        //EndlessLevelMenu.SetActive(false);
+        LevelSelect.SetActive(false);
         OutfitterMenu.SetActive(true);
-        WeaponInfoSrceen.SetActive(false);
+        WeaponInfoScreen.SetActive(false);
         //OptionsMenu.SetActive(false);
 
         UpdateUI();
     }
 
-    public void Options_Btn() {
+    public void Btn_Options() {
         Debug.Log("lol no");
     }
 
-    public void Quit_Btn() {
+    public void Btn_Quit() {
         Application.Quit();
         //UnityEditor.EditorApplication.isPlaying = false;
     }
 
+    public void Btn_BackToMainMenu() {
+        StartMenu.SetActive(true);
+        //StoryMenu.SetActive(false);
+        LevelSelect.SetActive(false);
+        OutfitterMenu.SetActive(false);
+        //OptionsMenu.SetActive(false);
+
+        UpdateUI();
+    }
+
     //¯\_(ツ)_/¯
-    public void UnlockAllWeapons() {
+    public void Btn_UnlockAllWeapons() {
         foreach (GameObject playerWeapon in ObjectHolder._PlayerWeapons) {
             playerWeapon.GetComponent<WeaponBehaviourScript>().isBought = true;
-            UpdateUI();
         }
+        UpdateUI();
     }
+
+
+    /*-----------------------------------------Level Select-----------------------------------------------*/
+
+    public void Btn_Level1() {
+        SceneManager.LoadScene("Level 1");
+    }
+    public void Btn_Level2() {
+        SceneManager.LoadScene("Level 2");
+    }
+    public void Btn_Level3() {
+        SceneManager.LoadScene("Level 3");
+    }
+
 
     /*-----------------------------------------Outfitter Menu-----------------------------------------------*/
     public void Btn_BuyNewWeapon() {
@@ -237,16 +274,7 @@ public class MainMenuControllerScript : MonoBehaviour {
         Debug.Log("second weapon = "+secondWeaponGO.name);
     }
 
-    public void Btn_Back() {
-        StartMenu.SetActive(true);
-        //StoryMenu.SetActive(false);
-        //EndlessLevelMenu.SetActive(false);
-        OutfitterMenu.SetActive(false);
-        //OptionsMenu.SetActive(false);
-
-        UpdateUI();
-        
-    }
+    
 
     /*-----------------------------------------Weapon Info Screen-----------------------------------------------*/
     //Is called from WeaponsViewElementDataScript
@@ -254,16 +282,16 @@ public class MainMenuControllerScript : MonoBehaviour {
         if (_weaponObject.GetComponent<WeaponBehaviourScript>() != null) {
             StartMenu.SetActive(false);
             //StoryMenu.SetActive(false);
-            //EndlessLevelMenu.SetActive(false);
+            LevelSelect.SetActive(false);
             OutfitterMenu.SetActive(true);
-            WeaponInfoSrceen.SetActive(true);
+            WeaponInfoScreen.SetActive(true);
             //OptionsMenu.SetActive(false);
 
             UpdateUI();
 
             WeaponInfoScreenWeaponGo = _weaponObject;
 
-            foreach (Transform t in WeaponInfoSrceen.transform) {
+            foreach (Transform t in WeaponInfoScreen.transform) {
                 if (t.name == "Weapon Name Text") t.GetComponent<Text>().text = WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().weaponName;
                 if (t.name == "Weapon Level Text") t.GetComponent<Text>().text = "Level: " + WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().WeaponLevel.ToString().Remove(0, 1);
                 if (t.name == "Weapon Price Text") t.GetComponent<Text>().text = "Price: " + WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().price.ToString();
@@ -299,11 +327,11 @@ public class MainMenuControllerScript : MonoBehaviour {
                         }
                     }
                     if (ActivateUpgrade == false) {
-                        foreach (Transform upgradeBtn in WeaponInfoSrceen.transform)  if (upgradeBtn.name == "Btn_UpgradeWeapon") upgradeBtn.gameObject.SetActive(false);
+                        foreach (Transform upgradeBtn in WeaponInfoScreen.transform)  if (upgradeBtn.name == "Btn_UpgradeWeapon") upgradeBtn.gameObject.SetActive(false);
                         t.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, t.GetComponent<RectTransform>().anchoredPosition.y);
                     }
                     if (ActivateUpgrade == true) {
-                        foreach (Transform upgradeBtn in WeaponInfoSrceen.transform) if (upgradeBtn.name == "Btn_UpgradeWeapon") upgradeBtn.gameObject.SetActive(true);
+                        foreach (Transform upgradeBtn in WeaponInfoScreen.transform) if (upgradeBtn.name == "Btn_UpgradeWeapon") upgradeBtn.gameObject.SetActive(true);
                         t.GetComponent<RectTransform>().anchoredPosition = new Vector2(BackButtonStandartPos, t.GetComponent<RectTransform>().anchoredPosition.y);
                     }
                 }
@@ -315,11 +343,11 @@ public class MainMenuControllerScript : MonoBehaviour {
         }
     }
 
-    public void PreviousWeapon_Btn() {
+    public void Btn_PreviousWeapon() {
         OpenWeaponInfoScreen(WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().PreviousWeapon);
     }
 
-    public void NextWeapon_Btn() {
+    public void Btn_NextWeapon() {
         OpenWeaponInfoScreen(WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().NextWeapon);
     }
 
@@ -338,7 +366,7 @@ public class MainMenuControllerScript : MonoBehaviour {
     }
 
     public void Btn_WeaponSelectScreenBack() {
-        WeaponInfoSrceen.SetActive(false);
+        WeaponInfoScreen.SetActive(false);
         WeaponInfoScreenWeaponGo = null;
         UpdateUI();
     }

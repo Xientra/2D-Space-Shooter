@@ -1,21 +1,11 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &100100000
-Prefab:
-  m_ObjectHideFlags: 1
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications: []
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1392182663580346}
-  m_IsPrefabAsset: 1
 --- !u!1 &1392182663580346
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4201506973981738}
@@ -29,9 +19,10 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &4201506973981738
 Transform:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392182663580346}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -42,9 +33,10 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114693680768227792
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392182663580346}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -54,12 +46,12 @@ MonoBehaviour:
   cooldown: 0.3
   WeaponType: 0
   TurretGameObject: {fileID: 1229543851391768, guid: 272784739c105c240b2464c4732eb571,
-    type: 2}
+    type: 3}
   isBought: 0
   WeaponLevel: 0
   price: 100
   weaponName: Standart Weapon1
-  description: A good standart weapon, highly precise and fast.
+  description: A good standart weapon, precise and fast firing.
   WeaponImage: {fileID: 21300000, guid: f1ebc8a90c8e9404081b9a8f2b7c630f, type: 3}
   PreviousWeapon: {fileID: 0}
-  NextWeapon: {fileID: 1546623388567470, guid: fec804e8af35f334ba6c4f896e73805a, type: 2}
+  NextWeapon: {fileID: 1546623388567470, guid: fec804e8af35f334ba6c4f896e73805a, type: 3}

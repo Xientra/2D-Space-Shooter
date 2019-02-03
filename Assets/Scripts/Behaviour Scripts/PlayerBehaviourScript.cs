@@ -210,7 +210,7 @@ public class PlayerBehaviourScript : MonoBehaviour {
         if (currendHealth > MaxHealth) currendHealth = MaxHealth;
 
         if (currendHealth <= 0) {
-            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameControllerScript>().StartGameOver(2.3f);
+            GameControllerScript.instance.StartGameOver(2.3f);
 
             Instantiate(CreateOnDeath, transform.position, transform.rotation);
 

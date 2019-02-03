@@ -7,6 +7,9 @@ using System.Timers;
 
 public class GameControllerScript : MonoBehaviour {
 
+    public static GameControllerScript instance;
+
+
     static Camera mainCamera;
     public Camera assingedCamera;
     private Vector3 originalPos;
@@ -35,6 +38,17 @@ public class GameControllerScript : MonoBehaviour {
     float scorePerTick = 3f;
 
     Timer scoreTimer = new Timer();
+
+
+
+    private void Awake() {
+        if (instance != null) {
+            Debug.LogError("There is more than one GameController in the scene");
+        }
+        else {
+            instance = this;
+        }
+    }
 
     void Start() {
         //Time.timeScale = 0.5f;

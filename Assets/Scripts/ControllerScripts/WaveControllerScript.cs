@@ -14,8 +14,9 @@ public class WaveControllerScript : MonoBehaviour {
 
     [NonSerialized]
     public bool WaveActive = true;
-    private int lastWaveIndex;
-
+    private int lastWaveIndex = 0;
+    private int childPosition = 1;
+    
     //Only Debug
     private int PastSecondsSinceStart = 0;
 
@@ -43,7 +44,7 @@ public class WaveControllerScript : MonoBehaviour {
         if (isActive == true) {
             if (WaveActive == false) {
                 int counter = 1;
-                int childPosition = 1;
+                
                 if (isEndless == true)
                     while (childPosition == lastWaveIndex)
                         childPosition = UnityEngine.Random.Range(1, transform.childCount + 1);
@@ -51,6 +52,7 @@ public class WaveControllerScript : MonoBehaviour {
                 foreach (Transform child in transform) {
                     if (counter == childPosition) {
                         activeWave = child.gameObject;
+
                         if (isEndless == true)
                             activeWave = Instantiate(child.gameObject);
                         activeWave.SetActive(true);
