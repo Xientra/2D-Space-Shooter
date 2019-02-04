@@ -61,28 +61,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Behaviour Scripts\CursorGUIBehaviourScript.cs" />
-    <Compile Include="Assets\Scripts\Behaviour Scripts\EnemyBehaviourScript.cs" />
-    <Compile Include="Assets\Scripts\Behaviour Scripts\EnemyParentBehaviourScript.cs" />
-    <Compile Include="Assets\Scripts\Behaviour Scripts\ExplosionBehaviourScript.cs" />
-    <Compile Include="Assets\Scripts\Behaviour Scripts\LaserBulletBehaviourScript.cs" />
-    <Compile Include="Assets\Scripts\Behaviour Scripts\MainMenuBackgroundBehaviourScript.cs" />
-    <Compile Include="Assets\Scripts\Behaviour Scripts\PickUpBehaviourScript.cs" />
-    <Compile Include="Assets\Scripts\Behaviour Scripts\PlayerBehaviourScript.cs" />
-    <Compile Include="Assets\Scripts\Behaviour Scripts\PlayerControllerScript.cs" />
-    <Compile Include="Assets\Scripts\Behaviour Scripts\PowerUpUIElementBehaviourScript.cs" />
-    <Compile Include="Assets\Scripts\Behaviour Scripts\TrailRendererGoBehaviourScript.cs" />
-    <Compile Include="Assets\Scripts\Behaviour Scripts\WaveBehaviourScript.cs" />
-    <Compile Include="Assets\Scripts\Behaviour Scripts\WeaponBehaviourScript.cs" />
-    <Compile Include="Assets\Scripts\ControllerScripts\GameControllerScript.cs" />
-    <Compile Include="Assets\Scripts\ControllerScripts\InGameUIControllerScript.cs" />
-    <Compile Include="Assets\Scripts\ControllerScripts\MainMenuControllerScript.cs" />
-    <Compile Include="Assets\Scripts\ControllerScripts\PowerUpViewControllerScript.cs" />
-    <Compile Include="Assets\Scripts\ControllerScripts\WaveControllerScript.cs" />
-    <Compile Include="Assets\Scripts\ControllerScripts\WeaponsViewControllerScript.cs" />
     <Compile Include="Assets\Scripts\Data Scripts\ObjectHolder.cs" />
-    <Compile Include="Assets\Scripts\Data Scripts\WeaponsViewElementDataScript.cs" />
-    <Compile Include="Assets\Scripts\EffectScripts\EffectBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\Data Scripts\WeaponBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\Level Manager Scripts\GameControllerScript.cs" />
+    <Compile Include="Assets\Scripts\Level Manager Scripts\Wave.cs" />
+    <Compile Include="Assets\Scripts\Level Manager Scripts\WaveControllerScript.cs" />
+    <Compile Include="Assets\Scripts\Scene Object Scripts\Effects etc\EffectBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\Scene Object Scripts\Effects etc\TrailRendererGoBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\Scene Object Scripts\EnemyBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\Scene Object Scripts\EnemyParentBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\Scene Object Scripts\ExplosionBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\Scene Object Scripts\LaserBulletBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\Scene Object Scripts\PickUpBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\Scene Object Scripts\PlayerBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\CursorGUIBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\InGameUIControllerScript.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\MainMenuBackgroundBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\MainMenuControllerScript.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\WeaponsViewControllerScript.cs" />
+    <Compile Include="Assets\Scripts\UI Scripts\WeaponsViewElementDataScript.cs" />
+    <Compile Include="Assets\z_Outdated\scripts\PlayerControllerScript.cs" />
+    <Compile Include="Assets\z_Outdated\scripts\PowerUpUIElementBehaviourScript.cs" />
+    <Compile Include="Assets\z_Outdated\scripts\PowerUpViewControllerScript.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/_Documents/_Computerstuff/Projects - Unity/2D Space Shooter/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
