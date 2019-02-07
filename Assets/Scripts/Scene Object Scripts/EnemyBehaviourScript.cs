@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class EnemyBehaviourScript : MonoBehaviour {
     public GameObject ObjectHolderGo;
+    public GameObject HealthBarGameObject;
+
     public GameObject[] EnemyTurrets = new GameObject[0];
 
-    private GameObject EnemyHealthBarRed;
-    private GameObject EnemyHealthBarGreen;
+    private GameObject EnemyHealthBarBackGround;
+    private GameObject EnemyHealthBarFill;
     private Animator animator;
 
     private GameObject[] EnemyBullets;
@@ -66,15 +68,18 @@ public class EnemyBehaviourScript : MonoBehaviour {
         StartCoroutine(StartAfterTime());
         StartCoroutine(LimiterDestructionAfterTime());
 
+        EnemyHealthBarBackGround = HealthBarGameObject.GetComponentsInChildren<Transform>()[1].gameObject;
+        EnemyHealthBarFill = EnemyHealthBarBackGround.GetComponentsInChildren<Transform>()[1].gameObject;
+
         foreach (Transform t in transform.parent.GetComponentsInChildren<Transform>()) {
             if (t.gameObject.CompareTag("HealthBar")) {
-                EnemyHealthBarRed = t.gameObject.GetComponentsInChildren<Transform>()[1].gameObject;
+                EnemyHealthBarBackGround = t.gameObject.GetComponentsInChildren<Transform>()[1].gameObject;
 
-                EnemyHealthBarGreen = EnemyHealthBarRed.GetComponentsInChildren<Transform>()[1].gameObject;
+                EnemyHealthBarFill = EnemyHealthBarBackGround.GetComponentsInChildren<Transform>()[1].gameObject;
             }
         }
 
-        EnemyHealthBarRed.transform.localScale = new Vector2(MaxHealth/1000, EnemyHealthBarRed.transform.localScale.y);
+        EnemyHealthBarBackGround.transform.localScale = new Vector2(MaxHealth/1000, EnemyHealthBarBackGround.transform.localScale.y);
 
         ChangeState(false);
     }
@@ -113,9 +118,9 @@ public class EnemyBehaviourScript : MonoBehaviour {
             DestroyAndDropStuff(this.gameObject);
         }
 
-        if (EnemyHealthBarRed != null) {
+        if (EnemyHealthBarBackGround != null) {
             
-            EnemyHealthBarGreen.transform.localScale = new Vector3(((100 / MaxHealth) * Health) * 0.01f, EnemyHealthBarGreen.transform.localScale.y, EnemyHealthBarGreen.transform.localScale.z);
+            EnemyHealthBarFill.transform.localScale = new Vector3(((100 / MaxHealth) * Health) * 0.01f, EnemyHealthBarFill.transform.localScale.y, EnemyHealthBarFill.transform.localScale.z);
         }
     }
     /*
@@ -203,7 +208,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
         }
 
         animator.enabled = ChangeTo; //starts/stops the animation
-        EnemyHealthBarRed.SetActive(ChangeTo);
+        EnemyHealthBarBackGround.SetActive(ChangeTo);
     }
 
     void DropStuff() {
