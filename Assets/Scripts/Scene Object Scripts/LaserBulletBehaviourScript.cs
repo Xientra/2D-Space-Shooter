@@ -280,7 +280,6 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
                 }
             }
 
-
             foreach (LineRenderer LineRendererGo in GetComponentsInChildren<LineRenderer>()) {
                 Destroy(LineRendererGo.transform.gameObject);
             }
@@ -339,12 +338,17 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
             }
         }
 
-        //Unparent the TrailRendererGo
+        //Unparent the TrailRendererGo or the ParticleTrailGo
         if (!(bulletType == BulletTypes.ShrapnellExplosion)) {
             foreach (TrailRenderer TR in GetComponentsInChildren<TrailRenderer>()) {
                 if (TR.gameObject.GetComponent<LaserBulletBehaviourScript>() == null) {
                     TR.time = TR.time / 2;
                     TR.transform.SetParent(null, true);
+                }
+            }
+            foreach (ParticleSystem Ps in GetComponentsInChildren<ParticleSystem>()) {
+                if (Ps.gameObject.GetComponent<LaserBulletBehaviourScript>() == null) {
+                    Ps.Stop();
                 }
             }
         }

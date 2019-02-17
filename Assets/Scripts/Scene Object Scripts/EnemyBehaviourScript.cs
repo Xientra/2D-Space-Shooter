@@ -15,7 +15,9 @@ public class EnemyBehaviourScript : MonoBehaviour {
     private GameObject[] EnemyBullets;
 
 
-    public enum EnemyTypes { AlienStandart, AlienTurret, AlienHeavy, AilenWingShip_straight, AilenWingShip_aim, AlienMiddleShip }
+    public enum EnemyTypes {
+        AlienStandart, AlienTurret, AlienHeavy, AilenWingShip_straight, AilenWingShip_aim, AlienMiddleShip
+    }
     public EnemyTypes currendEnemyType = EnemyTypes.AlienStandart;
 
     public enum EnemyWeapons { None, FastSmall_aim, FiveSpreadSlow_straight, FourSmallLaserBullets_straight, OneBigForceFieldBullet_straight, OneBigForceFieldBullet_aim, OneSmallLaserBullets_straight }
@@ -34,6 +36,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
     public bool destroyAfterAnimation = true;
 
     //the movement/behaviour animation change this value for one frame which will make the enemy shoot in that frame
+    [HideInInspector]
     public bool canShoot = false; //Has to be Serializable to be able to be changed by an animation
 
 
@@ -90,7 +93,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
     }
 
     IEnumerator LimiterDestructionAfterTime() {
-        yield return new WaitForSeconds(LimiterDestructionDelayAfterStart + AnimationStartDelay);
+        yield return new WaitForSeconds(AnimationStartDelay + LimiterDestructionDelayAfterStart);
         LimiterDestruction = true;
         
     }
@@ -197,15 +200,18 @@ public class EnemyBehaviourScript : MonoBehaviour {
             Sp.enabled = ChangeTo;
         }
 
-        foreach (CircleCollider2D CiC2D in GetComponents<CircleCollider2D>()) {
+        foreach (Collider2D CiC2D in GetComponents<Collider2D>()) {
             CiC2D.enabled = ChangeTo;
         }
+
+        /*
         foreach (BoxCollider2D BoC2D in GetComponents<BoxCollider2D>()) {
             BoC2D.enabled = ChangeTo;
         }
         foreach (CapsuleCollider2D CaC2D in GetComponents<CapsuleCollider2D>()) {
             CaC2D.enabled = ChangeTo;
         }
+        */
 
         animator.enabled = ChangeTo; //starts/stops the animation
         EnemyHealthBarBackGround.SetActive(ChangeTo);

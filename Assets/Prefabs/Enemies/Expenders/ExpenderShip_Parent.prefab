@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyObject: {fileID: 1948714869419192}
-  HealthBarObject: {fileID: 0}
+  HealthBarObject: {fileID: 6011552469004715550}
 --- !u!1 &1883405984207694
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,6 +195,7 @@ GameObject:
   - component: {fileID: 5164116355116352292}
   - component: {fileID: 50334866832908338}
   - component: {fileID: 95394790762767424}
+  - component: {fileID: 4370382906655567723}
   - component: {fileID: 114550844775510286}
   m_Layer: 10
   m_Name: Expender Ship
@@ -332,6 +333,35 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4370382906655567723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948714869419192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aa78e8736f58714abe777b279b74314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectHolderGo: {fileID: 0}
+  HealthBarGameObject: {fileID: 0}
+  EnemyTurrets: []
+  currendEnemyType: 0
+  EnemyWeapon: 0
+  AnimationStartDelay: 0
+  LimiterDestructionDelayAfterStart: 1
+  lookForwardWhenMoving: 0
+  destroyAfterAnimation: 1
+  canShoot: 0
+  MaxHealth: 100
+  Health: 100
+  CollisionDamage: 50
+  scoreValue: 100
+  ValueOfCreditDrop: 1
+  PowerUpDropChangse: 0
+  EnemyType: 0
 --- !u!114 &114550844775510286
 MonoBehaviour:
   m_ObjectHideFlags: 0
