@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBehaviourScript : MonoBehaviour {
-    public GameObject ObjectHolderGo;
+    //public GameObject ObjectHolderGo;
     public GameObject HealthBarGameObject;
 
     public GameObject[] EnemyTurrets = new GameObject[0];
@@ -49,7 +49,13 @@ public class EnemyBehaviourScript : MonoBehaviour {
     /*--------------------Drop / Score--------------------*/
     public float scoreValue = 100;
 
-    public float ValueOfCreditDrop = 1f; 
+    public float ValueOfCreditDrop = 1f;
+    /*
+    public enum CoinDropValues {
+        _1, _10, _100, _1000
+    }
+    public CoinDropValues CoinDropValue = CoinDropValues._1;
+    */
     int maxCoinDrop = 3;
     int minCoinDrop = 2;
     public float PowerUpDropChangse = 0f; //0 for nothing (whaaat?)
@@ -59,7 +65,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
     /*---------------------------------------------End-Of-Variables---------------------------------------------------------------------------*/
     void Start() {
-        EnemyBullets = ObjectHolderGo.GetComponent<ObjectHolder>().EnemyBullets;
+        EnemyBullets = ObjectHolder.instance.EnemyBullets;
 
         Health = MaxHealth;
         lastFramePos = transform.position;
@@ -82,7 +88,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
             }
         }
 
-        EnemyHealthBarBackGround.transform.localScale = new Vector2(MaxHealth/1000, EnemyHealthBarBackGround.transform.localScale.y);
+        EnemyHealthBarBackGround.transform.localScale = new Vector2(MaxHealth/100, EnemyHealthBarBackGround.transform.localScale.y);
 
         ChangeState(false);
     }

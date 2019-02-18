@@ -1,19 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Expender : EnemyBehaviourScript {
 
     
-    public new enum EnemyTypes {
+    public enum ExpenderShips {
         ExpenderSpaceShip, ExpenderSpaceShipWithTurret, ExpenderMidSpaceShip, ExpenderBigSpaceShip, ExpenderSmallSpaceShip, ExpenderTransporterSpaceShip
     }
-    public EnemyTypes EnemyType = EnemyTypes.ExpenderSpaceShip;
+    public ExpenderShips ExpenderType = ExpenderShips.ExpenderSpaceShip;
 
-    public new enum EnemyWeapons {
+    public enum ExpenderWeapons {
         None, ExpendersBullet
     }
-    //public new EnemyWeapons EnemyWeapon = EnemyWeapons.None;
+    public ExpenderWeapons ExpenderWeapon = ExpenderWeapons.None;
     
 
 
