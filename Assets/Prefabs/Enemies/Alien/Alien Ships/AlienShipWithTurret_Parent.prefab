@@ -124,7 +124,6 @@ GameObject:
   - component: {fileID: 50578958901009182}
   - component: {fileID: 95246130231227852}
   - component: {fileID: 114556522681584302}
-  - component: {fileID: 3183825629729468913}
   m_Layer: 10
   m_Name: Alien Ship With Turret
   m_TagString: Untagged
@@ -268,8 +267,10 @@ MonoBehaviour:
   HealthBarGameObject: {fileID: 1614760637420990}
   EnemyTurrets:
   - {fileID: 1044398547975832}
-  currendEnemyType: 1
-  EnemyWeapon: 1
+  ShootType: 0
+  aimTurrets: 1
+  WeaponProjectile: {fileID: 1410566720341952, guid: 93fc5193f0e8d594db0dadeef4e89f7b,
+    type: 3}
   AnimationStartDelay: 1
   LimiterDestructionDelayAfterStart: 1
   lookForwardWhenMoving: 0
@@ -281,36 +282,6 @@ MonoBehaviour:
   scoreValue: 100
   ValueOfCreditDrop: 1
   PowerUpDropChangse: 0
---- !u!114 &3183825629729468913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1549947976547550}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 168a877c676719348a64ac53e8f14e8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HealthBarGameObject: {fileID: 1614760637420990}
-  EnemyTurrets:
-  - {fileID: 1044398547975832}
-  currendEnemyType: 1
-  EnemyWeapon: 1
-  AnimationStartDelay: 0
-  LimiterDestructionDelayAfterStart: 1
-  lookForwardWhenMoving: 0
-  destroyAfterAnimation: 1
-  canShoot: 0
-  MaxHealth: 60
-  Health: 60
-  CollisionDamage: 30
-  scoreValue: 100
-  ValueOfCreditDrop: 1
-  PowerUpDropChangse: 0
-  AlienShip: 1
-  AlienWeapon: 1
 --- !u!1 &1614760637420990
 GameObject:
   m_ObjectHideFlags: 0

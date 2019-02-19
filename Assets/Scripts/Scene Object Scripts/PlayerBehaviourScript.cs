@@ -223,6 +223,7 @@ public class PlayerBehaviourScript : MonoBehaviour {
             cooldown = _weapon.GetComponent<WeaponBehaviourScript>().cooldown * fireRateMultiplyer;
             _weapon.GetComponent<WeaponBehaviourScript>().Fire(ProjectileSpawnPoint, TurretRotationAnchorGo);
 
+            //changes the cursor animation
             foreach (GameObject go in GameObject.FindGameObjectsWithTag("Cursor")) {
                 go.GetComponent<Animator>().SetTrigger("FireTrigger");
             }

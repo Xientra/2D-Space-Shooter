@@ -57,7 +57,7 @@ Transform:
   m_GameObject: {fileID: 1195823046227072}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0.064, y: 0, z: 0}
-  m_LocalScale: {x: 0.7500005, y: 0.7500005, z: 1}
+  m_LocalScale: {x: 0.32, y: 0.32, z: 1}
   m_Children: []
   m_Father: {fileID: 4423500285428678}
   m_RootOrder: 0
@@ -515,7 +515,7 @@ Transform:
   m_GameObject: {fileID: 1855403242902230}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0.064, y: 0, z: 0}
-  m_LocalScale: {x: 0.7500005, y: 0.7500005, z: 1}
+  m_LocalScale: {x: 0.32, y: 0.32, z: 1}
   m_Children: []
   m_Father: {fileID: 4186383487400342}
   m_RootOrder: 0
@@ -583,7 +583,6 @@ GameObject:
   - component: {fileID: 50668838084705324}
   - component: {fileID: 95910938111883098}
   - component: {fileID: 114472937818706796}
-  - component: {fileID: 5720789429858135524}
   m_Layer: 10
   m_Name: AlienShipWithTwoTurrets_straight
   m_TagString: Untagged
@@ -747,6 +746,9 @@ MonoBehaviour:
   - {fileID: 1051169083156244}
   currendEnemyType: 3
   EnemyWeapon: 1
+  EnemyWeaponType: 0
+  aimTurrets: 1
+  WeaponProjectile: {fileID: 0}
   AnimationStartDelay: 1
   LimiterDestructionDelayAfterStart: 1
   lookForwardWhenMoving: 0
@@ -758,37 +760,6 @@ MonoBehaviour:
   scoreValue: 100
   ValueOfCreditDrop: 10
   PowerUpDropChangse: 0
---- !u!114 &5720789429858135524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1904503578885706}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 168a877c676719348a64ac53e8f14e8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HealthBarGameObject: {fileID: 1197331684387102}
-  EnemyTurrets:
-  - {fileID: 1777387737303112}
-  - {fileID: 1051169083156244}
-  currendEnemyType: 3
-  EnemyWeapon: 1
-  AnimationStartDelay: 0
-  LimiterDestructionDelayAfterStart: 1
-  lookForwardWhenMoving: 0
-  destroyAfterAnimation: 1
-  canShoot: 0
-  MaxHealth: 100
-  Health: 100
-  CollisionDamage: 50
-  scoreValue: 100
-  ValueOfCreditDrop: 1
-  PowerUpDropChangse: 0
-  AlienShip: 3
-  AlienWeapon: 1
 --- !u!1 &2646114612136531738
 GameObject:
   m_ObjectHideFlags: 0

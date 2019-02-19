@@ -22,6 +22,8 @@ public class WeaponBehaviourScript : MonoBehaviour {
 
     public GameObject TurretGameObject;
 
+    [Header("UI Values")]
+
     /*------------Stats for the Stats Menu--------------*/
     public bool isBought = false;
     public enum WeaponLevels { _1, _2, _3}

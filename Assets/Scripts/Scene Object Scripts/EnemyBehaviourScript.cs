@@ -14,14 +14,29 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
     private GameObject[] EnemyBullets;
 
-
+    /*
     public enum EnemyTypes {
         AlienStandart, AlienTurret, AlienHeavy, AilenWingShip_straight, AilenWingShip_aim, AlienMiddleShip
     }
     public EnemyTypes currendEnemyType = EnemyTypes.AlienStandart;
 
-    public enum EnemyWeapons { None, FastSmall_aim, FiveSpreadSlow_straight, FourSmallLaserBullets_straight, OneBigForceFieldBullet_straight, OneBigForceFieldBullet_aim, OneSmallLaserBullets_straight }
+    public enum EnemyWeapons {
+        None, FastSmall_aim, FiveSpreadSlow_straight, FourSmallLaserBullets_straight, OneBigForceFieldBullet_straight, OneBigForceFieldBullet_aim, OneSmallLaserBullets_straight
+    }
     public EnemyWeapons EnemyWeapon = EnemyWeapons.None;
+    */
+
+    public enum ShootTypes {
+        None, SingleBullet, FiveSpread, FourSmallLaserBullets
+    }
+    public ShootTypes ShootType = ShootTypes.None;
+
+    [SerializeField]
+    private bool aimTurrets = true;
+
+    [SerializeField]
+    private GameObject WeaponProjectile;
+
 
     //Start Delays
     [SerializeField]
@@ -105,15 +120,8 @@ public class EnemyBehaviourScript : MonoBehaviour {
     }
 
     void Update() {
-        if (GameObject.FindGameObjectWithTag("Player") != null) {
-            foreach (GameObject go in EnemyTurrets) {
-                if (go != null) {
-                    go.transform.right = GameObject.FindGameObjectWithTag("Player").transform.position - go.transform.position;
-                }
-                else Debug.LogWarning("The enemy " + gameObject.name + " has a null element in the Turret array.");
-            }
-        }
-        
+
+        RotateTurret();
         LookForward();
         DestroyIfAnimationEnd();
 
@@ -132,11 +140,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
             EnemyHealthBarFill.transform.localScale = new Vector3(((100 / MaxHealth) * Health) * 0.01f, EnemyHealthBarFill.transform.localScale.y, EnemyHealthBarFill.transform.localScale.z);
         }
     }
-    /*
-    void FixedUpdate() {
-        //transform.Translate(direction * movementspeed * Time.deltaTime);
-    }
-    */
+
     void OnTriggerEnter2D(Collider2D collision) {
         if (LimiterDestruction) {
             if (collision.gameObject.CompareTag("Enemy Limiter")) {
@@ -166,6 +170,56 @@ public class EnemyBehaviourScript : MonoBehaviour {
     }
 
     void Fire() {
+        if (WeaponProjectile.GetComponent<LaserBulletBehaviourScript>() != null) {
+
+            switch (ShootType) {
+                case (ShootTypes.SingleBullet):
+                    foreach (GameObject go in EnemyTurrets) {
+                        Instantiate(WeaponProjectile, go.transform.position, go.transform.rotation * Quaternion.Euler(0, 0, 90));
+                    }
+                    break;
+                case (ShootTypes.FiveSpread):
+                    float tempAngle = 10f;
+                    foreach (GameObject go in EnemyTurrets) {
+                        Instantiate(WeaponProjectile, go.transform.position, go.transform.rotation * Quaternion.Euler(0, 0, 0));
+                        Instantiate(WeaponProjectile, go.transform.position, go.transform.rotation * Quaternion.Euler(0, 0, tempAngle));
+                        Instantiate(WeaponProjectile, go.transform.position, go.transform.rotation * Quaternion.Euler(0, 0, -tempAngle));
+                        Instantiate(WeaponProjectile, go.transform.position, go.transform.rotation * Quaternion.Euler(0, 0, tempAngle * 2));
+                        Instantiate(WeaponProjectile, go.transform.position, go.transform.rotation * Quaternion.Euler(0, 0, -tempAngle * 2));
+                    }
+                    break;
+                    /*
+                case (ShootTypes.OneBigForceFieldBullet_aim):
+                    foreach (GameObject go in EnemyTurrets) {
+                        Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletBehaviourScript.EnemyBulletTypes.AilenBulletBig)], go.transform.position, go.transform.rotation * Quaternion.Euler(0, 0, 90));
+                    }
+                    break;
+
+                case (ShootTypes.OneSmallLaserBullets_straight):
+                    Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletBehaviourScript.EnemyBulletTypes.AlienLaserBulletSmall)], transform.position, transform.rotation * Quaternion.Euler(0, 0, 0));
+                    break;
+                case (ShootTypes.FourSmallLaserBullets):
+                    Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletBehaviourScript.EnemyBulletTypes.AlienLaserBulletSmall)], transform.position + transform.right * 1.3f + transform.up * -0.525f, transform.rotation * Quaternion.Euler(0, 0, 0));
+                    Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletBehaviourScript.EnemyBulletTypes.AlienLaserBulletSmall)], transform.position + transform.right * 1f + transform.up * -0.7f, transform.rotation * Quaternion.Euler(0, 0, 0));
+                    Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletBehaviourScript.EnemyBulletTypes.AlienLaserBulletSmall)], transform.position + transform.right * -1.3f + transform.up * -0.525f, transform.rotation * Quaternion.Euler(0, 0, 0));
+                    Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletBehaviourScript.EnemyBulletTypes.AlienLaserBulletSmall)], transform.position + transform.right * -1f + transform.up * -0.7f, transform.rotation * Quaternion.Euler(0, 0, 0));
+                    break;
+                case (ShootTypes.OneBigForceFieldBullet_straight):
+                    Instantiate(EnemyBullets[ObjectHolder.GetEnemyBulletIndex(LaserBulletBehaviourScript.EnemyBulletTypes.AilenBulletBig)], transform.position, transform.rotation * Quaternion.Euler(0, 0, 0));
+                    break;
+                    //transform.right* x + y
+                    */
+            }
+
+        }
+        else {
+            Debug.LogError("The WeaponProjectile in " + this.gameObject.name + " has no LaserBulletBehaviour Script attachted");
+        }
+        if (EnemyTurrets.Length == 0) {
+            Debug.LogWarning("The Enemy " + gameObject.name + " tryed to fire but it has no turrets assinged");
+        }
+            
+        /*
         switch (EnemyWeapon) {
             case (EnemyWeapons.FastSmall_aim): //Must have a Turret
                 foreach (GameObject go in EnemyTurrets) {
@@ -199,6 +253,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
                 break;
                 //transform.right* x + y
         }
+        */
     }
 
     void ChangeState(bool ChangeTo) {
@@ -238,6 +293,19 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
                 PickUpBehaviourScript.PickUpTypes RandomPickUp = (PickUpBehaviourScript.PickUpTypes)Random.Range(1/*cus 0 is credit*/, ObjectHolder._PowerUps.Length);
                 Instantiate(ObjectHolder._PowerUps[ObjectHolder.GetPowerUpIndex(RandomPickUp)], transform.position, Quaternion.identity);
+            }
+        }
+    }
+
+    void RotateTurret() {
+        if (aimTurrets == true) {
+            if (GameObject.FindGameObjectWithTag("Player") != null) {
+                foreach (GameObject go in EnemyTurrets) {
+                    if (go != null) {
+                        go.transform.right = GameObject.FindGameObjectWithTag("Player").transform.position - go.transform.position;
+                    }
+                    else Debug.LogWarning("The enemy " + gameObject.name + " has a null element in the Turret array.");
+                }
             }
         }
     }

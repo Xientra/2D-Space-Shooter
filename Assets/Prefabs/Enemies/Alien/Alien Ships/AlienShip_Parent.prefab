@@ -196,7 +196,6 @@ GameObject:
   - component: {fileID: 50334866832908338}
   - component: {fileID: 95394790762767424}
   - component: {fileID: 114550844775510286}
-  - component: {fileID: 6788701183676809718}
   m_Layer: 10
   m_Name: Alien Ship
   m_TagString: Untagged
@@ -213,9 +212,10 @@ Transform:
   m_GameObject: {fileID: 1948714869419192}
   m_LocalRotation: {x: -0, y: -0, z: -0.00000063419174, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 4465512080438358}
+  - {fileID: 1911094360704923486}
   m_Father: {fileID: 4892024586171042}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -336,9 +336,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthBarGameObject: {fileID: 1993325366925252}
-  EnemyTurrets: []
+  EnemyTurrets:
+  - {fileID: 4420003129922073001}
   currendEnemyType: 0
   EnemyWeapon: 0
+  EnemyWeaponType: 0
+  aimTurrets: 1
+  WeaponProjectile: {fileID: 0}
   AnimationStartDelay: 1
   LimiterDestructionDelayAfterStart: 1
   lookForwardWhenMoving: 0
@@ -350,35 +354,6 @@ MonoBehaviour:
   scoreValue: 100
   ValueOfCreditDrop: 1
   PowerUpDropChangse: 0
---- !u!114 &6788701183676809718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1948714869419192}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 168a877c676719348a64ac53e8f14e8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HealthBarGameObject: {fileID: 1993325366925252}
-  EnemyTurrets: []
-  currendEnemyType: 0
-  EnemyWeapon: 0
-  AnimationStartDelay: 0
-  LimiterDestructionDelayAfterStart: 1
-  lookForwardWhenMoving: 0
-  destroyAfterAnimation: 1
-  canShoot: 0
-  MaxHealth: 75
-  Health: 75
-  CollisionDamage: 50
-  scoreValue: 100
-  ValueOfCreditDrop: 1
-  PowerUpDropChangse: 0
-  AlienShip: 0
-  AlienWeapon: 0
 --- !u!1 &1993325366925252
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,3 +544,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &4420003129922073001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1911094360704923486}
+  m_Layer: 10
+  m_Name: Turret
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1911094360704923486
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4420003129922073001}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0, y: -0.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4652785873227360}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
