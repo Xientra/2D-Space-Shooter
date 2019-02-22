@@ -212,7 +212,7 @@ Transform:
   m_GameObject: {fileID: 1948714869419192}
   m_LocalRotation: {x: -0, y: -0, z: -0.00000063419174, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4465512080438358}
   - {fileID: 1911094360704923486}
@@ -338,9 +338,7 @@ MonoBehaviour:
   HealthBarGameObject: {fileID: 1993325366925252}
   EnemyTurrets:
   - {fileID: 4420003129922073001}
-  currendEnemyType: 0
-  EnemyWeapon: 0
-  EnemyWeaponType: 0
+  ShootType: 0
   aimTurrets: 1
   WeaponProjectile: {fileID: 0}
   AnimationStartDelay: 1

@@ -40,7 +40,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
     //Start Delays
     [SerializeField]
-    private float AnimationStartDelay = 0f;
+    private float AnimationStartDelay = 0.5f;
     [SerializeField]
     private float LimiterDestructionDelayAfterStart = 1f;
     private bool LimiterDestruction = false;
@@ -286,13 +286,15 @@ public class EnemyBehaviourScript : MonoBehaviour {
         }
 
         //Drop PowerUp
-        if (PowerUpDropChangse == 0) {
+        if (PowerUpDropChangse != 0) {
             if (Random.Range(0f, 1f) <= PowerUpDropChangse) {
 
                 Debug.Log("Drop PowerUp");
 
-                PickUpBehaviourScript.PickUpTypes RandomPickUp = (PickUpBehaviourScript.PickUpTypes)Random.Range(1/*cus 0 is credit*/, ObjectHolder._PowerUps.Length);
-                Instantiate(ObjectHolder._PowerUps[ObjectHolder.GetPowerUpIndex(RandomPickUp)], transform.position, Quaternion.identity);
+                //PickUpBehaviourScript.PickUpTypes RandomPickUp = (PickUpBehaviourScript.PickUpTypes)Random.Range(1/*cus 0 is credit*/, ObjectHolder._PowerUps.Length - 1);
+
+
+                Instantiate(ObjectHolder._PowerUps[Random.Range(0, ObjectHolder._PowerUps.Length)], transform.position, Quaternion.identity);
             }
         }
     }

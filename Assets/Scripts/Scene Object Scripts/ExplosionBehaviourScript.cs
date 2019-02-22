@@ -22,6 +22,6 @@ public class ExplosionBehaviourScript : LaserBulletBehaviourScript {
             StartCoroutine(GameControllerScript.ShakeMainCamera(0.9f, 0.5f, 0.975f));
         }
 
-        return true; //this will mark this method as called from ExplosionBehaviourScript
+        return true; //this marks this method as called from ExplosionBehaviourScript
     }
 }
