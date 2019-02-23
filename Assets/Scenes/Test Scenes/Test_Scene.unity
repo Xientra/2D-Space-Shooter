@@ -112,133 +112,348 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &31611690
+--- !u!1001 &53924167
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1795555823444326, guid: 57e8aaf418588a349bab5a376affcfaf, type: 3}
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_Name
-      value: AlienWingShip_straight_Parent
+      value: Expender Explosive Container (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 1795555823444326, guid: 57e8aaf418588a349bab5a376affcfaf, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4032254770073178, guid: 57e8aaf418588a349bab5a376affcfaf, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.05
+      value: -2.38
       objectReference: {fileID: 0}
-    - target: {fileID: 4032254770073178, guid: 57e8aaf418588a349bab5a376affcfaf, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.6
+      value: 2.43
       objectReference: {fileID: 0}
-    - target: {fileID: 4032254770073178, guid: 57e8aaf418588a349bab5a376affcfaf, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4032254770073178, guid: 57e8aaf418588a349bab5a376affcfaf, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4032254770073178, guid: 57e8aaf418588a349bab5a376affcfaf, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4032254770073178, guid: 57e8aaf418588a349bab5a376affcfaf, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4032254770073178, guid: 57e8aaf418588a349bab5a376affcfaf, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4032254770073178, guid: 57e8aaf418588a349bab5a376affcfaf, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 4032254770073178, guid: 57e8aaf418588a349bab5a376affcfaf, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4032254770073178, guid: 57e8aaf418588a349bab5a376affcfaf, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4032254770073178, guid: 57e8aaf418588a349bab5a376affcfaf, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 95724583043838258, guid: 57e8aaf418588a349bab5a376affcfaf,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: c94a96368bf650c4d868cc3b34e71eab, type: 2}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 57e8aaf418588a349bab5a376affcfaf, type: 3}
---- !u!1001 &81989555
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &65995060
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1114364552107884, guid: cf7b5293983bd4d4ab7bb84d2e30fe23, type: 3}
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_Name
-      value: ExpenderShip_Parent
+      value: Expender Explosive Container (35)
       objectReference: {fileID: 0}
-    - target: {fileID: 1114364552107884, guid: cf7b5293983bd4d4ab7bb84d2e30fe23, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: cf7b5293983bd4d4ab7bb84d2e30fe23, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.7
+      value: 8.75
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: cf7b5293983bd4d4ab7bb84d2e30fe23, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.96
+      value: 0.1500001
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: cf7b5293983bd4d4ab7bb84d2e30fe23, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: cf7b5293983bd4d4ab7bb84d2e30fe23, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: cf7b5293983bd4d4ab7bb84d2e30fe23, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: cf7b5293983bd4d4ab7bb84d2e30fe23, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: cf7b5293983bd4d4ab7bb84d2e30fe23, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: cf7b5293983bd4d4ab7bb84d2e30fe23, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 44
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &97729293
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.7209997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.3100004
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &98553326
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.2799997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.5700004
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &118291629
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: cf7b5293983bd4d4ab7bb84d2e30fe23, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: cf7b5293983bd4d4ab7bb84d2e30fe23, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: cf7b5293983bd4d4ab7bb84d2e30fe23, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cf7b5293983bd4d4ab7bb84d2e30fe23, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &141569029
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
 --- !u!1001 &168967500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -296,6 +511,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7a595a43d419b14fa33e077fb1b413f, type: 3}
+--- !u!1001 &178706400
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.2499995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.6300001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
 --- !u!1001 &179057829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -337,6 +609,234 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b0b735b1d6281145afe09aaa8431fe4, type: 3}
+--- !u!1001 &197691387
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &210519857
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (39)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.2300005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4699998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &229759505
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &298587949
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
 --- !u!1001 &300228799
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -456,128 +956,234 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c84e404f0e357443bfd935d4e47db8e, type: 3}
---- !u!1001 &480020917
+--- !u!1001 &326612620
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1114364552107884, guid: 6e9a3bff60b536643a2b2f4b7521b27e, type: 3}
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_Name
-      value: ExpenderShipSmall_Parent
+      value: Expender Explosive Container (7)
       objectReference: {fileID: 0}
-    - target: {fileID: 1114364552107884, guid: 6e9a3bff60b536643a2b2f4b7521b27e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 6e9a3bff60b536643a2b2f4b7521b27e, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.43
+      value: 1.12
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 6e9a3bff60b536643a2b2f4b7521b27e, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.23
+      value: 5.51
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 6e9a3bff60b536643a2b2f4b7521b27e, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 6e9a3bff60b536643a2b2f4b7521b27e, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 6e9a3bff60b536643a2b2f4b7521b27e, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 6e9a3bff60b536643a2b2f4b7521b27e, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 6e9a3bff60b536643a2b2f4b7521b27e, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 6e9a3bff60b536643a2b2f4b7521b27e, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 6e9a3bff60b536643a2b2f4b7521b27e, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 6e9a3bff60b536643a2b2f4b7521b27e, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 6e9a3bff60b536643a2b2f4b7521b27e, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6e9a3bff60b536643a2b2f4b7521b27e, type: 3}
---- !u!1001 &480573222
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &389224882
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1529444535577382, guid: 1ea7465840fd9f94089e32733b1f99e4, type: 3}
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_Name
-      value: AlienShipWithTwoTurrets_aim_Parent
+      value: Expender Explosive Container (20)
       objectReference: {fileID: 0}
-    - target: {fileID: 1529444535577382, guid: 1ea7465840fd9f94089e32733b1f99e4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924291681636732, guid: 1ea7465840fd9f94089e32733b1f99e4, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.6650844
+      value: -2.37
       objectReference: {fileID: 0}
-    - target: {fileID: 4924291681636732, guid: 1ea7465840fd9f94089e32733b1f99e4, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5578952
+      value: -6.1400003
       objectReference: {fileID: 0}
-    - target: {fileID: 4924291681636732, guid: 1ea7465840fd9f94089e32733b1f99e4, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4924291681636732, guid: 1ea7465840fd9f94089e32733b1f99e4, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4924291681636732, guid: 1ea7465840fd9f94089e32733b1f99e4, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4924291681636732, guid: 1ea7465840fd9f94089e32733b1f99e4, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4924291681636732, guid: 1ea7465840fd9f94089e32733b1f99e4, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4924291681636732, guid: 1ea7465840fd9f94089e32733b1f99e4, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 29
       objectReference: {fileID: 0}
-    - target: {fileID: 4924291681636732, guid: 1ea7465840fd9f94089e32733b1f99e4, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4924291681636732, guid: 1ea7465840fd9f94089e32733b1f99e4, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4924291681636732, guid: 1ea7465840fd9f94089e32733b1f99e4, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1ea7465840fd9f94089e32733b1f99e4, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &446399217
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &480650963
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
 --- !u!1001 &556901940
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -722,67 +1328,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1001 &571647544
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1114364552107884, guid: 9846023f75897544da838f1b2b31c75e, type: 3}
-      propertyPath: m_Name
-      value: AlienShip_Parent
-      objectReference: {fileID: 0}
-    - target: {fileID: 1114364552107884, guid: 9846023f75897544da838f1b2b31c75e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 9846023f75897544da838f1b2b31c75e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 9846023f75897544da838f1b2b31c75e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 9846023f75897544da838f1b2b31c75e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 9846023f75897544da838f1b2b31c75e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 9846023f75897544da838f1b2b31c75e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 9846023f75897544da838f1b2b31c75e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 9846023f75897544da838f1b2b31c75e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 9846023f75897544da838f1b2b31c75e, type: 3}
-      propertyPath: m_RootOrder
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 9846023f75897544da838f1b2b31c75e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 9846023f75897544da838f1b2b31c75e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 9846023f75897544da838f1b2b31c75e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9846023f75897544da838f1b2b31c75e, type: 3}
 --- !u!1001 &627278902
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -839,311 +1384,405 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0992a5a19163dc4b997cefc5ddac09b, type: 3}
---- !u!1001 &744139325
+--- !u!1001 &640598054
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1587446453242676, guid: 654aa2a5684805643bb619f60a0df85a, type: 3}
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_Name
-      value: AlienShipBig_Parent
+      value: Expender Explosive Container (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 1587446453242676, guid: 654aa2a5684805643bb619f60a0df85a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4707460391487246, guid: 654aa2a5684805643bb619f60a0df85a, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.38
+      value: -1.351
       objectReference: {fileID: 0}
-    - target: {fileID: 4707460391487246, guid: 654aa2a5684805643bb619f60a0df85a, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.36
+      value: 0.83
       objectReference: {fileID: 0}
-    - target: {fileID: 4707460391487246, guid: 654aa2a5684805643bb619f60a0df85a, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4707460391487246, guid: 654aa2a5684805643bb619f60a0df85a, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4707460391487246, guid: 654aa2a5684805643bb619f60a0df85a, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4707460391487246, guid: 654aa2a5684805643bb619f60a0df85a, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4707460391487246, guid: 654aa2a5684805643bb619f60a0df85a, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4707460391487246, guid: 654aa2a5684805643bb619f60a0df85a, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 4707460391487246, guid: 654aa2a5684805643bb619f60a0df85a, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4707460391487246, guid: 654aa2a5684805643bb619f60a0df85a, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4707460391487246, guid: 654aa2a5684805643bb619f60a0df85a, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 654aa2a5684805643bb619f60a0df85a, type: 3}
---- !u!1001 &899297092
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &776711723
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1114364552107884, guid: 821627a6b9d4fd54ea2ecbff8027ca74, type: 3}
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_Name
-      value: ExpenderShipMid_Parent
+      value: Expender Explosive Container (29)
       objectReference: {fileID: 0}
-    - target: {fileID: 1114364552107884, guid: 821627a6b9d4fd54ea2ecbff8027ca74, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 821627a6b9d4fd54ea2ecbff8027ca74, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.76
+      value: -4.1399994
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 821627a6b9d4fd54ea2ecbff8027ca74, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.02
+      value: -0.19000053
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 821627a6b9d4fd54ea2ecbff8027ca74, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 821627a6b9d4fd54ea2ecbff8027ca74, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 821627a6b9d4fd54ea2ecbff8027ca74, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 821627a6b9d4fd54ea2ecbff8027ca74, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 821627a6b9d4fd54ea2ecbff8027ca74, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 821627a6b9d4fd54ea2ecbff8027ca74, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 38
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 821627a6b9d4fd54ea2ecbff8027ca74, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 821627a6b9d4fd54ea2ecbff8027ca74, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 821627a6b9d4fd54ea2ecbff8027ca74, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 821627a6b9d4fd54ea2ecbff8027ca74, type: 3}
---- !u!1001 &938954851
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &911549678
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1596259732238772, guid: df46e402faba23f419a73aba15115701, type: 3}
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_Name
-      value: AlienShipMiddleWithTurret_Parent
+      value: Expender Explosive Container (36)
       objectReference: {fileID: 0}
-    - target: {fileID: 1596259732238772, guid: df46e402faba23f419a73aba15115701, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4367829341897770, guid: df46e402faba23f419a73aba15115701, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.316202
+      value: 6.09
       objectReference: {fileID: 0}
-    - target: {fileID: 4367829341897770, guid: df46e402faba23f419a73aba15115701, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9962306
+      value: -1.9100001
       objectReference: {fileID: 0}
-    - target: {fileID: 4367829341897770, guid: df46e402faba23f419a73aba15115701, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4367829341897770, guid: df46e402faba23f419a73aba15115701, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4367829341897770, guid: df46e402faba23f419a73aba15115701, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4367829341897770, guid: df46e402faba23f419a73aba15115701, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4367829341897770, guid: df46e402faba23f419a73aba15115701, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4367829341897770, guid: df46e402faba23f419a73aba15115701, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 45
       objectReference: {fileID: 0}
-    - target: {fileID: 4367829341897770, guid: df46e402faba23f419a73aba15115701, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4367829341897770, guid: df46e402faba23f419a73aba15115701, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4367829341897770, guid: df46e402faba23f419a73aba15115701, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: df46e402faba23f419a73aba15115701, type: 3}
---- !u!1001 &1022586710
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &954478509
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1114364552107884, guid: 7bbe7e69856cc5d4fa75015169f59258, type: 3}
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_Name
-      value: AlienShipSmall_Parent
+      value: Expender Explosive Container (25)
       objectReference: {fileID: 0}
-    - target: {fileID: 1114364552107884, guid: 7bbe7e69856cc5d4fa75015169f59258, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 7bbe7e69856cc5d4fa75015169f59258, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.2307885
+      value: 1.3800004
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 7bbe7e69856cc5d4fa75015169f59258, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.6323161
+      value: -0.5100002
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 7bbe7e69856cc5d4fa75015169f59258, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 7bbe7e69856cc5d4fa75015169f59258, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 7bbe7e69856cc5d4fa75015169f59258, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 7bbe7e69856cc5d4fa75015169f59258, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 7bbe7e69856cc5d4fa75015169f59258, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 7bbe7e69856cc5d4fa75015169f59258, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 34
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 7bbe7e69856cc5d4fa75015169f59258, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 7bbe7e69856cc5d4fa75015169f59258, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 7bbe7e69856cc5d4fa75015169f59258, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7bbe7e69856cc5d4fa75015169f59258, type: 3}
---- !u!1001 &1109566102
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &971514390
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1114364552107884, guid: 0e65b500d01151644a6186b1d2b45edf, type: 3}
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_Name
-      value: ExpenderShipBig_Parent
+      value: Expender Explosive Container (23)
       objectReference: {fileID: 0}
-    - target: {fileID: 1114364552107884, guid: 0e65b500d01151644a6186b1d2b45edf, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 0e65b500d01151644a6186b1d2b45edf, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.16
+      value: 1.6700003
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 0e65b500d01151644a6186b1d2b45edf, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.29
+      value: -3.7500002
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 0e65b500d01151644a6186b1d2b45edf, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 0e65b500d01151644a6186b1d2b45edf, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 0e65b500d01151644a6186b1d2b45edf, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 0e65b500d01151644a6186b1d2b45edf, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 0e65b500d01151644a6186b1d2b45edf, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 0e65b500d01151644a6186b1d2b45edf, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &1082619553
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.1900005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.2600002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_RootOrder
       value: 19
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 0e65b500d01151644a6186b1d2b45edf, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 0e65b500d01151644a6186b1d2b45edf, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 0e65b500d01151644a6186b1d2b45edf, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0e65b500d01151644a6186b1d2b45edf, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &1095779771
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.4400003
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
 --- !u!1 &1115493147
 GameObject:
   m_ObjectHideFlags: 0
@@ -1284,10 +1923,67 @@ PrefabInstance:
         type: 3}
       propertyPath: toAssingSecondWep
       value: 
-      objectReference: {fileID: 1662901710460724, guid: e1327901e0166f648ad6b658084165ba,
+      objectReference: {fileID: 1662901710460724, guid: d19464aeafef68a4ebc375b124d59f8b,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c60d9cba6161c574d92570cb778fadb2, type: 3}
+--- !u!1001 &1179152577
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (38)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 47
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
 --- !u!1001 &1228781971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1329,67 +2025,348 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cabeaf8bf1d317a4ea498a46c80560fb, type: 3}
---- !u!1001 &1375152267
+--- !u!1001 &1245827512
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1114364552107884, guid: 036b70c5f2e2a4b43b8a6e439ed86b72, type: 3}
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_Name
-      value: ExpenderShipWithTurret_Parent
+      value: Expender Explosive Container (11)
       objectReference: {fileID: 0}
-    - target: {fileID: 1114364552107884, guid: 036b70c5f2e2a4b43b8a6e439ed86b72, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 036b70c5f2e2a4b43b8a6e439ed86b72, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.31
+      value: -8.541
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 036b70c5f2e2a4b43b8a6e439ed86b72, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.86
+      value: -0.4300003
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 036b70c5f2e2a4b43b8a6e439ed86b72, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 036b70c5f2e2a4b43b8a6e439ed86b72, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 036b70c5f2e2a4b43b8a6e439ed86b72, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 036b70c5f2e2a4b43b8a6e439ed86b72, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 036b70c5f2e2a4b43b8a6e439ed86b72, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 036b70c5f2e2a4b43b8a6e439ed86b72, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 20
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 036b70c5f2e2a4b43b8a6e439ed86b72, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 036b70c5f2e2a4b43b8a6e439ed86b72, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4892024586171042, guid: 036b70c5f2e2a4b43b8a6e439ed86b72, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 036b70c5f2e2a4b43b8a6e439ed86b72, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &1322135726
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &1392055379
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.1500003
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1299999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &1490829663
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.47999978
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &1520022343
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.6799994
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.4000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &1534735473
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (34)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.1200004
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.03000021
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 43
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
 --- !u!1001 &1550783114
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1431,64 +2408,630 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eaf5f6f7623ebb64497e73428e7c30ba, type: 3}
---- !u!1001 &1892392443
+--- !u!1001 &1558311342
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1835899990025572, guid: 0809adc5a6a9c3f4db96e5dfc0c8584d, type: 3}
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_Name
-      value: AlienShipWithTurret_Parent
+      value: Expender Explosive Container (16)
       objectReference: {fileID: 0}
-    - target: {fileID: 1835899990025572, guid: 0809adc5a6a9c3f4db96e5dfc0c8584d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4695946289476618, guid: 0809adc5a6a9c3f4db96e5dfc0c8584d, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.907
+      value: -6.1000004
       objectReference: {fileID: 0}
-    - target: {fileID: 4695946289476618, guid: 0809adc5a6a9c3f4db96e5dfc0c8584d, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.057
+      value: 2.3099997
       objectReference: {fileID: 0}
-    - target: {fileID: 4695946289476618, guid: 0809adc5a6a9c3f4db96e5dfc0c8584d, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4695946289476618, guid: 0809adc5a6a9c3f4db96e5dfc0c8584d, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4695946289476618, guid: 0809adc5a6a9c3f4db96e5dfc0c8584d, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4695946289476618, guid: 0809adc5a6a9c3f4db96e5dfc0c8584d, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4695946289476618, guid: 0809adc5a6a9c3f4db96e5dfc0c8584d, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4695946289476618, guid: 0809adc5a6a9c3f4db96e5dfc0c8584d, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 25
       objectReference: {fileID: 0}
-    - target: {fileID: 4695946289476618, guid: 0809adc5a6a9c3f4db96e5dfc0c8584d, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4695946289476618, guid: 0809adc5a6a9c3f4db96e5dfc0c8584d, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4695946289476618, guid: 0809adc5a6a9c3f4db96e5dfc0c8584d, type: 3}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0809adc5a6a9c3f4db96e5dfc0c8584d, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &1610952295
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.7100003
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &1664600414
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &1779947075
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 39
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &1791806210
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.1999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 41
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &1818311025
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.6899996
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &1836840176
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (37)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.6900005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.7400002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &2001735971
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &2065383718
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.6490002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &2120198832
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.570001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1699998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+--- !u!1001 &2128341247
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1410566720341952, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_Name
+      value: Expender Explosive Container (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.4800005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4292228304991530, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39ea7587d28c8d448bd198bac364866b, type: 3}

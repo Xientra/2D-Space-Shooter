@@ -2,10 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(Rigidbody))]
 public class LaserBulletBehaviourScript : MonoBehaviour {
+
+    private LineRenderer lineRenderer;
 
     public GameObject createOnDeath;
     public GameObject explosionOnDeath;
+
+    public Vector3 direction = new Vector3(0, 1, 0);
+
+
+    /*--------------------Affiliation--------------------*/
 
     public enum BulletTypes {
         Standart, HelixBullet_lvl_1, HelixBullet_lvl_2, HelixBullet_lvl_3, HelixBulletChild, Wave, ChainGunBullet, ShotgunBullet, 
@@ -14,24 +23,25 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
         SimpleLaser, SplitLaser, SplitLaserChild,  
         _null_, SplitBullet
     }
-    public BulletTypes bulletType = BulletTypes._null_;
-
     public enum EnemyBulletTypes {
         _null_, SimpleBullet, SlowAlienBullet, AlienLaserBulletSmall, AilenBulletBig
     }
+
+    [Header("Affiliation: ")]
+
+    public BulletTypes bulletType = BulletTypes._null_;
     public EnemyBulletTypes enemyBulletType = EnemyBulletTypes._null_;
 
-    public bool isExplosion = false;
-
-    public Vector3 direction = new Vector3(0, 1, 0);
-
-    private LineRenderer lineRenderer;
+    [SerializeField]
+    private bool isShootable = false;
 
     private bool isLaser = false;
     private bool isEnemyBullet = false;
 
 
+    [Header("Stats: ")]
     /*--------------------Stats--------------------*/
+
     [SerializeField]
     private float speed = 1f;
     [SerializeField]
@@ -385,6 +395,15 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
                     }
                 }
             }
+
+            if (this.isShootable == true) {
+                if (collision.gameObject.CompareTag("Projectile")) {
+                    if (collision.gameObject.GetComponent<LaserBulletBehaviourScript>().isEnemyBullet != true) {
+                        InitiliseSelfDestruction();
+                    }
+                }
+            }
+
             if (collision.gameObject.layer == 8/*Static*/) {
                 InitiliseSelfDestruction();
                 //Debug.Log("SelfDes4");
