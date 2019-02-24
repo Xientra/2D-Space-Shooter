@@ -95,9 +95,9 @@ public class ObjectHolder : MonoBehaviour {
         int i = 0;
         foreach (GameObject go in _EnemyBullets) {
             if (go != null) {
-                if (go.GetComponentInChildren<LaserBulletBehaviourScript>().enemyBulletType == _EnemyBulletType) {
-                    return i;
-                }
+                //if (go.GetComponentInChildren<LaserBulletBehaviourScript>().enemyBulletType == _EnemyBulletType) {
+                //    return i;
+                //}
             }
             i++;
         }

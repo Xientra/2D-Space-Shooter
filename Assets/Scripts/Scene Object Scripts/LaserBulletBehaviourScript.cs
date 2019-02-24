@@ -18,9 +18,10 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
 
     public enum BulletTypes {
         Standart, HelixBullet_lvl_1, HelixBullet_lvl_2, HelixBullet_lvl_3, HelixBulletChild, Wave, ChainGunBullet, ShotgunBullet, 
-        Missile_lvl_1, Missile_lvl_2, Missile_lvl_3, Grenade_lvl_1, Grenade_lvl_2, Grenade_lvl_3, Shrapnel_lvl_1, Shrapnel_lvl_2, Shrapnel_lvl_3, ShrapnellBullet, HomingBullet_lvl_1, HomingBullet_lvl_2, HomingBullet_lvl_3, LaserSword_lvl_1, LaserSword_lvl_2, LaserSword_lvl_3, 
-        ShrapnellExplosion,
-        SimpleLaser, SplitLaser, SplitLaserChild,  
+        Missile_lvl_1, Missile_lvl_2, Missile_lvl_3, Grenade_lvl_1, Grenade_lvl_2, Grenade_lvl_3, Shrapnel_lvl_1, Shrapnel_lvl_2, Shrapnel_lvl_3, ShrapnellBullet, 
+        HomingBullet_lvl_1, HomingBullet_lvl_2, HomingBullet_lvl_3, LaserSword_lvl_1, LaserSword_lvl_2, LaserSword_lvl_3, 
+        ShrapnellExplosion, 
+        SimpleLaser, SplitLaser, SplitLaserChild, 
         _null_, SplitBullet
     }
     public enum EnemyBulletTypes {
@@ -30,13 +31,19 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
     [Header("Affiliation: ")]
 
     public BulletTypes bulletType = BulletTypes._null_;
-    public EnemyBulletTypes enemyBulletType = EnemyBulletTypes._null_;
+    //public EnemyBulletTypes enemyBulletType = EnemyBulletTypes._null_;
+
+    /// <summary>
+    /// if isEnemyBullet is false then it is considered a player bullet
+    /// </summary>
+    [SerializeField]
+    private bool isEnemyBullet = false;
 
     [SerializeField]
     private bool isShootable = false;
 
     private bool isLaser = false;
-    private bool isEnemyBullet = false;
+    
 
 
     [Header("Stats: ")]
@@ -68,6 +75,7 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
 
 
     //Specific behaviour vars
+    [Header("Specific Behaviour Variables:")]
     //-----Helix-----
     //[HideInInspector]
     public float HelixBulletChild_RotationSpeed = 10f;
@@ -96,39 +104,27 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
     void Start() {
         StartCoroutine(destroyAfterTime());
 
+        
         //Bullet affiliation check
         if (this.GetType() != typeof(ExplosionBehaviourScript)) {
-            if (bulletType == BulletTypes._null_ && enemyBulletType == EnemyBulletTypes._null_) {
+            if (bulletType == BulletTypes._null_ && isEnemyBullet == false) {
                 Debug.LogError("The bullet --" + this.gameObject.name + "-- has no affiliation to any side!");
             }
-            if (enemyBulletType != EnemyBulletTypes._null_ && bulletType != BulletTypes._null_) {
+            /*
+            if (isEnemyBullet == true && bulletType != BulletTypes._null_) {
                 enemyBulletType = EnemyBulletTypes._null_;
                 Debug.LogError("The bullet --" + this.gameObject.name + @"-- has a (player)bulletType and a EnemyBulletType. The EnemyBulletType was set to _null_.");
             }
+            */
         }
-        /*
-        if (isExplosion == true) {
-            if (bulletType != BulletTypes._null_) {
-                bulletType = BulletTypes._null_;
-                Debug.Log(gameObject.name + ": the BulletType was set to _null_.");
-            }
-            if (enemyBulletType != EnemyBulletTypes._null_) {
-                enemyBulletType = EnemyBulletTypes._null_;
-                Debug.Log(gameObject.name + ": the EnemyBulletType was set to _null_.");
-            }
-        }
-        */
 
-        
 
         //Sets the state vars like isEnemyBullet and isLaser after affiliation check
-        if (enemyBulletType != EnemyBulletTypes._null_) {
-            isEnemyBullet = true;
-        }
         if (bulletType == BulletTypes.SimpleLaser || bulletType == BulletTypes.SplitLaser) {
             isLaser = true;
             damageDelayTimeStamp = Time.time + damageDelay;
         }
+
 
 
         //Does bulletspecific stuff
@@ -376,22 +372,28 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (this.GetType() != typeof(ExplosionBehaviourScript)) {
-            if (isEnemyBullet != true) {
+            if (collision.gameObject.layer == 8/*Static*/) {
+                if (collision.CompareTag("BulletLimiter")) {
+                    Destroy(this.gameObject);
+                }
+                else
+                    InitiliseSelfDestruction();
+            }
+
+            if (isEnemyBullet == false) { //if bullet from player
                 if (collision.gameObject.layer == 10/*Enemy*/) {
                     if (collision.gameObject.GetComponent<EnemyBehaviourScript>().Health >= 0) {
                         collision.gameObject.GetComponent<EnemyBehaviourScript>().Health -= damage * damageMultiplyer;
                         InitiliseSelfDestruction();
-                        //Debug.Log("SelfDes2");
                     }
                 }
             }
-            else {
+            else { //if bullet is from enemy
                 if (collision.gameObject.CompareTag("Player")) {
                     if (collision.gameObject.GetComponent<PlayerBehaviourScript>().currendHealth >= 0) {
                         collision.gameObject.GetComponent<PlayerBehaviourScript>().currendHealth -= damage;
                         StartCoroutine(GameControllerScript.ShakeMainCamera(0.2f, 0.05f));
                         InitiliseSelfDestruction();
-                        //Debug.Log("SelfDes3");
                     }
                 }
             }
@@ -404,9 +406,22 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
                 }
             }
 
-            if (collision.gameObject.layer == 8/*Static*/) {
-                InitiliseSelfDestruction();
-                //Debug.Log("SelfDes4");
+            
+        }
+        else { //this is an exposion
+            if (isEnemyBullet == false) { // is player explosion
+                if (collision.gameObject.layer == 10/*Enemy*/) {
+                    collision.gameObject.GetComponent<EnemyBehaviourScript>().Health -= damage;
+
+                }
+            }
+            else { //is enemy explosion
+                if (collision.gameObject.CompareTag("Player")) {
+                    if (collision.gameObject.GetComponent<PlayerBehaviourScript>().currendHealth >= 0) {
+                        collision.gameObject.GetComponent<PlayerBehaviourScript>().currendHealth -= damage;
+                        InitiliseSelfDestruction();
+                    }
+                }
             }
         }
     }

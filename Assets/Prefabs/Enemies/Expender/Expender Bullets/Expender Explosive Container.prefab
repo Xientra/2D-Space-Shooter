@@ -4841,15 +4841,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   createOnDeath: {fileID: 0}
-  explosionOnDeath: {fileID: 1237063411365404, guid: ff9c8fe9c41f08e40842ef634a7f15c6,
+  explosionOnDeath: {fileID: 1237063411365404, guid: a7587a06e02a65947acbf98bafa008e1,
     type: 3}
   direction: {x: 0, y: -1, z: 0}
   bulletType: 28
-  enemyBulletType: 1
+  isEnemyBullet: 1
   isShootable: 1
   speed: 0.5
   damage: 5
-  duration: 14
+  duration: 50
   DelayDestructionTime: 0
   HelixBulletChild_RotationSpeed: 10
   homingStrength: 0
