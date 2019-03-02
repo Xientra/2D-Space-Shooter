@@ -154,10 +154,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createOnDeath: {fileID: 0}
   explosionOnDeath: {fileID: 0}
-  bulletType: 28
-  enemyBulletType: 2
-  isExplosion: 0
   direction: {x: 0, y: -1, z: 0}
+  bulletType: 28
+  isEnemyBullet: 1
+  isShootable: 0
   speed: 3
   damage: 25
   duration: 15
@@ -315,3 +315,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0824cf87ac336e542adc5fb69e56be00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duration: 1

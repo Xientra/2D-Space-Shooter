@@ -80,7 +80,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
     /*---------------------------------------------End-Of-Variables---------------------------------------------------------------------------*/
     void Start() {
-        EnemyBullets = ObjectHolder.instance.EnemyBullets;
+        //EnemyBullets = ObjectHolder.instance.EnemyBullets;
 
         Health = MaxHealth;
         lastFramePos = transform.position;

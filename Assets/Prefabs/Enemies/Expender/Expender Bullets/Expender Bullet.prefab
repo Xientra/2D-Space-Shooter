@@ -4727,7 +4727,7 @@ GameObject:
   - component: {fileID: 95929110280647550}
   - component: {fileID: 114777362819222274}
   m_Layer: 9
-  m_Name: Expenders Bullet
+  m_Name: Expender Bullet
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4876,10 +4876,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createOnDeath: {fileID: 0}
   explosionOnDeath: {fileID: 0}
-  bulletType: 28
-  enemyBulletType: 1
-  isExplosion: 0
   direction: {x: 0, y: -1, z: 0}
+  bulletType: 28
+  isEnemyBullet: 1
+  isShootable: 0
   speed: 4
   damage: 20
   duration: 8

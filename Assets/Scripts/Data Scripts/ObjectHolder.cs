@@ -10,9 +10,6 @@ public class ObjectHolder : MonoBehaviour {
     public GameObject[] Bullets;
     public static GameObject[] _Bullets;
 
-    public GameObject[] EnemyBullets;
-    public static GameObject[] _EnemyBullets;
-
     public GameObject[] ExpenderBullets; //not static
 
     public GameObject[] PlayerWeapons;
@@ -46,9 +43,6 @@ public class ObjectHolder : MonoBehaviour {
         if (GameJustStarted == true) {
             _Bullets = new GameObject[Bullets.Length];
             _Bullets = Bullets;
-
-            _EnemyBullets = new GameObject[EnemyBullets.Length];
-            _EnemyBullets = EnemyBullets;
 
             _PlayerWeapons = new GameObject[PlayerWeapons.Length];
             _PlayerWeapons = PlayerWeapons;
@@ -88,20 +82,6 @@ public class ObjectHolder : MonoBehaviour {
             i++;
         }
         Debug.LogError("Could not find: " + _bulletType);
-        return -1;
-    }
-
-    public static int GetEnemyBulletIndex(LaserBulletBehaviourScript.EnemyBulletTypes _EnemyBulletType) {
-        int i = 0;
-        foreach (GameObject go in _EnemyBullets) {
-            if (go != null) {
-                //if (go.GetComponentInChildren<LaserBulletBehaviourScript>().enemyBulletType == _EnemyBulletType) {
-                //    return i;
-                //}
-            }
-            i++;
-        }
-        Debug.LogError("Could not find: " + _EnemyBulletType);
         return -1;
     }
 

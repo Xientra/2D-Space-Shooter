@@ -24,18 +24,11 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
         SimpleLaser, SplitLaser, SplitLaserChild, 
         _null_, SplitBullet
     }
-    public enum EnemyBulletTypes {
-        _null_, SimpleBullet, SlowAlienBullet, AlienLaserBulletSmall, AilenBulletBig
-    }
 
     [Header("Affiliation: ")]
 
     public BulletTypes bulletType = BulletTypes._null_;
-    //public EnemyBulletTypes enemyBulletType = EnemyBulletTypes._null_;
 
-    /// <summary>
-    /// if isEnemyBullet is false then it is considered a player bullet
-    /// </summary>
     [SerializeField]
     private bool isEnemyBullet = false;
 
@@ -74,14 +67,15 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
     private float SplitAngle = 25f;
 
 
-    //Specific behaviour vars
-    [Header("Specific Behaviour Variables:")]
-    //-----Helix-----
+    /*--------------------Player Bullet Specific Behaviour Variables--------------------*/
+    [Header("Player Bullet Specific Behaviour Variables: ")]
+
     //[HideInInspector]
     public float HelixBulletChild_RotationSpeed = 10f;
     //LaserSword-----
     private float TempSpeed;
     private float LaserSwordAcc = 0f;
+    //-----Helix-----
     //-----homing-----
     [SerializeField]
     private float homingStrength = 0f;
@@ -96,7 +90,21 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
     private int AmountOfShrapnellBulletsSpawnedOnDeath = 0;
 
 
-    //PowerUp Variables
+    /*--------------------Additional Bullet Behaviour Variables--------------------*/
+    public enum AdditionalBulletBehaviour {
+        _null_, LightningMovement
+    }
+
+    [Header("Additional Bullet Behaviour Variables: ")]
+
+    public AdditionalBulletBehaviour additionalBulletBehaviour = AdditionalBulletBehaviour._null_;
+    //lightning movement
+    private float changeAngleLiklyhood = 0.5f;//0.05f;
+    private float AngleDeviation = 5f;
+
+
+
+    /*--------------------PowerUp Variables--------------------*/
     public static float damageMultiplyer = 1f;
 
     
@@ -172,64 +180,11 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
     }
 
     void Update() {
-        if (bulletType == BulletTypes.HelixBulletChild) {
-            if (transform.parent != null)
-                this.transform.RotateAround(transform.parent.transform.position, Vector3.forward, HelixBulletChild_RotationSpeed * Time.deltaTime);
-        }
+        PerformPlayerBulletSpecificBehaviour();
 
-        if (bulletType == BulletTypes.LaserSword_lvl_1) {
-            if (SelfDestructionActive == false) {
-                if (speed <= TempSpeed) {
-                    LaserSwordAcc += TempSpeed * Time.deltaTime / 10f;
-                    speed += LaserSwordAcc;
-                }
-            }
-
-        }
-
-        if (bulletType == BulletTypes.Missile_lvl_1 || bulletType == BulletTypes.Missile_lvl_2 || bulletType == BulletTypes.Missile_lvl_3) {
-            if (GetNearestEnemy() != null) {
-                if (Vector3.SqrMagnitude(GetNearestEnemy().transform.position - this.transform.position) <= homingDistance) {
-                    //Draw Line Effect
-                    if (GetComponentInChildren<LineRenderer>() != null) {
-                        LineRenderer lr = GetComponentInChildren<LineRenderer>();
-
-                        lr.SetPosition(0, lr.transform.position);
-                        lr.SetPosition(1, GetNearestEnemy().transform.position);
-                    }
+        PerformAdditionalBulletBehaviour();
 
 
-                    //Homing Effect
-                    RotationProgress += Time.deltaTime * RotationSpeed;
-                    transform.up = Vector3.Lerp(transform.up, Vector3.Normalize(GetNearestEnemy().transform.position - transform.position), RotationProgress);
-
-                    //Debug.DrawLine(transform.position, transform.position + GetNearestEnemy().transform.position - transform.position, Color.red);
-
-                    //Debug.DrawLine(transform.position, transform.position + Vector3.Normalize(GetNearestEnemy().transform.position - transform.position));
-                    //Debug.DrawLine(transform.position, transform.position + transform.up);
-                }
-                else {
-                    if (GetComponentInChildren<LineRenderer>() != null) {
-                        LineRenderer lr = GetComponentInChildren<LineRenderer>();
-                        lr.SetPosition(0, lr.transform.position);
-                        lr.SetPosition(1, lr.transform.position);
-                    }
-                }
-            }
-            else {
-                if (GetComponentInChildren<LineRenderer>() != null) {
-                    LineRenderer lr = GetComponentInChildren<LineRenderer>();
-                    lr.SetPosition(0, lr.transform.position);
-                    lr.SetPosition(1, lr.transform.position);
-                }
-            }
-        }
-
-        if ((bulletType == BulletTypes.Grenade_lvl_2 || bulletType == BulletTypes.Grenade_lvl_3) && Input.GetMouseButtonUp(0) == true) {
-            if (SelfDestructionActive != true) {
-                InitiliseSelfDestruction();
-            }
-        }
 
         if (homingStrength != 0) {
             if (GetNearestEnemy() != null) {
@@ -471,5 +426,74 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
 
     protected virtual bool OnExplosion() {
         return false;
+    }
+
+    private void PerformPlayerBulletSpecificBehaviour() {
+        if (bulletType == BulletTypes.HelixBulletChild) {
+            if (transform.parent != null)
+                this.transform.RotateAround(transform.parent.transform.position, Vector3.forward, HelixBulletChild_RotationSpeed * Time.deltaTime);
+        }
+
+        if (bulletType == BulletTypes.LaserSword_lvl_1) {
+            if (SelfDestructionActive == false) {
+                if (speed <= TempSpeed) {
+                    LaserSwordAcc += TempSpeed * Time.deltaTime / 10f;
+                    speed += LaserSwordAcc;
+                }
+            }
+
+        }
+
+        if (bulletType == BulletTypes.Missile_lvl_1 || bulletType == BulletTypes.Missile_lvl_2 || bulletType == BulletTypes.Missile_lvl_3) {
+            if (GetNearestEnemy() != null) {
+                if (Vector3.SqrMagnitude(GetNearestEnemy().transform.position - this.transform.position) <= homingDistance) {
+                    //Draw Line Effect
+                    if (GetComponentInChildren<LineRenderer>() != null) {
+                        LineRenderer lr = GetComponentInChildren<LineRenderer>();
+
+                        lr.SetPosition(0, lr.transform.position);
+                        lr.SetPosition(1, GetNearestEnemy().transform.position);
+                    }
+
+
+                    //Homing Effect
+                    RotationProgress += Time.deltaTime * RotationSpeed;
+                    transform.up = Vector3.Lerp(transform.up, Vector3.Normalize(GetNearestEnemy().transform.position - transform.position), RotationProgress);
+
+                    //Debug.DrawLine(transform.position, transform.position + GetNearestEnemy().transform.position - transform.position, Color.red);
+
+                    //Debug.DrawLine(transform.position, transform.position + Vector3.Normalize(GetNearestEnemy().transform.position - transform.position));
+                    //Debug.DrawLine(transform.position, transform.position + transform.up);
+                }
+                else {
+                    if (GetComponentInChildren<LineRenderer>() != null) {
+                        LineRenderer lr = GetComponentInChildren<LineRenderer>();
+                        lr.SetPosition(0, lr.transform.position);
+                        lr.SetPosition(1, lr.transform.position);
+                    }
+                }
+            }
+            else {
+                if (GetComponentInChildren<LineRenderer>() != null) {
+                    LineRenderer lr = GetComponentInChildren<LineRenderer>();
+                    lr.SetPosition(0, lr.transform.position);
+                    lr.SetPosition(1, lr.transform.position);
+                }
+            }
+        }
+
+        if ((bulletType == BulletTypes.Grenade_lvl_2 || bulletType == BulletTypes.Grenade_lvl_3) && Input.GetMouseButtonUp(0) == true) {
+            if (SelfDestructionActive != true) {
+                InitiliseSelfDestruction();
+            }
+        }
+    }
+
+    private void PerformAdditionalBulletBehaviour() {
+        if (additionalBulletBehaviour == AdditionalBulletBehaviour.LightningMovement) {
+            if (Random.Range(0f, 1f) <= changeAngleLiklyhood) {
+                this.transform.rotation *= Quaternion.Euler(0, 0, (90 + Random.Range(AngleDeviation, -AngleDeviation)));
+            }
+        }
     }
 }
