@@ -99,8 +99,8 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
 
     public AdditionalBulletBehaviour additionalBulletBehaviour = AdditionalBulletBehaviour._null_;
     //lightning movement
-    private float changeAngleLiklyhood = 0.5f;//0.05f;
-    private float AngleDeviation = 5f;
+    private float changeAngleLiklyhood = 0.05f;
+    private float AngleDeviation = 80f;
 
 
 
@@ -172,11 +172,16 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
             float shrapnellBulletRNGSpread = 24; 
             transform.rotation = transform.rotation * Quaternion.Euler(0, 0, Random.Range(shrapnellBulletRNGSpread, -shrapnellBulletRNGSpread));
         }
-        /* this was ment for the precise grenade explosion (it explodes there wehere the mouse is)
+        /* this was ment for the precise grenade explosion (it explodes there where the mouse is)
         if (bulletType == BulletTypes.Grenade_lvl_2) {
             Vector3 distance = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0) - transform.position;
         }
         */
+
+
+        if (additionalBulletBehaviour == AdditionalBulletBehaviour.LightningMovement) {
+            InvokeRepeating("PerformLightingMovement", 0f, 0.01f);
+        }
     }
 
     void Update() {
@@ -209,6 +214,9 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
     }
 
     private void OnDestroy() {
+        if (additionalBulletBehaviour == AdditionalBulletBehaviour.LightningMovement) {
+            CancelInvoke("PerformLightingMovement");
+        }
     }
 
     void InitiliseSelfDestruction() {
@@ -490,10 +498,20 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
     }
 
     private void PerformAdditionalBulletBehaviour() {
-        if (additionalBulletBehaviour == AdditionalBulletBehaviour.LightningMovement) {
-            if (Random.Range(0f, 1f) <= changeAngleLiklyhood) {
-                this.transform.rotation *= Quaternion.Euler(0, 0, (90 + Random.Range(AngleDeviation, -AngleDeviation)));
-            }
+
+        
+    }
+
+    private void PerformLightingMovement() {
+        if (Random.Range(0f, 1f) <= changeAngleLiklyhood) {
+            Quaternion rngRot = Quaternion.Euler(0, 0, Random.Range(AngleDeviation, -AngleDeviation));
+            this.transform.rotation *= rngRot;
+            StartCoroutine(LightingMovementRotateBack(rngRot));
         }
+    }
+    private IEnumerator LightingMovementRotateBack(Quaternion _quat) {
+        float _time = Random.Range(0.01f, 0.15f);
+        yield return new WaitForSeconds(_time);
+        this.transform.rotation *= Quaternion.Inverse(_quat);
     }
 }

@@ -4791,10 +4791,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createOnDeath: {fileID: 0}
   explosionOnDeath: {fileID: 0}
-  bulletType: 28
-  enemyBulletType: 0
-  isExplosion: 1
   direction: {x: 0, y: 0, z: 0}
+  bulletType: 28
+  isEnemyBullet: 0
+  isShootable: 0
   speed: 0
   damage: 120
   duration: 0
@@ -4804,7 +4804,8 @@ MonoBehaviour:
   homingDistance: 10
   RotationSpeed: 0.1
   AmountOfShrapnellBulletsSpawnedOnDeath: 0
-  explosionType: 3
+  additionalBulletBehaviour: 0
+  CameraShakePreset: 3
 --- !u!1 &1406487653541174
 GameObject:
   m_ObjectHideFlags: 0
