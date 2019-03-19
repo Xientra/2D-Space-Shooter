@@ -17,11 +17,11 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
     /*--------------------Affiliation--------------------*/
 
     public enum BulletTypes {
-        Standart, HelixBullet_lvl_1, HelixBullet_lvl_2, HelixBullet_lvl_3, HelixBulletChild, Wave, ChainGunBullet, ShotgunBullet, 
-        Missile_lvl_1, Missile_lvl_2, Missile_lvl_3, Grenade_lvl_1, Grenade_lvl_2, Grenade_lvl_3, Shrapnel_lvl_1, Shrapnel_lvl_2, Shrapnel_lvl_3, ShrapnellBullet, 
-        HomingBullet_lvl_1, HomingBullet_lvl_2, HomingBullet_lvl_3, LaserSword_lvl_1, LaserSword_lvl_2, LaserSword_lvl_3, 
-        ShrapnellExplosion, 
-        SimpleLaser, SplitLaser, SplitLaserChild, 
+        Standart, HelixBullet_lvl_1, HelixBullet_lvl_2, HelixBullet_lvl_3, HelixBulletChild, Wave, ChainGunBullet, ShotgunBullet,
+        Missile_lvl_1, Missile_lvl_2, Missile_lvl_3, Grenade_lvl_1, Grenade_lvl_2, Grenade_lvl_3, Shrapnel_lvl_1, Shrapnel_lvl_2, Shrapnel_lvl_3, ShrapnellBullet,
+        HomingBullet_lvl_1, HomingBullet_lvl_2, HomingBullet_lvl_3, LaserSword_lvl_1, LaserSword_lvl_2, LaserSword_lvl_3,
+        ShrapnellExplosion,
+        SimpleLaser, SplitLaser, SplitLaserChild,
         _null_, SplitBullet
     }
 
@@ -36,7 +36,7 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
     private bool isShootable = false;
 
     private bool isLaser = false;
-    
+
 
 
     [Header("Stats: ")]
@@ -92,7 +92,7 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
 
     /*--------------------Additional Bullet Behaviour Variables--------------------*/
     public enum AdditionalBulletBehaviour {
-        _null_, LightningMovement
+        _null_, LightningMovement, SquareSplitAtSomePoint, CreateBulletsOnTheSide //NormalSplitAtSomePoint?
     }
 
     [Header("Additional Bullet Behaviour Variables: ")]
@@ -107,12 +107,12 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
     /*--------------------PowerUp Variables--------------------*/
     public static float damageMultiplyer = 1f;
 
-    
+
 
     void Start() {
         StartCoroutine(destroyAfterTime());
 
-        
+
         //Bullet affiliation check
         if (this.GetType() != typeof(ExplosionBehaviourScript)) {
             if (bulletType == BulletTypes._null_ && isEnemyBullet == false) {
@@ -163,13 +163,13 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
         if (bulletType == BulletTypes.HomingBullet_lvl_1 || bulletType == BulletTypes.HomingBullet_lvl_2 || bulletType == BulletTypes.HomingBullet_lvl_3) {
             direction = transform.rotation * direction;
             transform.rotation = Quaternion.identity;
-        }        
+        }
         if (bulletType == BulletTypes.LaserSword_lvl_1) {
             TempSpeed = speed;
             speed = 0;
         }
         if (bulletType == BulletTypes.ShrapnellBullet) {
-            float shrapnellBulletRNGSpread = 24; 
+            float shrapnellBulletRNGSpread = 24;
             transform.rotation = transform.rotation * Quaternion.Euler(0, 0, Random.Range(shrapnellBulletRNGSpread, -shrapnellBulletRNGSpread));
         }
         /* this was ment for the precise grenade explosion (it explodes there where the mouse is)
@@ -178,9 +178,15 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
         }
         */
 
+        switch (additionalBulletBehaviour) {
+            case (AdditionalBulletBehaviour.LightningMovement):
+                InvokeRepeating("PerformLightingMovement", 0f, 0.01f);
 
-        if (additionalBulletBehaviour == AdditionalBulletBehaviour.LightningMovement) {
-            InvokeRepeating("PerformLightingMovement", 0f, 0.01f);
+                break;
+            case (AdditionalBulletBehaviour.SquareSplitAtSomePoint):
+                StartCoroutine(SquareSplitAfterTime(duration / 4, 0.5f));
+
+                break;
         }
     }
 
@@ -226,7 +232,7 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
             OnExplosion();
             StartCoroutine(DelayDestruction());
         }
-        else {
+        else { //================================= Normal Destruction =================================
             //specific bullet behaviour
             if (AmountOfShrapnellBulletsSpawnedOnDeath != 0) {
                 for (int i = 1; i <= AmountOfShrapnellBulletsSpawnedOnDeath; i++) {
@@ -369,7 +375,7 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
                 }
             }
 
-            
+
         }
         else { //this is an exposion
             if (isEnemyBullet == false) { // is player explosion
@@ -497,9 +503,14 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
         }
     }
 
+
+
+    /*=========================Additional Bullet Behaviour===================================*/
+
+
     private void PerformAdditionalBulletBehaviour() {
 
-        
+
     }
 
     private void PerformLightingMovement() {
@@ -513,5 +524,51 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
         float _time = Random.Range(0.01f, 0.15f);
         yield return new WaitForSeconds(_time);
         this.transform.rotation *= Quaternion.Inverse(_quat);
+    }
+
+    private IEnumerator SquareSplitAfterTime(float _time, float _distance) {
+        yield return new WaitForSeconds(_time);
+
+        GameObject go1 = Instantiate(gameObject, transform.position, transform.rotation);
+        GameObject go2 = Instantiate(gameObject, transform.position, transform.rotation);
+
+        LaserBulletBehaviourScript bullet1 = go1.GetComponent<LaserBulletBehaviourScript>();
+        LaserBulletBehaviourScript bullet2 = go2.GetComponent<LaserBulletBehaviourScript>();
+
+        bullet1.additionalBulletBehaviour = AdditionalBulletBehaviour._null_;
+        bullet2.additionalBulletBehaviour = AdditionalBulletBehaviour._null_;
+
+        //go1.transform.position += transform.right * _distance;
+        //go2.transform.position -= transform.right * _distance;
+
+        bullet1.direction.x = bullet1.direction.y / 5;
+        bullet2.direction.x = -bullet2.direction.y / 5;
+
+        //StartCoroutine(Test(go1, go2, _distance));
+
+
+
+        bullet1.PerformSetDirectionAfterTime(direction, 0.5f);
+        bullet2.PerformSetDirectionAfterTime(direction, 0.5f);
+
+        //Destroy(this.gameObject);
+    }
+
+    private IEnumerator Test(GameObject _go1, GameObject _go2, float _distance) {
+        yield return null;
+        _go1.transform.position += transform.right * _distance;
+        _go2.transform.position -= transform.right * _distance;
+    }
+
+
+    private void PerformSetDirectionAfterTime(Vector3 _direction, float _time){
+        StartCoroutine(SetDirectionAfterTime(_direction, _time));
+    }
+
+    private IEnumerator SetDirectionAfterTime(Vector3 _direction, float _time) {
+
+        yield return new WaitForSeconds(_time);
+
+        direction = _direction;
     }
 }
