@@ -15,7 +15,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
     private GameObject[] EnemyBullets;
 
     public enum ShootTypes {
-        None, SingleBullet, FiveSpread, FourSmallLaserBullets
+        None, SingleBullet, FiveSpread, FourSmallLaserBullets, DropBomb
     }
     public ShootTypes ShootType = ShootTypes.None;
 
@@ -28,13 +28,14 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
     //Start Delays
     [SerializeField]
-    private float AnimationStartDelay = 0.5f;
+    private float AnimationStartDelay = 1f;
     [SerializeField]
     private float LimiterDestructionDelayAfterStart = 1f;
     private bool LimiterDestruction = false;
 
     public bool lookForwardWhenMoving = false;
     private Vector3 lastFramePos;
+    private Quaternion startRotation;
 
     public bool destroyAfterAnimation = true;
 
@@ -72,6 +73,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
         Health = MaxHealth;
         lastFramePos = transform.position;
+        startRotation = transform.rotation;
 
         if (GetComponent<Animator>() != null) {
             animator = GetComponent<Animator>();
@@ -173,6 +175,11 @@ public class EnemyBehaviourScript : MonoBehaviour {
                         Instantiate(WeaponProjectile, go.transform.position, WeaponProjectile.transform.rotation * go.transform.rotation * Quaternion.Euler(0, 0, 90) * Quaternion.Euler(0, 0, -tempAngle * 2));
                     }
                     break;
+                case (ShootTypes.DropBomb):
+                    foreach (GameObject go in EnemyTurrets) {
+                        Instantiate(WeaponProjectile, go.transform.position, WeaponProjectile.transform.rotation * Quaternion.Euler(0, 0, 0));
+                    }
+                    break;
             }
         }
         else {
@@ -253,7 +260,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
                 Vector3 lookDirection = transform.position - lastFramePos;
                 Vector3.Normalize(lookDirection);
 
-                transform.up = -lookDirection;
+                transform.up = startRotation * -lookDirection;
 
                 lastFramePos = transform.position;
             }

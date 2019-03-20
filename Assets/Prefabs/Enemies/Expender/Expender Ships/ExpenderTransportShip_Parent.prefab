@@ -121,7 +121,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 32bfb88eefde32b428b2aca89f400944, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -238,12 +238,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthBarGameObject: {fileID: 6011552469004715550}
-  EnemyTurrets: []
-  ShootType: 0
+  EnemyTurrets:
+  - {fileID: 5652979347515035696}
+  ShootType: 1
   aimTurrets: 1
   WeaponProjectile: {fileID: 1991854627193970, guid: 7e5806c4ec9cba14db6df906928a51f1,
     type: 3}
-  AnimationStartDelay: 0
+  AnimationStartDelay: 1
   LimiterDestructionDelayAfterStart: 1
   lookForwardWhenMoving: 0
   destroyAfterAnimation: 1
@@ -404,7 +405,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7853622934198741593
 Transform:
   m_ObjectHideFlags: 0
@@ -435,7 +436,7 @@ PrefabInstance:
     - target: {fileID: 8370210287362569561, guid: afd7f21d20cd0f449b2be8ab6ffca56c,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4002497592868922286, guid: afd7f21d20cd0f449b2be8ab6ffca56c,
         type: 3}

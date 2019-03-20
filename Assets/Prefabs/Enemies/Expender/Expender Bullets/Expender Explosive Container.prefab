@@ -4639,7 +4639,7 @@ ParticleSystem:
 --- !u!199 &7109650990888370830
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4847,7 +4847,7 @@ MonoBehaviour:
   bulletType: 28
   isEnemyBullet: 1
   isShootable: 1
-  speed: 0.5
+  speed: 2
   damage: 5
   duration: 50
   DelayDestructionTime: 0
@@ -4856,3 +4856,4 @@ MonoBehaviour:
   homingDistance: 10
   RotationSpeed: 0.1
   AmountOfShrapnellBulletsSpawnedOnDeath: 0
+  additionalBulletBehaviour: 0

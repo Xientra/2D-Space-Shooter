@@ -349,9 +349,10 @@ MonoBehaviour:
   HealthBarGameObject: {fileID: 4398927807121724532}
   EnemyTurrets:
   - {fileID: 6049644329760243033}
-  ShootType: 0
+  ShootType: 1
   aimTurrets: 1
-  WeaponProjectile: {fileID: 0}
+  WeaponProjectile: {fileID: 1410566720341952, guid: 053cbe4009a6a0a45b6612135f15bfa5,
+    type: 3}
   AnimationStartDelay: 0
   LimiterDestructionDelayAfterStart: 1
   lookForwardWhenMoving: 0
