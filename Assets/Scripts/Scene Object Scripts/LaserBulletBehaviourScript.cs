@@ -38,6 +38,8 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
     private bool isLaser = false;
 
 
+    private Vector3 lastFramePosition;
+
 
     [Header("Stats: ")]
     /*--------------------Stats--------------------*/
@@ -110,6 +112,8 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
 
 
     void Start() {
+        lastFramePosition = transform.position;
+
         StartCoroutine(destroyAfterTime());
 
 
@@ -209,6 +213,12 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
                 }
             }
         }
+
+        if (SelfDestructionActive == false) {
+            CollisionDetectionToLastPosition();
+        }
+
+        lastFramePosition = transform.position;
     }
 
     IEnumerator destroyAfterTime() {
@@ -216,6 +226,17 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
         if (SelfDestructionActive != true) {
             //Debug.Log("SelfDes1");
             InitiliseSelfDestruction();
+        }
+    }
+
+    void CollisionDetectionToLastPosition() {
+
+        RaycastHit2D[] raycastHits = Physics2D.RaycastAll(transform.position, -transform.position + lastFramePosition, (-transform.position + lastFramePosition).magnitude);
+
+        Debug.DrawLine(transform.position, lastFramePosition);
+
+        foreach (RaycastHit2D rH in raycastHits) {
+            OnTriggerEnter2D(rH.collider);
         }
     }
 
