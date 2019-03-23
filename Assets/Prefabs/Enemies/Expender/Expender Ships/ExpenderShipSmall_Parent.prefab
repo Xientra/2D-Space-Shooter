@@ -348,8 +348,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthBarGameObject: {fileID: 6376938713358910111}
-  EnemyTurrets: []
-  ShootType: 0
+  EnemyTurrets:
+  - {fileID: 9103522954329331805}
+  ShootType: 1
   aimTurrets: 1
   WeaponProjectile: {fileID: 0}
   AnimationStartDelay: 1

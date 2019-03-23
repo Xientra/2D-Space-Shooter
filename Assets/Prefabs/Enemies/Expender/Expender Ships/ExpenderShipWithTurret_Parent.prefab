@@ -325,7 +325,7 @@ Animator:
   m_GameObject: {fileID: 1948714869419192}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 810b4aca3dea91f499b1d99b59f01afa, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8e0267a62d295f34590a300138786ff7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -355,7 +355,7 @@ MonoBehaviour:
     type: 3}
   AnimationStartDelay: 1
   LimiterDestructionDelayAfterStart: 1
-  lookForwardWhenMoving: 0
+  lookForwardWhenMoving: 1
   destroyAfterAnimation: 1
   canShoot: 0
   MaxHealth: 60

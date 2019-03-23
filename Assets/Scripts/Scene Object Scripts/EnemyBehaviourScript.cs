@@ -260,7 +260,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
                 Vector3 lookDirection = transform.position - lastFramePos;
                 Vector3.Normalize(lookDirection);
 
-                transform.up = startRotation * -lookDirection;
+                transform.up = Quaternion.Inverse(transform.parent.rotation) * (startRotation * -lookDirection);
 
                 lastFramePos = transform.position;
             }

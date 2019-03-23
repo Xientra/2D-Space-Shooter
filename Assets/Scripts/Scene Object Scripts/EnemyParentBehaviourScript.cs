@@ -13,17 +13,18 @@ public class EnemyParentBehaviourScript : MonoBehaviour {
                 if (t.gameObject.CompareTag("HealthBar"))
                     HealthBarObject = t.gameObject;
             }
-
-            HealthBarObject.transform.localScale = new Vector3(HealthBarObject.transform.localScale.x * transform.lossyScale.normalized.x, HealthBarObject.transform.localScale.y * transform.lossyScale.normalized.y, HealthBarObject.transform.localScale.z * transform.lossyScale.normalized.z); //for Mirroring using the scale
-            //HealthBarObject.transform.localScale = transform.lossyScale;
         }
+        else {
+            HealthBarObject.transform.localScale = new Vector3(HealthBarObject.transform.localScale.x / transform.lossyScale.x, HealthBarObject.transform.localScale.y / transform.lossyScale.y, HealthBarObject.transform.localScale.z / transform.lossyScale.z); //for Mirroring using the scale
+            //HealthBarObject.transform.localScale = new Vector3(HealthBarObject.transform.localScale.x * transform.lossyScale.normalized.x, HealthBarObject.transform.localScale.y * transform.lossyScale.normalized.y, HealthBarObject.transform.localScale.z * transform.lossyScale.normalized.z); //for Mirroring using the scale
+        }
+
         if (EnemyObject == null) {
             Debug.LogError("The EnemyParent " + transform.gameObject.name + " never had an EnemyObject assinged. It destroyed itself...");
         }
         else {
-            EnemyObject.transform.localScale = new Vector3(EnemyObject.transform.localScale.x * (1 / transform.lossyScale.x), EnemyObject.transform.localScale.y * 1 / (transform.lossyScale.y), EnemyObject.transform.localScale.z * 1 / (transform.lossyScale.z)); //for Mirroring using the scale
+            EnemyObject.transform.localScale = new Vector3(EnemyObject.transform.localScale.x / transform.lossyScale.x, EnemyObject.transform.localScale.y / transform.lossyScale.y, EnemyObject.transform.localScale.z / transform.lossyScale.z); //for Mirroring using the scale
             //EnemyObject.transform.localScale = new Vector3(EnemyObject.transform.localScale.x * transform.lossyScale.normalized.x, EnemyObject.transform.localScale.y * transform.lossyScale.normalized.y, EnemyObject.transform.localScale.z * transform.lossyScale.normalized.z); //for Mirroring using the scale
-            //EnemyObject.transform.localScale = transform.lossyScale;
         }
     }
 	
@@ -33,6 +34,7 @@ public class EnemyParentBehaviourScript : MonoBehaviour {
             Destroy(this.gameObject);
         else {
             HealthBarObject.transform.position = EnemyObject.transform.position;
+            HealthBarObject.transform.up = Vector3.up;
         }
     }
 }

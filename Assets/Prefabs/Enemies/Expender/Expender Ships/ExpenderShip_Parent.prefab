@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyObject: {fileID: 1948714869419192}
-  HealthBarObject: {fileID: 0}
+  HealthBarObject: {fileID: 739529798140422502}
 --- !u!1 &1883405984207694
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,9 +349,9 @@ MonoBehaviour:
   ShootType: 0
   aimTurrets: 1
   WeaponProjectile: {fileID: 0}
-  AnimationStartDelay: 1
+  AnimationStartDelay: 0
   LimiterDestructionDelayAfterStart: 1
-  lookForwardWhenMoving: 0
+  lookForwardWhenMoving: 1
   destroyAfterAnimation: 1
   canShoot: 0
   MaxHealth: 75
