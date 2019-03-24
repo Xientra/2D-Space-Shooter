@@ -4,7 +4,8 @@
 AnimationClip:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Down20Shoot2Left6Shoot2Up20_anim
   serializedVersion: 6
   m_Legacy: 0
@@ -29,12 +30,12 @@ AnimationClip:
       - serializedVersion: 3
         time: 4
         value: {x: -3, y: -20, z: 0}
-        inSlope: {x: -2.3110938, y: 0, z: 0}
-        outSlope: {x: -2.3110938, y: 0, z: 0}
+        inSlope: {x: -0.69067836, y: 0, z: 0}
+        outSlope: {x: -0.69067836, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.02336526, y: 0.33333334, z: 0.33333334}
+        inWeight: {x: 0.03535205, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 1, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 8
         value: {x: -6, y: 0, z: 0}
@@ -209,12 +210,12 @@ AnimationClip:
       - serializedVersion: 3
         time: 4
         value: -3
-        inSlope: -2.3110938
-        outSlope: -2.3110938
+        inSlope: -0.69067836
+        outSlope: -0.69067836
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.02336526
+        inWeight: 0.03535205
+        outWeight: 1
       - serializedVersion: 3
         time: 8
         value: -6
@@ -408,5 +409,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
-  m_GenerateMotionCurves: 0
   m_Events: []
