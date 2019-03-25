@@ -14,17 +14,20 @@ public class EnemyParentBehaviourScript : MonoBehaviour {
                     HealthBarObject = t.gameObject;
             }
         }
-        else {
-            HealthBarObject.transform.localScale = new Vector3(HealthBarObject.transform.localScale.x / transform.lossyScale.x, HealthBarObject.transform.localScale.y / transform.lossyScale.y, HealthBarObject.transform.localScale.z / transform.lossyScale.z); //for Mirroring using the scale
-            //HealthBarObject.transform.localScale = new Vector3(HealthBarObject.transform.localScale.x * transform.lossyScale.normalized.x, HealthBarObject.transform.localScale.y * transform.lossyScale.normalized.y, HealthBarObject.transform.localScale.z * transform.lossyScale.normalized.z); //for Mirroring using the scale
-        }
 
+
+        //for Mirroring and scaling of the Enemies animation
+        if (HealthBarObject == null) {
+            Debug.LogError("The EnemyParent " + transform.gameObject.name + " couldn't find any object to assing as the HealthBarObject");
+        }
+        else {
+            HealthBarObject.transform.localScale = new Vector3(HealthBarObject.transform.localScale.x / transform.lossyScale.x, HealthBarObject.transform.localScale.y / transform.lossyScale.y, HealthBarObject.transform.localScale.z / transform.lossyScale.z); 
+        }
         if (EnemyObject == null) {
             Debug.LogError("The EnemyParent " + transform.gameObject.name + " never had an EnemyObject assinged. It destroyed itself...");
         }
         else {
-            EnemyObject.transform.localScale = new Vector3(EnemyObject.transform.localScale.x / transform.lossyScale.x, EnemyObject.transform.localScale.y / transform.lossyScale.y, EnemyObject.transform.localScale.z / transform.lossyScale.z); //for Mirroring using the scale
-            //EnemyObject.transform.localScale = new Vector3(EnemyObject.transform.localScale.x * transform.lossyScale.normalized.x, EnemyObject.transform.localScale.y * transform.lossyScale.normalized.y, EnemyObject.transform.localScale.z * transform.lossyScale.normalized.z); //for Mirroring using the scale
+            EnemyObject.transform.localScale = new Vector3(EnemyObject.transform.localScale.x / transform.lossyScale.x, EnemyObject.transform.localScale.y / transform.lossyScale.y, EnemyObject.transform.localScale.z / transform.lossyScale.z);
         }
     }
 	

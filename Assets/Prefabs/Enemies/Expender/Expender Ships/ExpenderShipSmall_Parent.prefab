@@ -355,7 +355,7 @@ MonoBehaviour:
   WeaponProjectile: {fileID: 0}
   AnimationStartDelay: 1
   LimiterDestructionDelayAfterStart: 1
-  lookForwardWhenMoving: 0
+  lookForwardWhenMoving: 1
   destroyAfterAnimation: 1
   canShoot: 0
   MaxHealth: 50

@@ -26,25 +26,31 @@ public class EnemyBehaviourScript : MonoBehaviour {
     private GameObject WeaponProjectile;
 
 
-    //Start Delays
+    [Header("Animation / Shooting: ")] /*--------------------Animation / Shooting--------------------*/
     [SerializeField]
     private float AnimationStartDelay = 1f;
     [SerializeField]
     private float LimiterDestructionDelayAfterStart = 1f;
     private bool LimiterDestruction = false;
 
+    public bool destroyAfterAnimation = true;
+
     public bool lookForwardWhenMoving = false;
     private Vector3 lastFramePos;
     private Quaternion startRotation;
 
-    public bool destroyAfterAnimation = true;
 
     //the movement/behaviour animation change this value for one frame which will make the enemy shoot in that frame
     [HideInInspector]
     public bool canShoot = false; //Has to be Serializable to be able to be changed by an animation
 
+    [SerializeField]
+    private float fireDelay = 0.1f;
+    private float fireDelayTimeStamp;
 
-    /*--------------------Stats--------------------*/
+
+
+    [Header("Stats: ")] /*--------------------Stats--------------------*/
     public float MaxHealth = 100f;
     public float Health = 100f;
     public float CollisionDamage = 50f;
@@ -116,8 +122,11 @@ public class EnemyBehaviourScript : MonoBehaviour {
         DestroyIfAnimationEnd();
 
         if (canShoot == true) {
-            Fire();
-            canShoot = false;
+            if (fireDelayTimeStamp <= Time.time) {
+                Fire();
+
+                fireDelayTimeStamp = Time.time + fireDelay;
+            }
         }
 
         if (Health <= 0) {
