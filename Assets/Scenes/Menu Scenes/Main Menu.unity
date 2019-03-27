@@ -2036,7 +2036,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 230662502}
         m_MethodName: OnValueChangeSecondWeaponDropdown
         m_Mode: 1
         m_Arguments:
@@ -2583,7 +2583,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 230662502}
         m_MethodName: OnValueChangeFirstWeaponDropdown
         m_Mode: 1
         m_Arguments:
@@ -2820,6 +2820,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 20818789098354572, guid: eaf5f6f7623ebb64497e73428e7c30ba,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20818789098354572, guid: eaf5f6f7623ebb64497e73428e7c30ba,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4785584274597024, guid: eaf5f6f7623ebb64497e73428e7c30ba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2850,16 +2860,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4785584274597024, guid: eaf5f6f7623ebb64497e73428e7c30ba, type: 3}
       propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 20818789098354572, guid: eaf5f6f7623ebb64497e73428e7c30ba,
-        type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 20818789098354572, guid: eaf5f6f7623ebb64497e73428e7c30ba,
-        type: 3}
-      propertyPath: m_BackGroundColor.b
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3303,7 +3303,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000010407409, y: -0.000034214707}
+  m_AnchoredPosition: {x: -0.000010407409, y: -0.00000667219}
   m_SizeDelta: {x: 0, y: 110}
   m_Pivot: {x: 0, y: 1}
 --- !u!1001 &916944820
@@ -6934,7 +6934,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1879268034}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999999
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

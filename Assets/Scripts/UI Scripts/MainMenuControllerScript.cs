@@ -217,14 +217,14 @@ public class MainMenuControllerScript : MonoBehaviour {
     public void Btn_BuyNewWeapon() {
         List<GameObject> buyableWeapons = new List<GameObject>();
         foreach (GameObject WepGo in ObjectHolder._PlayerWeapons) {
-            if (WepGo != null) 
-                if (WepGo.GetComponent<WeaponBehaviourScript>().WeaponLevel == WeaponBehaviourScript.WeaponLevels._1 && WepGo.GetComponent<WeaponBehaviourScript>().isBought == false) 
+            if (WepGo != null)
+                if (WepGo.GetComponent<WeaponBehaviourScript>().WeaponLevel == WeaponBehaviourScript.WeaponLevels._1 && WepGo.GetComponent<WeaponBehaviourScript>().isBought == false)
                     buyableWeapons.Add(WepGo);
         }
 
         if (buyableWeapons.Count != 0) {
             if (GameControllerScript.currendCredits >= NewWeaponPrice) {
-                
+
                 GameControllerScript.currendCredits -= NewWeaponPrice;
                 NewWeaponPrice += 100;
 
@@ -240,7 +240,7 @@ public class MainMenuControllerScript : MonoBehaviour {
             foreach (Transform t in OutfitterMenu.transform) {
                 if (t.name == "Btn_BuyNewWeapon") t.GetComponent<Button>().interactable = false;
             }
-        }
+    }
 
     public void OnValueChangeFirstWeaponDropdown() {
         int i = FirstWeaponDropdownGO.GetComponent<Dropdown>().value;

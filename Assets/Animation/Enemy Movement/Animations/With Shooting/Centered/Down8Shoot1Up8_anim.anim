@@ -4,7 +4,8 @@
 AnimationClip:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Down8Shoot1Up8_anim
   serializedVersion: 6
   m_Legacy: 0
@@ -63,7 +64,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 3.5
+        time: 3.45
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -72,7 +73,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 3.5166667
+        time: 3.4666667
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -246,7 +247,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 3.5
+        time: 3.45
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -255,7 +256,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 3.5166667
+        time: 3.4666667
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -282,5 +283,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
-  m_GenerateMotionCurves: 0
   m_Events: []

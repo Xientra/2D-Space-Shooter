@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Collider2D))]
+//[RequireComponent(typeof(Rigidbody2D))]
 public class LaserBulletBehaviourScript : MonoBehaviour {
 
     private LineRenderer lineRenderer;
@@ -111,11 +111,10 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
 
 
 
-    void Start() {
+    private void Start() {
         lastFramePosition = transform.position;
 
         StartCoroutine(destroyAfterTime());
-
 
         //Bullet affiliation check
         if (this.GetType() != typeof(ExplosionBehaviourScript)) {
@@ -129,6 +128,13 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
             }
             */
         }
+        //else {
+        //    foreach (ParticleSystem pS in transform.GetComponentsInChildren<ParticleSystem>()) {
+        //        Debug.Log(pS.gameObject.name + " - " + pS.isPlaying);
+        //        pS.Stop();
+        //        pS.Play();                
+        //    }
+        //}
 
 
         //Sets the state vars like isEnemyBullet and isLaser after affiliation check
@@ -334,17 +340,20 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
             }
         }
 
-        //Unparent the TrailRendererGo or the ParticleTrailGo
-        if (!(bulletType == BulletTypes.ShrapnellExplosion)) {
-            foreach (TrailRenderer TR in GetComponentsInChildren<TrailRenderer>()) {
-                if (TR.gameObject.GetComponent<LaserBulletBehaviourScript>() == null) {
-                    TR.time = TR.time / 2;
-                    TR.transform.SetParent(null, true);
+
+        if (this.GetType() != typeof(ExplosionBehaviourScript)) {
+            //Unparent the TrailRendererGo or the ParticleTrailGo
+            if (!(bulletType == BulletTypes.ShrapnellExplosion)) {
+                foreach (TrailRenderer TR in GetComponentsInChildren<TrailRenderer>()) {
+                    if (TR.gameObject.GetComponent<LaserBulletBehaviourScript>() == null) {
+                        TR.time = TR.time / 2;
+                        TR.transform.SetParent(null, true);
+                    }
                 }
-            }
-            foreach (ParticleSystem Ps in GetComponentsInChildren<ParticleSystem>()) {
-                if (Ps.gameObject.GetComponent<LaserBulletBehaviourScript>() == null) {
-                    Ps.Stop();
+                foreach (ParticleSystem Ps in GetComponentsInChildren<ParticleSystem>()) {
+                    if (Ps.gameObject.GetComponent<LaserBulletBehaviourScript>() == null) {
+                        Ps.Stop();
+                    }
                 }
             }
         }
