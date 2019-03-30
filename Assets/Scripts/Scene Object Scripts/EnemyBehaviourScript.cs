@@ -27,8 +27,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
 
     [Header("Animation / Shooting: ")] /*--------------------Animation / Shooting--------------------*/
-    [SerializeField]
-    private float AnimationStartDelay = 1f;
+    public float AnimationStartDelay = 1f;
     [SerializeField]
     private float LimiterDestructionDelayAfterStart = 1f;
     private bool LimiterDestruction = false;

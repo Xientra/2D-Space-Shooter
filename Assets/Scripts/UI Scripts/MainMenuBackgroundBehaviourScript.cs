@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class MainMenuBackgroundBehaviourScript : MonoBehaviour {
 
-    public GameObject SomeEnemyObject;
+    public RuntimeAnimatorController AnimationToPlay;
+
+    public GameObject[] SomeEnemyObjects;
     private GameObject SpawnedEnemyObject;
 
     private float distance_x;
@@ -33,7 +35,19 @@ public class MainMenuBackgroundBehaviourScript : MonoBehaviour {
                 Destroy(SpawnedEnemyObject);
             }
 
-            SpawnedEnemyObject = Instantiate(SomeEnemyObject, new Vector3(Random.Range(-(distance_x - offset), distance_x - offset), distance_y + offset), Quaternion.identity);
+            int rng = Random.Range(0, SomeEnemyObjects.Length);
+            Debug.Log(rng);
+            while (SomeEnemyObjects[rng] == null) {
+                rng = Random.Range(0, SomeEnemyObjects.Length);
+                Debug.Log(rng);
+            }
+
+            SpawnedEnemyObject = Instantiate(SomeEnemyObjects[rng], new Vector3(Random.Range(-(distance_x - offset), distance_x - offset), distance_y + offset), Quaternion.identity);
+
+            SpawnedEnemyObject.GetComponentInChildren<Animator>().runtimeAnimatorController = AnimationToPlay;
+            SpawnedEnemyObject.GetComponentInChildren<EnemyBehaviourScript>().AnimationStartDelay = 0f;
+            SpawnedEnemyObject.GetComponent<EnemyParentBehaviourScript>().HealthBarObject.SetActive(false);
+
 
             SpawnCooldown = Random.Range(SpawnCooldownMin, SpawnCooldownMax);
             SpawnCooldownTimeStamp = Time.time + SpawnCooldown;

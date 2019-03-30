@@ -2676,8 +2676,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 701ffe09ba09a4c4bb381ca52221c47f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SomeEnemyObject: {fileID: 1114364552107884, guid: 9846023f75897544da838f1b2b31c75e,
-    type: 3}
+  AnimationToPlay: {fileID: 9100000, guid: 810b4aca3dea91f499b1d99b59f01afa, type: 2}
+  SomeEnemyObjects:
+  - {fileID: 1114364552107884, guid: 9846023f75897544da838f1b2b31c75e, type: 3}
+  - {fileID: 1114364552107884, guid: cf7b5293983bd4d4ab7bb84d2e30fe23, type: 3}
+  - {fileID: 1114364552107884, guid: 6e9a3bff60b536643a2b2f4b7521b27e, type: 3}
+  - {fileID: 1114364552107884, guid: d0addf8f99e07d149a9b63185c7f0a5c, type: 3}
   SpawnCooldownMin: 8.5
   SpawnCooldownMax: 9.5
 --- !u!1 &650013370
