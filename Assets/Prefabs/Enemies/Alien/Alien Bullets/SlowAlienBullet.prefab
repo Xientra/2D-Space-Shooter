@@ -155,7 +155,7 @@ MonoBehaviour:
   createOnDeath: {fileID: 0}
   explosionOnDeath: {fileID: 0}
   direction: {x: 0, y: -1, z: 0}
-  bulletType: 28
+  bulletType: 29
   isEnemyBullet: 1
   isShootable: 0
   speed: 3
@@ -167,6 +167,7 @@ MonoBehaviour:
   homingDistance: 10
   RotationSpeed: 0.1
   AmountOfShrapnellBulletsSpawnedOnDeath: 0
+  additionalBulletBehaviour: 0
 --- !u!1 &1900978476989332
 GameObject:
   m_ObjectHideFlags: 0

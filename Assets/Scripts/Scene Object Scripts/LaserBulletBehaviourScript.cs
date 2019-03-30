@@ -19,7 +19,7 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
     public enum BulletTypes {
         Standart, HelixBullet_lvl_1, HelixBullet_lvl_2, HelixBullet_lvl_3, HelixBulletChild, Wave, ChainGunBullet, ShotgunBullet,
         Missile_lvl_1, Missile_lvl_2, Missile_lvl_3, Grenade_lvl_1, Grenade_lvl_2, Grenade_lvl_3, Shrapnel_lvl_1, Shrapnel_lvl_2, Shrapnel_lvl_3, ShrapnellBullet,
-        HomingBullet_lvl_1, HomingBullet_lvl_2, HomingBullet_lvl_3, LaserSword_lvl_1, LaserSword_lvl_2, LaserSword_lvl_3,
+        HomingBullet_lvl_1, HomingBullet_lvl_2, HomingBullet_lvl_3, LaserSword_lvl_1, LaserSword_lvl_2, LaserSword_lvl_3, SniperBullet_lvl_1,
         ShrapnellExplosion,
         SimpleLaser, SplitLaser, SplitLaserChild,
         _null_, SplitBullet
@@ -143,8 +143,7 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
             damageDelayTimeStamp = Time.time + damageDelay;
         }
 
-
-
+        
         //Does bulletspecific stuff
         switch (bulletType) {
             case (BulletTypes.HelixBulletChild):

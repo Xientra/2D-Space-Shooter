@@ -8,6 +8,7 @@ public class WeaponBehaviourScript : MonoBehaviour {
         Standart_lvl_1, Standart_lvl_2, Standart_lvl_3, Shotgun_lvl_1, Shotgun_lvl_2, Shotgun_lvl_3, Homing_lvl_1, Homing_lvl_2, Homing_lvl_3, Helix_lvl_1, Helix_lvl_2, Helix_lvl_3,
         ChainGun_lvl_1, ChainGun_lvl_2, ChainGun_lvl_3, WaveEmitter_lvl_1, WaveEmitter_lvl_2, WaveEmitter_lvl_3, LaserSword_lvl_1, LaserSword_lvl_2, LaserSword_lvl_3,
         MissileLauncher_lvl_1, MissileLauncher_lvl_2, MissileLauncher_lvl_3, GrenadeLauncher_lvl_1, GrenadeLauncher_lvl_2, GrenadeLauncher_lvl_3, ShrapnelLauncher_lvl_1, ShrapnelLauncher_lvl_2, ShrapnelLauncher_lvl_3,
+        Sniper_lvl_1, Sniper_lvl_2, Sniper_lvl_3,
     }
 
     public float cooldown;
@@ -26,7 +27,7 @@ public class WeaponBehaviourScript : MonoBehaviour {
 
     /*------------Stats for the Stats Menu--------------*/
     public bool isBought = false;
-    public enum WeaponLevels { _1, _2, _3}
+    public enum WeaponLevels { _1, _2, _3 }
     public WeaponLevels WeaponLevel = WeaponLevels._1;
     public float price = 100;
     public string weaponName = "";
@@ -156,6 +157,10 @@ public class WeaponBehaviourScript : MonoBehaviour {
                 fireChainGun(0.03f, 0.09f, 1f, ProjectileSpawnPoint, TurretGameObject);
                 break;
 
+            case (WeaponTypes.Sniper_lvl_1):
+                StartFiringSniper(ProjectileSpawnPoint, TurretGameObject);
+                break;
+
             default:
                 Debug.LogError("The Weapon Type -" + WeaponType.ToString() + "- has no values assinged!");
                 break;
@@ -177,7 +182,7 @@ public class WeaponBehaviourScript : MonoBehaviour {
         Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.LaserSword_lvl_1)], RndFieldPos, LookToMouse);
     }
 
-    private void fireShotgun(int _bulletAmount, float _bulletRng, float _bulletDisplacement,  Vector3 _ProjectileSpawnPoint, GameObject _TurretGameObject) {
+    private void fireShotgun(int _bulletAmount, float _bulletRng, float _bulletDisplacement, Vector3 _ProjectileSpawnPoint, GameObject _TurretGameObject) {
         for (int i = 1; i <= _bulletAmount; i++) {
             Vector3 displacement = (_TurretGameObject.transform.up * Random.Range(-_bulletDisplacement, _bulletDisplacement));
             Quaternion spread = Quaternion.Euler(0, 0, Random.Range(_bulletRng, -_bulletRng));
@@ -186,6 +191,21 @@ public class WeaponBehaviourScript : MonoBehaviour {
         }
         //UnityEditor.EditorApplication.isPaused = true;
     }
+
+    private void StartFiringSniper(Vector3 _ProjectileSpawnPoint, GameObject _TurretGameObject) {
+
+        GameObject effect = Instantiate(ObjectHolder._Effects[ObjectHolder.GetEffectIndex(EffectBehaviourScript.EffectTypes.SniperCharging)], _ProjectileSpawnPoint, _TurretGameObject.transform.rotation, _TurretGameObject.transform);
+
+        effect.GetComponent<EffectBehaviourScript>().StartCoroutine(FireSniper(effect));
+    }
+
+    private IEnumerator FireSniper(GameObject _SpawnPoint) {
+
+        yield return new WaitForSeconds(1f);
+
+        Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.SniperBullet_lvl_1)], _SpawnPoint.transform.position, _SpawnPoint.transform.rotation);
+    }
+
     /*
     private void fireAnyLaserGun(LaserBulletBehaviourScript.BulletTypes LaserToFire) {
         if (cooldownTimeStamp <= Time.time) {

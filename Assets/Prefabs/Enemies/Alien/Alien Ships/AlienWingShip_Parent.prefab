@@ -497,17 +497,16 @@ MonoBehaviour:
   - {fileID: 1209758588712905139}
   - {fileID: 7729945425682724605}
   - {fileID: 6658560853316218430}
-  currendEnemyType: 3
-  EnemyWeapon: 3
-  EnemyWeaponType: 1
+  ShootType: 1
   aimTurrets: 0
   WeaponProjectile: {fileID: 1991854627193970, guid: badfcf15ad43124489e1e2ff54abedd2,
     type: 3}
   AnimationStartDelay: 1
   LimiterDestructionDelayAfterStart: 1
-  lookForwardWhenMoving: 0
   destroyAfterAnimation: 1
+  lookForwardWhenMoving: 0
   canShoot: 0
+  fireDelay: 0.1
   MaxHealth: 350
   Health: 350
   CollisionDamage: 75
