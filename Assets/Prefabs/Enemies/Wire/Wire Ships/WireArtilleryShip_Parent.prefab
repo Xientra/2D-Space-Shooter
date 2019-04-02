@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyObject: {fileID: 1948714869419192}
-  HealthBarObject: {fileID: 0}
+  HealthBarObject: {fileID: 8861990074745693296}
 --- !u!1 &1883405984207694
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,9 +361,10 @@ MonoBehaviour:
     type: 3}
   AnimationStartDelay: 1
   LimiterDestructionDelayAfterStart: 1
-  lookForwardWhenMoving: 0
   destroyAfterAnimation: 1
+  lookForwardWhenMoving: 0
   canShoot: 0
+  fireDelay: 0.1
   MaxHealth: 300
   Health: 300
   CollisionDamage: 50
