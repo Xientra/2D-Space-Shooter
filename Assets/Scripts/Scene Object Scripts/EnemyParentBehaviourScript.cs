@@ -31,7 +31,7 @@ public class EnemyParentBehaviourScript : MonoBehaviour {
         }
     }
 	
-	void Update () {
+	void LateUpdate () {
 
         if (EnemyObject == null)
             Destroy(this.gameObject);
