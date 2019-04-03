@@ -165,36 +165,38 @@ public class EnemyBehaviourScript : MonoBehaviour {
     }
 
     void Fire() {
-        if (WeaponProjectile.GetComponent<LaserBulletBehaviourScript>() != null) {
+        if (ShootType != ShootTypes.None) {
+            if (WeaponProjectile.GetComponent<LaserBulletBehaviourScript>() != null) {
 
-            switch (ShootType) {
-                case (ShootTypes.SingleBullet):
-                    foreach (GameObject go in EnemyTurrets) {
-                        Instantiate(WeaponProjectile, go.transform.position, WeaponProjectile.transform.rotation * go.transform.rotation * Quaternion.Euler(0, 0, 90));
-                    }
-                    break;
-                case (ShootTypes.FiveSpread):
-                    float tempAngle = 10f;
-                    foreach (GameObject go in EnemyTurrets) {
-                        Instantiate(WeaponProjectile, go.transform.position, WeaponProjectile.transform.rotation * go.transform.rotation * Quaternion.Euler(0, 0, 90) * Quaternion.Euler(0, 0, 0));
-                        Instantiate(WeaponProjectile, go.transform.position, WeaponProjectile.transform.rotation * go.transform.rotation * Quaternion.Euler(0, 0, 90) * Quaternion.Euler(0, 0, tempAngle));
-                        Instantiate(WeaponProjectile, go.transform.position, WeaponProjectile.transform.rotation * go.transform.rotation * Quaternion.Euler(0, 0, 90) * Quaternion.Euler(0, 0, -tempAngle));
-                        Instantiate(WeaponProjectile, go.transform.position, WeaponProjectile.transform.rotation * go.transform.rotation * Quaternion.Euler(0, 0, 90) * Quaternion.Euler(0, 0, tempAngle * 2));
-                        Instantiate(WeaponProjectile, go.transform.position, WeaponProjectile.transform.rotation * go.transform.rotation * Quaternion.Euler(0, 0, 90) * Quaternion.Euler(0, 0, -tempAngle * 2));
-                    }
-                    break;
-                case (ShootTypes.DropBomb):
-                    foreach (GameObject go in EnemyTurrets) {
-                        Instantiate(WeaponProjectile, go.transform.position, WeaponProjectile.transform.rotation * Quaternion.Euler(0, 0, 0));
-                    }
-                    break;
+                switch (ShootType) {
+                    case (ShootTypes.SingleBullet):
+                        foreach (GameObject go in EnemyTurrets) {
+                            Instantiate(WeaponProjectile, go.transform.position, WeaponProjectile.transform.rotation * go.transform.rotation * Quaternion.Euler(0, 0, 90));
+                        }
+                        break;
+                    case (ShootTypes.FiveSpread):
+                        float tempAngle = 10f;
+                        foreach (GameObject go in EnemyTurrets) {
+                            Instantiate(WeaponProjectile, go.transform.position, WeaponProjectile.transform.rotation * go.transform.rotation * Quaternion.Euler(0, 0, 90) * Quaternion.Euler(0, 0, 0));
+                            Instantiate(WeaponProjectile, go.transform.position, WeaponProjectile.transform.rotation * go.transform.rotation * Quaternion.Euler(0, 0, 90) * Quaternion.Euler(0, 0, tempAngle));
+                            Instantiate(WeaponProjectile, go.transform.position, WeaponProjectile.transform.rotation * go.transform.rotation * Quaternion.Euler(0, 0, 90) * Quaternion.Euler(0, 0, -tempAngle));
+                            Instantiate(WeaponProjectile, go.transform.position, WeaponProjectile.transform.rotation * go.transform.rotation * Quaternion.Euler(0, 0, 90) * Quaternion.Euler(0, 0, tempAngle * 2));
+                            Instantiate(WeaponProjectile, go.transform.position, WeaponProjectile.transform.rotation * go.transform.rotation * Quaternion.Euler(0, 0, 90) * Quaternion.Euler(0, 0, -tempAngle * 2));
+                        }
+                        break;
+                    case (ShootTypes.DropBomb):
+                        foreach (GameObject go in EnemyTurrets) {
+                            Instantiate(WeaponProjectile, go.transform.position, WeaponProjectile.transform.rotation * Quaternion.Euler(0, 0, 0));
+                        }
+                        break;
+                }
             }
-        }
-        else {
-            Debug.LogError("The WeaponProjectile in " + this.gameObject.name + " has no LaserBulletBehaviour Script attachted");
-        }
-        if (EnemyTurrets.Length == 0) {
-            Debug.LogWarning("The Enemy " + gameObject.name + " tryed to fire but it has no turrets assinged");
+            else {
+                Debug.LogError("The WeaponProjectile in " + this.gameObject.name + " has no LaserBulletBehaviour Script attachted");
+            }
+            if (EnemyTurrets.Length == 0) {
+                Debug.LogWarning("The Enemy " + gameObject.name + " tryed to fire but it has no turrets assinged");
+            }
         }
     }
 

@@ -367,10 +367,10 @@ MonoBehaviour:
   fireDelay: 0.1
   MaxHealth: 300
   Health: 300
-  CollisionDamage: 50
+  CollisionDamage: 20
   scoreValue: 300
   ValueOfCreditDrop: 10
-  PowerUpDropChangse: 0
+  PowerUpDropChangse: 0.2
 --- !u!1 &2945108402070349576
 GameObject:
   m_ObjectHideFlags: 0
