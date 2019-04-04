@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyObject: {fileID: 1948714869419192}
-  HealthBarObject: {fileID: 0}
+  HealthBarObject: {fileID: 8861990074745693296}
 --- !u!1 &1883405984207694
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,7 +280,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.27}
@@ -296,7 +296,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.02}
@@ -322,7 +322,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0, y: 0.3}
@@ -397,9 +397,9 @@ MonoBehaviour:
   MaxHealth: 450
   Health: 450
   CollisionDamage: 50
-  scoreValue: 300
-  ValueOfCreditDrop: 10
-  PowerUpDropChangse: 0
+  scoreValue: 450
+  ValueOfCreditDrop: 100
+  PowerUpDropChangse: 0.25
 --- !u!1 &1448354931302721980
 GameObject:
   m_ObjectHideFlags: 0
