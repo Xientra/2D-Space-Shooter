@@ -56,8 +56,6 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
 
     /*--------------------Drop / Score--------------------*/
-    public float scoreValue = 100;
-
     public float ValueOfCreditDrop = 1f;
     /*
     public enum CoinDropValues {
@@ -158,7 +156,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
     void DestroyAndDropStuff(GameObject toDestroy) {
 
-        GameControllerScript.currendScore += scoreValue;
+        GameControllerScript.currendScore += MaxHealth;
 
         DropStuff();
         Destroy(toDestroy);
