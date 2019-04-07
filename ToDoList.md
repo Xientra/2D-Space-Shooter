@@ -2,6 +2,13 @@
 
 # ToDoList:
 
+-maybe, probably rename the Alien Waves
+-add 2 Alien Waves
+-add 1 Wire Wave
+-overhaul the expender waves
+-overhaul the wire waves
+-arrage the order of the waves in level 1, 2 and 3
+
 -make the PowerUps feel/look heavier
 -the Split Laser is fucked up bc it's child objects are not assinged as split laser childs
 -and destruction with lasers has to be managed

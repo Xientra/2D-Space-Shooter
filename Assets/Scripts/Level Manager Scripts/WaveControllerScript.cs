@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class WaveControllerScript : MonoBehaviour {
 
-    public GameObject ObjectHolderGo;
+    //public GameObject ObjectHolderGo;
     public GameObject activeWave;
 
     public bool isActive = true;

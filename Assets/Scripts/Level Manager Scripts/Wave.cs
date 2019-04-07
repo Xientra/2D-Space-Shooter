@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Wave : MonoBehaviour {
 
+    public enum WaveTypes { Alien_Wave, Expender_Wave, Wire_Wave};
+    public WaveTypes waveType = WaveTypes.Alien_Wave;
+
     public float durationUntilDestroy;
 
     //public bool isActive = true;

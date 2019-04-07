@@ -163,15 +163,14 @@ MonoBehaviour:
   AnimationStartDelay: 1
   LimiterDestructionDelayAfterStart: 1
   destroyAfterAnimation: 1
-  lookForwardWhenMoving: 0
+  lookForwardWhenMoving: 1
   canShoot: 0
   fireDelay: 0.1
   MaxHealth: 120
   Health: 120
   CollisionDamage: 40
-  scoreValue: 100
-  ValueOfCreditDrop: 1
-  PowerUpDropChangse: 0
+  ValueOfCreditDrop: 5
+  PowerUpDropChangse: 0.12
 --- !u!1 &1362635365726806
 GameObject:
   m_ObjectHideFlags: 0

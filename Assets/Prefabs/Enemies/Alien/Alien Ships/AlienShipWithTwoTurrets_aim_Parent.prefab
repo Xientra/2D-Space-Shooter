@@ -599,9 +599,8 @@ MonoBehaviour:
   MaxHealth: 300
   Health: 300
   CollisionDamage: 75
-  scoreValue: 100
   ValueOfCreditDrop: 10
-  PowerUpDropChangse: 0
+  PowerUpDropChangse: 0.2
 --- !u!1 &2646114612136531738
 GameObject:
   m_ObjectHideFlags: 0
