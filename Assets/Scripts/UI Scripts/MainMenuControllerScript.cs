@@ -26,10 +26,10 @@ public class MainMenuControllerScript : MonoBehaviour {
     public static GameObject secondWeaponGO;
 
     public static float NewWeaponPrice = 200f;
-    public static bool doOnce = true;
-    
+    public static bool doOnce;
 
-    void Start () {
+
+    void Start() {
 
         foreach (Transform t in OutfitterMenu.transform) {
             if (t.name == "First Weapon Dropdown") {
@@ -49,7 +49,7 @@ public class MainMenuControllerScript : MonoBehaviour {
     IEnumerator DoStuffAfterOneFrame() {
         yield return 0;
         if (doOnce == true) {
-            GameControllerScript.currendCredits += 10000;
+            //GameControllerScript.currendCredits += 10000;
 
             //Sets all Weapons.isBought to false exept for a few selected ones
             foreach (GameObject playerWeapon in ObjectHolder._PlayerWeapons) {
@@ -74,19 +74,23 @@ public class MainMenuControllerScript : MonoBehaviour {
         UpdateUI();
     }
 
-    void Update () {
+    void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (WeaponInfoScreen.activeSelf == true) {
                 Btn_WeaponSelectScreenBack();
             }
         }
-	}
+    }
 
     private void UpdateUI() {
         if (StartMenu.activeSelf == true) {
             foreach (Transform t in StartMenu.transform) {
                 if (t.name == "Hight Score Text") t.GetComponent<Text>().text = "Hight Score: " + System.Environment.NewLine + GameControllerScript.HightScore.ToString();
             }
+        }
+
+        if (LevelSelect.activeSelf == true) {
+            UpdateLevelButtons();
         }
 
         if (OutfitterMenu.activeSelf == true) {
@@ -155,6 +159,8 @@ public class MainMenuControllerScript : MonoBehaviour {
         OutfitterMenu.SetActive(false);
         WeaponInfoScreen.SetActive(false);
         //OptionsMenu.SetActive(false);
+
+        UpdateUI();
     }
 
     public void Btn_Endless() {
@@ -201,6 +207,14 @@ public class MainMenuControllerScript : MonoBehaviour {
 
 
     /*-----------------------------------------Level Select-----------------------------------------------*/
+
+    public void UpdateLevelButtons() {
+        foreach (Transform t in LevelSelect.transform) {
+            //if (t.name == "Level1_Btn") t.gameObject.GetComponent<Button>().interactable = true; //GameControllerScript.LevelProgress[0 - 1];
+            if (t.name == "Level2_Btn") t.gameObject.GetComponent<Button>().interactable = GameControllerScript.LevelProgress[1 - 1];
+            if (t.name == "Level3_Btn") t.gameObject.GetComponent<Button>().interactable = GameControllerScript.LevelProgress[2 - 1];
+        }
+    }
 
     public void Btn_Level1() {
         SceneManager.LoadScene("Level 1");

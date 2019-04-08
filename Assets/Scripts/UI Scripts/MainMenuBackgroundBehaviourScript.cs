@@ -36,10 +36,8 @@ public class MainMenuBackgroundBehaviourScript : MonoBehaviour {
             }
 
             int rng = Random.Range(0, SomeEnemyObjects.Length);
-            Debug.Log(rng);
             while (SomeEnemyObjects[rng] == null) {
                 rng = Random.Range(0, SomeEnemyObjects.Length);
-                Debug.Log(rng);
             }
 
             SpawnedEnemyObject = Instantiate(SomeEnemyObjects[rng], new Vector3(Random.Range(-(distance_x - offset), distance_x - offset), distance_y + offset), Quaternion.identity);

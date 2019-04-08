@@ -324,6 +324,12 @@ PrefabInstance:
       objectReference: {fileID: 176027540}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c60d9cba6161c574d92570cb778fadb2, type: 3}
+--- !u!4 &427476835 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4390788855518428, guid: c60d9cba6161c574d92570cb778fadb2,
+    type: 3}
+  m_PrefabInstance: {fileID: 427476834}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &496879143
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -930,7 +936,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 427476835}
     m_Modifications:
     - target: {fileID: 1172900521666326, guid: 4a930574d2340b945b1cebbe5d428dfb, type: 3}
       propertyPath: m_TagString
@@ -938,7 +944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4405371559704378, guid: 4a930574d2340b945b1cebbe5d428dfb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4405371559704378, guid: 4a930574d2340b945b1cebbe5d428dfb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -950,15 +956,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4405371559704378, guid: 4a930574d2340b945b1cebbe5d428dfb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4405371559704378, guid: 4a930574d2340b945b1cebbe5d428dfb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4405371559704378, guid: 4a930574d2340b945b1cebbe5d428dfb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4405371559704378, guid: 4a930574d2340b945b1cebbe5d428dfb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -966,7 +972,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4405371559704378, guid: 4a930574d2340b945b1cebbe5d428dfb, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a930574d2340b945b1cebbe5d428dfb, type: 3}
@@ -1182,7 +1188,7 @@ GameObject:
   - component: {fileID: 1410786658}
   - component: {fileID: 1410786657}
   m_Layer: 0
-  m_Name: Wave Controller
+  m_Name: Level 3 (Wire) Wave Controller
   m_TagString: Endless Level Controller
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1200,9 +1206,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 538f10836328ba944a6f1d48bc66da9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeWave: {fileID: 0}
   isActive: 1
   isEndless: 0
+  LevelNumber: 3
+  rewardonComplete: 3000
+  activeWave: {fileID: 0}
 --- !u!4 &1410786658
 Transform:
   m_ObjectHideFlags: 0
@@ -1230,7 +1238,7 @@ Transform:
   - {fileID: 649651672}
   - {fileID: 622436032}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1481455463
 PrefabInstance:
@@ -1790,7 +1798,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4245667527892742, guid: 6b0b735b1d6281145afe09aaa8431fe4, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b0b735b1d6281145afe09aaa8431fe4, type: 3}

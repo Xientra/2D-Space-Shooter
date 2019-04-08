@@ -15,24 +15,37 @@ public class GameControllerScript : MonoBehaviour {
     private Vector3 originalPos;
 
     public GameObject StarsGo;
+    public GameObject CursorGUIGo;
+    //public GameObject WinEffect;
 
-    private float shakeTimer;
-    private float shakeAmount;
-
-    public static bool GameIsPaused = false;
-    public static bool UsingGamepad = false;
-    public bool UsingUnityUI = true;
+    [Header("Only to Test Weapons")]
 
     public GameObject toAssingFirstWep;
     public GameObject toAssingSecondWep;
 
-    public static GameObject PlayerFirstWeapon;
-    public static GameObject PlayerSecondWeapon;
-    public static float currendCredits = 0f;
-    public static float currendScore = 1000f;
+
+
+    /*==========All Static Variables==========*/
+
+    public static bool[] LevelProgress = { false, false, false };
+
+    public static float currendCredits = 300f;
+    public static float currendScore = 0f;
     public static float HightScore = 0f;
 
-    public GameObject CursorGUIGo;
+    public static GameObject PlayerFirstWeapon;
+    public static GameObject PlayerSecondWeapon;
+    
+    public static bool GameIsPaused = false;
+    public static bool UsingGamepad = false;
+    
+
+
+    /*==========Timer==========*/
+
+    private float shakeTimer;
+    private float shakeAmount;
+
 
     float scoreIntervall = 1000f; //1 Second?
     float scorePerTick = 3f;
@@ -94,9 +107,17 @@ public class GameControllerScript : MonoBehaviour {
         else {
             Cursor.visible = true;
         }
-        if (GameObject.FindGameObjectWithTag("Stars") == null) {
+
+        //instantiate star if not allready there
+        bool b = false;
+        foreach (Transform t in transform) {
+            if (t.CompareTag("Stars")) {
+                b = true;
+            }
+        }
+        if (b == false) {
             Debug.Log("Instantiated Stars");
-            Instantiate(StarsGo);
+            Instantiate(StarsGo, transform);
         }
     }
 
