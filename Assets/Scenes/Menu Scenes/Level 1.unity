@@ -599,6 +599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 538f10836328ba944a6f1d48bc66da9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnWinEffect: {fileID: 0}
   isActive: 1
   isEndless: 0
   LevelNumber: 1
@@ -1535,6 +1536,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 538f10836328ba944a6f1d48bc66da9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnWinEffect: {fileID: 3451564153836388303, guid: 234fded86f9d3c34a8d1a9fd69ebd6d9,
+    type: 3}
   isActive: 1
   isEndless: 0
   LevelNumber: 1

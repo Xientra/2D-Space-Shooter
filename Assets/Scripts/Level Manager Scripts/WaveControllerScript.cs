@@ -2,9 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class WaveControllerScript : MonoBehaviour {
+
+    [SerializeField]
+    private GameObject OnWinEffect;
+    private bool hasWon = false;
 
     [SerializeField]
     private bool isActive = true;
@@ -48,53 +51,68 @@ public class WaveControllerScript : MonoBehaviour {
     }
 
     void Update() {
-        if (activeWave == null) {
-            WaveActive = false;
-        }
-
-        if (isActive == true) {
-            if (WaveActive == false) {
-                int counter = 1;
-
-                if (isEndless == true)
-                    while (childPosition == lastWaveIndex)
-                        childPosition = UnityEngine.Random.Range(1, transform.childCount + 1);
-
-                foreach (Transform child in transform) {
-                    if (counter == childPosition) {
-                        activeWave = child.gameObject;
-
-                        if (isEndless == true)
-                            activeWave = Instantiate(child.gameObject);
-                        activeWave.SetActive(true);
-                    }
-                    counter++;
-                }
-                WaveActive = true;
-
-                lastWaveIndex = childPosition;
+        if (hasWon == false) {
+            if (activeWave == null) {
+                WaveActive = false;
             }
 
-        }
+            if (isActive == true) {
+                if (WaveActive == false) {
+                    int counter = 1;
 
-        if (transform.childCount == 0) {
+                    if (isEndless == true)
+                        while (childPosition == lastWaveIndex)
+                            childPosition = UnityEngine.Random.Range(1, transform.childCount + 1);
 
-            StartCoroutine(WinLevel());
+                    foreach (Transform child in transform) {
+                        if (counter == childPosition) {
+                            activeWave = child.gameObject;
+
+                            if (isEndless == true)
+                                activeWave = Instantiate(child.gameObject);
+                            activeWave.SetActive(true);
+                        }
+                        counter++;
+                    }
+                    WaveActive = true;
+
+                    lastWaveIndex = childPosition;
+                }
+
+            }
+
+            if (transform.childCount == 0) {
+                StartCoroutine(WinLevel());
+            }
         }
     }
 
     private IEnumerator WinLevel() {
+        float _delay = 10f;
 
         GameControllerScript.LevelProgress[LevelNumber - 1] = true;
-
         GameControllerScript.currendCredits += rewardonComplete;
+        hasWon = true;
 
-        Debug.Log("YOU WON!!");
-        yield return new WaitForSeconds(5f);
+        Instantiate(OnWinEffect, OnWinEffect.transform.position, OnWinEffect.transform.rotation);
 
-        
+        //yield return new WaitForSeconds(_delay);
 
-        SceneManager.LoadScene("Main Menu");
+        //===============================================
+        yield return new WaitForSecondsRealtime(_delay * 0.8f);
+
+        for (int i = 1; i <= 10; i++) {
+            yield return new WaitForSecondsRealtime(0.16f);
+            if (Time.timeScale - 0.1f < 0)
+                Time.timeScale = 0;
+            else
+                Time.timeScale -= 0.1f;
+        }
+
+        //yield return new WaitForSecondsRealtime(_delay * 0.2f);
+        //=====================================================
+
+        GameObject.FindGameObjectWithTag("InGameUI").GetComponent<InGameUIControllerScript>().OpenInGameWinMenu();
     }
 
 

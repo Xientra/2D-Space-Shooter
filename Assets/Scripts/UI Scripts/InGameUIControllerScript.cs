@@ -9,6 +9,7 @@ public class InGameUIControllerScript : MonoBehaviour {
     public GameObject InGameUI;
     public GameObject InGameExitMenu;
     public GameObject InGameDeathMenu;
+    public GameObject InGameWinMenu;
 
     private bool UpdateUI = false; //to not update the UI in the first frame
 
@@ -88,6 +89,10 @@ public class InGameUIControllerScript : MonoBehaviour {
         OpenInGameMenu(InGameDeathMenu);
     }
 
+    public void OpenInGameWinMenu() {
+        OpenInGameMenu(InGameWinMenu);
+    }
+    
     /*-------------------------------------------InGame Menu Buttons-------------------------------------------------------*/
 
     public void Btn_Yes() {
