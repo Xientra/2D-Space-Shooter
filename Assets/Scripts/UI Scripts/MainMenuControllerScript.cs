@@ -22,11 +22,10 @@ public class MainMenuControllerScript : MonoBehaviour {
     private float BackButtonStandartPos = -1;
 
 
-    public static GameObject firstWeaponGO;
-    public static GameObject secondWeaponGO;
+    //public static GameObject firstWeaponGO;
+    //public static GameObject secondWeaponGO;
 
     public static float NewWeaponPrice = 200f;
-    public static bool doOnce;
 
 
     void Start() {
@@ -43,34 +42,10 @@ public class MainMenuControllerScript : MonoBehaviour {
             }
         }
 
-        //UpdateUI();
-        StartCoroutine(DoStuffAfterOneFrame());
+        StartCoroutine(UpdateUIAfterOneFrame());
     }
-    IEnumerator DoStuffAfterOneFrame() {
+    IEnumerator UpdateUIAfterOneFrame() {
         yield return 0;
-        if (doOnce == true) {
-            //GameControllerScript.currendCredits += 10000;
-
-            //Sets all Weapons.isBought to false exept for a few selected ones
-            foreach (GameObject playerWeapon in ObjectHolder._PlayerWeapons) {
-                switch (playerWeapon.GetComponent<WeaponBehaviourScript>().WeaponType) {
-                    case WeaponBehaviourScript.WeaponTypes.Standart_lvl_1:
-                        playerWeapon.GetComponent<WeaponBehaviourScript>().isBought = true;
-                        break;
-                    case WeaponBehaviourScript.WeaponTypes.Shotgun_lvl_1:
-                        playerWeapon.GetComponent<WeaponBehaviourScript>().isBought = true;
-                        break;
-
-                    default:
-                        playerWeapon.GetComponent<WeaponBehaviourScript>().isBought = false;
-                        break;
-                }
-            }
-            doOnce = false;
-        }
-
-        firstWeaponGO = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Standart_lvl_1)];
-        secondWeaponGO = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Shotgun_lvl_1)];
         UpdateUI();
     }
 
@@ -113,8 +88,8 @@ public class MainMenuControllerScript : MonoBehaviour {
                     if (pWep != null) {
                         if (pWep.GetComponent<WeaponBehaviourScript>().isBought == true) {
                             FirstWeaponDropdownGO.GetComponent<Dropdown>().options.Add(new Dropdown.OptionData(pWep.GetComponent<WeaponBehaviourScript>().weaponName));
-                            if (firstWeaponGO != null)
-                                if (pWep.GetComponent<WeaponBehaviourScript>().WeaponType == firstWeaponGO.GetComponent<WeaponBehaviourScript>().WeaponType) {
+                            //if (GameControllerScript.PlayerFirstWeapon != null)
+                                if (pWep.GetComponent<WeaponBehaviourScript>().WeaponType == GameControllerScript.PlayerFirstWeapon.GetComponent<WeaponBehaviourScript>().WeaponType) {
                                     FirstWeaponDropdownGO.GetComponent<Dropdown>().value = counter1;
                                 }
                             counter1++;
@@ -133,8 +108,8 @@ public class MainMenuControllerScript : MonoBehaviour {
                     if (pWep != null) {
                         if (pWep.GetComponent<WeaponBehaviourScript>().isBought == true) {
                             SecondWeaponDropdownGO.GetComponent<Dropdown>().options.Add(new Dropdown.OptionData(pWep.GetComponent<WeaponBehaviourScript>().weaponName));
-                            if (secondWeaponGO != null)
-                                if (pWep.GetComponent<WeaponBehaviourScript>().WeaponType == secondWeaponGO.GetComponent<WeaponBehaviourScript>().WeaponType) {
+                            //if (GameControllerScript.PlayerSecondWeapon != null)
+                            if (pWep.GetComponent<WeaponBehaviourScript>().WeaponType == GameControllerScript.PlayerSecondWeapon.GetComponent<WeaponBehaviourScript>().WeaponType) {
                                     SecondWeaponDropdownGO.GetComponent<Dropdown>().value = counter2;
                                 }
                             counter2++;
@@ -183,6 +158,7 @@ public class MainMenuControllerScript : MonoBehaviour {
     }
 
     public void Btn_Quit() {
+        GameControllerScript.instance.SaveGame();
         Application.Quit();
         //UnityEditor.EditorApplication.isPlaying = false;
     }
@@ -199,9 +175,12 @@ public class MainMenuControllerScript : MonoBehaviour {
 
     //¯\_(ツ)_/¯
     public void Btn_UnlockAllWeapons() {
+        GameControllerScript.currendCredits += 1000f;
+        /*
         foreach (GameObject playerWeapon in ObjectHolder._PlayerWeapons) {
             playerWeapon.GetComponent<WeaponBehaviourScript>().isBought = true;
         }
+        */
         UpdateUI();
     }
 
@@ -231,22 +210,23 @@ public class MainMenuControllerScript : MonoBehaviour {
     public void Btn_BuyNewWeapon() {
         List<GameObject> buyableWeapons = new List<GameObject>();
         foreach (GameObject WepGo in ObjectHolder._PlayerWeapons) {
-            if (WepGo != null)
+            if (WepGo != null) {
                 if (WepGo.GetComponent<WeaponBehaviourScript>().WeaponLevel == WeaponBehaviourScript.WeaponLevels._1 && WepGo.GetComponent<WeaponBehaviourScript>().isBought == false)
                     buyableWeapons.Add(WepGo);
+            }
         }
 
         if (buyableWeapons.Count != 0) {
             if (GameControllerScript.currendCredits >= NewWeaponPrice) {
 
-                GameControllerScript.currendCredits -= NewWeaponPrice;
-                NewWeaponPrice += 100;
-
                 GameObject randomWeponGo = buyableWeapons[Random.Range(0, buyableWeapons.Count)];
                 randomWeponGo.GetComponent<WeaponBehaviourScript>().isBought = true;
-                WeaponsViewGO.GetComponent<WeaponsViewControllerScript>().UpdateWeaponsView();
-                UpdateUI();
+
+                GameControllerScript.currendCredits -= NewWeaponPrice;
+                NewWeaponPrice += 100;
+               
                 OpenWeaponInfoScreen(randomWeponGo);
+                UpdateUI();
             }
             else Debug.Log("You need some visual feedback that the player has not enouth money to buy a new weapoon...");
         }
@@ -264,12 +244,12 @@ public class MainMenuControllerScript : MonoBehaviour {
             if (pWep != null)
                 if (pWep.GetComponent<WeaponBehaviourScript>().isBought == true) {
                     if (counter == i)
-                        firstWeaponGO = pWep;
+                        GameControllerScript.PlayerFirstWeapon = pWep;
                     counter++;
                 }
         }
 
-        Debug.Log("first weapon = "+firstWeaponGO.name);
+        Debug.Log("first weapon = "+GameControllerScript.PlayerFirstWeapon.name);
     }
 
     public void OnValueChangeSecondWeaponDropdown() {
@@ -280,12 +260,12 @@ public class MainMenuControllerScript : MonoBehaviour {
             if (pWep != null)
                 if (pWep.GetComponent<WeaponBehaviourScript>().isBought == true) {
                     if (counter == i)
-                        secondWeaponGO = pWep;
+                        GameControllerScript.PlayerSecondWeapon = pWep;
                     counter++;
                 }
         }
 
-        Debug.Log("second weapon = "+secondWeaponGO.name);
+        Debug.Log("second weapon = "+GameControllerScript.PlayerSecondWeapon.name);
     }
 
     

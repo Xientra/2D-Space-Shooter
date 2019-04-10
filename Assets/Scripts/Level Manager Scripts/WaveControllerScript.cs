@@ -88,7 +88,7 @@ public class WaveControllerScript : MonoBehaviour {
     }
 
     private IEnumerator WinLevel() {
-        float _delay = 10f;
+        float _delay = 7f;
 
         GameControllerScript.LevelProgress[LevelNumber - 1] = true;
         GameControllerScript.currendCredits += rewardonComplete;
@@ -96,25 +96,20 @@ public class WaveControllerScript : MonoBehaviour {
 
         Instantiate(OnWinEffect, OnWinEffect.transform.position, OnWinEffect.transform.rotation);
 
-        //yield return new WaitForSeconds(_delay);
-
-        //===============================================
-        yield return new WaitForSecondsRealtime(_delay * 0.8f);
-
-        for (int i = 1; i <= 10; i++) {
-            yield return new WaitForSecondsRealtime(0.16f);
-            if (Time.timeScale - 0.1f < 0)
+        //Wait and SloMo
+        yield return new WaitForSecondsRealtime(_delay * 0.6f);
+        float n = 50f;
+        for (int i = 1; i <= n; i++) {
+            yield return new WaitForSecondsRealtime((_delay * 0.4f) / n);
+            if (Time.timeScale - (1 / n) < 0)
                 Time.timeScale = 0;
             else
-                Time.timeScale -= 0.1f;
+                Time.timeScale -= (1 / n);
         }
 
-        //yield return new WaitForSecondsRealtime(_delay * 0.2f);
-        //=====================================================
-
+        GameControllerScript.instance.SaveGame();
         GameObject.FindGameObjectWithTag("InGameUI").GetComponent<InGameUIControllerScript>().OpenInGameWinMenu();
     }
-
 
     /*------------------------------Displays Time-----------------------------------------*/
     IEnumerator DisplayPastSeconds() {

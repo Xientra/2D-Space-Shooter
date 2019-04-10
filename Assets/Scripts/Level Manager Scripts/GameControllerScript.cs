@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Timers;
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 public class GameControllerScript : MonoBehaviour {
 
@@ -19,13 +21,13 @@ public class GameControllerScript : MonoBehaviour {
     //public GameObject WinEffect;
 
     [Header("Only to Test Weapons")]
-
     public GameObject toAssingFirstWep;
     public GameObject toAssingSecondWep;
 
 
 
     /*==========All Static Variables==========*/
+    private static bool doOnce = true;
 
     public static bool[] LevelProgress = { false, false, false };
 
@@ -60,11 +62,11 @@ public class GameControllerScript : MonoBehaviour {
         }
         else {
             instance = this;
-        }
+        }    
     }
 
     void Start() {
-        //Time.timeScale = 0.5f;
+        LoadGame();
 
         //assing stuff if it's still null
         if (mainCamera == null) mainCamera = Camera.main;
@@ -76,23 +78,18 @@ public class GameControllerScript : MonoBehaviour {
 
         currendScore = 0f;
 
-        //assing player weapons
-        if (MainMenuControllerScript.firstWeaponGO != null)
-            PlayerFirstWeapon = MainMenuControllerScript.firstWeaponGO;
-        else
-            PlayerFirstWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Standart_lvl_1)];
-
-        if (MainMenuControllerScript.secondWeaponGO != null)
-            PlayerSecondWeapon = MainMenuControllerScript.secondWeaponGO;
-        else
-            PlayerSecondWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Shotgun_lvl_1)];
-
-        if (toAssingFirstWep != null)
-            PlayerFirstWeapon = toAssingFirstWep;
-        if (toAssingSecondWep != null)
-            PlayerSecondWeapon = toAssingSecondWep;
-
         //Instantiate stuff based on the scene
+        bool b = false;
+        foreach (Transform t in transform) {
+            if (t.CompareTag("Stars")) {
+                b = true;
+            }
+        }
+        if (b == false) {
+            Debug.Log("Instantiated Stars");
+            Instantiate(StarsGo, transform);
+        }
+
         if (SceneManager.GetActiveScene().name != "Main Menu") {
             if (GameObject.FindGameObjectWithTag("Player") == null) {
                 Debug.Log("Spawned Player");
@@ -108,17 +105,40 @@ public class GameControllerScript : MonoBehaviour {
             Cursor.visible = true;
         }
 
-        //instantiate star if not allready there
-        bool b = false;
-        foreach (Transform t in transform) {
-            if (t.CompareTag("Stars")) {
-                b = true;
+        if (doOnce == true) {
+            doOnce = false;
+            Debug.Log("doing once");
+
+            //currendCredits += 10000f;
+
+            //Sets all Weapons.isBought to false exept for a few selected ones
+            foreach (GameObject playerWeapon in ObjectHolder._PlayerWeapons) {
+                switch (playerWeapon.GetComponent<WeaponBehaviourScript>().WeaponType) {
+                    case WeaponBehaviourScript.WeaponTypes.Standart_lvl_1:
+                        playerWeapon.GetComponent<WeaponBehaviourScript>().isBought = true;
+                        break;
+                    case WeaponBehaviourScript.WeaponTypes.Shotgun_lvl_1:
+                        playerWeapon.GetComponent<WeaponBehaviourScript>().isBought = true;
+                        break;
+
+                    default:
+                        playerWeapon.GetComponent<WeaponBehaviourScript>().isBought = false;
+                        break;
+                }
             }
         }
-        if (b == false) {
-            Debug.Log("Instantiated Stars");
-            Instantiate(StarsGo, transform);
-        }
+        
+        //Assinging Player Weapons
+        PlayerFirstWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Standart_lvl_1)];
+        PlayerSecondWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Shotgun_lvl_1)];
+
+
+
+        //Only for testing weapons
+        if (toAssingFirstWep != null)
+            PlayerFirstWeapon = toAssingFirstWep;
+        if (toAssingSecondWep != null)
+            PlayerSecondWeapon = toAssingSecondWep;
     }
 
     void Update() {
@@ -129,7 +149,7 @@ public class GameControllerScript : MonoBehaviour {
 
         //Camera Shake 
         if (shakeTimer > 0) {
-            Vector2 ShakePos = Random.insideUnitCircle * shakeAmount;
+            Vector2 ShakePos = UnityEngine.Random.insideUnitCircle * shakeAmount;
 
             mainCamera.transform.position = new Vector3(mainCamera.transform.position.x + ShakePos.x, mainCamera.transform.position.y + ShakePos.y, mainCamera.transform.position.z);
 
@@ -176,8 +196,8 @@ public class GameControllerScript : MonoBehaviour {
         float timeElepsed = 0;
         
         while (timeElepsed < duration && GameIsPaused == false) {
-            float x = Random.Range(-1f, 1f) * magnitude;
-            float y = Random.Range(-1f, 1f) * magnitude;
+            float x = UnityEngine.Random.Range(-1f, 1f) * magnitude;
+            float y = UnityEngine.Random.Range(-1f, 1f) * magnitude;
 
             assingedCamera.transform.position = new Vector3(assingedCamera.transform.position.x + x, assingedCamera.transform.position.y + y, assingedCamera.transform.position.z);
 
@@ -194,8 +214,8 @@ public class GameControllerScript : MonoBehaviour {
         float timeElepsed = 0;
 
         while (timeElepsed < duration && GameIsPaused == false) {
-            float x = Random.Range(-1f, 1f) * magnitude;
-            float y = Random.Range(-1f, 1f) * magnitude;
+            float x = UnityEngine.Random.Range(-1f, 1f) * magnitude;
+            float y = UnityEngine.Random.Range(-1f, 1f) * magnitude;
 
             mainCamera.transform.position = new Vector3(mainCamera.transform.position.x + x, mainCamera.transform.position.y + y, mainCamera.transform.position.z);
 
@@ -211,8 +231,8 @@ public class GameControllerScript : MonoBehaviour {
         float timeElepsed = 0;
 
         while (timeElepsed < duration && GameIsPaused == false) {
-            float x = Random.Range(-1f, 1f) * magnitude;
-            float y = Random.Range(-1f, 1f) * magnitude;
+            float x = UnityEngine.Random.Range(-1f, 1f) * magnitude;
+            float y = UnityEngine.Random.Range(-1f, 1f) * magnitude;
 
             mainCamera.transform.position = new Vector3(originalPosition.x + x, originalPosition.y + y, mainCamera.transform.position.z);
 
@@ -242,10 +262,6 @@ public class GameControllerScript : MonoBehaviour {
         if (scoreTimer != null)
         //Debug.Log(scoreTimer.Enabled);
 
-        if (currendScore > HightScore)
-            HightScore = currendScore;
-        //currendScore = 0f;
-
         StartCoroutine(DelayGameOver(animationLegth));
     }
 
@@ -264,8 +280,70 @@ public class GameControllerScript : MonoBehaviour {
 
         yield return new WaitForSecondsRealtime(_delay * 0.2f);
 
+        if (currendScore > HightScore)
+            HightScore = currendScore;
+        //currendScore = 0f;
+
+        SaveGame();
+
         if (GameObject.FindGameObjectWithTag("InGameUI") != null)
             GameObject.FindGameObjectWithTag("InGameUI").GetComponent<InGameUIControllerScript>().OpenInGameDeathMenu();
         else Debug.LogError("The (Player/GameController) Object could not find Go with Tag: \"InGameUI\" and so not open the InGameDeathMenu");
+    }
+
+
+
+
+    public void SaveGame() {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/playerData.dat");
+
+        PlayerData data = new PlayerData();
+
+        data.doOnce = doOnce;
+        data.currendCredits = currendCredits;
+        data.HightScore = HightScore;
+        data.LevelProgress = LevelProgress;
+        data.NewWeaponPrice = MainMenuControllerScript.NewWeaponPrice;
+
+        bool[] _unlockedWeapons = new bool[ObjectHolder._PlayerWeapons.Length];
+
+        for (int i = 0; i < ObjectHolder._PlayerWeapons.Length; i++) {
+             _unlockedWeapons[i] = ObjectHolder._PlayerWeapons[i].GetComponent<WeaponBehaviourScript>().isBought;
+        }
+        data.UnlockedWeapons = _unlockedWeapons;
+
+
+        bf.Serialize(file, data);
+
+        Debug.Log("Game was saved");
+    }
+
+    public void LoadGame() {
+        if (File.Exists(Application.persistentDataPath + "/playerData.dat")) {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/playerData.dat", FileMode.Open); 
+
+            PlayerData data = (PlayerData)bf.Deserialize(file);
+            file.Close();
+
+            doOnce = data.doOnce;
+            currendCredits = data.currendCredits;
+            HightScore = data.HightScore;
+            LevelProgress = data.LevelProgress;
+            MainMenuControllerScript.NewWeaponPrice = data.NewWeaponPrice;
+
+            bool[] _unlockedWeapons = data.UnlockedWeapons;
+
+            for (int i = 0; i < ObjectHolder._PlayerWeapons.Length; i++) {
+                ObjectHolder._PlayerWeapons[i].GetComponent<WeaponBehaviourScript>().isBought = _unlockedWeapons[i];
+            }
+        }
+
+        Debug.Log("Game was loaded");
+    }
+
+    private void OnDisable() {
+        SaveGame();
     }
 }

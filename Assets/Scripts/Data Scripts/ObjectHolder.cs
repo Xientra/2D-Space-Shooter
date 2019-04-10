@@ -10,8 +10,6 @@ public class ObjectHolder : MonoBehaviour {
     public GameObject[] Bullets;
     public static GameObject[] _Bullets;
 
-    public GameObject[] ExpenderBullets; //not static
-
     public GameObject[] PlayerWeapons;
     public static GameObject[] _PlayerWeapons;
 
@@ -66,10 +64,6 @@ public class ObjectHolder : MonoBehaviour {
             GameJustStarted = false;
         }
     }
-    /*
-    void Update() {
-    }
-    */
 
     public static int GetBulletIndex(LaserBulletBehaviourScript.BulletTypes _bulletType) {
         int i = 0;
@@ -84,22 +78,6 @@ public class ObjectHolder : MonoBehaviour {
         Debug.LogError("Could not find: " + _bulletType);
         return -1;
     }
-
-    /*
-    public int GetExpenderBulletIndex(Expender.ExpenderWeapons _ExpenderBulletType) { //not static
-        int i = 0;
-        foreach (GameObject go in ExpenderBullets) {
-            if (go != null) {
-                if (go.GetComponentInChildren<LaserBulletBehaviourScript>().enemyBulletType == _ExpenderBulletType) {
-                    return i;
-                }
-            }
-            i++;
-        }
-        Debug.LogError("Could not find: " + _ExpenderBulletType);
-        return -1;
-    }
-    */
 
     public static int GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes _weaponType) {
         int i = 0;
@@ -246,5 +224,4 @@ public class ObjectHolder : MonoBehaviour {
         else Debug.LogWarning("There is no Sprite, assinged to this weapon");
         return 0; //Just the default sprite
     }
-
 }

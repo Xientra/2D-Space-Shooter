@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Data Scripts\ObjectHolder.cs" />
+    <Compile Include="Assets\Scripts\Data Scripts\PlayerData.cs" />
     <Compile Include="Assets\Scripts\Data Scripts\WeaponBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Level Manager Scripts\GameControllerScript.cs" />
     <Compile Include="Assets\Scripts\Level Manager Scripts\Wave.cs" />
