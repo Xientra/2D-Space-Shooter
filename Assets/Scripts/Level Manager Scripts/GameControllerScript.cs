@@ -17,8 +17,15 @@ public class GameControllerScript : MonoBehaviour {
     private Vector3 originalPos;
 
     public GameObject StarsGo;
+    //[HideInInspector]
+    public GameObject StarsInstance;
+
     public GameObject CursorGUIGo;
-    //public GameObject WinEffect;
+    //[HideInInspector]
+    public GameObject CursorGUIInstance;
+
+    //[HideInInspector]
+    public GameObject PlayerInstance;
 
     [Header("Only to Test Weapons")]
     public GameObject toAssingFirstWep;
@@ -86,17 +93,16 @@ public class GameControllerScript : MonoBehaviour {
             }
         }
         if (b == false) {
-            Debug.Log("Instantiated Stars");
-            Instantiate(StarsGo, transform);
+            StarsInstance = Instantiate(StarsGo, transform);
         }
 
         if (SceneManager.GetActiveScene().name != "Main Menu") {
             if (GameObject.FindGameObjectWithTag("Player") == null) {
                 Debug.Log("Spawned Player");
-                Instantiate(ObjectHolder._PlayerShips[ObjectHolder.GetPlayerShipIndex(PlayerBehaviourScript.Ships.Standart)]);
+                PlayerInstance = Instantiate(ObjectHolder._PlayerShips[ObjectHolder.GetPlayerShipIndex(PlayerBehaviourScript.Ships.Standart)]);
 
                 if (CursorGUIGo != null) {
-                    Instantiate(CursorGUIGo, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0), Quaternion.identity);
+                    CursorGUIInstance = Instantiate(CursorGUIGo, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0), Quaternion.identity);
                     Cursor.visible = false;
                 }
             }
@@ -127,11 +133,12 @@ public class GameControllerScript : MonoBehaviour {
                 }
             }
         }
-        
-        //Assinging Player Weapons
-        PlayerFirstWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Standart_lvl_1)];
-        PlayerSecondWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Shotgun_lvl_1)];
 
+        //Assinging Player Weapons if needed
+        if (PlayerFirstWeapon == null)
+            PlayerFirstWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Standart_lvl_1)];
+        if (PlayerSecondWeapon == null)
+            PlayerSecondWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Shotgun_lvl_1)];
 
 
         //Only for testing weapons
@@ -317,6 +324,7 @@ public class GameControllerScript : MonoBehaviour {
         bf.Serialize(file, data);
 
         Debug.Log("Game was saved");
+        //Instantiate(ObjectHolder._Effects[ObjectHolder.GetEffectIndex(EffectBehaviourScript.EffectTypes.SavingIcon)], new Vector3(17, 10), Quaternion.identity); //mainCamera.GetComponent<Camera>().orthographicSize
     }
 
     public void LoadGame() {

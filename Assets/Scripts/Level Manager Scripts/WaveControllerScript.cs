@@ -39,14 +39,18 @@ public class WaveControllerScript : MonoBehaviour {
 
             child.gameObject.SetActive(false);
         }
+        
+        if (isEndless == true)
+            while (childPosition == lastWaveIndex)
+                childPosition = UnityEngine.Random.Range(1, transform.childCount + 1);
 
         //StartCoroutine(StartAfterTime(1f));
 
         StartCoroutine(DisplayPastSeconds());
     }
 
-    IEnumerator StartAfterTime(float duration) {
-        yield return new WaitForSeconds(duration);
+    IEnumerator StartAfterTime(float _time) {
+        yield return new WaitForSeconds(_time);
         WaveActive = false;
     }
 

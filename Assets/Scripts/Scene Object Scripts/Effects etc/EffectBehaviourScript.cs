@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EffectBehaviourScript : MonoBehaviour {
 
-    public enum EffectTypes { LaserLoaded, BulletDestruction, SniperCharging }
+    public enum EffectTypes { None, LaserLoaded, SniperCharging, SavingIcon }
     public EffectTypes effectType;
 
     private float TimeStamp;

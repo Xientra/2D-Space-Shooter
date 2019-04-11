@@ -29,6 +29,7 @@ public class PlayerBehaviourScript : MonoBehaviour {
 
     public GameObject firstWeapon;
     public GameObject secondWeapon;
+    private GameObject activeWeapon;
 
     [Space(5)]
 
@@ -47,9 +48,10 @@ public class PlayerBehaviourScript : MonoBehaviour {
 
 
     /*----------Weapon Stuff----------*/
-    private float cooldown = 0.2f;
-    private float cooldownTimeStamp;
-
+    private float cooldown1 = 0.2f;
+    private float cooldownTimeStamp1;
+    private float cooldown2 = 0.2f;
+    private float cooldownTimeStamp2;
 
     /*----------Stuff for PickUps----------*/
     private static float fireRateMultiplyer = 1;
@@ -72,7 +74,9 @@ public class PlayerBehaviourScript : MonoBehaviour {
             firstWeapon = GameControllerScript.PlayerFirstWeapon;
             secondWeapon = GameControllerScript.PlayerSecondWeapon;
 
-            ChangeTurret(firstWeapon.GetComponent<WeaponBehaviourScript>().WeaponType);
+            activeWeapon = firstWeapon;
+
+            ChangeTurret(activeWeapon);
         }
         else
             Debug.LogError("When trying to assing the player weapons at least one of GameControllerWeapons was null. (this probably means, that the playership tried to assing them befor the gameController had them.)");
@@ -81,20 +85,21 @@ public class PlayerBehaviourScript : MonoBehaviour {
 
     void Update() {
 
-        if (GameControllerScript.GameIsPaused != true) {
+        if (GameControllerScript.GameIsPaused == false) {
 
             LookForward();
             RotateTurret();
             SetProjectileSpawnPoint();
 
             if (Input.GetButton("Fire1")) {
-                FireWeapon(firstWeapon);
+                //FireWeapon(firstWeapon);
+                FireWeapon(activeWeapon);
             }
             if (Input.GetButtonDown("Fire2")) {
                 SwitchWeapon();
             }
 
-            
+
             if (regenerates == true) {
                 if (currendHealth < MaxHealth) {
                     currendHealth += regenerationSpeed * Time.deltaTime;
@@ -105,9 +110,18 @@ public class PlayerBehaviourScript : MonoBehaviour {
                         Destroy(regenerationVisualEffectGo);
                 }
             }
-        }
 
-        CheckPlayerDeath();
+            if (activeWeapon == firstWeapon) {
+                if (cooldownTimeStamp2 > Time.time)
+                    cooldownTimeStamp2 += Time.deltaTime;
+            }
+            else if (activeWeapon == secondWeapon) {
+                if (cooldownTimeStamp1 > Time.time)
+                    cooldownTimeStamp1 += Time.deltaTime;
+            }
+
+        }
+            CheckPlayerDeath();
     }
 
     void FixedUpdate() {
@@ -219,31 +233,46 @@ public class PlayerBehaviourScript : MonoBehaviour {
     }
 
     void FireWeapon(GameObject _weapon) {
-        if (cooldownTimeStamp <= Time.time) {
-            cooldown = _weapon.GetComponent<WeaponBehaviourScript>().cooldown * fireRateMultiplyer;
-            _weapon.GetComponent<WeaponBehaviourScript>().Fire(ProjectileSpawnPoint, TurretRotationAnchorGo);
+        if (activeWeapon == firstWeapon) {
 
-            //changes the cursor animation
-            foreach (GameObject go in GameObject.FindGameObjectsWithTag("Cursor")) {
-                go.GetComponent<Animator>().SetTrigger("FireTrigger");
+            if (cooldownTimeStamp1 <= Time.time) {
+                cooldown1 = _weapon.GetComponent<WeaponBehaviourScript>().cooldown * fireRateMultiplyer;
+                _weapon.GetComponent<WeaponBehaviourScript>().Fire(ProjectileSpawnPoint, TurretRotationAnchorGo);
+
+
+                GameControllerScript.instance.CursorGUIInstance.GetComponent<Animator>().SetTrigger("FireTrigger");
+
+                cooldownTimeStamp1 = Time.time + cooldown1;
             }
+        }
+        else if (activeWeapon == secondWeapon) {
+            if (cooldownTimeStamp2 <= Time.time) {
+                cooldown2 = _weapon.GetComponent<WeaponBehaviourScript>().cooldown * fireRateMultiplyer;
+                _weapon.GetComponent<WeaponBehaviourScript>().Fire(ProjectileSpawnPoint, TurretRotationAnchorGo);
 
-            cooldownTimeStamp = Time.time + cooldown;
+
+                GameControllerScript.instance.CursorGUIInstance.GetComponent<Animator>().SetTrigger("FireTrigger");
+
+                cooldownTimeStamp2 = Time.time + cooldown2;
+            }
         }
     }
 
     void SwitchWeapon() {
-        GameObject tempWep = firstWeapon;
-        firstWeapon = secondWeapon;
-        secondWeapon = tempWep;
-        ChangeTurret(firstWeapon.GetComponent<WeaponBehaviourScript>().WeaponType);
 
-        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Cursor")) {
-            go.GetComponent<Animator>().SetTrigger("SwitchWeaponTrigger");
+        if (firstWeapon == activeWeapon) {
+            activeWeapon = secondWeapon;
         }
+        else if (secondWeapon == activeWeapon) {
+            activeWeapon = firstWeapon;
+        }
+
+        ChangeTurret(activeWeapon);
+
+        GameControllerScript.instance.CursorGUIInstance.GetComponent<Animator>().SetTrigger("SwitchWeaponTrigger");
     }
 
-    void ChangeTurret(WeaponBehaviourScript.WeaponTypes _weaponType) {
+    void ChangeTurret(GameObject _weaponObject) {
         //destroys all existing turret
         if (TurretRotationAnchorGo.GetComponentsInChildren<Transform>().Length > 0)
             for (int i = 1; i <= TurretRotationAnchorGo.GetComponentsInChildren<Transform>().Length - 1; i++) { /*-1 da der erste transform des arrays nicht zerstört werden soll*/
@@ -251,12 +280,11 @@ public class PlayerBehaviourScript : MonoBehaviour {
             }
 
         //spawns new turret
-        if (firstWeapon.GetComponent<WeaponBehaviourScript>().TurretGameObject != null) {
-            TurretGameObject = Instantiate(firstWeapon.GetComponent<WeaponBehaviourScript>().TurretGameObject, TurretRotationAnchorGo.transform);
+        if (_weaponObject.GetComponent<WeaponBehaviourScript>().TurretGameObject != null) {
+            TurretGameObject = Instantiate(_weaponObject.GetComponent<WeaponBehaviourScript>().TurretGameObject, TurretRotationAnchorGo.transform);
         }
         else {
             TurretGameObject = Instantiate(ObjectHolder._Turrets[ObjectHolder.GetWeaponTurretIndex(WeaponBehaviourScript.WeaponTypes.Standart_lvl_1)], TurretRotationAnchorGo.transform);
-            //TurretGameObject = Instantiate(ObjectHolder._Turrets[ObjectHolder.GetWeaponTurretIndex(_weaponType)], TurretRotationAnchorGo.transform);
             Debug.LogError("When trying to change the turret of the player ");
         }
     }
@@ -341,8 +369,14 @@ public class PlayerBehaviourScript : MonoBehaviour {
         this.gameObject.GetComponent<TrailRenderer>().startWidth = yscale / 10;
     }
 
-    public float GetPercentUnitCooldown() { //used for the cooldown bar in the UI
-        float PercentUnitlCooldown = -(((cooldownTimeStamp - Time.time) / cooldown) * 100) + 100;
+    public float GetPercentUnitlCooldown1() { //used for the cooldown1 bar in the UI
+        float PercentUnitlCooldown = -(((cooldownTimeStamp1 - Time.time) / cooldown1) * 100) + 100;
+        PercentUnitlCooldown = Mathf.Clamp(PercentUnitlCooldown, 0, 100);
+
+        return PercentUnitlCooldown;
+    }
+    public float GetPercentUnitlCooldown2() { //used for the cooldown1 bar in the UI
+        float PercentUnitlCooldown = -(((cooldownTimeStamp2 - Time.time) / cooldown2) * 100) + 100;
         PercentUnitlCooldown = Mathf.Clamp(PercentUnitlCooldown, 0, 100);
 
         return PercentUnitlCooldown;

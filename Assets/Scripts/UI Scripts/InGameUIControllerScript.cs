@@ -54,17 +54,19 @@ public class InGameUIControllerScript : MonoBehaviour {
 
     public void UpdateInGameUI() {
 
-        if (GameObject.FindGameObjectWithTag("Player") != null) {
-            float _MaxHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviourScript>().MaxHealth;
-            GameObject.FindGameObjectWithTag("Health Bar UI").GetComponent<Slider>().maxValue = _MaxHealth;
-
-            float _currendHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviourScript>().currendHealth;
-            GameObject.FindGameObjectWithTag("Health Bar UI").GetComponent<Slider>().value = _currendHealth;
-
-            GameObject.FindGameObjectWithTag("Cooldown UI").GetComponent<Slider>().value = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviourScript>().GetPercentUnitCooldown();
-        }
-
         foreach (Transform t in InGameUI.transform) {
+            if (GameControllerScript.instance.PlayerInstance != null) {
+                PlayerBehaviourScript pbs = GameControllerScript.instance.PlayerInstance.GetComponent<PlayerBehaviourScript>();
+
+                if (t.CompareTag("Health Bar UI")) {
+                    t.GetComponent<Slider>().maxValue = pbs.MaxHealth;
+                    t.GetComponent<Slider>().value = pbs.currendHealth;
+                }
+                if (t.name == "Cooldown Bar 1")
+                    t.gameObject.GetComponent<Slider>().value = pbs.GetPercentUnitlCooldown1();
+                if (t.name == "Cooldown Bar 2")
+                    t.gameObject.GetComponent<Slider>().value = pbs.GetPercentUnitlCooldown2();
+            }
             if (t.gameObject.name == "First Weapon Text")
                 t.gameObject.GetComponent<Text>().text = "First Weapon:" + System.Environment.NewLine + GameControllerScript.PlayerFirstWeapon.GetComponent<WeaponBehaviourScript>().weaponName;
             if (t.gameObject.name == "Second Weapon Text")
