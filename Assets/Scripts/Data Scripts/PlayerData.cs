@@ -14,6 +14,9 @@ public class PlayerData {
 
     public bool[] UnlockedWeapons;
 
+    public int playerFirstWeaponInt;
+    public int playerSecondWeaponInt;
+
     public float NewWeaponPrice = 200f;
 
 }

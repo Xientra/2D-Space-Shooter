@@ -333,8 +333,18 @@ public class MainMenuControllerScript : MonoBehaviour {
 
         }
         else {
-            Debug.LogError("OpenWeaponInfoScreen hass been called with the object " + _weaponObject.name + ", which has no WeaponBehaviourScript assinged.");
+            Debug.LogError("OpenWeaponInfoScreen has been called with the object " + _weaponObject.name + ", which has no WeaponBehaviourScript assinged.");
         }
+    }
+
+    public void Btn_EquipAsFirstWeapon() {
+        GameControllerScript.PlayerFirstWeapon = WeaponInfoScreenWeaponGo;
+        UpdateUI();
+    }
+
+    public void Btn_EquipAsSecondWeapon() {
+        GameControllerScript.PlayerSecondWeapon = WeaponInfoScreenWeaponGo;
+        UpdateUI();
     }
 
     public void Btn_PreviousWeapon() {

@@ -311,6 +311,8 @@ public class GameControllerScript : MonoBehaviour {
         data.currendCredits = currendCredits;
         data.HightScore = HightScore;
         data.LevelProgress = LevelProgress;
+        data.playerFirstWeaponInt = (int)PlayerFirstWeapon.GetComponent<WeaponBehaviourScript>().WeaponType;
+        data.playerSecondWeaponInt = (int)PlayerSecondWeapon.GetComponent<WeaponBehaviourScript>().WeaponType;
         data.NewWeaponPrice = MainMenuControllerScript.NewWeaponPrice;
 
         bool[] _unlockedWeapons = new bool[ObjectHolder._PlayerWeapons.Length];
@@ -322,7 +324,7 @@ public class GameControllerScript : MonoBehaviour {
 
 
         bf.Serialize(file, data);
-
+        file.Close();
         Debug.Log("Game was saved");
         //Instantiate(ObjectHolder._Effects[ObjectHolder.GetEffectIndex(EffectBehaviourScript.EffectTypes.SavingIcon)], new Vector3(17, 10), Quaternion.identity); //mainCamera.GetComponent<Camera>().orthographicSize
     }
@@ -339,6 +341,9 @@ public class GameControllerScript : MonoBehaviour {
             currendCredits = data.currendCredits;
             HightScore = data.HightScore;
             LevelProgress = data.LevelProgress;
+            PlayerFirstWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex((WeaponBehaviourScript.WeaponTypes)data.playerFirstWeaponInt)];
+            PlayerSecondWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex((WeaponBehaviourScript.WeaponTypes)data.playerSecondWeaponInt)];
+
             MainMenuControllerScript.NewWeaponPrice = data.NewWeaponPrice;
 
             bool[] _unlockedWeapons = data.UnlockedWeapons;
