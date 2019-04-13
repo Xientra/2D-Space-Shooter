@@ -41,8 +41,7 @@ public class WaveControllerScript : MonoBehaviour {
         }
         
         if (isEndless == true)
-            while (childPosition == lastWaveIndex)
-                childPosition = UnityEngine.Random.Range(1, transform.childCount + 1);
+            childPosition = UnityEngine.Random.Range(1, transform.childCount + 1);
 
         //StartCoroutine(StartAfterTime(1f));
 
