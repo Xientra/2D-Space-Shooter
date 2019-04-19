@@ -23379,6 +23379,12 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114717018711693094, guid: c60d9cba6161c574d92570cb778fadb2,
+        type: 3}
+      propertyPath: toAssingSecondWep
+      value: 
+      objectReference: {fileID: 1662901710460724, guid: fd9441cf1e49ddc4fbca136453cae51b,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c60d9cba6161c574d92570cb778fadb2, type: 3}
 --- !u!1001 &1142570763
@@ -37375,6 +37381,52 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1870016675}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1872484621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1872484623}
+  - component: {fileID: 1872484624}
+  m_Layer: 0
+  m_Name: AudioController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1872484623
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872484621}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1872484624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872484621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaf878594f58e4047a0c47718380179e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: d23cec311aca04e45a0bad32b11b7bf0, type: 3}
+  - {fileID: 8300000, guid: ad586c6e6ad4eef448b3c992a171f72f, type: 3}
 --- !u!1001 &1876702932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45078,6 +45130,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95394790762767424, guid: 0e65b500d01151644a6186b1d2b45edf,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 481527893ec896e4a99e1f36ef24d022, type: 2}
     - target: {fileID: 2913731132664198625, guid: 0e65b500d01151644a6186b1d2b45edf,
         type: 3}
       propertyPath: MaxHealth
@@ -45098,11 +45155,6 @@ PrefabInstance:
       propertyPath: PowerUpDropChangse
       value: 0.8
       objectReference: {fileID: 0}
-    - target: {fileID: 95394790762767424, guid: 0e65b500d01151644a6186b1d2b45edf,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 481527893ec896e4a99e1f36ef24d022, type: 2}
     - target: {fileID: 4652785873227360, guid: 0e65b500d01151644a6186b1d2b45edf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -1,11 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Timers;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Timers;
-using System;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
 
 public class GameControllerScript : MonoBehaviour {
 
@@ -17,14 +17,14 @@ public class GameControllerScript : MonoBehaviour {
     private Vector3 originalPos;
 
     public GameObject StarsGo;
-    //[HideInInspector]
+    [HideInInspector]
     public GameObject StarsInstance;
 
     public GameObject CursorGUIGo;
-    //[HideInInspector]
+    [HideInInspector]
     public GameObject CursorGUIInstance;
 
-    //[HideInInspector]
+    [HideInInspector]
     public GameObject PlayerInstance;
 
     [Header("Only to Test Weapons")]
@@ -46,6 +46,8 @@ public class GameControllerScript : MonoBehaviour {
     public static GameObject PlayerSecondWeapon;
     
     public static bool GameIsPaused = false;
+    public static bool SoundIsMuted = false;
+    public static bool MusicIsMuted = false;
     public static bool UsingGamepad = false;
     
 

@@ -50,10 +50,14 @@ public class WeaponBehaviourScript : MonoBehaviour {
         switch (WeaponType) {
             case (WeaponTypes.Standart_lvl_1):
                 Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+
+                AudioControllerScript.activeInstance.PlaySound("BlasterShoot");
                 break;
             case (WeaponTypes.Standart_lvl_2):
                 Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.right * 0.1f), TurretGameObject.transform.rotation);
                 Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.right * -0.1f), TurretGameObject.transform.rotation);
+
+                AudioControllerScript.activeInstance.PlaySound("BlasterShoot");
                 break;
             case (WeaponTypes.Standart_lvl_3):
                 float _value = 0.1125f;
@@ -68,6 +72,8 @@ public class WeaponBehaviourScript : MonoBehaviour {
                 //Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                 //Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.right * 0.2f), TurretGameObject.transform.rotation);
                 //Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.right * -0.2f), TurretGameObject.transform.rotation);
+
+                AudioControllerScript.activeInstance.PlaySound("BlasterShoot");
                 break;
 
             case (WeaponTypes.Helix_lvl_1):
@@ -149,12 +155,18 @@ public class WeaponBehaviourScript : MonoBehaviour {
 
             case (WeaponTypes.ChainGun_lvl_1):
                 fireChainGun(0.03f, 0.09f, 6f, ProjectileSpawnPoint, TurretGameObject);
+
+                AudioControllerScript.activeInstance.PlaySound("ChaingunShoot");
                 break;
             case (WeaponTypes.ChainGun_lvl_2):
                 fireChainGun(0.03f, 0.09f, 3f, ProjectileSpawnPoint, TurretGameObject);
+
+                AudioControllerScript.activeInstance.PlaySound("ChaingunShoot");
                 break;
             case (WeaponTypes.ChainGun_lvl_3):
                 fireChainGun(0.03f, 0.09f, 1f, ProjectileSpawnPoint, TurretGameObject);
+
+                AudioControllerScript.activeInstance.PlaySound("ChaingunShoot");
                 break;
 
             case (WeaponTypes.Sniper_lvl_1):
