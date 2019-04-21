@@ -14,6 +14,8 @@ public class AudioControllerScript : MonoBehaviour {
 
     private List<AudioSource> audioSourcesList = new List<AudioSource>();
 
+    public bool mute = false;
+
     public bool useV2 = false;
 
     void Awake() {
@@ -73,7 +75,7 @@ public class AudioControllerScript : MonoBehaviour {
     }
 
     public void PlaySound(string _soundName) {
-        if (GameControllerScript.SoundIsMuted == false) {
+        if (GameControllerScript.SoundIsMuted == false && mute == false) {
             if (useV2 == false) {
                 SoundData sd = GetSoundData(_soundName);
                 sd.audioSource.volume = sd.volume;

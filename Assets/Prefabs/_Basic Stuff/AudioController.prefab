@@ -46,16 +46,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundData:
   - SoundClip: {fileID: 8300000, guid: d23cec311aca04e45a0bad32b11b7bf0, type: 3}
-    isMusic: 0
     volume: 1
     pitch: 1
     loop: 0
+    isMusic: 0
     audioSource: {fileID: 0}
   - SoundClip: {fileID: 8300000, guid: ad586c6e6ad4eef448b3c992a171f72f, type: 3}
-    isMusic: 0
     volume: 1
     pitch: 1
     loop: 0
+    isMusic: 0
+    audioSource: {fileID: 0}
+  - SoundClip: {fileID: 8300000, guid: b4700b4a32781a442a6b76785f0d17bf, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    isMusic: 0
+    audioSource: {fileID: 0}
+  - SoundClip: {fileID: 8300000, guid: ac92124fc80aa9946be4b1e2683a5cf3, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    isMusic: 0
+    audioSource: {fileID: 0}
+  - SoundClip: {fileID: 8300000, guid: ceb832eeba9e0074293977cbcaa20ef4, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    isMusic: 0
+    audioSource: {fileID: 0}
+  - SoundClip: {fileID: 8300000, guid: 6ee4cdf0158e1dc4896ff15d7ff206ae, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    isMusic: 0
+    audioSource: {fileID: 0}
+  - SoundClip: {fileID: 8300000, guid: 9a123688c60d1d44bba4289b452075f3, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    isMusic: 0
+    audioSource: {fileID: 0}
+  - SoundClip: {fileID: 8300000, guid: 68d7e6798482f2746b05bf4225b91dc6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    isMusic: 0
     audioSource: {fileID: 0}
   sounds:
   - {fileID: 8300000, guid: d23cec311aca04e45a0bad32b11b7bf0, type: 3}
