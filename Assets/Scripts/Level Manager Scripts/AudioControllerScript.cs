@@ -100,6 +100,32 @@ public class AudioControllerScript : MonoBehaviour {
         }
     }
 
+    public void PlaySound(string _soundName, float _pitch) {
+        if (GameControllerScript.SoundIsMuted == false && mute == false) {
+            if (useV2 == false) {
+                SoundData sd = GetSoundData(_soundName);
+                sd.audioSource.volume = sd.volume;
+                sd.audioSource.pitch = _pitch;
+                sd.audioSource.loop = sd.loop;
+                sd.audioSource.Play();
+            }
+            else {
+                #region v2
+                AudioSource audioS = gameObject.AddComponent<AudioSource>();
+
+                AudioClip ac = GetSound(_soundName);
+                if (ac != null) {
+
+                    audioSourcesList.Add(audioS);
+
+                    audioS.clip = ac;
+                    audioS.Play();
+                }
+                #endregion
+            }
+        }
+    }
+
     private SoundData GetSoundData(string _soundName) {
         foreach (SoundData sD in soundData) {
             if (sD.SoundClip.name == _soundName)

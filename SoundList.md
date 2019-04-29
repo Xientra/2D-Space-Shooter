@@ -11,13 +11,13 @@
 
 -> Weapons
 	ChainGun
-	GrenadeLauncher & ShrapnellLauncher
-	Helix [1, 2, 3]
-	Homing
+	GrenadeLauncher & ShrapnellLauncher (x)
+	Helix [1 (x), 2 (x), 3 (x)]
+	Homing (x?)
 	LaserSword?
-	MissileLauncher
-	ShotGun
-	Standart
+	MissileLauncher (x)
+	ShotGun (x)
+	Standart (x)
 	(Sniper)
 
 -> Bullets & Explosionsn (Question: Should there be a audio feedback on hit? i think yes)

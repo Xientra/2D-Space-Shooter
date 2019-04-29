@@ -108,19 +108,19 @@ public class WeaponBehaviourScript : MonoBehaviour {
                 BulletRng = 1f;
                 Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.HomingBullet_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, Random.Range(BulletRng, -BulletRng)));
 
-                AudioControllerScript.activeInstance.PlaySound("HomingShoot");
+                AudioControllerScript.activeInstance.PlaySound("HomingShoot2", Random.Range(0.5f, 1.5f));
                 break;
             case (WeaponTypes.Homing_lvl_2):
                 BulletRng = 6f;
                 Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.HomingBullet_lvl_2)], ProjectileSpawnPoint, TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, Random.Range(BulletRng, -BulletRng)));
 
-                AudioControllerScript.activeInstance.PlaySound("HomingShoot");
+                AudioControllerScript.activeInstance.PlaySound("HomingShoot2", Random.Range(0.5f, 1.5f));
                 break;
             case (WeaponTypes.Homing_lvl_3):
                 BulletRng = 12f;
                 Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.HomingBullet_lvl_3)], ProjectileSpawnPoint, TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, Random.Range(BulletRng, -BulletRng)));
 
-                AudioControllerScript.activeInstance.PlaySound("HomingShoot");
+                AudioControllerScript.activeInstance.PlaySound("HomingShoot2", Random.Range(0.5f, 1.5f));
                 break;
 
             case (WeaponTypes.LaserSword_lvl_1):
@@ -155,22 +155,34 @@ public class WeaponBehaviourScript : MonoBehaviour {
 
             case (WeaponTypes.GrenadeLauncher_lvl_1):
                 Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Grenade_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+
+                AudioControllerScript.activeInstance.PlaySound("GrenadeLauncherShoot");
                 break;
             case (WeaponTypes.GrenadeLauncher_lvl_2):
                 Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Grenade_lvl_2)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+
+                AudioControllerScript.activeInstance.PlaySound("GrenadeLauncherShoot");
                 break;
             case (WeaponTypes.GrenadeLauncher_lvl_3):
                 Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Grenade_lvl_3)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+
+                AudioControllerScript.activeInstance.PlaySound("GrenadeLauncherShoot");
                 break;
 
             case (WeaponTypes.ShrapnelLauncher_lvl_1):
                 Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Shrapnel_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+
+                AudioControllerScript.activeInstance.PlaySound("GrenadeLauncherShoot");
                 break;
             case (WeaponTypes.ShrapnelLauncher_lvl_2):
                 Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Shrapnel_lvl_2)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+
+                AudioControllerScript.activeInstance.PlaySound("GrenadeLauncherShoot");
                 break;
             case (WeaponTypes.ShrapnelLauncher_lvl_3):
                 Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.Shrapnel_lvl_3)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+
+                AudioControllerScript.activeInstance.PlaySound("GrenadeLauncherShoot");
                 break;
 
             case (WeaponTypes.ChainGun_lvl_1):
