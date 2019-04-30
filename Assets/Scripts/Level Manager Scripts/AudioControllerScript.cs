@@ -77,11 +77,16 @@ public class AudioControllerScript : MonoBehaviour {
     public void PlaySound(string _soundName) {
         if (GameControllerScript.SoundIsMuted == false && mute == false) {
             if (useV2 == false) {
-                SoundData sd = GetSoundData(_soundName);
-                sd.audioSource.volume = sd.volume;
-                sd.audioSource.pitch = sd.pitch;
-                sd.audioSource.loop = sd.loop;
-                sd.audioSource.Play();
+                if (GetSoundData(_soundName) != null) {
+                    SoundData sd = GetSoundData(_soundName);
+                    sd.audioSource.volume = sd.volume;
+                    sd.audioSource.pitch = sd.pitch;
+                    sd.audioSource.loop = sd.loop;
+                    sd.audioSource.Play();
+                }
+                else {
+                    Debug.LogError(_soundName + " Not Found");
+                }
             }
             else {
                 #region v2
@@ -103,11 +108,16 @@ public class AudioControllerScript : MonoBehaviour {
     public void PlaySound(string _soundName, float _pitch) {
         if (GameControllerScript.SoundIsMuted == false && mute == false) {
             if (useV2 == false) {
-                SoundData sd = GetSoundData(_soundName);
-                sd.audioSource.volume = sd.volume;
-                sd.audioSource.pitch = _pitch;
-                sd.audioSource.loop = sd.loop;
-                sd.audioSource.Play();
+                if (GetSoundData(_soundName) != null) {
+                    SoundData sd = GetSoundData(_soundName);
+                    sd.audioSource.volume = sd.volume;
+                    sd.audioSource.pitch = _pitch;
+                    sd.audioSource.loop = sd.loop;
+                    sd.audioSource.Play();
+                }
+                else {
+                    Debug.LogError(_soundName + " Not Found");
+                }
             }
             else {
                 #region v2

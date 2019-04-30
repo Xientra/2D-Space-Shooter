@@ -21,23 +21,23 @@
 	(Sniper)
 
 -> Bullets & Explosionsn (Question: Should there be a audio feedback on hit? i think yes)
-	GrenadeExplosion
+	GrenadeExplosion (x)
 	Q? HelixBullet (Child and Main?)
 	Q? Homingbullet
 	Q? LaserSword
-	Missile Moving?
-	MissileExplosion
+	Missile Moving? (~x)
+	MissileExplosion (x)
 	Q? ShotgunBullet
-	ShrapnellExplosion
+	ShrapnellExplosion 
 	Q? (No?) ShrapnellBullet
 	(Q? SniperBullet)
 	Q? Standart
 
-	{
-	Explosion_Big
-	Explosion_Small
-	Explosion_Impact
-	}
+	
+	Explosion_Big (x)
+	Explosion_Small (x)
+	Explosion_Impact (x)
+	
 
 ========PickUps========
 -> PowerUps (Both collecting and active (and on existing?))

@@ -87,6 +87,20 @@ public class GameControllerScript : MonoBehaviour {
 
         currendScore = 0f;
 
+
+        //Assinging Player Weapons if needed
+        if (PlayerFirstWeapon == null)
+            PlayerFirstWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Standart_lvl_1)];
+        if (PlayerSecondWeapon == null)
+            PlayerSecondWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Shotgun_lvl_1)];
+
+        //Only for testing weapons
+        if (toAssingFirstWep != null)
+            PlayerFirstWeapon = toAssingFirstWep;
+        if (toAssingSecondWep != null)
+            PlayerSecondWeapon = toAssingSecondWep;
+
+
         //Instantiate stuff based on the scene
         bool b = false;
         foreach (Transform t in transform) {
@@ -136,18 +150,8 @@ public class GameControllerScript : MonoBehaviour {
             }
         }
 
-        //Assinging Player Weapons if needed
-        if (PlayerFirstWeapon == null)
-            PlayerFirstWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Standart_lvl_1)];
-        if (PlayerSecondWeapon == null)
-            PlayerSecondWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Shotgun_lvl_1)];
 
 
-        //Only for testing weapons
-        if (toAssingFirstWep != null)
-            PlayerFirstWeapon = toAssingFirstWep;
-        if (toAssingSecondWep != null)
-            PlayerSecondWeapon = toAssingSecondWep;
     }
 
     void Update() {

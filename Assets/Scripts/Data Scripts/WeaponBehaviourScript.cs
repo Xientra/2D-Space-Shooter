@@ -108,7 +108,7 @@ public class WeaponBehaviourScript : MonoBehaviour {
                 BulletRng = 1f;
                 Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(LaserBulletBehaviourScript.BulletTypes.HomingBullet_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, Random.Range(BulletRng, -BulletRng)));
 
-                AudioControllerScript.activeInstance.PlaySound("HomingShoot2", Random.Range(0.5f, 1.5f));
+                AudioControllerScript.activeInstance.PlaySound("HomingShoot2", Random.Range(0.75f, 1.125f));
                 break;
             case (WeaponTypes.Homing_lvl_2):
                 BulletRng = 6f;
