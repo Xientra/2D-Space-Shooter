@@ -51,8 +51,8 @@ MonoBehaviour:
     loop: 0
     isMusic: 0
     audioSource: {fileID: 0}
-  - SoundClip: {fileID: 8300000, guid: ad586c6e6ad4eef448b3c992a171f72f, type: 3}
-    volume: 1
+  - SoundClip: {fileID: 8300000, guid: 52af4b421de90544aab31cae55287853, type: 3}
+    volume: 0.5
     pitch: 1
     loop: 0
     isMusic: 0
@@ -111,21 +111,24 @@ MonoBehaviour:
     loop: 0
     isMusic: 0
     audioSource: {fileID: 0}
-  - SoundClip: {fileID: 0}
+  - SoundClip: {fileID: 8300000, guid: 68d7e6798482f2746b05bf4225b91dc6, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     isMusic: 0
     audioSource: {fileID: 0}
-  - SoundClip: {fileID: 0}
-    volume: 1
+  - SoundClip: {fileID: 8300000, guid: 6202f3d85e36bdc47bb1f52800c65182, type: 3}
+    volume: 0.7
     pitch: 1
     loop: 0
     isMusic: 0
     audioSource: {fileID: 0}
-  sounds:
-  - {fileID: 8300000, guid: d23cec311aca04e45a0bad32b11b7bf0, type: 3}
-  - {fileID: 8300000, guid: ad586c6e6ad4eef448b3c992a171f72f, type: 3}
+  - SoundClip: {fileID: 8300000, guid: 25f4ffdde2ee5214f8e445afbce3aff4, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    isMusic: 0
+    audioSource: {fileID: 0}
   mute: 0
   useV2: 0
 --- !u!82 &4030423224313029244

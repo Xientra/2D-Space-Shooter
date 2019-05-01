@@ -188,17 +188,17 @@ public class WeaponBehaviourScript : MonoBehaviour {
             case (WeaponTypes.ChainGun_lvl_1):
                 fireChainGun(0.03f, 0.09f, 6f, ProjectileSpawnPoint, TurretGameObject);
 
-                AudioControllerScript.activeInstance.PlaySound("ChaingunShoot");
+                AudioControllerScript.activeInstance.PlaySound("ChaingunShoot2");
                 break;
             case (WeaponTypes.ChainGun_lvl_2):
                 fireChainGun(0.03f, 0.09f, 3f, ProjectileSpawnPoint, TurretGameObject);
 
-                AudioControllerScript.activeInstance.PlaySound("ChaingunShoot");
+                AudioControllerScript.activeInstance.PlaySound("ChaingunShoot2");
                 break;
             case (WeaponTypes.ChainGun_lvl_3):
                 fireChainGun(0.03f, 0.09f, 1f, ProjectileSpawnPoint, TurretGameObject);
 
-                AudioControllerScript.activeInstance.PlaySound("ChaingunShoot");
+                AudioControllerScript.activeInstance.PlaySound("ChaingunShoot2");
                 break;
 
             case (WeaponTypes.Sniper_lvl_1):

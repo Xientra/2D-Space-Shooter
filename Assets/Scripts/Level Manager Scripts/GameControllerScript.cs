@@ -317,8 +317,14 @@ public class GameControllerScript : MonoBehaviour {
         data.currendCredits = currendCredits;
         data.HightScore = HightScore;
         data.LevelProgress = LevelProgress;
-        data.playerFirstWeaponInt = (int)PlayerFirstWeapon.GetComponent<WeaponBehaviourScript>().WeaponType;
-        data.playerSecondWeaponInt = (int)PlayerSecondWeapon.GetComponent<WeaponBehaviourScript>().WeaponType;
+        if (PlayerFirstWeapon.GetComponent<WeaponBehaviourScript>() != null) {
+            data.playerFirstWeaponInt = (int)PlayerFirstWeapon.GetComponent<WeaponBehaviourScript>().WeaponType;
+        }
+        else Debug.LogError("The PlayerFirstWeapon could not be saved due to it not having a WeaponBehaviourScript Component");
+        if (PlayerSecondWeapon.GetComponent<WeaponBehaviourScript>() != null) {
+            data.playerSecondWeaponInt = (int)PlayerSecondWeapon.GetComponent<WeaponBehaviourScript>().WeaponType;
+        }
+        else Debug.LogError("The PlayerSecondWeapon could not be saved due to it not having a WeaponBehaviourScript Component");
         data.NewWeaponPrice = MainMenuControllerScript.NewWeaponPrice;
 
         bool[] _unlockedWeapons = new bool[ObjectHolder._PlayerWeapons.Length];

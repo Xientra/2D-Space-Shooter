@@ -10,8 +10,6 @@ public class AudioControllerScript : MonoBehaviour {
 
     public SoundData[] soundData;
 
-    public AudioClip[] sounds;
-
     private List<AudioSource> audioSourcesList = new List<AudioSource>();
 
     public bool mute = false;
@@ -36,15 +34,6 @@ public class AudioControllerScript : MonoBehaviour {
             sD.audioSource.pitch = sD.pitch;
             sD.audioSource.loop = sD.loop;
         }
-
-        /*
-        audioSources = new AudioSource[sounds.Length];
-
-        for (int i = 0; i < sounds.Length; i++) {
-            audioSources[i] = gameObject.AddComponent<AudioSource>();
-            audioSources[i].clip = sounds[i];
-        }
-        */
     }
 
     void Start() {
@@ -52,26 +41,6 @@ public class AudioControllerScript : MonoBehaviour {
 
     void Update() {
 
-        #region v2
-        if (useV2 == true) {
-
-            List<AudioSource> ASToRemove = new List<AudioSource>();
-
-            foreach (AudioSource AuSo in audioSourcesList) {
-                if (AuSo != null) {
-                    if (AuSo.isPlaying == false) {
-                        ASToRemove.Add(AuSo);
-                    }
-                }
-                else Debug.LogWarning("There is a null element in the audioSourcesList. That might just be that way idk");
-            }
-
-            foreach (AudioSource AuSoToRemove in ASToRemove) {
-                audioSourcesList.Remove(AuSoToRemove);
-                Destroy(AuSoToRemove);
-            }
-        }
-        #endregion
     }
 
     public void PlaySound(string _soundName) {
@@ -87,20 +56,6 @@ public class AudioControllerScript : MonoBehaviour {
                 else {
                     Debug.LogError(_soundName + " Not Found");
                 }
-            }
-            else {
-                #region v2
-                AudioSource audioS = gameObject.AddComponent<AudioSource>();
-
-                AudioClip ac = GetSound(_soundName);
-                if (ac != null) {
-
-                    audioSourcesList.Add(audioS);
-
-                    audioS.clip = ac;
-                    audioS.Play();
-                }
-                #endregion
             }
         }
     }
@@ -119,20 +74,6 @@ public class AudioControllerScript : MonoBehaviour {
                     Debug.LogError(_soundName + " Not Found");
                 }
             }
-            else {
-                #region v2
-                AudioSource audioS = gameObject.AddComponent<AudioSource>();
-
-                AudioClip ac = GetSound(_soundName);
-                if (ac != null) {
-
-                    audioSourcesList.Add(audioS);
-
-                    audioS.clip = ac;
-                    audioS.Play();
-                }
-                #endregion
-            }
         }
     }
 
@@ -145,6 +86,7 @@ public class AudioControllerScript : MonoBehaviour {
         return null;
     }
 
+    /*
     //only used in v2
     private AudioClip GetSound(string _soundName) {
         foreach (AudioClip ac in sounds) {
@@ -154,4 +96,6 @@ public class AudioControllerScript : MonoBehaviour {
         Debug.LogError("There is no Sound with the Name: \"" + _soundName + "\".");
         return null;
     }
+
+    */
 }
