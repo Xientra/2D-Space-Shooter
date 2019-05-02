@@ -14,7 +14,7 @@
 	GrenadeLauncher & ShrapnellLauncher (x)
 	Helix [1 (x), 2 (x), 3 (x)]
 	Homing (x?)
-	LaserSword?
+	LaserSword? (x)
 	MissileLauncher (x)
 	ShotGun (x)
 	Standart (x)
@@ -28,7 +28,7 @@
 	Missile Moving? (~x)
 	MissileExplosion (x)
 	Q? ShotgunBullet
-	ShrapnellExplosion 
+	Q? ShrapnellExplosion 
 	Q? (No?) ShrapnellBullet
 	(Q? SniperBullet)
 	Q? Standart
@@ -46,10 +46,10 @@
 	HealthUp
 	Invincibility
 	Regeneration
-	SloMo
+	SloMo (x)
 
 -> Credits
-	PickUpSound (different pitch for different values?)
+	PickUpSound (different pitch for different values?) (x)
 
 
 ========Enemies========

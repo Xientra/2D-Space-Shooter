@@ -125,12 +125,18 @@ public class WeaponBehaviourScript : MonoBehaviour {
 
             case (WeaponTypes.LaserSword_lvl_1):
                 fireLaserSowrd(1.5f, ProjectileSpawnPoint, TurretGameObject);
+
+                AudioControllerScript.activeInstance.PlaySound("LaserSwordSummon2", Random.Range(0.8f, 1.2f));
                 break;
             case (WeaponTypes.LaserSword_lvl_2):
                 fireLaserSowrd(1.75f, ProjectileSpawnPoint, TurretGameObject);
+
+                AudioControllerScript.activeInstance.PlaySound("LaserSwordSummon2", Random.Range(0.8f, 1.2f));
                 break;
             case (WeaponTypes.LaserSword_lvl_3):
                 fireLaserSowrd(2f, ProjectileSpawnPoint, TurretGameObject);
+
+                AudioControllerScript.activeInstance.PlaySound("LaserSwordSummon2", Random.Range(0.8f, 1.2f));
                 break;
 
             case (WeaponTypes.WaveEmitter_lvl_1):

@@ -146,7 +146,8 @@ public class PlayerBehaviourScript : MonoBehaviour {
 
             if (_pickUp.thisPickUpType == PickUpBehaviourScript.PickUpTypes.Credit) {
                 GameControllerScript.currendCredits += collision.GetComponent<PickUpBehaviourScript>().CreditValue;
-                //Destroy(collision.gameObject);
+
+                AudioControllerScript.activeInstance.PlaySound("CreditPickUp", Random.Range(0.8f, 1.2f));
             }
             else if(_pickUp.thisPickUpType == PickUpBehaviourScript.PickUpTypes.HealthUp) {
                 currendHealth += MaxHealth * 0.2f;
@@ -216,7 +217,7 @@ public class PlayerBehaviourScript : MonoBehaviour {
             foreach (Transform tChild in TurretGameObject.transform) {
                 if (tChild.gameObject.name == "ProjectileSpawnPointGo") ProjectileSpawnPoint = tChild.position;
             }
-            if (ProjectileSpawnPoint == TurretRotationAnchorGo.transform.position) Debug.LogWarning("The ProjectileSpawnPoint is the same as the TurretAnchor. This means, that the Point has not been moved yet or it does not exist at all");
+            //if (ProjectileSpawnPoint == TurretRotationAnchorGo.transform.position) Debug.LogWarning("The ProjectileSpawnPoint is the same as the TurretAnchor. This means, that the Point has not been moved yet or it does not exist at all");
         }
     }
 
@@ -308,6 +309,8 @@ public class PlayerBehaviourScript : MonoBehaviour {
                 break;
             case (PickUpBehaviourScript.PickUpTypes.SloMo):
                 Time.timeScale = 0.8f;
+
+                AudioControllerScript.activeInstance.PlaySound("SloMoPowerUp");
                 break;
             case (PickUpBehaviourScript.PickUpTypes.Regeneration):
                 regenerates = true;
