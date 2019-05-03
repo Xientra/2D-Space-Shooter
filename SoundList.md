@@ -41,11 +41,11 @@
 
 ========PickUps========
 -> PowerUps (Both collecting and active (and on existing?))
-	DamageUp
+	DamageUp (x)
 	FireRate
-	HealthUp
+	HealthUp (x)
 	Invincibility
-	Regeneration
+	Regeneration (x)
 	SloMo (x)
 
 -> Credits

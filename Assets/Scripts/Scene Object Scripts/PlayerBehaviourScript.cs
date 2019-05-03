@@ -153,6 +153,8 @@ public class PlayerBehaviourScript : MonoBehaviour {
                 currendHealth += MaxHealth * 0.2f;
                 GameObject Go = Instantiate(_pickUp.VisualEffect, ShipGFX.transform);
                 Destroy(Go, 3f);
+
+                AudioControllerScript.activeInstance.PlaySound("HealthUp");
             }
             else
                 StartCoroutine(ActivatePowerUpforTime((int)_pickUp.thisPickUpType, _pickUp.duration, _pickUp.VisualEffect));
@@ -303,6 +305,8 @@ public class PlayerBehaviourScript : MonoBehaviour {
                 break;
             case (PickUpBehaviourScript.PickUpTypes.DamageUp):
                 LaserBulletBehaviourScript.damageMultiplyer = 1.2f;
+
+                AudioControllerScript.activeInstance.PlaySound("DamagePowerUp");
                 break;
             case (PickUpBehaviourScript.PickUpTypes.Invincibility):
                 EnemyBehaviourScript.noCollisionDamage = true;
@@ -317,6 +321,8 @@ public class PlayerBehaviourScript : MonoBehaviour {
                 regenerationVisualEffectGo = Instantiate(_VisualEffect, ShipGFX.transform);
 
                 createEffect = false;
+
+                AudioControllerScript.activeInstance.PlaySound("RegenerationPowerUp");
                 break;
             default:
                 Debug.LogError("The PickUp -" + (PickUpBehaviourScript.PickUpTypes)PowerUpNr + "- has no effect assinged!");
@@ -342,6 +348,8 @@ public class PlayerBehaviourScript : MonoBehaviour {
                 break;
             case (PickUpBehaviourScript.PickUpTypes.DamageUp):
                 LaserBulletBehaviourScript.damageMultiplyer = 1f;
+
+                AudioControllerScript.activeInstance.StopSound("DamagePowerUp");
                 break;
             case (PickUpBehaviourScript.PickUpTypes.Invincibility):
                 EnemyBehaviourScript.noCollisionDamage = false;
@@ -355,6 +363,8 @@ public class PlayerBehaviourScript : MonoBehaviour {
                     Destroy(regenerationVisualEffectGo);
 
                 createEffect = false;
+
+                AudioControllerScript.activeInstance.StopSound("RegenerationPowerUp");
                 break;
             default:
                 Debug.LogError("The PickUp -" + (PickUpBehaviourScript.PickUpTypes)PowerUpNr + "- has no effect assinged!");

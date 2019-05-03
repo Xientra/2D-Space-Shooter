@@ -63,8 +63,8 @@ public class AudioControllerScript : MonoBehaviour {
     public void PlaySound(string _soundName, float _pitch) {
         if (GameControllerScript.SoundIsMuted == false && mute == false) {
             if (useV2 == false) {
-                if (GetSoundData(_soundName) != null) {
-                    SoundData sd = GetSoundData(_soundName);
+                SoundData sd = GetSoundData(_soundName);
+                if (sd != null) {
                     sd.audioSource.volume = sd.volume;
                     sd.audioSource.pitch = _pitch;
                     sd.audioSource.loop = sd.loop;
@@ -74,6 +74,13 @@ public class AudioControllerScript : MonoBehaviour {
                     Debug.LogError(_soundName + " Not Found");
                 }
             }
+        }
+    }
+
+    public void StopSound(string _soundName) {
+        SoundData sd = GetSoundData(_soundName);
+        if (sd != null) {
+            sd.audioSource.Stop();
         }
     }
 
