@@ -60,7 +60,7 @@ public class InGameUIControllerScript : MonoBehaviour {
 
                 if (t.CompareTag("Health Bar UI")) {
                     t.GetComponent<Slider>().maxValue = pbs.MaxHealth;
-                    t.GetComponent<Slider>().value = pbs.currendHealth;
+                    t.GetComponent<Slider>().value = pbs.ChangeHealthBy(0);
                 }
                 if (t.name == "Cooldown Bar 1")
                     t.gameObject.GetComponent<Slider>().value = pbs.GetPercentUnitlCooldown1();

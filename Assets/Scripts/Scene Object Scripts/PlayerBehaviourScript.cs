@@ -5,33 +5,37 @@ using UnityEngine;
 //[RequireComponent(typeof(Rigidbody))]
 public class PlayerBehaviourScript : MonoBehaviour {
 
-    /*----------Ship Stats----------*/
-    public enum Ships { Standart }
-    public Ships currendShip = Ships.Standart;
-    public float MaxHealth = 100f;
-    public float currendHealth = 100f;
-
-    [Space(5)]
-
-    /*----LookVars----*/
-    public GameObject ShipGFX; //this is the Go that will be rotated
-    public bool lookForwardWhenMoving = true;
-    private Vector3 lastFramePos;
-
-    [Space(5)]
-
+    public GameObject CreateOnDeath;
     /*----The GameObject for the Turret----*/
     public GameObject TurretRotationAnchorGo; //the empty game object of the player ship which is positioned to where the turret should rotate around 
     private GameObject TurretGameObject; //the GameObject of the Turret itself; it's is own prefab 
     private Vector3 ProjectileSpawnPoint; //will be set to the position of a child of the turrets prefabs; it is used once in WeaponBehaviourScrip.Fire
 
-    [Space(5)]
+    /*----------Ship Stats----------*/
+    public enum Ships { Standart }
+    [Header("Stats: ")]
+    public Ships currendShip = Ships.Standart;
+    public float MaxHealth = 100f;
+    [SerializeField]
+    private float currendHealth = 100f;
+    public bool isInvincible = false;
+    public float invincibleTime = 1f;
+
+
+    [Header("Visual: ")]
+
+    /*----LookVars----*/
+    public GameObject ShipGFX; //this is the Go that will be rotated
+    public bool lookForwardWhenMoving = true;
+    private Vector3 lastFramePos;
+   
+    [Header("Weapons: ")]
 
     public GameObject firstWeapon;
     public GameObject secondWeapon;
     private GameObject activeWeapon;
 
-    [Space(5)]
+    [Header("Movement: ")]
 
     /*Movement Vars*/
     [SerializeField]
@@ -44,7 +48,7 @@ public class PlayerBehaviourScript : MonoBehaviour {
     private float xspeed = 0;
     private float yspeed = 0;
 
-    public GameObject CreateOnDeath;
+    
 
 
     /*----------Weapon Stuff----------*/
@@ -119,9 +123,9 @@ public class PlayerBehaviourScript : MonoBehaviour {
                 if (cooldownTimeStamp1 > Time.time)
                     cooldownTimeStamp1 += Time.deltaTime;
             }
-
         }
-            CheckPlayerDeath();
+
+        CheckPlayerDeath();
     }
 
     void FixedUpdate() {
@@ -162,6 +166,25 @@ public class PlayerBehaviourScript : MonoBehaviour {
 
             Destroy(collision.gameObject);
         }
+    }
+
+    /// <summary>
+    /// Changes the currentHealth of the Player by "_amount" and returns the new Health
+    /// </summary>
+    /// <param name="_amount"></param>
+    public float ChangeHealthBy(float _amount) {
+        if (_amount < 0 && isInvincible == false) {
+            currendHealth += _amount;
+            if (currendHealth < 0) {
+                currendHealth = 0;
+            }
+            StartCoroutine(ActiveInvincibilityForTime());
+        }
+        else {
+            currendHealth += _amount;
+        }
+
+        return currendHealth;
     }
 
     void coolMovement() {
@@ -237,6 +260,44 @@ public class PlayerBehaviourScript : MonoBehaviour {
         }
     }
 
+    IEnumerator ActiveInvincibilityForTime() {
+        isInvincible = true;
+        InvokeRepeating("InvincibilityEffect", 0, 0.3f);
+
+        yield return new WaitForSeconds(invincibleTime);
+        isInvincible = false;
+
+        CancelInvoke("InvincibilityEffect");
+        InvincibilityEffect(true);
+    }
+
+    private void InvincibilityEffect() {
+        SpriteRenderer sr = ShipGFX.GetComponent<SpriteRenderer>();
+        SpriteRenderer sr2 = TurretGameObject.GetComponentInChildren<SpriteRenderer>();
+        Color col = new Color(sr.color.r, sr.color.g, sr.color.b, sr.color.a);
+
+        if (col.a == 1f) {
+
+            col.a = 0.5f;
+        }
+        else if (col.a == 0.5f) {
+            col.a = 1f;
+        }
+
+        sr.color = col;
+        sr2.color = col;
+    }
+
+    private void InvincibilityEffect(bool returnToNormalAlpha) {
+        SpriteRenderer sr = ShipGFX.GetComponent<SpriteRenderer>();
+        SpriteRenderer sr2 = TurretGameObject.GetComponentInChildren<SpriteRenderer>();
+        Color col = new Color(sr.color.r, sr.color.g, sr.color.b, sr.color.a);
+        col.a = 1f;
+
+        sr.color = col;
+        sr2.color = col;
+    }
+
     void FireWeapon(GameObject _weapon) {
         if (activeWeapon == firstWeapon) {
 
@@ -295,7 +356,6 @@ public class PlayerBehaviourScript : MonoBehaviour {
     }
 
     IEnumerator ActivatePowerUpforTime(int PowerUpNr, float TimeToWait, GameObject _VisualEffect) {
-        //Debug.Log((PickUpBehaviourScript.PickUpTypes)PowerUpNr + " started."); //Update some UI or stuff pls
 
         bool createEffect = true;
 
@@ -375,8 +435,6 @@ public class PlayerBehaviourScript : MonoBehaviour {
         if (createEffect == true && _VisualEffect != null) {
             Destroy(tempGo);
         }
-
-        //Debug.Log((PickUpBehaviourScript.PickUpTypes)PowerUpNr + " stoped"); //Update some UI or stuff pls
     }
 
     void adjustScale(float xscale, float yscale) {

@@ -175,7 +175,6 @@ public class GameControllerScript : MonoBehaviour {
     }
 
     private void OnScoreTimerTick(object source, ElapsedEventArgs e) {
-        //Debug.Log(scoreTimer.Enabled);
         GameControllerScript.currendScore += scorePerTick;
     }
 
@@ -303,7 +302,6 @@ public class GameControllerScript : MonoBehaviour {
             GameObject.FindGameObjectWithTag("InGameUI").GetComponent<InGameUIControllerScript>().OpenInGameDeathMenu();
         else Debug.LogError("The (Player/GameController) Object could not find Go with Tag: \"InGameUI\" and so not open the InGameDeathMenu");
     }
-
 
 
 

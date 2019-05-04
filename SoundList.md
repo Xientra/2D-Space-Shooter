@@ -6,7 +6,7 @@
 -> Ship / General
 	OnHit (some clang against the hull)
 	Moving?
-	OnDeathExplosion
+	OnDeathExplosion (x)
 	OnCoolDownReset?
 
 -> Weapons

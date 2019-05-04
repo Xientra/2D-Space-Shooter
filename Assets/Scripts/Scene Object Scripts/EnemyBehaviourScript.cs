@@ -148,7 +148,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
                 if (PlayerBehaviourScript.regenerates == true) {
                     PlayerBehaviourScript.regenerates = false;
                 }
-                collision.gameObject.GetComponent<PlayerBehaviourScript>().currendHealth -= CollisionDamage;
+                collision.gameObject.GetComponent<PlayerBehaviourScript>().ChangeHealthBy(-CollisionDamage);
                 StartCoroutine(GameControllerScript.ShakeMainCamera(0.2f, 0.05f));
             }
         }

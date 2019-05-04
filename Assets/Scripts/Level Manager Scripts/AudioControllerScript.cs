@@ -10,8 +10,6 @@ public class AudioControllerScript : MonoBehaviour {
 
     public SoundData[] soundData;
 
-    private List<AudioSource> audioSourcesList = new List<AudioSource>();
-
     public bool mute = false;
 
     public bool useV2 = false;
@@ -41,6 +39,10 @@ public class AudioControllerScript : MonoBehaviour {
 
     void Update() {
 
+    }
+
+    private void OnLevelWasLoaded(int level) {
+        StopAllSoundeffects();
     }
 
     public void PlaySound(string _soundName) {
@@ -81,6 +83,16 @@ public class AudioControllerScript : MonoBehaviour {
         SoundData sd = GetSoundData(_soundName);
         if (sd != null) {
             sd.audioSource.Stop();
+        }
+    }
+
+    public void StopAllSoundeffects() {
+        foreach (SoundData sd in soundData) {
+            if (sd != null) {
+                if (sd.isMusic != true) {
+                    sd.audioSource.Stop();
+                }
+            }
         }
     }
 

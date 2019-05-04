@@ -388,11 +388,9 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
             }
             else { //if bullet is from enemy
                 if (collision.gameObject.CompareTag("Player")) {
-                    if (collision.gameObject.GetComponent<PlayerBehaviourScript>().currendHealth >= 0) {
-                        collision.gameObject.GetComponent<PlayerBehaviourScript>().currendHealth -= damage;
-                        StartCoroutine(GameControllerScript.ShakeMainCamera(0.2f, 0.05f));
-                        InitiliseSelfDestruction();
-                    }
+                    collision.gameObject.GetComponent<PlayerBehaviourScript>().ChangeHealthBy(-damage);
+                    StartCoroutine(GameControllerScript.ShakeMainCamera(0.2f, 0.05f));
+                    InitiliseSelfDestruction();
                 }
             }
 
@@ -415,10 +413,9 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
             }
             else { //is enemy explosion
                 if (collision.gameObject.CompareTag("Player")) {
-                    if (collision.gameObject.GetComponent<PlayerBehaviourScript>().currendHealth >= 0) {
-                        collision.gameObject.GetComponent<PlayerBehaviourScript>().currendHealth -= damage;
-                        InitiliseSelfDestruction();
-                    }
+                    collision.gameObject.GetComponent<PlayerBehaviourScript>().ChangeHealthBy(-damage);
+
+                    InitiliseSelfDestruction();
                 }
             }
         }
