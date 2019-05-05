@@ -173,14 +173,18 @@ public class PlayerBehaviourScript : MonoBehaviour {
     /// </summary>
     /// <param name="_amount"></param>
     public float ChangeHealthBy(float _amount) {
-        if (_amount < 0 && isInvincible == false) {
-            currendHealth += _amount;
-            if (currendHealth < 0) {
-                currendHealth = 0;
+        if (_amount < 0) { //damaging
+            if (isInvincible == false) {
+                currendHealth += _amount;
+                if (currendHealth < 0) {
+                    currendHealth = 0;
+                }
+                StartCoroutine(ActiveInvincibilityForTime());
+
+                AudioControllerScript.activeInstance.PlaySound("PlayerHit");
             }
-            StartCoroutine(ActiveInvincibilityForTime());
         }
-        else {
+        else { //healing
             currendHealth += _amount;
         }
 
@@ -362,6 +366,8 @@ public class PlayerBehaviourScript : MonoBehaviour {
         switch ((PickUpBehaviourScript.PickUpTypes)PowerUpNr) {
             case (PickUpBehaviourScript.PickUpTypes.FireRateUp):
                 fireRateMultiplyer = 0.6f;
+
+                AudioControllerScript.activeInstance.PlaySound("FireRatePowerUp");
                 break;
             case (PickUpBehaviourScript.PickUpTypes.DamageUp):
                 LaserBulletBehaviourScript.damageMultiplyer = 1.2f;
@@ -370,6 +376,8 @@ public class PlayerBehaviourScript : MonoBehaviour {
                 break;
             case (PickUpBehaviourScript.PickUpTypes.Invincibility):
                 EnemyBehaviourScript.noCollisionDamage = true;
+
+                AudioControllerScript.activeInstance.PlaySound("InvincibilityPowerUp");
                 break;
             case (PickUpBehaviourScript.PickUpTypes.SloMo):
                 Time.timeScale = 0.8f;
@@ -413,6 +421,8 @@ public class PlayerBehaviourScript : MonoBehaviour {
                 break;
             case (PickUpBehaviourScript.PickUpTypes.Invincibility):
                 EnemyBehaviourScript.noCollisionDamage = false;
+
+                AudioControllerScript.activeInstance.StopSound("InvincibilityPowerUp");
                 break;
             case (PickUpBehaviourScript.PickUpTypes.SloMo):
                 Time.timeScale = 1f;

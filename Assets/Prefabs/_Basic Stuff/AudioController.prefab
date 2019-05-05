@@ -112,7 +112,7 @@ MonoBehaviour:
     isMusic: 0
     audioSource: {fileID: 0}
   - SoundClip: {fileID: 8300000, guid: 68d7e6798482f2746b05bf4225b91dc6, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
     loop: 0
     isMusic: 0
@@ -160,6 +160,30 @@ MonoBehaviour:
     isMusic: 0
     audioSource: {fileID: 0}
   - SoundClip: {fileID: 8300000, guid: f3e90c42b2066b04e968a2f63fa60fee, type: 3}
+    volume: 0.75
+    pitch: 1
+    loop: 1
+    isMusic: 0
+    audioSource: {fileID: 0}
+  - SoundClip: {fileID: 8300000, guid: cf8abf7526655aa418fccf5228a26ca5, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    isMusic: 0
+    audioSource: {fileID: 0}
+  - SoundClip: {fileID: 8300000, guid: b645860d44e8c204ebd8f9d9f5a25f26, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    isMusic: 0
+    audioSource: {fileID: 0}
+  - SoundClip: {fileID: 8300000, guid: b4aac74edf89dc941868782f51537bd2, type: 3}
+    volume: 0.75
+    pitch: 1
+    loop: 0
+    isMusic: 0
+    audioSource: {fileID: 0}
+  - SoundClip: {fileID: 8300000, guid: 9036325769011164d8b47260936dd6d4, type: 3}
     volume: 0.75
     pitch: 1
     loop: 1

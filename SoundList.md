@@ -4,13 +4,13 @@
 
 ========Player========
 -> Ship / General
-	OnHit (some clang against the hull)
+	OnHit (some clang against the hull) (x)
 	Moving?
 	OnDeathExplosion (x)
 	OnCoolDownReset?
 
 -> Weapons
-	ChainGun
+	ChainGun (x)
 	GrenadeLauncher & ShrapnellLauncher (x)
 	Helix [1 (x), 2 (x), 3 (x)]
 	Homing (x?)
@@ -42,11 +42,11 @@
 ========PickUps========
 -> PowerUps (Both collecting and active (and on existing?))
 	DamageUp (x)
-	FireRate
+	FireRate (x?)
 	HealthUp (x)
-	Invincibility
+	Invincibility (x)
 	Regeneration (x)
-	SloMo (x)
+	SloMo (x?)
 
 -> Credits
 	PickUpSound (different pitch for different values?) (x)
