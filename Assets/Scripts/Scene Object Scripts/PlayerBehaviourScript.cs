@@ -258,6 +258,7 @@ public class PlayerBehaviourScript : MonoBehaviour {
 
             Instantiate(CreateOnDeath, transform.position, transform.rotation);
 
+            AudioControllerScript.activeInstance.StopAllLoopingSounds();
             AudioControllerScript.activeInstance.PlaySound("PlayerDeathExplosion");
 
             Destroy(this.gameObject);

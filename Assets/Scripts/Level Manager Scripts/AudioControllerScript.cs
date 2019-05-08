@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class AudioControllerScript : MonoBehaviour {
 
@@ -15,30 +14,22 @@ public class AudioControllerScript : MonoBehaviour {
     public bool useV2 = false;
 
     void Awake() {
-        if (activeInstance == null) {
-            activeInstance = this;
-            DontDestroyOnLoad(this);
-        }
-        else {
+        if (activeInstance != null) {
             Destroy(this.gameObject);
             return;
         }
+        else if (activeInstance == null){
+            activeInstance = this;
+            DontDestroyOnLoad(this);
 
-
-        foreach (SoundData sD in soundData) {
-            sD.audioSource = gameObject.AddComponent<AudioSource>();
-            sD.audioSource.clip = sD.SoundClip;
-            sD.audioSource.volume = sD.volume;
-            sD.audioSource.pitch = sD.pitch;
-            sD.audioSource.loop = sD.loop;
+            foreach (SoundData sD in soundData) {
+                sD.audioSource = gameObject.AddComponent<AudioSource>();
+                sD.audioSource.clip = sD.SoundClip;
+                sD.audioSource.volume = sD.volume;
+                sD.audioSource.pitch = sD.pitch;
+                sD.audioSource.loop = sD.loop;
+            }
         }
-    }
-
-    void Start() {
-    }
-
-    void Update() {
-
     }
 
     private void OnLevelWasLoaded(int level) {
@@ -90,7 +81,25 @@ public class AudioControllerScript : MonoBehaviour {
         foreach (SoundData sd in soundData) {
             if (sd != null) {
                 if (sd.isMusic != true) {
-                    sd.audioSource.Stop();
+                    if (sd.audioSource != null) {
+                        sd.audioSource.Stop();
+                    }
+                    //else if (sd.audioSource == null) Debug.LogError("The SoundData with " + sd.SoundClip.name + " has no audio Source");
+                }
+            }
+        }
+    }
+
+    public void StopAllLoopingSounds() {
+        foreach (SoundData sd in soundData) {
+            if (sd != null) {
+                if (sd.isMusic != true) {
+                    if (sd.loop == true) {
+                        if (sd.audioSource != null) {
+                            sd.audioSource.Stop();
+                        }
+                        //else if (sd.audioSource == null) Debug.LogError("The SoundData with " + sd.SoundClip.name + " has no audio Source");
+                    }
                 }
             }
         }

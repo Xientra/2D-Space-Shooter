@@ -42,6 +42,7 @@ public class InGameUIControllerScript : MonoBehaviour {
         if (Input.GetButtonDown("Cancel")) {
             if (InGameExitMenu.activeSelf == false) {
                 OpenInGameExitMenu();
+                PlayButtonSound();
             }
             else {
                 Btn_No(); //which deactivates the InGameExitMenu and starts Time again
@@ -78,6 +79,10 @@ public class InGameUIControllerScript : MonoBehaviour {
         }
     }
 
+    private void PlayButtonSound() {
+        AudioControllerScript.activeInstance.PlaySound("ButtonPress");
+    }
+
     public void OpenInGameExitMenu() {
         OpenInGameMenu(InGameExitMenu);
     }
@@ -100,18 +105,26 @@ public class InGameUIControllerScript : MonoBehaviour {
     public void Btn_Yes() {
         SceneManager.LoadScene("Main Menu");
         GameControllerScript.PauseGame(false);
+
+        PlayButtonSound();
     }
     public void Btn_No() {
         CloseInGameMenu(InGameExitMenu);
+
+        PlayButtonSound();
     }
 
     public void Btn_Retry() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         GameControllerScript.PauseGame(false);
+
+        PlayButtonSound();
     }
     public void Btn_Exit() {
         SceneManager.LoadScene("Main Menu");
         GameControllerScript.PauseGame(false);
+
+        PlayButtonSound();
     }
 
     private void OpenInGameMenu(GameObject _menuGo) {

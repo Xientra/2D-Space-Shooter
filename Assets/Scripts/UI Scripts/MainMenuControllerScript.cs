@@ -122,9 +122,19 @@ public class MainMenuControllerScript : MonoBehaviour {
         }
     }
 
+    private void PlayButtonSound() {
+        AudioControllerScript.activeInstance.PlaySound("ButtonPress");
+    }
+
+    private void PlayButtonSoundNo() {
+        AudioControllerScript.activeInstance.PlaySound("ButtonPressNo");
+    }
+
     /*-------------------------------------------Main Menu-------------------------------------------------------*/
     public void Btn_Story() {
         Debug.Log("probably never...");
+
+        //PlayButtonSound();
     }
 
     public void Btn_LevelSelect() {
@@ -136,6 +146,7 @@ public class MainMenuControllerScript : MonoBehaviour {
         //OptionsMenu.SetActive(false);
 
         UpdateUI();
+        PlayButtonSound();
     }
 
     public void Btn_Endless() {
@@ -151,14 +162,20 @@ public class MainMenuControllerScript : MonoBehaviour {
         //OptionsMenu.SetActive(false);
 
         UpdateUI();
+        PlayButtonSound();
     }
 
     public void Btn_Options() {
         Debug.Log("lol no");
+
+        //PlayButtonSound();
     }
 
     public void Btn_Quit() {
         GameControllerScript.instance.SaveGame();
+
+        PlayButtonSound();
+
         Application.Quit();
         //UnityEditor.EditorApplication.isPlaying = false;
     }
@@ -171,6 +188,7 @@ public class MainMenuControllerScript : MonoBehaviour {
         //OptionsMenu.SetActive(false);
 
         UpdateUI();
+        PlayButtonSound();
     }
 
     //¯\_(ツ)_/¯
@@ -182,6 +200,7 @@ public class MainMenuControllerScript : MonoBehaviour {
         }
         */
         UpdateUI();
+        PlayButtonSound();
     }
 
 
@@ -197,12 +216,18 @@ public class MainMenuControllerScript : MonoBehaviour {
 
     public void Btn_Level1() {
         SceneManager.LoadScene("Level 1");
+
+        PlayButtonSound();
     }
     public void Btn_Level2() {
         SceneManager.LoadScene("Level 2");
+
+        PlayButtonSound();
     }
     public void Btn_Level3() {
         SceneManager.LoadScene("Level 3");
+
+        PlayButtonSound();
     }
 
 
@@ -224,11 +249,12 @@ public class MainMenuControllerScript : MonoBehaviour {
 
                 GameControllerScript.currendCredits -= NewWeaponPrice;
                 NewWeaponPrice += 100;
-               
+
                 OpenWeaponInfoScreen(randomWeponGo);
                 UpdateUI();
+                PlayButtonSound();
             }
-            else Debug.Log("You need some visual feedback that the player has not enouth money to buy a new weapoon...");
+            else PlayButtonSoundNo();
         }
         else
             foreach (Transform t in OutfitterMenu.transform) {
@@ -249,7 +275,8 @@ public class MainMenuControllerScript : MonoBehaviour {
                 }
         }
 
-        Debug.Log("first weapon = "+GameControllerScript.PlayerFirstWeapon.name);
+        //Debug.Log("first weapon = "+GameControllerScript.PlayerFirstWeapon.name);
+        PlayButtonSound();
     }
 
     public void OnValueChangeSecondWeaponDropdown() {
@@ -265,7 +292,8 @@ public class MainMenuControllerScript : MonoBehaviour {
                 }
         }
 
-        Debug.Log("second weapon = "+GameControllerScript.PlayerSecondWeapon.name);
+        //Debug.Log("second weapon = "+GameControllerScript.PlayerSecondWeapon.name);
+        PlayButtonSound();
     }
 
     
@@ -339,20 +367,28 @@ public class MainMenuControllerScript : MonoBehaviour {
 
     public void Btn_EquipAsFirstWeapon() {
         GameControllerScript.PlayerFirstWeapon = WeaponInfoScreenWeaponGo;
+
         UpdateUI();
+        PlayButtonSound();
     }
 
     public void Btn_EquipAsSecondWeapon() {
         GameControllerScript.PlayerSecondWeapon = WeaponInfoScreenWeaponGo;
+
         UpdateUI();
+        PlayButtonSound();
     }
 
     public void Btn_PreviousWeapon() {
         OpenWeaponInfoScreen(WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().PreviousWeapon);
+
+        PlayButtonSound();
     }
 
     public void Btn_NextWeapon() {
         OpenWeaponInfoScreen(WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().NextWeapon);
+
+        PlayButtonSound();
     }
 
     public void Btn_UpgradeWeapon() {
@@ -364,14 +400,16 @@ public class MainMenuControllerScript : MonoBehaviour {
             _nextwep.isBought = true;
             WeaponsViewGO.GetComponent<WeaponsViewControllerScript>().UpdateWeaponsView();
             UpdateUI();
+            PlayButtonSound();
             OpenWeaponInfoScreen(WeaponInfoScreenWeaponGo.GetComponent<WeaponBehaviourScript>().NextWeapon);
         }
-        else Debug.Log("You need some visual feedback that the player has not enouth money to uprgade the weapoon...");
+        else PlayButtonSoundNo();
     }
 
     public void Btn_WeaponSelectScreenBack() {
         WeaponInfoScreen.SetActive(false);
         WeaponInfoScreenWeaponGo = null;
         UpdateUI();
+        PlayButtonSound();
     }
 }
