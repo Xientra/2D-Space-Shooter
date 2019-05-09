@@ -207,10 +207,14 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
 
 
         if (homingStrength != 0) {
-            if (GetNearestEnemy() != null) {
-                if (Vector3.SqrMagnitude(GetNearestEnemy().transform.position - this.transform.position) <= homingDistance) {
+
+            GameObject nearEnemy = GetNearestEnemyInRadius(homingDistance);
+
+            if (nearEnemy != null) {
+                if (Vector3.SqrMagnitude(nearEnemy.transform.position - this.transform.position) <= homingDistance) {
+
                     //Vector3 speed = new Vector3();
-                    Vector3 PlayerDirection = Vector3.Normalize(GetNearestEnemy().transform.position - transform.position);
+                    Vector3 PlayerDirection = Vector3.Normalize(nearEnemy.transform.position - transform.position);
 
                     direction += PlayerDirection * homingStrength;
 
@@ -446,6 +450,7 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
         }
     }
 
+    [System.Obsolete("Fuck no; use GetNearestEnemyInRadius instead.")]
     GameObject GetNearestEnemy() {
         GameObject returnGo = null;
         GameObject[] GOList = GameObject.FindObjectsOfType<GameObject>();
@@ -461,6 +466,38 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
                 }
             }
         }
+        return returnGo;
+    }
+
+    GameObject GetNearestEnemyInRadius(float _radius) {
+        GameObject returnGo = null;
+        float returnGoDistance = 0;
+        RaycastHit2D[] HitsInRadiusList = Physics2D.CircleCastAll(transform.position, _radius, Vector3.zero);
+
+        //the HitsInRadiusList should allready be sorted from unity so the following should work but it didn't idk why 
+        //int i = 0;
+        //while (i < HitsInRadiusList.Length && HitsInRadiusList[i].collider.gameObject.layer != 10) {
+        //    i++;
+        //}
+        //if (i < HitsInRadiusList.Length) {
+        //    returnGo = HitsInRadiusList[i].collider.gameObject;
+        //}
+      
+        foreach (RaycastHit2D Hit in HitsInRadiusList) {
+            if (Hit.collider.gameObject.layer == 10 /*Enemy*/) {
+                if (returnGo == null) {
+                    returnGo = Hit.collider.gameObject;
+                    returnGoDistance = Vector3.SqrMagnitude(returnGo.transform.position - this.transform.position);
+                }
+                else {
+                    if (Vector3.SqrMagnitude(Hit.collider.transform.position - this.transform.position) < returnGoDistance) {
+                        returnGo = Hit.collider.gameObject;
+                        returnGoDistance = Vector3.SqrMagnitude(returnGo.transform.position - this.transform.position);
+                    }
+                }
+            }
+        }
+        
         return returnGo;
     }
 
@@ -481,29 +518,25 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
                     speed += LaserSwordAcc;
                 }
             }
-
         }
 
         if (bulletType == BulletTypes.Missile_lvl_1 || bulletType == BulletTypes.Missile_lvl_2 || bulletType == BulletTypes.Missile_lvl_3) {
-            if (GetNearestEnemy() != null) {
-                if (Vector3.SqrMagnitude(GetNearestEnemy().transform.position - this.transform.position) <= homingDistance) {
+
+            GameObject nearestEnemy = GetNearestEnemyInRadius(homingDistance);
+
+            if (nearestEnemy != null) {
+                if (Vector3.SqrMagnitude(nearestEnemy.transform.position - this.transform.position) <= homingDistance) {
                     //Draw Line Effect
                     if (GetComponentInChildren<LineRenderer>() != null) {
                         LineRenderer lr = GetComponentInChildren<LineRenderer>();
 
                         lr.SetPosition(0, lr.transform.position);
-                        lr.SetPosition(1, GetNearestEnemy().transform.position);
+                        lr.SetPosition(1, nearestEnemy.transform.position);
                     }
-
 
                     //Homing Effect
                     RotationProgress += Time.deltaTime * RotationSpeed;
-                    transform.up = Vector3.Lerp(transform.up, Vector3.Normalize(GetNearestEnemy().transform.position - transform.position), RotationProgress);
-
-                    //Debug.DrawLine(transform.position, transform.position + GetNearestEnemy().transform.position - transform.position, Color.red);
-
-                    //Debug.DrawLine(transform.position, transform.position + Vector3.Normalize(GetNearestEnemy().transform.position - transform.position));
-                    //Debug.DrawLine(transform.position, transform.position + transform.up);
+                    transform.up = Vector3.Lerp(transform.up, Vector3.Normalize(nearestEnemy.transform.position - transform.position), RotationProgress);
                 }
                 else {
                     if (GetComponentInChildren<LineRenderer>() != null) {
