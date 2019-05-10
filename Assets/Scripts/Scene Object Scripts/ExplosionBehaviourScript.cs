@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosionBehaviourScript : LaserBulletBehaviourScript {
+public class ExplosionBehaviourScript : ProjectileBehaviourScript {
 
     public enum CameraShakePresets {
         _null_, Explosion_big, Explosion_small, Explosion_impact

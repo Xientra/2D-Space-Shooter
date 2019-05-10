@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
 //[RequireComponent(typeof(Rigidbody2D))]
-public class LaserBulletBehaviourScript : MonoBehaviour {
+public class ProjectileBehaviourScript : MonoBehaviour {
 
     private LineRenderer lineRenderer;
 
@@ -201,9 +201,9 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
 
             //detaches all (Helix)BulletChilds of the own transform and gives them speed
             foreach (Transform ImminentChildTransform in transform) {
-                if (ImminentChildTransform.GetComponent<LaserBulletBehaviourScript>() != null) {
+                if (ImminentChildTransform.GetComponent<ProjectileBehaviourScript>() != null) {
                     ImminentChildTransform.rotation = transform.rotation;
-                    ImminentChildTransform.GetComponent<LaserBulletBehaviourScript>().speed = speed / 2;
+                    ImminentChildTransform.GetComponent<ProjectileBehaviourScript>().speed = speed / 2;
                     ImminentChildTransform.parent = null;
                 }
             }
@@ -230,13 +230,13 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
             if (createOnDeath != null) {
                 Instantiate(createOnDeath, transform);
 
-                if (createOnDeath.GetComponent<LaserBulletBehaviourScript>() != null)
+                if (createOnDeath.GetComponent<ProjectileBehaviourScript>() != null)
                     Debug.LogWarning("If you want to Intantiate an explosion please do that with explosionOnDeath.");
             }
             if (explosionOnDeath != null) {
                 Instantiate(explosionOnDeath, transform.position, Quaternion.identity);
 
-                if (explosionOnDeath.GetComponent<LaserBulletBehaviourScript>() == null)
+                if (explosionOnDeath.GetComponent<ProjectileBehaviourScript>() == null)
                     Debug.LogWarning("If you want to Intantiate an OnDeathEffect please do that with createOnDeath.");
             }
         }
@@ -256,9 +256,9 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
         yield return 0;
 
         foreach (SpriteRenderer SR in GetComponentsInChildren<SpriteRenderer>()) {
-            if (SR.gameObject.GetComponent<LaserBulletBehaviourScript>() != null) {
+            if (SR.gameObject.GetComponent<ProjectileBehaviourScript>() != null) {
                 if (bulletType == BulletTypes.ShrapnellExplosion) {
-                    if (SR.gameObject.GetComponent<LaserBulletBehaviourScript>().bulletType != BulletTypes.ShrapnellBullet) { //I don't want it to disable all Shrapnel Child Bullets
+                    if (SR.gameObject.GetComponent<ProjectileBehaviourScript>().bulletType != BulletTypes.ShrapnellBullet) { //I don't want it to disable all Shrapnel Child Bullets
                         SR.enabled = false;
                     }
                 }
@@ -271,13 +271,13 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
             //Unparent the TrailRendererGo or the ParticleTrailGo
             if (!(bulletType == BulletTypes.ShrapnellExplosion)) {
                 foreach (TrailRenderer TR in GetComponentsInChildren<TrailRenderer>()) {
-                    if (TR.gameObject.GetComponent<LaserBulletBehaviourScript>() == null) {
+                    if (TR.gameObject.GetComponent<ProjectileBehaviourScript>() == null) {
                         TR.time = TR.time / 2;
                         TR.transform.SetParent(null, true);
                     }
                 }
                 foreach (ParticleSystem Ps in GetComponentsInChildren<ParticleSystem>()) {
-                    if (Ps.gameObject.GetComponent<LaserBulletBehaviourScript>() == null) {
+                    if (Ps.gameObject.GetComponent<ProjectileBehaviourScript>() == null) {
                         Ps.Stop();
                     }
                 }
@@ -323,7 +323,7 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
 
             if (this.isShootable == true) {
                 if (collision.gameObject.CompareTag("Projectile")) {
-                    if (collision.gameObject.GetComponent<LaserBulletBehaviourScript>().isEnemyBullet != true) {
+                    if (collision.gameObject.GetComponent<ProjectileBehaviourScript>().isEnemyBullet != true) {
                         InitiliseSelfDestruction();
                     }
                 }
@@ -431,9 +431,9 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
     private void StartPlayerBulletSpecificBehaviour() {
         switch (bulletType) {
             case (BulletTypes.HelixBulletChild):
-                duration = transform.parent.gameObject.GetComponent<LaserBulletBehaviourScript>().duration;
+                duration = transform.parent.gameObject.GetComponent<ProjectileBehaviourScript>().duration;
 
-                switch (transform.parent.gameObject.GetComponent<LaserBulletBehaviourScript>().bulletType) {
+                switch (transform.parent.gameObject.GetComponent<ProjectileBehaviourScript>().bulletType) {
                     case (BulletTypes.HelixBullet_lvl_1):
                         HelixBulletChild_RotationSpeed = 800f;
                         break;
@@ -497,7 +497,7 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
         if (bulletType == BulletTypes.LaserSword_lvl_1) {
             if (SelfDestructionActive == false) {
                 if (speed <= TempSpeed) {
-                    LaserSwordAcc += TempSpeed * Time.deltaTime * 0.1f;
+                    LaserSwordAcc += TempSpeed * Time.deltaTime * LaserSwordAccellerationSpeed;
                     speed += LaserSwordAcc;
                 }
             }
@@ -569,8 +569,8 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
         GameObject go1 = Instantiate(gameObject, transform.position, transform.rotation);
         GameObject go2 = Instantiate(gameObject, transform.position, transform.rotation);
 
-        LaserBulletBehaviourScript bullet1 = go1.GetComponent<LaserBulletBehaviourScript>();
-        LaserBulletBehaviourScript bullet2 = go2.GetComponent<LaserBulletBehaviourScript>();
+        ProjectileBehaviourScript bullet1 = go1.GetComponent<ProjectileBehaviourScript>();
+        ProjectileBehaviourScript bullet2 = go2.GetComponent<ProjectileBehaviourScript>();
 
         bullet1.additionalBulletBehaviour = AdditionalBulletBehaviour._null_;
         bullet2.additionalBulletBehaviour = AdditionalBulletBehaviour._null_;

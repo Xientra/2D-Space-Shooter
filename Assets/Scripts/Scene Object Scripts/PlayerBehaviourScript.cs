@@ -368,7 +368,7 @@ public class PlayerBehaviourScript : MonoBehaviour {
                 AudioControllerScript.activeInstance.PlaySound("FireRatePowerUp");
                 break;
             case (PickUpBehaviourScript.PickUpTypes.DamageUp):
-                LaserBulletBehaviourScript.damageMultiplyer = 1.2f;
+                ProjectileBehaviourScript.damageMultiplyer = 1.2f;
 
                 AudioControllerScript.activeInstance.PlaySound("DamagePowerUp");
                 break;
@@ -413,7 +413,7 @@ public class PlayerBehaviourScript : MonoBehaviour {
                 fireRateMultiplyer = 1f;
                 break;
             case (PickUpBehaviourScript.PickUpTypes.DamageUp):
-                LaserBulletBehaviourScript.damageMultiplyer = 1f;
+                ProjectileBehaviourScript.damageMultiplyer = 1f;
 
                 AudioControllerScript.activeInstance.StopSound("DamagePowerUp");
                 break;

@@ -69,15 +69,14 @@
     <Compile Include="Assets\Scripts\Level Manager Scripts\GameControllerScript.cs" />
     <Compile Include="Assets\Scripts\Level Manager Scripts\Wave.cs" />
     <Compile Include="Assets\Scripts\Level Manager Scripts\WaveControllerScript.cs" />
-    <Compile Include="Assets\Scripts\Scene Object Scripts\DestructableProjectile.cs" />
     <Compile Include="Assets\Scripts\Scene Object Scripts\Effects etc\EffectBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Scene Object Scripts\Effects etc\TrailRendererGoBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Scene Object Scripts\EnemyBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Scene Object Scripts\EnemyParentBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Scene Object Scripts\ExplosionBehaviourScript.cs" />
-    <Compile Include="Assets\Scripts\Scene Object Scripts\LaserBulletBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Scene Object Scripts\PickUpBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Scene Object Scripts\PlayerBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\Scene Object Scripts\ProjectileBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\CursorGUIBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\InGameUIControllerScript.cs" />
     <Compile Include="Assets\Scripts\UI Scripts\MainMenuBackgroundBehaviourScript.cs" />

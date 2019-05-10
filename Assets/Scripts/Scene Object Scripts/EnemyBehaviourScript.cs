@@ -164,8 +164,7 @@ public class EnemyBehaviourScript : MonoBehaviour {
 
     void Fire() {
         if (ShootType != ShootTypes.None) {
-            if (WeaponProjectile.GetComponent<LaserBulletBehaviourScript>() != null) {
-
+            if (WeaponProjectile.GetComponent<ProjectileBehaviourScript>() != null) {
                 switch (ShootType) {
                     case (ShootTypes.SingleBullet):
                         foreach (GameObject go in EnemyTurrets) {

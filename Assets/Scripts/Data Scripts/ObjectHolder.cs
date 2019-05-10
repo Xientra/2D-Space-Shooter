@@ -65,11 +65,11 @@ public class ObjectHolder : MonoBehaviour {
         }
     }
 
-    public static int GetBulletIndex(LaserBulletBehaviourScript.BulletTypes _bulletType) {
+    public static int GetBulletIndex(ProjectileBehaviourScript.BulletTypes _bulletType) {
         int i = 0;
         foreach (GameObject go in _Bullets) {
             if (go != null) {
-                if (go.GetComponentInChildren<LaserBulletBehaviourScript>().bulletType == _bulletType) {
+                if (go.GetComponentInChildren<ProjectileBehaviourScript>().bulletType == _bulletType) {
                     return i;
                 }
             }

@@ -151,13 +151,13 @@ MonoBehaviour:
   isEnemyBullet: 1
   isShootable: 0
   speed: 20
-  damage: 50
+  damage: 45
   duration: 5
   DelayDestructionTime: 0.5
-  HelixBulletChild_RotationSpeed: 10
   homingStrength: 0
   homingDistance: 10
   RotationSpeed: 0.1
+  LaserSwordAccellerationSpeed: 0.1
   AmountOfShrapnellBulletsSpawnedOnDeath: 0
   additionalBulletBehaviour: 0
 --- !u!1 &142335175152398598
