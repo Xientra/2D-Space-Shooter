@@ -72,12 +72,6 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
     /*--------------------Player Bullet Specific Behaviour Variables--------------------*/
     [Header("Player Bullet Specific Behaviour Variables: ")]
 
-    //[HideInInspector]
-    public float HelixBulletChild_RotationSpeed = 10f;
-    //LaserSword-----
-    private float TempSpeed;
-    private float LaserSwordAcc = 0f;
-    //-----Helix-----
     //-----homing-----
     [SerializeField]
     private float homingStrength = 0f;
@@ -87,9 +81,18 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
     [SerializeField]
     private float RotationSpeed = 0.1f;
     private float RotationProgress = 0f;
+    //LaserSword-----
+    [SerializeField]
+    private float LaserSwordAccellerationSpeed = 0.1f;
+    private float TempSpeed;
+    private float LaserSwordAcc = 0f;
+    //-----Helix-----
+    private float HelixBulletChild_RotationSpeed = 10f;
     //-----Shrapnell-----
     [SerializeField]
     private int AmountOfShrapnellBulletsSpawnedOnDeath = 0;
+    //-----Shrapnell Bullet-----
+    private float shrapnellBulletRNGSpread = 24;
 
 
     /*--------------------Additional Bullet Behaviour Variables--------------------*/
@@ -112,112 +115,32 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
 
 
     private void Start() {
-        lastFramePosition = transform.position;
-
-        StartCoroutine(destroyAfterTime());
-
-        //Bullet affiliation check
-        if (this.GetType() != typeof(ExplosionBehaviourScript)) {
-            if (bulletType == BulletTypes._null_ && isEnemyBullet == false) {
-                Debug.LogError("The bullet --" + this.gameObject.name + "-- has no affiliation to any side!");
-            }
-            /*
-            if (isEnemyBullet == true && bulletType != BulletTypes._null_) {
-                enemyBulletType = EnemyBulletTypes._null_;
-                Debug.LogError("The bullet --" + this.gameObject.name + @"-- has a (player)bulletType and a EnemyBulletType. The EnemyBulletType was set to _null_.");
-            }
-            */
-        }
-        //else {
-        //    foreach (ParticleSystem pS in transform.GetComponentsInChildren<ParticleSystem>()) {
-        //        Debug.Log(pS.gameObject.name + " - " + pS.isPlaying);
-        //        pS.Stop();
-        //        pS.Play();                
-        //    }
-        //}
-
-
         //Sets the state vars like isEnemyBullet and isLaser after affiliation check
         if (bulletType == BulletTypes.SimpleLaser || bulletType == BulletTypes.SplitLaser) {
             isLaser = true;
             damageDelayTimeStamp = Time.time + damageDelay;
         }
 
-        
-        //Does bulletspecific stuff
-        switch (bulletType) {
-            case (BulletTypes.HelixBulletChild):
-                duration = transform.parent.gameObject.GetComponent<LaserBulletBehaviourScript>().duration;
 
-                switch (transform.parent.gameObject.GetComponent<LaserBulletBehaviourScript>().bulletType) {
-                    case (BulletTypes.HelixBullet_lvl_1):
-                        HelixBulletChild_RotationSpeed = 800f;
-                        break;
-                    case (BulletTypes.HelixBullet_lvl_2):
-                        HelixBulletChild_RotationSpeed = 800f;
-                        break;
-                    case (BulletTypes.HelixBullet_lvl_3):
-                        HelixBulletChild_RotationSpeed = 400f;
-                        break;
-                    case (BulletTypes.HelixBulletChild):
-                        HelixBulletChild_RotationSpeed = 200f;
-                        break;
-                }
-                break;
-        }
-        if (bulletType == BulletTypes.SplitLaserChild) {
-            transform.rotation *= Quaternion.Euler(0, 0, Random.Range(SplitAngle, -SplitAngle));
-        }
+        StartPlayerBulletSpecificBehaviour();
+        StartAdditionalBulletBehaviour();
 
-        if (bulletType == BulletTypes.HomingBullet_lvl_1 || bulletType == BulletTypes.HomingBullet_lvl_2 || bulletType == BulletTypes.HomingBullet_lvl_3) {
-            direction = transform.rotation * direction;
-            transform.rotation = Quaternion.identity;
-        }
-        if (bulletType == BulletTypes.LaserSword_lvl_1) {
-            TempSpeed = speed;
-            speed = 0;
-        }
-        if (bulletType == BulletTypes.ShrapnellBullet) {
-            float shrapnellBulletRNGSpread = 24;
-            transform.rotation = transform.rotation * Quaternion.Euler(0, 0, Random.Range(shrapnellBulletRNGSpread, -shrapnellBulletRNGSpread));
-        }
-        /* this was ment for the precise grenade explosion (it explodes there where the mouse is)
-        if (bulletType == BulletTypes.Grenade_lvl_2) {
-            Vector3 distance = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0) - transform.position;
-        }
-        */
-
-        switch (additionalBulletBehaviour) {
-            case (AdditionalBulletBehaviour.LightningMovement):
-                InvokeRepeating("PerformLightingMovement", 0f, 0.01f);
-
-                break;
-            case (AdditionalBulletBehaviour.SquareSplitAtSomePoint):
-                StartCoroutine(SquareSplitAfterTime(duration / 4, 0.5f));
-
-                break;
-        }
+        lastFramePosition = transform.position;
+        StartCoroutine(destroyAfterTime());
     }
 
     void Update() {
         PerformPlayerBulletSpecificBehaviour();
-
         PerformAdditionalBulletBehaviour();
-
-
 
         if (homingStrength != 0) {
 
             GameObject nearEnemy = GetNearestEnemyInRadius(homingDistance);
-
             if (nearEnemy != null) {
                 if (Vector3.SqrMagnitude(nearEnemy.transform.position - this.transform.position) <= homingDistance) {
-
-                    //Vector3 speed = new Vector3();
                     Vector3 PlayerDirection = Vector3.Normalize(nearEnemy.transform.position - transform.position);
 
                     direction += PlayerDirection * homingStrength;
-
                     transform.position += direction * Time.deltaTime;
                 }
             }
@@ -505,6 +428,66 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
         return false;
     }
 
+    private void StartPlayerBulletSpecificBehaviour() {
+        switch (bulletType) {
+            case (BulletTypes.HelixBulletChild):
+                duration = transform.parent.gameObject.GetComponent<LaserBulletBehaviourScript>().duration;
+
+                switch (transform.parent.gameObject.GetComponent<LaserBulletBehaviourScript>().bulletType) {
+                    case (BulletTypes.HelixBullet_lvl_1):
+                        HelixBulletChild_RotationSpeed = 800f;
+                        break;
+                    case (BulletTypes.HelixBullet_lvl_2):
+                        HelixBulletChild_RotationSpeed = 800f;
+                        break;
+                    case (BulletTypes.HelixBullet_lvl_3):
+                        HelixBulletChild_RotationSpeed = 400f;
+                        break;
+                    case (BulletTypes.HelixBulletChild):
+                        HelixBulletChild_RotationSpeed = 200f;
+                        break;
+                }
+                break;
+
+            case (BulletTypes.SplitLaserChild):
+                transform.rotation *= Quaternion.Euler(0, 0, Random.Range(SplitAngle, -SplitAngle));
+                break;
+
+            case (BulletTypes.LaserSword_lvl_1):
+                TempSpeed = speed;
+                speed = 0;
+                break;
+
+            case (BulletTypes.HomingBullet_lvl_1):
+            case (BulletTypes.HomingBullet_lvl_2):
+            case (BulletTypes.HomingBullet_lvl_3):
+                direction = transform.rotation * direction;
+                transform.rotation = Quaternion.identity;
+                break;
+
+            case (BulletTypes.ShrapnellBullet):
+                transform.rotation = transform.rotation * Quaternion.Euler(0, 0, Random.Range(shrapnellBulletRNGSpread, -shrapnellBulletRNGSpread));
+                break;
+
+            //this was ment for the precise grenade explosion(it explodes there where the mouse is)
+            //case (BulletTypes.Grenade_lvl_2):
+            //    Vector3 distance = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0) - transform.position;
+            //    break;
+        }
+    }
+
+    private void StartAdditionalBulletBehaviour() {
+        switch (additionalBulletBehaviour) {
+            case (AdditionalBulletBehaviour.LightningMovement):
+                InvokeRepeating("PerformLightingMovement", 0f, 0.01f);
+                break;
+            case (AdditionalBulletBehaviour.SquareSplitAtSomePoint):
+                StartCoroutine(SquareSplitAfterTime(duration / 4, 0.5f));
+                break;
+        }
+    }
+
+
     private void PerformPlayerBulletSpecificBehaviour() {
         if (bulletType == BulletTypes.HelixBulletChild) {
             if (transform.parent != null)
@@ -514,7 +497,7 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
         if (bulletType == BulletTypes.LaserSword_lvl_1) {
             if (SelfDestructionActive == false) {
                 if (speed <= TempSpeed) {
-                    LaserSwordAcc += TempSpeed * Time.deltaTime / 10f;
+                    LaserSwordAcc += TempSpeed * Time.deltaTime * 0.1f;
                     speed += LaserSwordAcc;
                 }
             }
@@ -561,11 +544,6 @@ public class LaserBulletBehaviourScript : MonoBehaviour {
             }
         }
     }
-
-
-
-    /*=========================Additional Bullet Behaviour===================================*/
-
 
     private void PerformAdditionalBulletBehaviour() {
 

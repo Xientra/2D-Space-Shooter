@@ -88,7 +88,6 @@ public class PlayerBehaviourScript : MonoBehaviour {
     }
 
     void Update() {
-
         if (GameControllerScript.GameIsPaused == false) {
 
             LookForward();
@@ -96,13 +95,11 @@ public class PlayerBehaviourScript : MonoBehaviour {
             SetProjectileSpawnPoint();
 
             if (Input.GetButton("Fire1")) {
-                //FireWeapon(firstWeapon);
                 FireWeapon(activeWeapon);
             }
             if (Input.GetButtonDown("Fire2")) {
                 SwitchWeapon();
             }
-
 
             if (regenerates == true) {
                 if (currendHealth < MaxHealth) {

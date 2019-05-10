@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ee0ed55717ef047ac3bf6db6bcdc51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveType: 0
   durationUntilDestroy: 20.5
 --- !u!1001 &8829746871975023187
 PrefabInstance:
@@ -235,6 +236,11 @@ PrefabInstance:
       propertyPath: AnimationStartDelay
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114376921534991998, guid: df46e402faba23f419a73aba15115701,
+        type: 3}
+      propertyPath: lookForwardWhenMoving
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 95279365284598994, guid: df46e402faba23f419a73aba15115701,
         type: 3}
       propertyPath: m_Controller
@@ -356,6 +362,11 @@ PrefabInstance:
         type: 3}
       propertyPath: AnimationStartDelay
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114376921534991998, guid: df46e402faba23f419a73aba15115701,
+        type: 3}
+      propertyPath: lookForwardWhenMoving
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 95279365284598994, guid: df46e402faba23f419a73aba15115701,
         type: 3}
