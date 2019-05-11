@@ -5,10 +5,10 @@ using UnityEngine;
 public class WeaponBehaviourScript : MonoBehaviour {
 
     public enum WeaponTypes {
-        Standart_lvl_1, Standart_lvl_2, Standart_lvl_3, Shotgun_lvl_1, Shotgun_lvl_2, Shotgun_lvl_3, Homing_lvl_1, Homing_lvl_2, Homing_lvl_3, Helix_lvl_1, Helix_lvl_2, Helix_lvl_3,
-        ChainGun_lvl_1, ChainGun_lvl_2, ChainGun_lvl_3, WaveEmitter_lvl_1, WaveEmitter_lvl_2, WaveEmitter_lvl_3, LaserSword_lvl_1, LaserSword_lvl_2, LaserSword_lvl_3,
+        Blaster_lvl_1, Blaster_lvl_2, Blaster_lvl_3, Shotgun_lvl_1, Shotgun_lvl_2, Shotgun_lvl_3, Homing_lvl_1, Homing_lvl_2, Homing_lvl_3, Helix_lvl_1, Helix_lvl_2, Helix_lvl_3,
+        ChainGun_lvl_1, ChainGun_lvl_2, ChainGun_lvl_3, LaserSwordController_lvl_1, LaserSwordController_lvl_2, LaserSwordController_lvl_3,
         MissileLauncher_lvl_1, MissileLauncher_lvl_2, MissileLauncher_lvl_3, GrenadeLauncher_lvl_1, GrenadeLauncher_lvl_2, GrenadeLauncher_lvl_3, ShrapnelLauncher_lvl_1, ShrapnelLauncher_lvl_2, ShrapnelLauncher_lvl_3,
-        Sniper_lvl_1, Sniper_lvl_2, Sniper_lvl_3,
+        Sniper_lvl_X, WaveEmitter_lvl_X, Helix_lvl_X
     }
 
     public float cooldown;
@@ -27,7 +27,7 @@ public class WeaponBehaviourScript : MonoBehaviour {
 
     /*------------Stats for the Stats Menu--------------*/
     public bool isBought = false;
-    public enum WeaponLevels { _1, _2, _3 }
+    public enum WeaponLevels { _1, _2, _3, X }
     public WeaponLevels WeaponLevel = WeaponLevels._1;
     public float price = 100;
     public string weaponName = "";
@@ -38,28 +38,21 @@ public class WeaponBehaviourScript : MonoBehaviour {
     public GameObject PreviousWeapon;
     public GameObject NextWeapon;
 
-    void Start() {
-    }
-
-    void Update() {
-
-    }
-
     //UnityEditor.EditorApplication.isPaused = true;
     public void Fire(Vector3 ProjectileSpawnPoint, GameObject TurretGameObject) {
         switch (WeaponType) {
-            case (WeaponTypes.Standart_lvl_1):
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+            case (WeaponTypes.Blaster_lvl_1):
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.BlasterShoot_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
 
                 AudioControllerScript.activeInstance.PlaySound("BlasterShoot");
                 break;
-            case (WeaponTypes.Standart_lvl_2):
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.right * 0.1f), TurretGameObject.transform.rotation);
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.right * -0.1f), TurretGameObject.transform.rotation);
+            case (WeaponTypes.Blaster_lvl_2):
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.BlasterShoot_lvl_1)], ProjectileSpawnPoint + (TurretGameObject.transform.right * 0.1f), TurretGameObject.transform.rotation);
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.BlasterShoot_lvl_1)], ProjectileSpawnPoint + (TurretGameObject.transform.right * -0.1f), TurretGameObject.transform.rotation);
 
                 AudioControllerScript.activeInstance.PlaySound("BlasterShoot");
                 break;
-            case (WeaponTypes.Standart_lvl_3):
+            case (WeaponTypes.Blaster_lvl_3):
                 float _value = 0.1125f;
                 float _offset = _value;
                 if (Standartlvl3OffsetDirection == true)
@@ -67,7 +60,7 @@ public class WeaponBehaviourScript : MonoBehaviour {
                 if (Standartlvl3OffsetDirection == false)
                     _offset = -_value;
                 Standartlvl3OffsetDirection = !Standartlvl3OffsetDirection;
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.right * _offset), TurretGameObject.transform.rotation);
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.BlasterShoot_lvl_1)], ProjectileSpawnPoint + (TurretGameObject.transform.right * _offset), TurretGameObject.transform.rotation);
 
                 AudioControllerScript.activeInstance.PlaySound("BlasterShoot");
                 break;
@@ -123,24 +116,20 @@ public class WeaponBehaviourScript : MonoBehaviour {
                 AudioControllerScript.activeInstance.PlaySound("HomingShoot2", Random.Range(0.5f, 1.5f));
                 break;
 
-            case (WeaponTypes.LaserSword_lvl_1):
+            case (WeaponTypes.LaserSwordController_lvl_1):
                 fireLaserSowrd(1.5f, ProjectileSpawnPoint, TurretGameObject);
 
                 AudioControllerScript.activeInstance.PlaySound("LaserSwordSummon2", Random.Range(0.8f, 1.2f));
                 break;
-            case (WeaponTypes.LaserSword_lvl_2):
+            case (WeaponTypes.LaserSwordController_lvl_2):
                 fireLaserSowrd(1.75f, ProjectileSpawnPoint, TurretGameObject);
 
                 AudioControllerScript.activeInstance.PlaySound("LaserSwordSummon2", Random.Range(0.8f, 1.2f));
                 break;
-            case (WeaponTypes.LaserSword_lvl_3):
+            case (WeaponTypes.LaserSwordController_lvl_3):
                 fireLaserSowrd(2f, ProjectileSpawnPoint, TurretGameObject);
 
                 AudioControllerScript.activeInstance.PlaySound("LaserSwordSummon2", Random.Range(0.8f, 1.2f));
-                break;
-
-            case (WeaponTypes.WaveEmitter_lvl_1):
-                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.Wave)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                 break;
 
             case (WeaponTypes.MissileLauncher_lvl_1):
@@ -207,9 +196,20 @@ public class WeaponBehaviourScript : MonoBehaviour {
                 AudioControllerScript.activeInstance.PlaySound("ChaingunShoot2");
                 break;
 
-            case (WeaponTypes.Sniper_lvl_1):
+            case (WeaponTypes.Helix_lvl_X):
+                Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.HelixBullet_lvl_X)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                break;
+
+            case (WeaponTypes.Sniper_lvl_X):
                 StartFiringSniper(ProjectileSpawnPoint, TurretGameObject);
                 break;
+
+            case (WeaponTypes.WaveEmitter_lvl_X):
+                GameObject waveBulletToInstantiate = ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.WaveBullet_lvl_X)];
+
+                Instantiate(waveBulletToInstantiate, ProjectileSpawnPoint, TurretGameObject.transform.rotation * waveBulletToInstantiate.transform.rotation);
+                break;
+
 
             default:
                 Debug.LogError("The Weapon Type -" + WeaponType.ToString() + "- has no values assinged!");
@@ -218,7 +218,7 @@ public class WeaponBehaviourScript : MonoBehaviour {
     }
 
     private void fireChainGun(float offsetSpeed, float maxOffset, float _BulletRng, Vector3 _ProjectileSpawnPoint, GameObject _TurretGameObject) {
-        Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.ChainGunBullet)], _ProjectileSpawnPoint + (_TurretGameObject.transform.right * chainGunOffset), _TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, Random.Range(_BulletRng, -_BulletRng)));
+        Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.ChainGunBullet_lvl_1)], _ProjectileSpawnPoint + (_TurretGameObject.transform.right * chainGunOffset), _TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, Random.Range(_BulletRng, -_BulletRng)));
         if (chainGunOffsetUp) chainGunOffset += offsetSpeed;
         else chainGunOffset -= offsetSpeed;
         if (chainGunOffset >= maxOffset) chainGunOffsetUp = false;
@@ -237,7 +237,7 @@ public class WeaponBehaviourScript : MonoBehaviour {
             Vector3 displacement = (_TurretGameObject.transform.up * Random.Range(-_bulletDisplacement, _bulletDisplacement));
             Quaternion spread = Quaternion.Euler(0, 0, Random.Range(_bulletRng, -_bulletRng));
 
-            Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.ShotgunBullet)], _ProjectileSpawnPoint + displacement, _TurretGameObject.transform.rotation * spread);
+            Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.ShotgunBullet_lvl_1)], _ProjectileSpawnPoint + displacement, _TurretGameObject.transform.rotation * spread);
         }
         //UnityEditor.EditorApplication.isPaused = true;
     }
@@ -253,7 +253,7 @@ public class WeaponBehaviourScript : MonoBehaviour {
 
         yield return new WaitForSeconds(1f);
 
-        Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.SniperBullet_lvl_1)], _SpawnPoint.transform.position, _SpawnPoint.transform.rotation);
+        Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.SniperBullet_lvl_X)], _SpawnPoint.transform.position, _SpawnPoint.transform.rotation);
     }
 
     /*

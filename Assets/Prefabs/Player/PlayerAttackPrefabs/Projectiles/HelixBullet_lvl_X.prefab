@@ -304,10 +304,10 @@ MonoBehaviour:
   damage: 20
   duration: 2
   DelayDestructionTime: 0.5
-  HelixBulletChild_RotationSpeed: 400
   homingStrength: 0
   homingDistance: 10
   RotationSpeed: 0.1
+  LaserSwordAccellerationSpeed: 0.1
   AmountOfShrapnellBulletsSpawnedOnDeath: 0
   additionalBulletBehaviour: 0
 --- !u!1 &1291113667401684
@@ -607,17 +607,17 @@ MonoBehaviour:
     type: 3}
   explosionOnDeath: {fileID: 0}
   direction: {x: 0, y: 1, z: 0}
-  bulletType: 3
+  bulletType: 30
   isEnemyBullet: 0
   isShootable: 0
   speed: 15
   damage: 30
   duration: 200
   DelayDestructionTime: 0.5
-  HelixBulletChild_RotationSpeed: 40
   homingStrength: 0
   homingDistance: 10
   RotationSpeed: 0.1
+  LaserSwordAccellerationSpeed: 0.1
   AmountOfShrapnellBulletsSpawnedOnDeath: 0
   additionalBulletBehaviour: 0
 --- !u!1 &1789061982585842
@@ -775,10 +775,10 @@ MonoBehaviour:
   damage: 20
   duration: 2
   DelayDestructionTime: 0.5
-  HelixBulletChild_RotationSpeed: 400
   homingStrength: 0
   homingDistance: 10
   RotationSpeed: 0.1
+  LaserSwordAccellerationSpeed: 0.1
   AmountOfShrapnellBulletsSpawnedOnDeath: 0
   additionalBulletBehaviour: 0
 --- !u!1 &1851637903044804

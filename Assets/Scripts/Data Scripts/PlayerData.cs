@@ -13,10 +13,10 @@ public class PlayerData {
     public bool[] LevelProgress = { false, false, false };
 
     public bool[] UnlockedWeapons;
+    public bool UnlockedlvlXWeapons = false;
 
     public int playerFirstWeaponInt;
     public int playerSecondWeaponInt;
 
     public float NewWeaponPrice = 200f;
-
 }

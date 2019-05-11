@@ -146,17 +146,17 @@ MonoBehaviour:
     type: 3}
   explosionOnDeath: {fileID: 0}
   direction: {x: 0, y: 1, z: 0}
-  bulletType: 6
+  bulletType: 7
   isEnemyBullet: 0
   isShootable: 0
   speed: 45
   damage: 4
   duration: 0.75
   DelayDestructionTime: 0.5
-  HelixBulletChild_RotationSpeed: 10
   homingStrength: 0
   homingDistance: 10
   RotationSpeed: 0.1
+  LaserSwordAccellerationSpeed: 0.1
   AmountOfShrapnellBulletsSpawnedOnDeath: 0
   additionalBulletBehaviour: 0
 --- !u!1 &1591459009468070

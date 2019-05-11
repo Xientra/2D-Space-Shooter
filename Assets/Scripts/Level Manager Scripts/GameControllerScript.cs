@@ -37,6 +37,7 @@ public class GameControllerScript : MonoBehaviour {
     private static bool doOnce = true;
 
     public static bool[] LevelProgress = { false, false, false };
+    public static bool UnlockedlvlXWeapons = false;
 
     public static float currendCredits = 300f;
     public static float currendScore = 0f;
@@ -51,9 +52,7 @@ public class GameControllerScript : MonoBehaviour {
     public static bool UsingGamepad = false;
     
 
-
     /*==========Timer==========*/
-
     private float shakeTimer;
     private float shakeAmount;
 
@@ -62,7 +61,6 @@ public class GameControllerScript : MonoBehaviour {
     float scorePerTick = 3f;
 
     Timer scoreTimer = new Timer();
-
 
 
     private void Awake() {
@@ -90,7 +88,7 @@ public class GameControllerScript : MonoBehaviour {
 
         //Assinging Player Weapons if needed
         if (PlayerFirstWeapon == null)
-            PlayerFirstWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Standart_lvl_1)];
+            PlayerFirstWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Blaster_lvl_1)];
         if (PlayerSecondWeapon == null)
             PlayerSecondWeapon = ObjectHolder._PlayerWeapons[ObjectHolder.GetPlayerWeaponIndex(WeaponBehaviourScript.WeaponTypes.Shotgun_lvl_1)];
 
@@ -136,7 +134,7 @@ public class GameControllerScript : MonoBehaviour {
             //Sets all Weapons.isBought to false exept for a few selected ones
             foreach (GameObject playerWeapon in ObjectHolder._PlayerWeapons) {
                 switch (playerWeapon.GetComponent<WeaponBehaviourScript>().WeaponType) {
-                    case WeaponBehaviourScript.WeaponTypes.Standart_lvl_1:
+                    case WeaponBehaviourScript.WeaponTypes.Blaster_lvl_1:
                         playerWeapon.GetComponent<WeaponBehaviourScript>().isBought = true;
                         break;
                     case WeaponBehaviourScript.WeaponTypes.Shotgun_lvl_1:
@@ -332,11 +330,12 @@ public class GameControllerScript : MonoBehaviour {
         }
         data.UnlockedWeapons = _unlockedWeapons;
 
+        data.UnlockedlvlXWeapons = LevelProgress[2];
 
         bf.Serialize(file, data);
         file.Close();
         Debug.Log("Game was saved");
-        //Instantiate(ObjectHolder._Effects[ObjectHolder.GetEffectIndex(EffectBehaviourScript.EffectTypes.SavingIcon)], new Vector3(17, 10), Quaternion.identity); //mainCamera.GetComponent<Camera>().orthographicSize
+        //DontDestroyOnLoad(Instantiate(ObjectHolder._Effects[ObjectHolder.GetEffectIndex(EffectBehaviourScript.EffectTypes.SavingIcon)], new Vector3(-16, -9), Quaternion.identity)); //mainCamera.GetComponent<Camera>().orthographicSize
     }
 
     public void LoadGame() {
@@ -357,6 +356,8 @@ public class GameControllerScript : MonoBehaviour {
             MainMenuControllerScript.NewWeaponPrice = data.NewWeaponPrice;
 
             bool[] _unlockedWeapons = data.UnlockedWeapons;
+
+            UnlockedlvlXWeapons = data.UnlockedlvlXWeapons;
 
             for (int i = 0; i < ObjectHolder._PlayerWeapons.Length; i++) {
                 ObjectHolder._PlayerWeapons[i].GetComponent<WeaponBehaviourScript>().isBought = _unlockedWeapons[i];

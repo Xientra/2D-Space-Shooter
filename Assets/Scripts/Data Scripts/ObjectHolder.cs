@@ -190,20 +190,18 @@ public class ObjectHolder : MonoBehaviour {
         int i = 0;
         string weaponName = null;
         switch (_weaponType) {
-            case (WeaponBehaviourScript.WeaponTypes.Standart_lvl_1):
+            case (WeaponBehaviourScript.WeaponTypes.Blaster_lvl_1):
                 weaponName = "StandartTurret_lvl_1";
                 break;
-            case (WeaponBehaviourScript.WeaponTypes.Standart_lvl_2):
+            case (WeaponBehaviourScript.WeaponTypes.Blaster_lvl_2):
                 weaponName = "StandartTurret_lvl_2";
                 break;
-            case (WeaponBehaviourScript.WeaponTypes.Standart_lvl_3):
+            case (WeaponBehaviourScript.WeaponTypes.Blaster_lvl_3):
                 weaponName = "StandartTurret_lvl_3";
                 break;
-            case (WeaponBehaviourScript.WeaponTypes.LaserSword_lvl_1):
-                weaponName = "LaserSwordTurret_lvl_1";
-                break;
-            case (WeaponBehaviourScript.WeaponTypes.LaserSword_lvl_2):
-            case (WeaponBehaviourScript.WeaponTypes.LaserSword_lvl_3):
+            case (WeaponBehaviourScript.WeaponTypes.LaserSwordController_lvl_1):
+            case (WeaponBehaviourScript.WeaponTypes.LaserSwordController_lvl_2):
+            case (WeaponBehaviourScript.WeaponTypes.LaserSwordController_lvl_3):
                 weaponName = "LaserSwordTurret_lvl_1";
                 break;
             case (WeaponBehaviourScript.WeaponTypes.GrenadeLauncher_lvl_1):

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1392182663580346
+--- !u!1 &1662901710460724
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4201506973981738}
-  - component: {fileID: 114693680768227792}
+  - component: {fileID: 4129009945421706}
+  - component: {fileID: 114029827636766654}
   m_Layer: 0
-  m_Name: Standart_lvl_1
+  m_Name: Sniper_lvl_X
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4201506973981738
+--- !u!4 &4129009945421706
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1392182663580346}
+  m_GameObject: {fileID: 1662901710460724}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,27 +31,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114693680768227792
+--- !u!114 &114029827636766654
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1392182663580346}
+  m_GameObject: {fileID: 1662901710460724}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21635e70faad5c141984db4aba35f468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0.3
-  WeaponType: 0
+  cooldown: 2
+  WeaponType: 27
   TurretGameObject: {fileID: 1229543851391768, guid: 272784739c105c240b2464c4732eb571,
     type: 3}
   isBought: 0
-  WeaponLevel: 0
+  WeaponLevel: 3
   price: 100
-  weaponName: Single Blaster
-  description: A good standart weapon, precise and fast firing.
-  WeaponImage: {fileID: 21300000, guid: f1ebc8a90c8e9404081b9a8f2b7c630f, type: 3}
+  weaponName: Sniper
+  description: A Sniper?
+  WeaponImage: {fileID: 21300000, guid: 95ac61ea026181e49b48c51f7cd68593, type: 3}
   PreviousWeapon: {fileID: 0}
-  NextWeapon: {fileID: 1546623388567470, guid: fec804e8af35f334ba6c4f896e73805a, type: 3}
+  NextWeapon: {fileID: 0}

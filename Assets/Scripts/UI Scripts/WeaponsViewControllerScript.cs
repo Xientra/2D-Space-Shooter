@@ -51,32 +51,34 @@ public class WeaponsViewControllerScript : MonoBehaviour {
 
         foreach (GameObject WepElement in ObjectHolder._PlayerWeapons) {
             if (WepElement != null) {
-                GameObject goTemp = Instantiate(ExampleElement, PaddingContent.transform);
-                goTemp.GetComponent<Image>().sprite = WepElement.GetComponent<WeaponBehaviourScript>().WeaponImage;
-                goTemp.GetComponent<WeaponsViewElementDataScript>().WeaponPreafab = WepElement;
-                goTemp.GetComponent<WeaponsViewElementDataScript>().isBought = WepElement.GetComponent<WeaponBehaviourScript>().isBought;
-                goTemp.GetComponent<Button>().interactable = goTemp.GetComponent<WeaponsViewElementDataScript>().isBought;
+                if (WepElement.GetComponent<WeaponBehaviourScript>().WeaponLevel != WeaponBehaviourScript.WeaponLevels.X || (WepElement.GetComponent<WeaponBehaviourScript>().WeaponLevel == WeaponBehaviourScript.WeaponLevels.X && GameControllerScript.UnlockedlvlXWeapons == true)) {
+                    GameObject goTemp = Instantiate(ExampleElement, PaddingContent.transform);
+                    goTemp.GetComponent<Image>().sprite = WepElement.GetComponent<WeaponBehaviourScript>().WeaponImage;
+                    goTemp.GetComponent<WeaponsViewElementDataScript>().WeaponPreafab = WepElement;
+                    goTemp.GetComponent<WeaponsViewElementDataScript>().isBought = WepElement.GetComponent<WeaponBehaviourScript>().isBought;
+                    goTemp.GetComponent<Button>().interactable = goTemp.GetComponent<WeaponsViewElementDataScript>().isBought;
 
-                UnityAction _action = new UnityAction(goTemp.GetComponent<WeaponsViewElementDataScript>().OpenWeaponInfoScreen_Btn);
-                goTemp.GetComponent<Button>().onClick.AddListener(_action);
+                    UnityAction _action = new UnityAction(goTemp.GetComponent<WeaponsViewElementDataScript>().OpenWeaponInfoScreen_Btn);
+                    goTemp.GetComponent<Button>().onClick.AddListener(_action);
 
-                //Debug.Log(widthOfAElement * collumPosCounter + widthOfAElement / 2);
+                    //Debug.Log(widthOfAElement * collumPosCounter + widthOfAElement / 2);
 
-                goTemp.GetComponent<RectTransform>().anchoredPosition = new Vector2(widthOfAElement * collumPosCounter + widthOfAElement / 2, -(widthOfAElement * rowPosCounter - widthOfAElement / 2));
+                    goTemp.GetComponent<RectTransform>().anchoredPosition = new Vector2(widthOfAElement * collumPosCounter + widthOfAElement / 2, -(widthOfAElement * rowPosCounter - widthOfAElement / 2));
 
-                //adjusts the size of the content go to fit the new element
-                float f = widthOfAElement * (rowPosCounter) + Mathf.Abs(PaddingContent.transform.GetComponent<RectTransform>().offsetMax.y) + Mathf.Abs(widthOfAElement / 4);
-                //Debug.Log(f);
-                Content.GetComponent<RectTransform>().sizeDelta = new Vector2(Content.GetComponent<RectTransform>().sizeDelta.x, f);
+                    //adjusts the size of the content go to fit the new element
+                    float f = widthOfAElement * (rowPosCounter) + Mathf.Abs(PaddingContent.transform.GetComponent<RectTransform>().offsetMax.y) + Mathf.Abs(widthOfAElement / 4);
+                    //Debug.Log(f);
+                    Content.GetComponent<RectTransform>().sizeDelta = new Vector2(Content.GetComponent<RectTransform>().sizeDelta.x, f);
 
-                
 
-                goTemp.SetActive(true);
-                Elements.Add(goTemp);
-                collumPosCounter++;
-                if (collumPosCounter == elementsPerRow / 2) {
-                    collumPosCounter = -elementsPerRow / 2;
-                    rowPosCounter++;
+
+                    goTemp.SetActive(true);
+                    Elements.Add(goTemp);
+                    collumPosCounter++;
+                    if (collumPosCounter == elementsPerRow / 2) {
+                        collumPosCounter = -elementsPerRow / 2;
+                        rowPosCounter++;
+                    }
                 }
             }
         }

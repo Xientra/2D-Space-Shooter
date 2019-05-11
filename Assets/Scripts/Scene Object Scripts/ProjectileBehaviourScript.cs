@@ -17,26 +17,28 @@ public class ProjectileBehaviourScript : MonoBehaviour {
     /*--------------------Affiliation--------------------*/
 
     public enum BulletTypes {
-        Standart, HelixBullet_lvl_1, HelixBullet_lvl_2, HelixBullet_lvl_3, HelixBulletChild, Wave, ChainGunBullet, ShotgunBullet,
-        Missile_lvl_1, Missile_lvl_2, Missile_lvl_3, Grenade_lvl_1, Grenade_lvl_2, Grenade_lvl_3, Shrapnel_lvl_1, Shrapnel_lvl_2, Shrapnel_lvl_3, ShrapnellBullet,
-        HomingBullet_lvl_1, HomingBullet_lvl_2, HomingBullet_lvl_3, LaserSword_lvl_1, LaserSword_lvl_2, LaserSword_lvl_3, SniperBullet_lvl_1,
-        ShrapnellExplosion,
-        SimpleLaser, SplitLaser, SplitLaserChild,
-        _null_, SplitBullet
+        _null, 
+        BlasterShoot_lvl_1, BlasterShoot_lvl_2, BlasterShoot_lvl_3,
+        ShotgunBullet_lvl_1, ShotgunBullet_lvl_2, ShotgunBullet_lvl_3,
+        ChainGunBullet_lvl_1, ChainGunBullet_lvl_2, ChainGunBullet_lvl_3,
+        HomingBullet_lvl_1, HomingBullet_lvl_2, HomingBullet_lvl_3,
+        HelixBullet_lvl_1, HelixBullet_lvl_2, HelixBullet_lvl_3, HelixBulletChild,
+        LaserSword_lvl_1, LaserSword_lvl_2, LaserSword_lvl_3,
+        Missile_lvl_1, Missile_lvl_2, Missile_lvl_3,
+        Grenade_lvl_1, Grenade_lvl_2, Grenade_lvl_3,
+        Shrapnel_lvl_1, Shrapnel_lvl_2, Shrapnel_lvl_3, ShrapnellBullet,
+        HelixBullet_lvl_X, SniperBullet_lvl_X, WaveBullet_lvl_X, SplitBullet_lvl_X, 
     }
 
     [Header("Affiliation: ")]
 
-    public BulletTypes bulletType = BulletTypes._null_;
+    public BulletTypes bulletType = BulletTypes._null;
 
     [SerializeField]
     private bool isEnemyBullet = false;
 
     [SerializeField]
     private bool isShootable = false;
-
-    private bool isLaser = false;
-
 
     private Vector3 lastFramePosition;
 
@@ -112,16 +114,7 @@ public class ProjectileBehaviourScript : MonoBehaviour {
     /*--------------------PowerUp Variables--------------------*/
     public static float damageMultiplyer = 1f;
 
-
-
     private void Start() {
-        //Sets the state vars like isEnemyBullet and isLaser after affiliation check
-        if (bulletType == BulletTypes.SimpleLaser || bulletType == BulletTypes.SplitLaser) {
-            isLaser = true;
-            damageDelayTimeStamp = Time.time + damageDelay;
-        }
-
-
         StartPlayerBulletSpecificBehaviour();
         StartAdditionalBulletBehaviour();
 
@@ -178,7 +171,7 @@ public class ProjectileBehaviourScript : MonoBehaviour {
         }
     }
 
-    void InitiliseSelfDestruction() {
+    public void InitiliseSelfDestruction() {
         SelfDestructionActive = true;
 
         if (this.GetType() == typeof(ExplosionBehaviourScript)) {
@@ -192,12 +185,6 @@ public class ProjectileBehaviourScript : MonoBehaviour {
                     Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(BulletTypes.ShrapnellBullet)], transform.position, Quaternion.Euler(0, 0, (360 / AmountOfShrapnellBulletsSpawnedOnDeath) * i)); //360 / Amount devides the cicle to all the shrapnellbullets
                 }
             }
-            /*
-            switch (bulletType) {
-                case (BulletTypes._null_):
-                    break;
-            }
-            */
 
             //detaches all (Helix)BulletChilds of the own transform and gives them speed
             foreach (Transform ImminentChildTransform in transform) {
@@ -257,29 +244,21 @@ public class ProjectileBehaviourScript : MonoBehaviour {
 
         foreach (SpriteRenderer SR in GetComponentsInChildren<SpriteRenderer>()) {
             if (SR.gameObject.GetComponent<ProjectileBehaviourScript>() != null) {
-                if (bulletType == BulletTypes.ShrapnellExplosion) {
-                    if (SR.gameObject.GetComponent<ProjectileBehaviourScript>().bulletType != BulletTypes.ShrapnellBullet) { //I don't want it to disable all Shrapnel Child Bullets
-                        SR.enabled = false;
-                    }
-                }
-                else SR.enabled = false;
+                SR.enabled = false;
             }
         }
 
-
         if (this.GetType() != typeof(ExplosionBehaviourScript)) {
             //Unparent the TrailRendererGo or the ParticleTrailGo
-            if (!(bulletType == BulletTypes.ShrapnellExplosion)) {
-                foreach (TrailRenderer TR in GetComponentsInChildren<TrailRenderer>()) {
-                    if (TR.gameObject.GetComponent<ProjectileBehaviourScript>() == null) {
-                        TR.time = TR.time / 2;
-                        TR.transform.SetParent(null, true);
-                    }
+            foreach (TrailRenderer TR in GetComponentsInChildren<TrailRenderer>()) {
+                if (TR.gameObject.GetComponent<ProjectileBehaviourScript>() == null) {
+                    TR.time = TR.time / 2;
+                    TR.transform.SetParent(null, true);
                 }
-                foreach (ParticleSystem Ps in GetComponentsInChildren<ParticleSystem>()) {
-                    if (Ps.gameObject.GetComponent<ProjectileBehaviourScript>() == null) {
-                        Ps.Stop();
-                    }
+            }
+            foreach (ParticleSystem Ps in GetComponentsInChildren<ParticleSystem>()) {
+                if (Ps.gameObject.GetComponent<ProjectileBehaviourScript>() == null) {
+                    Ps.Stop();
                 }
             }
         }
@@ -290,9 +269,7 @@ public class ProjectileBehaviourScript : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if (isLaser == false) {
-            transform.Translate(direction * speed * Time.deltaTime); //Moving
-        }
+        transform.Translate(direction * speed * Time.deltaTime); //Moving
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -309,7 +286,10 @@ public class ProjectileBehaviourScript : MonoBehaviour {
                 if (collision.gameObject.layer == 10/*Enemy*/) {
                     if (collision.gameObject.GetComponent<EnemyBehaviourScript>().Health >= 0) {
                         collision.gameObject.GetComponent<EnemyBehaviourScript>().Health -= damage * damageMultiplyer;
-                        InitiliseSelfDestruction();
+
+                        if (bulletType == BulletTypes.SniperBullet_lvl_X != true) {
+                            InitiliseSelfDestruction();
+                        }
                     }
                 }
             }
@@ -321,15 +301,19 @@ public class ProjectileBehaviourScript : MonoBehaviour {
                 }
             }
 
-            if (this.isShootable == true) {
-                if (collision.gameObject.CompareTag("Projectile")) {
+            if (collision.gameObject.CompareTag("Projectile")) {
+                if (this.isShootable == true) {
                     if (collision.gameObject.GetComponent<ProjectileBehaviourScript>().isEnemyBullet != true) {
                         InitiliseSelfDestruction();
                     }
                 }
+                if (bulletType == BulletTypes.WaveBullet_lvl_X) {
+                    if (collision.gameObject.GetComponent<ProjectileBehaviourScript>().isEnemyBullet == true) {
+                        //collision.gameObject.GetComponent<ProjectileBehaviourScript>().InitiliseSelfDestruction();
+                        Destroy(collision.gameObject);
+                    }
+                }
             }
-
-
         }
         else { //this is an exposion
             if (isEnemyBullet == false) { // is player explosion
@@ -346,20 +330,6 @@ public class ProjectileBehaviourScript : MonoBehaviour {
                 }
             }
         }
-    }
-
-    private void OnTriggerStay2D(Collider2D collision) { //this should be framerate indipendend
-        if (isEnemyBullet != true) {
-            if (isLaser == true) {
-                if (collision.gameObject.layer == 10) {
-                    if (damageDelayTimeStamp <= Time.time) {
-                        collision.gameObject.GetComponent<EnemyBehaviourScript>().Health -= damage * damageMultiplyer;
-                        damageDelayTimeStamp = Time.time + damageDelay;
-                    }
-                }
-            }
-        }
-        else { }
     }
 
     void startSplitLaser(float lengthOfParent) {
@@ -448,11 +418,6 @@ public class ProjectileBehaviourScript : MonoBehaviour {
                         break;
                 }
                 break;
-
-            case (BulletTypes.SplitLaserChild):
-                transform.rotation *= Quaternion.Euler(0, 0, Random.Range(SplitAngle, -SplitAngle));
-                break;
-
             case (BulletTypes.LaserSword_lvl_1):
                 TempSpeed = speed;
                 speed = 0;
@@ -546,7 +511,6 @@ public class ProjectileBehaviourScript : MonoBehaviour {
     }
 
     private void PerformAdditionalBulletBehaviour() {
-
 
     }
 

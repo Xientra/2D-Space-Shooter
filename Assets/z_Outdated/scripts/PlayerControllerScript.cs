@@ -383,7 +383,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 if (Input.GetButton("Fire1")) {
                     cooldown = 0.3f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
-                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.BlasterShoot_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
                     }
                 }
@@ -392,8 +392,8 @@ public class PlayerControllerScript : MonoBehaviour {
                 if (Input.GetButton("Fire1")) {
                     cooldown = 0.3f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
-                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.right * 0.1f), TurretGameObject.transform.rotation);
-                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.right * -0.1f), TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.BlasterShoot_lvl_1)], ProjectileSpawnPoint + (TurretGameObject.transform.right * 0.1f), TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.BlasterShoot_lvl_1)], ProjectileSpawnPoint + (TurretGameObject.transform.right * -0.1f), TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
                     }
                 }
@@ -402,9 +402,9 @@ public class PlayerControllerScript : MonoBehaviour {
                 if (Input.GetButton("Fire1")) {
                     cooldown = 0.4f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
-                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
-                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.right * 0.2f), TurretGameObject.transform.rotation);
-                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint + (TurretGameObject.transform.right * -0.2f), TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.BlasterShoot_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.BlasterShoot_lvl_1)], ProjectileSpawnPoint + (TurretGameObject.transform.right * 0.2f), TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.BlasterShoot_lvl_1)], ProjectileSpawnPoint + (TurretGameObject.transform.right * -0.2f), TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
                     }
                 }
@@ -440,9 +440,9 @@ public class PlayerControllerScript : MonoBehaviour {
                 if (Input.GetButton("Fire1")) {
                     cooldown = 0.4f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
-                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
-                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, -10));
-                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.Standart)], ProjectileSpawnPoint, TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, 10));
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.BlasterShoot_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.BlasterShoot_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, -10));
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.BlasterShoot_lvl_1)], ProjectileSpawnPoint, TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, 10));
                         cooldownTimeStamp = Time.time + cooldown;
                     }
                 }
@@ -493,7 +493,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 if (Input.GetButton("Fire1")) {
                     cooldown = 0.3f * fireRateMultiplyer;
                     if (cooldownTimeStamp <= Time.time) {
-                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.Wave)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
+                        Instantiate(Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.WaveBullet_lvl_X)], ProjectileSpawnPoint, TurretGameObject.transform.rotation);
                         cooldownTimeStamp = Time.time + cooldown;
                     }
                 }
@@ -590,28 +590,7 @@ public class PlayerControllerScript : MonoBehaviour {
                             isReady = false;
                         }
                     }
-                    if (pressedButtonDown == true) {
-                        if (Input.GetButtonUp("Fire1")) {
-                            if (loadTimeStamp <= Time.time) {
-                                Instantiate(Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.SimpleLaser)], transform.position, transform.rotation, this.transform);
-                                loadTimeStamp = Time.time + loadTime;
-                                cooldownTimeStamp = Time.time + cooldown; //Apply cooldown when firered
-                            }
-                            else {
-                                loadTimeStamp = Time.time + loadTime;
-                                //no cooldown wehen reset
-                                Debug.Log("reset");
-                            }
-                            isReady = false;
-                            pressedButtonDown = false;
-                        }
-                    }
                 }
-                break;
-            case (Weapons.SplitLaserGun):
-                cooldown = 2f * fireRateMultiplyer;
-                loadTime = 1f;
-                fireAnyLaserGun(ProjectileBehaviourScript.BulletTypes.SplitLaser);
                 break;
             default:
                 Debug.LogError("The Weapon Type -" + currentWeapon.ToString() + "- has no values assinged!");
@@ -621,7 +600,7 @@ public class PlayerControllerScript : MonoBehaviour {
     }
 
     private void fireChainGun(float offsetSpeed, float maxOffset, float BulletRng) {
-        Instantiate(Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.ChainGunBullet)], ProjectileSpawnPoint + (TurretGameObject.transform.right * chainGunOffset), TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, Random.Range(BulletRng, -BulletRng)));
+        Instantiate(Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.ChainGunBullet_lvl_1)], ProjectileSpawnPoint + (TurretGameObject.transform.right * chainGunOffset), TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, Random.Range(BulletRng, -BulletRng)));
         if (chainGunOffsetUp) chainGunOffset += offsetSpeed;
         else chainGunOffset -= offsetSpeed;
         if (chainGunOffset >= maxOffset) chainGunOffsetUp = false;
