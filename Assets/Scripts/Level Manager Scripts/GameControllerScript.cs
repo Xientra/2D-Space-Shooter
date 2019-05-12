@@ -49,6 +49,7 @@ public class GameControllerScript : MonoBehaviour {
     public static bool GameIsPaused = false;
     public static bool SoundIsMuted = false;
     public static bool MusicIsMuted = false;
+    public static bool showTutorials = true;
     public static bool UsingGamepad = false;
     
 
@@ -310,6 +311,7 @@ public class GameControllerScript : MonoBehaviour {
         PlayerData data = new PlayerData();
 
         data.doOnce = doOnce;
+        data.showTutorials = showTutorials;
         data.currendCredits = currendCredits;
         data.HightScore = HightScore;
         data.LevelProgress = LevelProgress;
@@ -347,6 +349,7 @@ public class GameControllerScript : MonoBehaviour {
             file.Close();
 
             doOnce = data.doOnce;
+            showTutorials = data.showTutorials;
             currendCredits = data.currendCredits;
             HightScore = data.HightScore;
             LevelProgress = data.LevelProgress;

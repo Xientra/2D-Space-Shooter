@@ -6,12 +6,28 @@ using UnityEngine.SceneManagement;
 
 public class InGameUIControllerScript : MonoBehaviour {
 
+    public static InGameUIControllerScript activeInstance;
+
     public GameObject InGameUI;
     public GameObject InGameExitMenu;
     public GameObject InGameDeathMenu;
     public GameObject InGameWinMenu;
 
+    [Space(5)]
+    public GameObject TutorialText;
+
+
     private bool UpdateUI = false; //to not update the UI in the first frame
+
+    private void Awake() {
+        if (activeInstance == null) {
+            activeInstance = this;
+        }
+        else {
+            Destroy(this.gameObject);
+            Debug.LogWarning("There was more then one InGameUI in the scene");
+        }
+    }
 
     void Start() {
         if (InGameUI == null)
@@ -136,5 +152,23 @@ public class InGameUIControllerScript : MonoBehaviour {
         _menuGo.SetActive(false);
         GameControllerScript.PauseGame(false);
         Cursor.visible = false;
+    }
+
+    public void OpenTutorialText(string _text, float _time = 5f) {
+        StartCoroutine(StartOpenTutorialText(_text, _time));
+    }
+
+    private IEnumerator StartOpenTutorialText(string _text, float _time = 5f) {
+
+        string tempText = TutorialText.GetComponent<Text>().text;
+        TutorialText.GetComponent<Text>().text = tempText + _text;
+
+        TutorialText.SetActive(true);
+
+        yield return new WaitForSeconds(_time);
+
+        TutorialText.GetComponent<Text>().text = tempText;
+
+        TutorialText.SetActive(false);
     }
 }

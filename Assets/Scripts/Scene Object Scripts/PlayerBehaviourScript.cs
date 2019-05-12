@@ -141,6 +141,7 @@ public class PlayerBehaviourScript : MonoBehaviour {
     }
     
     void OnTriggerEnter2D(Collider2D collision) {
+        /*
         if (collision.CompareTag("PickUp")) {
 
             PickUpBehaviourScript _pickUp = collision.GetComponent<PickUpBehaviourScript>();
@@ -163,6 +164,7 @@ public class PlayerBehaviourScript : MonoBehaviour {
 
             Destroy(collision.gameObject);
         }
+        */
     }
 
     /// <summary>
@@ -357,11 +359,40 @@ public class PlayerBehaviourScript : MonoBehaviour {
         }
     }
 
-    IEnumerator ActivatePowerUpforTime(int PowerUpNr, float TimeToWait, GameObject _VisualEffect) {
+    public void TakePickUp(GameObject _pickUpObject) {
+
+        PickUpBehaviourScript _pickUp = _pickUpObject.GetComponent<PickUpBehaviourScript>();
+
+        if (_pickUp.thisPickUpType == PickUpBehaviourScript.PickUpTypes.Credit) {
+            GameControllerScript.currendCredits += _pickUp.CreditValue;//CreditValues[IndexOfCreditValue];
+
+            AudioControllerScript.activeInstance.PlaySound("CreditPickUp", Random.Range(0.8f, 1.2f));
+        }
+        else if (_pickUp.thisPickUpType == PickUpBehaviourScript.PickUpTypes.HealthUp) {
+
+            ChangeHealthBy(MaxHealth * 0.4f);
+
+            currendHealth += MaxHealth * 0.4f;
+            GameObject Go = Instantiate(_pickUp.VisualEffect, ShipGFX.transform);
+            Destroy(Go, 3f);
+
+            AudioControllerScript.activeInstance.PlaySound("HealthUp");
+        }
+        else {
+            StartCoroutine(ActivatePowerUpforTime(_pickUpObject));
+        }
+
+        if (GameControllerScript.showTutorials == true)
+            InGameUIControllerScript.activeInstance.OpenTutorialText(_pickUp.tutorialText);
+    }
+
+    IEnumerator ActivatePowerUpforTime(GameObject _powerUpGo) {
+
+        PickUpBehaviourScript _powerUp = _powerUpGo.GetComponent<PickUpBehaviourScript>();
 
         bool createEffect = true;
 
-        switch ((PickUpBehaviourScript.PickUpTypes)PowerUpNr) {
+        switch (_powerUp.thisPickUpType) {
             case (PickUpBehaviourScript.PickUpTypes.FireRateUp):
                 fireRateMultiplyer = 0.6f;
 
@@ -384,31 +415,31 @@ public class PlayerBehaviourScript : MonoBehaviour {
                 break;
             case (PickUpBehaviourScript.PickUpTypes.Regeneration):
                 regenerates = true;
-                regenerationVisualEffectGo = Instantiate(_VisualEffect, ShipGFX.transform);
+                regenerationVisualEffectGo = Instantiate(_powerUp.VisualEffect, ShipGFX.transform);
 
                 createEffect = false;
 
                 AudioControllerScript.activeInstance.PlaySound("RegenerationPowerUp");
                 break;
             default:
-                Debug.LogError("The PickUp -" + (PickUpBehaviourScript.PickUpTypes)PowerUpNr + "- has no effect assinged!");
+                Debug.LogError("The PickUp -" + _powerUp.thisPickUpType + "- has no effect assinged!");
                 createEffect = false;
                 break;
 
         }
 
-        GameObject tempGo = null;
-        if (createEffect == true && _VisualEffect != null) {
-            tempGo = Instantiate(_VisualEffect, ShipGFX.transform);
+        GameObject tempVisualEffectGo = null;
+        if (createEffect == true && _powerUp.VisualEffect != null) {
+            tempVisualEffectGo = Instantiate(_powerUp.VisualEffect, ShipGFX.transform);
         }
 
         
 
-        yield return new WaitForSeconds(TimeToWait);
+        yield return new WaitForSeconds(_powerUp.duration);
 
         createEffect = true;
 
-        switch ((PickUpBehaviourScript.PickUpTypes)PowerUpNr) {
+        switch (_powerUp.thisPickUpType) {
             case (PickUpBehaviourScript.PickUpTypes.FireRateUp):
                 fireRateMultiplyer = 1f;
                 break;
@@ -435,13 +466,13 @@ public class PlayerBehaviourScript : MonoBehaviour {
                 AudioControllerScript.activeInstance.StopSound("RegenerationPowerUp");
                 break;
             default:
-                Debug.LogError("The PickUp -" + (PickUpBehaviourScript.PickUpTypes)PowerUpNr + "- has no effect assinged!");
+                Debug.LogError("The PickUp -" + _powerUp.thisPickUpType + "- has no effect assinged!");
                 createEffect = false;
                 break;
         }
 
-        if (createEffect == true && _VisualEffect != null) {
-            Destroy(tempGo);
+        if (createEffect == true && _powerUp.VisualEffect != null) {
+            Destroy(tempVisualEffectGo);
         }
     }
 

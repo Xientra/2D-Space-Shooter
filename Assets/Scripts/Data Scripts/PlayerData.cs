@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerData {
 
     public bool doOnce = true;
+    public bool showTutorials = true;
 
     public float currendCredits = 300f;
     public float HightScore = 0f;
@@ -19,4 +20,5 @@ public class PlayerData {
     public int playerSecondWeaponInt;
 
     public float NewWeaponPrice = 200f;
+
 }

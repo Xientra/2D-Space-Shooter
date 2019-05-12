@@ -18,7 +18,7 @@ public class PickUpBehaviourScript : MonoBehaviour {
 
     public float CreditValue = 1;
     public float duration = 5f;
-
+    public string tutorialText;
 
     [Header("Movement Stats:")]
 
@@ -62,14 +62,15 @@ public class PickUpBehaviourScript : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        /*
+
         if (collision.CompareTag("Player")) {
-            if (thisPickUpType == PickUpTypes.Credit) {
-                GameControllerScript.currendCredits += CreditValue;//CreditValues[IndexOfCreditValue];
-                //Destroy(this.gameObject);
-            }
+
+            PlayerBehaviourScript _player = collision.gameObject.GetComponent<PlayerBehaviourScript>();
+            _player.TakePickUp(this.gameObject);
+
+            Destroy(this.gameObject);
         }
-        */
+
         if (collision.gameObject.CompareTag("Enemy Limiter")) {
             Destroy(this.gameObject);
         }
