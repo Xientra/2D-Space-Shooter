@@ -63,13 +63,6 @@ public class ProjectileBehaviourScript : MonoBehaviour {
 
     private bool SelfDestructionActive = false;
 
-    //-----Lasers-----
-    private float damageDelay = 0.1f; //this is kinda important for the damage of Lasers-------------------------------------------------------------------
-    private float damageDelayTimeStamp;
-    //-----Split Laser-----
-    private static int timesToSplit = 1;
-    private float SplitAngle = 25f;
-
 
     /*--------------------Player Bullet Specific Behaviour Variables--------------------*/
     [Header("Player Bullet Specific Behaviour Variables: ")]
@@ -332,17 +325,6 @@ public class ProjectileBehaviourScript : MonoBehaviour {
         }
     }
 
-    void startSplitLaser(float lengthOfParent) {
-        if (timesToSplit > 0) {
-            GameObject goParent = new GameObject("SplitLaserHolder_" + timesToSplit.ToString());
-            goParent.transform.localScale /= 2;
-            Instantiate(goParent, transform.position + Vector3.Cross(transform.right, new Vector3(lengthOfParent, 0, 0)), transform.rotation * Quaternion.Euler(0, 0, Random.Range(SplitAngle, -SplitAngle)), this.transform.gameObject.transform);
-
-            //Instantiate(this.transform.gameObject, transform.position + Vector3.Cross(transform.right, new Vector3(0.75f, 0, 0)), goParent.transform.rotation, goParent.transform);
-            timesToSplit--;
-        }
-    }
-
     [System.Obsolete("Fuck no; use GetNearestEnemyInRadius instead.")]
     GameObject GetNearestEnemy() {
         GameObject returnGo = null;
@@ -419,6 +401,8 @@ public class ProjectileBehaviourScript : MonoBehaviour {
                 }
                 break;
             case (BulletTypes.LaserSword_lvl_1):
+            case (BulletTypes.LaserSword_lvl_2):
+            case (BulletTypes.LaserSword_lvl_3):
                 TempSpeed = speed;
                 speed = 0;
                 break;
