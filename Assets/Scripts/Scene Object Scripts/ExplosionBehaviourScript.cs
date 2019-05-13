@@ -13,7 +13,7 @@ public class ExplosionBehaviourScript : ProjectileBehaviourScript {
         base.OnExplosion();
 
         if (CameraShakePreset == CameraShakePresets.Explosion_big) {
-            StartCoroutine(GameControllerScript.ShakeMainCamera(0.2f, 0.1f));
+            StartCoroutine(GameControllerScript.ShakeMainCamera(0.1f, 0.1f));
 
             AudioControllerScript.activeInstance.PlaySound("ExplosionBig");
         }

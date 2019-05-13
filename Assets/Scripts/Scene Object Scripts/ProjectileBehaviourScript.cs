@@ -119,8 +119,19 @@ public class ProjectileBehaviourScript : MonoBehaviour {
         PerformPlayerBulletSpecificBehaviour();
         PerformAdditionalBulletBehaviour();
 
-        if (homingStrength != 0) {
+        
 
+        if (SelfDestructionActive == false) {
+            CollisionDetectionToLastPosition();
+        }
+
+        lastFramePosition = transform.position;
+    }
+
+    void FixedUpdate() {
+        transform.Translate(direction * speed * Time.deltaTime); //Moving
+
+        if (homingStrength != 0) {
             GameObject nearEnemy = GetNearestEnemyInRadius(homingDistance);
             if (nearEnemy != null) {
                 if (Vector3.SqrMagnitude(nearEnemy.transform.position - this.transform.position) <= homingDistance) {
@@ -131,12 +142,6 @@ public class ProjectileBehaviourScript : MonoBehaviour {
                 }
             }
         }
-
-        if (SelfDestructionActive == false) {
-            CollisionDetectionToLastPosition();
-        }
-
-        lastFramePosition = transform.position;
     }
 
     IEnumerator destroyAfterTime() {
@@ -259,10 +264,6 @@ public class ProjectileBehaviourScript : MonoBehaviour {
         if (DelayingDestruction == false) {
             Destroy(this.gameObject);
         }
-    }
-
-    void FixedUpdate() {
-        transform.Translate(direction * speed * Time.deltaTime); //Moving
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

@@ -160,14 +160,11 @@ public class InGameUIControllerScript : MonoBehaviour {
 
     private IEnumerator StartOpenTutorialText(string _text, float _time = 5f) {
 
-        string tempText = TutorialText.GetComponent<Text>().text;
-        TutorialText.GetComponent<Text>().text = tempText + _text;
+        TutorialText.GetComponent<Text>().text = _text;
 
         TutorialText.SetActive(true);
 
         yield return new WaitForSeconds(_time);
-
-        TutorialText.GetComponent<Text>().text = tempText;
 
         TutorialText.SetActive(false);
     }

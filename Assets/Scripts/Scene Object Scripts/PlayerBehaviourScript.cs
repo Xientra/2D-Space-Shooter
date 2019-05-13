@@ -382,7 +382,7 @@ public class PlayerBehaviourScript : MonoBehaviour {
             StartCoroutine(ActivatePowerUpforTime(_pickUpObject));
         }
 
-        if (GameControllerScript.showTutorials == true)
+        if (GameControllerScript.showTutorials == true && _pickUp.tutorialText != "")
             InGameUIControllerScript.activeInstance.OpenTutorialText(_pickUp.tutorialText);
     }
 

@@ -181,17 +181,17 @@ public class WeaponBehaviourScript : MonoBehaviour {
                 break;
 
             case (WeaponTypes.ChainGun_lvl_1):
-                fireChainGun(0.03f, 0.09f, 6f, ProjectileSpawnPoint, TurretGameObject);
+                fireChainGun(1, 0.03f, 0.09f, 6f, ProjectileSpawnPoint, TurretGameObject);
 
                 AudioControllerScript.activeInstance.PlaySound("ChaingunShoot2");
                 break;
             case (WeaponTypes.ChainGun_lvl_2):
-                fireChainGun(0.03f, 0.09f, 3f, ProjectileSpawnPoint, TurretGameObject);
+                fireChainGun(2, 0.03f, 0.09f, 3f, ProjectileSpawnPoint, TurretGameObject);
 
                 AudioControllerScript.activeInstance.PlaySound("ChaingunShoot2");
                 break;
             case (WeaponTypes.ChainGun_lvl_3):
-                fireChainGun(0.03f, 0.09f, 1f, ProjectileSpawnPoint, TurretGameObject);
+                fireChainGun(3, 0.03f, 0.09f, 1f, ProjectileSpawnPoint, TurretGameObject);
 
                 AudioControllerScript.activeInstance.PlaySound("ChaingunShoot2");
                 break;
@@ -217,8 +217,25 @@ public class WeaponBehaviourScript : MonoBehaviour {
         }
     }
 
-    private void fireChainGun(float offsetSpeed, float maxOffset, float _BulletRng, Vector3 _ProjectileSpawnPoint, GameObject _TurretGameObject) {
-        Instantiate(ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.ChainGunBullet_lvl_1)], _ProjectileSpawnPoint + (_TurretGameObject.transform.right * chainGunOffset), _TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, Random.Range(_BulletRng, -_BulletRng)));
+    private void fireChainGun(int _level, float offsetSpeed, float maxOffset, float _BulletRng, Vector3 _ProjectileSpawnPoint, GameObject _TurretGameObject) {
+        GameObject _bullet = null;
+        switch (_level) {
+            case (1):
+                _bullet = ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.ChainGunBullet_lvl_1)];
+                break;
+            case (2):
+                _bullet = ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.ChainGunBullet_lvl_2)];
+                break;
+            case (3):
+                _bullet = ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.ChainGunBullet_lvl_3)];
+                break;
+
+            default:
+                Debug.LogError("fireChain gun did not recive a level of 1, 2 or 3.");
+                return;
+        }
+
+        Instantiate(_bullet, _ProjectileSpawnPoint + (_TurretGameObject.transform.right * chainGunOffset), _TurretGameObject.transform.rotation * Quaternion.Euler(0, 0, Random.Range(_BulletRng, -_BulletRng)));
         if (chainGunOffsetUp) chainGunOffset += offsetSpeed;
         else chainGunOffset -= offsetSpeed;
         if (chainGunOffset >= maxOffset) chainGunOffsetUp = false;

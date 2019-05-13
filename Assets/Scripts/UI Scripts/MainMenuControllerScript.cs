@@ -11,7 +11,7 @@ public class MainMenuControllerScript : MonoBehaviour {
     public GameObject LevelSelect;
     public GameObject OutfitterMenu;
     public GameObject WeaponInfoScreen;
-    //public GameObject OptionsMenu;
+    public GameObject OptionsMenu;
 
     //Outfitter Elements
     private GameObject FirstWeaponDropdownGO;
@@ -120,6 +120,10 @@ public class MainMenuControllerScript : MonoBehaviour {
             }
             else Debug.LogError("The SecondWeaponDropdownGO is null.");
         }
+
+        if (OptionsMenu.activeSelf == true) {
+            UpdateOptionsMenu();
+        }
     }
 
     private void PlayButtonSound() {
@@ -159,16 +163,22 @@ public class MainMenuControllerScript : MonoBehaviour {
         LevelSelect.SetActive(false);
         OutfitterMenu.SetActive(true);
         WeaponInfoScreen.SetActive(false);
-        //OptionsMenu.SetActive(false);
+        OptionsMenu.SetActive(false);
 
         UpdateUI();
         PlayButtonSound();
     }
 
     public void Btn_Options() {
-        Debug.Log("lol no");
+        StartMenu.SetActive(false);
+        //StoryMenu.SetActive(false);
+        LevelSelect.SetActive(false);
+        OutfitterMenu.SetActive(false);
+        WeaponInfoScreen.SetActive(false);
+        OptionsMenu.SetActive(true);
 
-        //PlayButtonSound();
+        UpdateUI();
+        PlayButtonSound();
     }
 
     public void Btn_Quit() {
@@ -185,7 +195,7 @@ public class MainMenuControllerScript : MonoBehaviour {
         //StoryMenu.SetActive(false);
         LevelSelect.SetActive(false);
         OutfitterMenu.SetActive(false);
-        //OptionsMenu.SetActive(false);
+        OptionsMenu.SetActive(false);
 
         UpdateUI();
         PlayButtonSound();
@@ -307,7 +317,7 @@ public class MainMenuControllerScript : MonoBehaviour {
             LevelSelect.SetActive(false);
             OutfitterMenu.SetActive(true);
             WeaponInfoScreen.SetActive(true);
-            //OptionsMenu.SetActive(false);
+            OptionsMenu.SetActive(false);
 
             UpdateUI();
 
@@ -409,6 +419,65 @@ public class MainMenuControllerScript : MonoBehaviour {
     public void Btn_WeaponSelectScreenBack() {
         WeaponInfoScreen.SetActive(false);
         WeaponInfoScreenWeaponGo = null;
+        UpdateUI();
+        PlayButtonSound();
+    }
+
+
+
+    /*-----------------------------------------Weapon Info Screen-----------------------------------------------*/
+
+    private void UpdateOptionsMenu() {
+        foreach (Transform menuObj in OptionsMenu.transform) {
+            if (menuObj.gameObject.name == "MuteSound_Btn") {
+                if (GameControllerScript.SoundIsMuted == true) menuObj.GetComponentInChildren<Text>().text = "enable";
+                else menuObj.GetComponentInChildren<Text>().text = "mute";
+            }
+
+            if (menuObj.gameObject.name == "MuteMusic_Btn") {
+                if (GameControllerScript.MusicIsMuted == true) menuObj.GetComponentInChildren<Text>().text = "enable";
+                else menuObj.GetComponentInChildren<Text>().text = "mute";
+            }
+
+            if (menuObj.gameObject.name == "DisableTutorials_Btn") {
+                if (GameControllerScript.showTutorials == true) menuObj.GetComponentInChildren<Text>().text = "enable";
+                else menuObj.GetComponentInChildren<Text>().text = "disable";
+            }
+        }
+    }
+
+    public void Btn_MuteSound() {
+        if (GameControllerScript.SoundIsMuted == true) {
+            GameControllerScript.SoundIsMuted = false;
+        }
+        else if (GameControllerScript.SoundIsMuted == false) {
+            GameControllerScript.SoundIsMuted = true;
+        }
+
+        UpdateUI();
+        PlayButtonSound();
+    }
+
+    public void Btn_MuteMusic() {
+        if (GameControllerScript.MusicIsMuted == true) {
+            GameControllerScript.MusicIsMuted = false;
+        }
+        else if (GameControllerScript.MusicIsMuted == false) {
+            GameControllerScript.MusicIsMuted = true;
+        }
+
+        UpdateUI();
+        PlayButtonSound();
+    }
+
+    public void Btn_DisableTurorials() {
+        if (GameControllerScript.showTutorials == true) {
+            GameControllerScript.showTutorials = false;
+        }
+        else if (GameControllerScript.showTutorials == false) {
+            GameControllerScript.showTutorials = true;
+        }
+
         UpdateUI();
         PlayButtonSound();
     }

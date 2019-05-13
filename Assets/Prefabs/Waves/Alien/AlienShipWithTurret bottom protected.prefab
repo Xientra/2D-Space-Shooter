@@ -56,6 +56,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ee0ed55717ef047ac3bf6db6bcdc51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveType: 0
   durationUntilDestroy: 17
 --- !u!1001 &3548302406057245954
 PrefabInstance:
@@ -390,6 +391,16 @@ PrefabInstance:
         type: 3}
       propertyPath: PowerUpDropChangse
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114912370775644040, guid: 654aa2a5684805643bb619f60a0df85a,
+        type: 3}
+      propertyPath: MaxHealth
+      value: 333
+      objectReference: {fileID: 0}
+    - target: {fileID: 114912370775644040, guid: 654aa2a5684805643bb619f60a0df85a,
+        type: 3}
+      propertyPath: Health
+      value: 333
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 654aa2a5684805643bb619f60a0df85a, type: 3}

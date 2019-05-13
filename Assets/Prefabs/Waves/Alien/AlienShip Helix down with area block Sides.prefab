@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5524920039286699104}
   - component: {fileID: 5524920039286699105}
   m_Layer: 0
-  m_Name: Helix with area block
+  m_Name: AlienShip Helix down with area block Sides
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,6 +56,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ee0ed55717ef047ac3bf6db6bcdc51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveType: 0
   durationUntilDestroy: 11.5
 --- !u!1001 &5524920037718148739
 PrefabInstance:
@@ -591,6 +592,11 @@ PrefabInstance:
       propertyPath: AnimationStartDelay
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114550844775510286, guid: 9846023f75897544da838f1b2b31c75e,
+        type: 3}
+      propertyPath: lookForwardWhenMoving
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 95394790762767424, guid: 9846023f75897544da838f1b2b31c75e,
         type: 3}
       propertyPath: m_Controller
@@ -830,6 +836,11 @@ PrefabInstance:
         type: 3}
       propertyPath: AnimationStartDelay
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114550844775510286, guid: 9846023f75897544da838f1b2b31c75e,
+        type: 3}
+      propertyPath: lookForwardWhenMoving
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 95394790762767424, guid: 9846023f75897544da838f1b2b31c75e,
         type: 3}
