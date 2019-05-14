@@ -90,9 +90,11 @@ public class PlayerBehaviourScript : MonoBehaviour {
     void Update() {
         if (GameControllerScript.GameIsPaused == false) {
 
-            LookForward();
+
             RotateTurret();
             SetProjectileSpawnPoint();
+
+            LookForward();
 
             if (Input.GetButton("Fire1")) {
                 FireWeapon(activeWeapon);
@@ -126,12 +128,15 @@ public class PlayerBehaviourScript : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        coolMovement();
-        //Movement();
-        //exactMovement2();
-        //exactMovement();
-        //coinMovement();
-        //OldMovement();
+        if (Time.timeScale > 0) {
+            coolMovement();
+
+            //Movement();
+            //exactMovement2();
+            //exactMovement();
+            //coinMovement();
+            //OldMovement();
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
@@ -141,30 +146,6 @@ public class PlayerBehaviourScript : MonoBehaviour {
     }
     
     void OnTriggerEnter2D(Collider2D collision) {
-        /*
-        if (collision.CompareTag("PickUp")) {
-
-            PickUpBehaviourScript _pickUp = collision.GetComponent<PickUpBehaviourScript>();
-
-            if (_pickUp.thisPickUpType == PickUpBehaviourScript.PickUpTypes.Credit) {
-                GameControllerScript.currendCredits += collision.GetComponent<PickUpBehaviourScript>().CreditValue;
-
-                AudioControllerScript.activeInstance.PlaySound("CreditPickUp", Random.Range(0.8f, 1.2f));
-            }
-            else if(_pickUp.thisPickUpType == PickUpBehaviourScript.PickUpTypes.HealthUp) {
-                currendHealth += MaxHealth * 0.4f;
-                GameObject Go = Instantiate(_pickUp.VisualEffect, ShipGFX.transform);
-                Destroy(Go, 3f);
-
-                AudioControllerScript.activeInstance.PlaySound("HealthUp");
-            }
-            else
-                StartCoroutine(ActivatePowerUpforTime((int)_pickUp.thisPickUpType, _pickUp.duration, _pickUp.VisualEffect));
-
-
-            Destroy(collision.gameObject);
-        }
-        */
     }
 
     /// <summary>

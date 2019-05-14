@@ -50,10 +50,13 @@ public class PickUpBehaviourScript : MonoBehaviour {
     }
 
     void Update() {
+        //AccelerationMovement();
     }
 
     private void FixedUpdate() {
-        AccelerationMovement();
+        if (Time.timeScale > 0) {
+            AccelerationMovement();
+        }
     }
 
     IEnumerator destroyAfterTime() {
@@ -95,7 +98,5 @@ public class PickUpBehaviourScript : MonoBehaviour {
         speed = new Vector3(Mathf.Clamp(speed.x, -maxSpeedToPlayer, maxSpeedToPlayer), Mathf.Clamp(speed.y, -maxSpeedToPlayer, maxSpeedToPlayer), 0);
 
         transform.position += speed * Time.deltaTime;
-
-        
     }
 }

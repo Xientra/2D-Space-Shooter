@@ -17,7 +17,7 @@ public class ProjectileBehaviourScript : MonoBehaviour {
     /*--------------------Affiliation--------------------*/
 
     public enum BulletTypes {
-        _null, 
+        _null,
         BlasterShoot_lvl_1, BlasterShoot_lvl_2, BlasterShoot_lvl_3,
         ShotgunBullet_lvl_1, ShotgunBullet_lvl_2, ShotgunBullet_lvl_3,
         ChainGunBullet_lvl_1, ChainGunBullet_lvl_2, ChainGunBullet_lvl_3,
@@ -27,7 +27,7 @@ public class ProjectileBehaviourScript : MonoBehaviour {
         Missile_lvl_1, Missile_lvl_2, Missile_lvl_3,
         Grenade_lvl_1, Grenade_lvl_2, Grenade_lvl_3,
         Shrapnel_lvl_1, Shrapnel_lvl_2, Shrapnel_lvl_3, ShrapnellBullet,
-        HelixBullet_lvl_X, SniperBullet_lvl_X, WaveBullet_lvl_X, SplitBullet_lvl_X, 
+        HelixBullet_lvl_X, SniperBullet_lvl_X, WaveBullet_lvl_X, SplitBullet_lvl_X,
     }
 
     [Header("Affiliation: ")]
@@ -99,7 +99,7 @@ public class ProjectileBehaviourScript : MonoBehaviour {
 
     public AdditionalBulletBehaviour additionalBulletBehaviour = AdditionalBulletBehaviour._null_;
     //lightning movement
-    private float changeAngleLiklyhood = 0.05f;
+    private const float changeAngleLiklyhood = 0.05f;
     private float AngleDeviation = 80f;
 
 
@@ -119,18 +119,24 @@ public class ProjectileBehaviourScript : MonoBehaviour {
         PerformPlayerBulletSpecificBehaviour();
         PerformAdditionalBulletBehaviour();
 
-        
-
         if (SelfDestructionActive == false) {
             CollisionDetectionToLastPosition();
         }
-
         lastFramePosition = transform.position;
     }
 
     void FixedUpdate() {
-        transform.Translate(direction * speed * Time.deltaTime); //Moving
+        if (Time.timeScale > 0) {
+            Movement();
+            HomingMovement();
+        }
+    }
 
+    private void Movement() {
+        transform.Translate(direction * speed * Time.deltaTime);
+    }
+
+    private void HomingMovement() {
         if (homingStrength != 0) {
             GameObject nearEnemy = GetNearestEnemyInRadius(homingDistance);
             if (nearEnemy != null) {

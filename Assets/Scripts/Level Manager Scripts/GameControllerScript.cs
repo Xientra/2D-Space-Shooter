@@ -27,6 +27,9 @@ public class GameControllerScript : MonoBehaviour {
     [HideInInspector]
     public GameObject PlayerInstance;
 
+    [Header("To Test Time: ")]
+    public float ownTimeScale = 1f;
+
     [Header("Only to Test Weapons")]
     public GameObject toAssingFirstWep;
     public GameObject toAssingSecondWep;
@@ -148,12 +151,11 @@ public class GameControllerScript : MonoBehaviour {
                 }
             }
         }
-
-
-
     }
 
     void Update() {
+        //Time.timeScale = ownTimeScale;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale; //0.02f is the default
 
         if (Time.timeScale == 0 || SceneManager.GetActiveScene().name == "Main Menu") {
             scoreTimer.Stop();
