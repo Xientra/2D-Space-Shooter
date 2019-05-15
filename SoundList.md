@@ -12,20 +12,21 @@
 -> Weapons
 	ChainGun (x)
 	GrenadeLauncher & ShrapnellLauncher (x)
-	Helix [1 (x), 2 (x), 3 (x)]
+	Helix [1 (x), 2 (x), 3 , X]
 	Homing (x?)
 	LaserSword? (x)
 	MissileLauncher (x)
 	ShotGun (x)
 	Standart (x)
-	(Sniper)
+	Sniper [do ice cracking]
+	Wave
 
 -> Bullets & Explosionsn (Question: Should there be a audio feedback on hit? i think yes)
 	GrenadeExplosion (x)
 	Q? HelixBullet (Child and Main?)
 	Q? Homingbullet
 	Q? LaserSword
-	Missile Moving? (~x)
+	Missile Moving? (x)
 	MissileExplosion (x)
 	Q? ShotgunBullet
 	Q? ShrapnellExplosion 
@@ -53,8 +54,7 @@
 
 
 ========Enemies========
--> OnShoot (Should they make a sound on firing? I think not acually (but i'll see)) 
-	   (Should they make a sound when hitting the player? (yes?))
+-> OnShoot (Should they make a sound on firing? I think not acually (but i'll see) (too much work...))  
 
 	AlienLaserBullet
 	AilenBulletBig
@@ -74,5 +74,7 @@
 ========Other========
 -> Buttons (x)
 -> Fire Work Sounds
+	On Start
+	Explosion
 
 

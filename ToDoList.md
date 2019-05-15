@@ -10,9 +10,7 @@
 
 
 
--Every WaitForSeconds in IEnumerators are using the scaledTime which they a times should not...
--(at least the standart_lvl_3_weapon turret) while facing left or right the upper barrel is in the focus  
--the Expender Space Ship Small Sprite has a missing part (whoops :3)
+-Every WaitForSeconds in IEnumerators are using the scaledTime which they a times maybe should not...
 
 # Bugs To Fix Later
 

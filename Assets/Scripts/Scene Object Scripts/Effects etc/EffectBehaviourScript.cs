@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EffectBehaviourScript : MonoBehaviour {
 
-    public enum EffectTypes { None, LaserLoaded, SniperCharging, SavingIcon }
+    public enum EffectTypes { None, LaserLoaded, SniperCharging, SavingIcon } //to get it in the ObjectHolder
     public EffectTypes effectType;
 
     private float TimeStamp;
