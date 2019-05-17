@@ -90,11 +90,9 @@ public class PlayerBehaviourScript : MonoBehaviour {
     void Update() {
         if (GameControllerScript.GameIsPaused == false) {
 
-
+            LookForward();
             RotateTurret();
             SetProjectileSpawnPoint();
-
-            LookForward();
 
             if (Input.GetButton("Fire1")) {
                 FireWeapon(activeWeapon);

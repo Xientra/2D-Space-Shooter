@@ -18,8 +18,8 @@
 	MissileLauncher (x)
 	ShotGun (x)
 	Standart (x)
-	Sniper [do ice cracking]
-	Wave
+	Sniper (x)
+	Wave (x meh)
 
 -> Bullets & Explosionsn (Question: Should there be a audio feedback on hit? i think yes)
 	GrenadeExplosion (x)
@@ -31,7 +31,7 @@
 	Q? ShotgunBullet
 	Q? ShrapnellExplosion 
 	Q? (No?) ShrapnellBullet
-	(Q? SniperBullet)
+	Q? SniperBullet
 	Q? Standart
 
 	
@@ -74,7 +74,7 @@
 ========Other========
 -> Buttons (x)
 -> Fire Work Sounds
-	On Start
-	Explosion
+	On Start (x meh)
+	Explosion (x)
 
 

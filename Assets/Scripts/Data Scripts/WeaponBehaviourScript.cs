@@ -202,12 +202,16 @@ public class WeaponBehaviourScript : MonoBehaviour {
 
             case (WeaponTypes.Sniper_lvl_X):
                 StartFiringSniper(ProjectileSpawnPoint, TurretGameObject);
+
+                AudioControllerScript.activeInstance.PlaySound("SniperShoot");
                 break;
 
             case (WeaponTypes.WaveEmitter_lvl_X):
                 GameObject waveBulletToInstantiate = ObjectHolder._Bullets[ObjectHolder.GetBulletIndex(ProjectileBehaviourScript.BulletTypes.WaveBullet_lvl_X)];
 
                 Instantiate(waveBulletToInstantiate, ProjectileSpawnPoint, TurretGameObject.transform.rotation * waveBulletToInstantiate.transform.rotation);
+
+                AudioControllerScript.activeInstance.PlaySound("WaveShoot");
                 break;
 
 

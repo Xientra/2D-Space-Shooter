@@ -14,10 +14,10 @@ public class FireWorksSoundScript : MonoBehaviour {
         int count = FireWorkParticleSystem.particleCount;
 
         if (count < lastNumberOfParticles) { //a particle has died
-            AudioControllerScript.activeInstance.PlaySound("FireWorkExplosion");
+            AudioControllerScript.activeInstance.PlaySound("FireworkExplosion");
         }
         else if (count > lastNumberOfParticles) { //a particle has been born
-            AudioControllerScript.activeInstance.PlaySound("FireWorkStart");
+            AudioControllerScript.activeInstance.PlaySound("FireworkStart");
         }
 
         lastNumberOfParticles = count;
