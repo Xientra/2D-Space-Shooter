@@ -302,15 +302,29 @@ public class ProjectileBehaviourScript : MonoBehaviour {
             }
 
             if (collision.gameObject.CompareTag("Projectile")) {
+                ProjectileBehaviourScript otherProjectile = collision.gameObject.GetComponent<ProjectileBehaviourScript>();
+
                 if (this.isShootable == true) {
-                    if (collision.gameObject.GetComponent<ProjectileBehaviourScript>().isEnemyBullet != true) {
+                    if (otherProjectile.isEnemyBullet == false) {
                         InitiliseSelfDestruction();
                     }
                 }
                 if (bulletType == BulletTypes.WaveBullet_lvl_X) {
-                    if (collision.gameObject.GetComponent<ProjectileBehaviourScript>().isEnemyBullet == true) {
-                        //collision.gameObject.GetComponent<ProjectileBehaviourScript>().InitiliseSelfDestruction();
-                        Destroy(collision.gameObject);
+                    if (otherProjectile.isEnemyBullet == true) {
+
+                        if (otherProjectile.isShootable == true) {
+                            otherProjectile.InitiliseSelfDestruction();
+                        }
+                        else {
+                            Destroy(collision.gameObject);
+
+                            //otherProjectile.isEnemyBullet = false;
+                            //otherProjectile.gameObject.transform.rotation = Quaternion.Euler(0, 0, otherProjectile.gameObject.transform.rotation.z - 180);
+                            //otherProjectile.gameObject.transform.rotation = Quaternion.Euler(0, 0, (otherProjectile.gameObject.transform.rotation.z * transform.rotation.z));
+                            //otherProjectile.gameObject.transform.Rotate(0, 0, 2 * (transform.rotation.z - otherProjectile.gameObject.transform.rotation.z));
+                        }
+
+                       
                     }
                 }
             }

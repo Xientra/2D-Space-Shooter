@@ -332,10 +332,7 @@ public class PlayerBehaviourScript : MonoBehaviour {
         if (_weaponObject.GetComponent<WeaponBehaviourScript>().TurretGameObject != null) {
             TurretGameObject = Instantiate(_weaponObject.GetComponent<WeaponBehaviourScript>().TurretGameObject, TurretRotationAnchorGo.transform);
         }
-        else {
-            TurretGameObject = Instantiate(ObjectHolder._Turrets[ObjectHolder.GetWeaponTurretIndex(WeaponBehaviourScript.WeaponTypes.Blaster_lvl_1)], TurretRotationAnchorGo.transform);
-            Debug.LogError("When trying to change the turret of the player ");
-        }
+        else Debug.LogError(_weaponObject.name + " has no Turret Object assinged to it.");
     }
 
     public void TakePickUp(GameObject _pickUpObject) {

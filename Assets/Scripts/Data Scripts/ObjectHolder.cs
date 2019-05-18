@@ -22,9 +22,6 @@ public class ObjectHolder : MonoBehaviour {
     public GameObject[] PlayerShips;
     public static GameObject[] _PlayerShips;
 
-    public GameObject[] Turrets;
-    public static GameObject[] _Turrets;
-
     public GameObject[] Effects;
     public static GameObject[] _Effects;
 
@@ -53,9 +50,6 @@ public class ObjectHolder : MonoBehaviour {
 
             _PlayerShips = new GameObject[PlayerShips.Length];
             _PlayerShips = PlayerShips;
-
-            _Turrets = new GameObject[Turrets.Length];
-            _Turrets = Turrets;
 
             _Effects = new GameObject[Effects.Length];
             _Effects = Effects;
@@ -147,79 +141,5 @@ public class ObjectHolder : MonoBehaviour {
         }
         Debug.LogError("Could not find: " + _effectType);
         return -1;
-    }
-
-    /*
-    public static int GetTurretIndex(PlayerControllerScript.Weapons _weapon) {
-        int i = 0;
-        string weaponName = null;
-        switch (_weapon) {
-            case (PlayerControllerScript.Weapons.Standart_lvl_1):
-                weaponName = "StandartTurret_lvl_1";
-                break;
-            case (PlayerControllerScript.Weapons.Standart_lvl_2):
-                weaponName = "StandartTurret_lvl_2";
-                break;
-            case (PlayerControllerScript.Weapons.Standart_lvl_3):
-                weaponName = "StandartTurret_lvl_3";
-                break;
-            case (PlayerControllerScript.Weapons.LaserSword_lvl_1):
-                weaponName = "LaserSwordTurret_lvl_1";
-                break;
-            case (PlayerControllerScript.Weapons.GrenadeLauncher_lvl_1):
-                weaponName = "GrenadeLauncherTurret_lvl_1";
-                break;
-        }
-        if (weaponName != null) {
-            foreach (GameObject Go in _Turrets) {
-                if (Go != null) {
-                    if (Go.name == weaponName) {
-                        return i;
-                    }
-                    i++;
-                }
-            }
-            Debug.LogError("Could not find: " + _weapon);
-        }
-        else Debug.LogWarning("There is not Sprite to this Weaopn assinged");
-        return 0; //Just the default sprite
-    }
-    */
-
-    public static int GetWeaponTurretIndex(WeaponBehaviourScript.WeaponTypes _weaponType) {
-        int i = 0;
-        string weaponName = null;
-        switch (_weaponType) {
-            case (WeaponBehaviourScript.WeaponTypes.Blaster_lvl_1):
-                weaponName = "StandartTurret_lvl_1";
-                break;
-            case (WeaponBehaviourScript.WeaponTypes.Blaster_lvl_2):
-                weaponName = "StandartTurret_lvl_2";
-                break;
-            case (WeaponBehaviourScript.WeaponTypes.Blaster_lvl_3):
-                weaponName = "StandartTurret_lvl_3";
-                break;
-            case (WeaponBehaviourScript.WeaponTypes.LaserSwordController_lvl_1):
-            case (WeaponBehaviourScript.WeaponTypes.LaserSwordController_lvl_2):
-            case (WeaponBehaviourScript.WeaponTypes.LaserSwordController_lvl_3):
-                weaponName = "LaserSwordTurret_lvl_1";
-                break;
-            case (WeaponBehaviourScript.WeaponTypes.GrenadeLauncher_lvl_1):
-                weaponName = "GrenadeLauncherTurret_lvl_1";
-                break;
-        }
-        if (weaponName != null) {
-            foreach (GameObject Go in _Turrets) {
-                if (Go != null) {
-                    if (Go.name == weaponName) {
-                        return i;
-                    }
-                    i++;
-                }
-            }
-            Debug.LogError("Could not find: " + _weaponType);
-        }
-        else Debug.LogWarning("There is no Sprite, assinged to this weapon");
-        return 0; //Just the default sprite
     }
 }

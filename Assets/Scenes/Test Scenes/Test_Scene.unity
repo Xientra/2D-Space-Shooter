@@ -32824,7 +32824,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4892024586171042, guid: 9846023f75897544da838f1b2b31c75e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4892024586171042, guid: 9846023f75897544da838f1b2b31c75e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -32865,18 +32865,28 @@ PrefabInstance:
     - target: {fileID: 114550844775510286, guid: 9846023f75897544da838f1b2b31c75e,
         type: 3}
       propertyPath: MaxHealth
-      value: 10000
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 114550844775510286, guid: 9846023f75897544da838f1b2b31c75e,
         type: 3}
       propertyPath: Health
-      value: 10000
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114550844775510286, guid: 9846023f75897544da838f1b2b31c75e,
+        type: 3}
+      propertyPath: aimTurrets
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114550844775510286, guid: 9846023f75897544da838f1b2b31c75e,
+        type: 3}
+      propertyPath: ShootType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 95394790762767424, guid: 9846023f75897544da838f1b2b31c75e,
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: fbf08f4139b52784dbe270a49b47f781, type: 2}
+      objectReference: {fileID: 9100000, guid: c94a96368bf650c4d868cc3b34e71eab, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9846023f75897544da838f1b2b31c75e, type: 3}
 --- !u!1001 &1662711934
