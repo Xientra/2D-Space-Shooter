@@ -160,6 +160,7 @@ public class PlayerBehaviourScript : MonoBehaviour {
                 StartCoroutine(ActiveInvincibilityForTime());
 
                 AudioControllerScript.activeInstance.PlaySound("PlayerHit");
+                StartCoroutine(GameControllerScript.ShakeMainCamera(0.2f, 0.05f));
             }
         }
         else { //healing
@@ -308,6 +309,10 @@ public class PlayerBehaviourScript : MonoBehaviour {
     }
 
     void SwitchWeapon() {
+
+        if (activeWeapon.GetComponent<WeaponBehaviourScript>().WeaponType == WeaponBehaviourScript.WeaponTypes.Sniper_lvl_X) {
+            AudioControllerScript.activeInstance.StopSound("SniperShoot");
+        }
 
         if (firstWeapon == activeWeapon) {
             activeWeapon = secondWeapon;

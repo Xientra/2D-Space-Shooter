@@ -430,18 +430,18 @@ public class MainMenuControllerScript : MonoBehaviour {
     private void UpdateOptionsMenu() {
         foreach (Transform menuObj in OptionsMenu.transform) {
             if (menuObj.gameObject.name == "MuteSound_Btn") {
-                if (GameControllerScript.SoundIsMuted == true) menuObj.GetComponentInChildren<Text>().text = "enable";
-                else menuObj.GetComponentInChildren<Text>().text = "mute";
+                if (GameControllerScript.SoundIsMuted == true) menuObj.GetComponentInChildren<Text>().text = "off";
+                else menuObj.GetComponentInChildren<Text>().text = "on";
             }
 
             if (menuObj.gameObject.name == "MuteMusic_Btn") {
-                if (GameControllerScript.MusicIsMuted == true) menuObj.GetComponentInChildren<Text>().text = "enable";
-                else menuObj.GetComponentInChildren<Text>().text = "mute";
+                if (GameControllerScript.MusicIsMuted == true) menuObj.GetComponentInChildren<Text>().text = "off";
+                else menuObj.GetComponentInChildren<Text>().text = "on";
             }
 
             if (menuObj.gameObject.name == "DisableTutorials_Btn") {
-                if (GameControllerScript.showTutorials == true) menuObj.GetComponentInChildren<Text>().text = "enable";
-                else menuObj.GetComponentInChildren<Text>().text = "disable";
+                if (GameControllerScript.showTutorials == true) menuObj.GetComponentInChildren<Text>().text = "on";
+                else menuObj.GetComponentInChildren<Text>().text = "off";
             }
         }
     }

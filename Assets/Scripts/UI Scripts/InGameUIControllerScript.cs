@@ -83,15 +83,29 @@ public class InGameUIControllerScript : MonoBehaviour {
                     t.gameObject.GetComponent<Slider>().value = pbs.GetPercentUnitlCooldown1();
                 if (t.name == "Cooldown Bar 2")
                     t.gameObject.GetComponent<Slider>().value = pbs.GetPercentUnitlCooldown2();
+
+                if (t.gameObject.name == "First Weapon Text")
+                    t.gameObject.GetComponent<Text>().text = "First Weapon:" + System.Environment.NewLine + GameControllerScript.PlayerFirstWeapon.GetComponent<WeaponBehaviourScript>().weaponName;
+                if (t.gameObject.name == "Second Weapon Text")
+                    t.gameObject.GetComponent<Text>().text = "Second Weapon:" + System.Environment.NewLine + GameControllerScript.PlayerSecondWeapon.GetComponent<WeaponBehaviourScript>().weaponName;
             }
-            if (t.gameObject.name == "First Weapon Text")
-                t.gameObject.GetComponent<Text>().text = "First Weapon:" + System.Environment.NewLine + GameControllerScript.PlayerFirstWeapon.GetComponent<WeaponBehaviourScript>().weaponName;
-            if (t.gameObject.name == "Second Weapon Text")
-                t.gameObject.GetComponent<Text>().text = "Second Weapon:" + System.Environment.NewLine + GameControllerScript.PlayerSecondWeapon.GetComponent<WeaponBehaviourScript>().weaponName;
             if (t.gameObject.name == "Currend Credits Text")
                 t.gameObject.GetComponent<Text>().text = "Credits:" + System.Environment.NewLine + GameControllerScript.currendCredits.ToString();
             if (t.gameObject.name == "Currend Score Text")
                 t.gameObject.GetComponent<Text>().text = "Score: " + System.Environment.NewLine + GameControllerScript.currendScore.ToString();
+        }
+
+        if (InGameExitMenu.activeSelf == true) {
+            foreach (Transform tr in InGameExitMenu.transform) {
+                if (tr.gameObject.name == "MusicImage")
+                    tr.gameObject.SetActive(!GameControllerScript.MusicIsMuted);
+                if (tr.gameObject.name == "NoMusicImage")
+                    tr.gameObject.SetActive(GameControllerScript.MusicIsMuted);
+                if (tr.gameObject.name == "SoundImage")
+                    tr.gameObject.SetActive(!GameControllerScript.SoundIsMuted);
+                if (tr.gameObject.name == "NoSoundImage")
+                    tr.gameObject.SetActive(GameControllerScript.SoundIsMuted);
+            }
         }
     }
 
@@ -153,6 +167,32 @@ public class InGameUIControllerScript : MonoBehaviour {
         GameControllerScript.PauseGame(false);
         Cursor.visible = false;
     }
+
+    public void Btn_MuteSound() {
+        if (GameControllerScript.SoundIsMuted == true) {
+            GameControllerScript.SoundIsMuted = false;
+        }
+        else if (GameControllerScript.SoundIsMuted == false) {
+            GameControllerScript.SoundIsMuted = true;
+        }
+
+        UpdateInGameUI();
+        PlayButtonSound();
+    }
+
+    public void Btn_MuteMusic() {
+        if (GameControllerScript.MusicIsMuted == true) {
+            GameControllerScript.MusicIsMuted = false;
+        }
+        else if (GameControllerScript.MusicIsMuted == false) {
+            GameControllerScript.MusicIsMuted = true;
+        }
+
+        UpdateInGameUI();
+        PlayButtonSound();
+    }
+
+    /*-------------------------------------------Other InGameMenu Actions-------------------------------------------------------*/
 
     public void OpenTutorialText(string _text, float _time = 5f) {
         StartCoroutine(StartOpenTutorialText(_text, _time));

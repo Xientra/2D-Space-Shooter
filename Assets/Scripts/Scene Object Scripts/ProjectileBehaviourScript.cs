@@ -88,6 +88,9 @@ public class ProjectileBehaviourScript : MonoBehaviour {
     private int AmountOfShrapnellBulletsSpawnedOnDeath = 0;
     //-----Shrapnell Bullet-----
     private float shrapnellBulletRNGSpread = 24;
+    //-----Sniper Bullet-----
+    GameObject lastHitEnemy = null;
+
 
 
     /*--------------------Additional Bullet Behaviour Variables--------------------*/
@@ -284,19 +287,26 @@ public class ProjectileBehaviourScript : MonoBehaviour {
 
             if (isEnemyBullet == false) { //if bullet from player
                 if (collision.gameObject.layer == 10/*Enemy*/) {
-                    if (collision.gameObject.GetComponent<EnemyBehaviourScript>().Health >= 0) {
+                    if (bulletType == BulletTypes.SniperBullet_lvl_X == true) {
+                        if (collision.gameObject != lastHitEnemy) {
+                            if (collision.gameObject.GetComponent<EnemyBehaviourScript>().Health >= 0) {
+                                collision.gameObject.GetComponent<EnemyBehaviourScript>().Health -= damage * damageMultiplyer;
+                            }
+                        }
+                        lastHitEnemy = collision.gameObject;
+
+                    } //is not sniper bullet
+                    else if (collision.gameObject.GetComponent<EnemyBehaviourScript>().Health >= 0) {
                         collision.gameObject.GetComponent<EnemyBehaviourScript>().Health -= damage * damageMultiplyer;
 
-                        if (bulletType == BulletTypes.SniperBullet_lvl_X != true) {
-                            InitiliseSelfDestruction();
-                        }
+                        InitiliseSelfDestruction();
                     }
                 }
             }
             else { //if bullet is from enemy
                 if (collision.gameObject.CompareTag("Player")) {
                     collision.gameObject.GetComponent<PlayerBehaviourScript>().ChangeHealthBy(-damage);
-                    StartCoroutine(GameControllerScript.ShakeMainCamera(0.2f, 0.05f));
+                    
                     InitiliseSelfDestruction();
                 }
             }
